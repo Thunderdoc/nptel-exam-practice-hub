@@ -2468,9 +2468,6 @@
             "</span>" +
             (ok ? "Correct Answer!" : "Incorrect Answer") +
             "</div>" +
-            (ok
-              ? ""
-              : '<div class="sub">Your pick is highlighted red above — the accepted answer is green.</div>') +
             '<div class="fb-acc">Accepted answer: ' +
             esc(q.correct_letter) +
             ". " +
@@ -2480,7 +2477,7 @@
         const note = D.notes[q.id] || {};
         const noteHtml =
           checked || !SES.isMock
-            ? '<details class="sheet"><summary>My revision note (saved on this device)</summary>' +
+            ? '<details class="sheet"><summary>My revision note</summary>' +
               '<label class="f" for="nConcept">Key concept</label><input class="inp" id="nConcept" value="' +
               esc(note.concept || "") +
               '" placeholder="e.g. migration vs dispersal">' +
@@ -2507,7 +2504,7 @@
                   "</button>",
               )
               .join("") +
-            '</div><p class="small" style="margin-top:8px">Green = answered · Red = marked for review · Blue outline = current. Answers are not revealed during a mock.</p></details>'
+            '</div><p class="small" style="margin-top:8px">Green = answered · Red = marked · Blue outline = current</p></details>'
           : "";
         const testTop =
           SES.submitAll && !SES.isMock
@@ -2533,7 +2530,7 @@
                     "</button>",
                 )
                 .join("") +
-              '</div><p class="small" style="margin-top:8px">Green = answered · Red = marked for review · Blue outline = current. You can change any answer any time before submitting.</p></details>'
+              '</div><p class="small" style="margin-top:8px">Green = answered · Red = marked · Blue outline = current</p></details>'
             : "";
         app.innerHTML =
           '<div class="wrap"><p class="crumb"><b>Week ' +
@@ -2605,7 +2602,7 @@
               answeredN +
               " of " +
               total +
-              " · Correct answers are revealed only after you submit.</p>"
+              "</p>"
             : "") +
           "</div>";
         updateBars();
@@ -2889,10 +2886,8 @@
           app.innerHTML =
             '<div class="wrap"><div class="narrow"><div style="text-align:center;padding-top:24px">' +
             TROPHYSVG +
-            '<h2 style="font-size:26px;font-weight:800;margin-top:8px">Mock Test Completed!</h2><p class="small" style="margin-top:4px">Great effort, ' +
-            esc(nm) +
-            "!</p></div>" +
-            '<div class="stat-grid" style="grid-template-columns:1fr 1fr 1fr"><div class="stat" style="text-align:center"><div class="n">' +
+            '<h2 style="font-size:26px;font-weight:800;margin-top:8px">Mock Test Completed!</h2></div>' +
+            '<div class="stat-grid" style="grid-template-columns:repeat(3,minmax(0,1fr))"><div class="stat" style="text-align:center"><div class="n">' +
             r.correct +
             "/" +
             r.total +
@@ -2921,7 +2916,7 @@
             '<div class="wrap"><div class="sec" style="margin-top:24px"><h2>' +
             (r.correct / r.total >= 0.7 ? "" : "") +
             esc(r.title) +
-            ' — Results</h2><p class="hint">Calculated from your actual answers in this session.</p>' +
+            ' — Results</h2>' +
             '<div class="stat-grid"><div class="stat"><div class="n">' +
             r.correct +
             "/" +
@@ -3171,662 +3166,13 @@
           questions: BANK.length,
         },
       ];
-      const LEARN_NOTE =
-        "Learning notes created for this app from the concepts in the question set — supplementary study material, not official NPTEL content. Accepted answers always come from the supplied source.";
-      const LESSONS = {
-        1: {
-          obj: [
-            "Say what ecology studies, in one line",
-            "Use migration, pull factors and Liebig's law correctly",
-            "Know who developed the systematic approach to Geography",
-          ],
-          intro: [
-            "Geography studies how people and nature fit together across places. Its systematic approach — studying one theme at a time across the world — was developed by Alexander von Humboldt. Ecology is the science of relationships between organisms and their environments: who eats whom, what limits growth, and how living things move and spread.",
-            "Two ideas unlock many Week 1 questions. Liebig's law of the minimum says growth is limited by whichever needed factor is in shortest supply. And when conditions in a place attract movers — good climate, food, safety — those are pull factors; the regular, seasonal movement of animals along fixed routes is migration.",
-          ],
-          points: [
-            [
-              "w1-q5",
-              "Ecology = the science of relationships between organisms and their environments.",
-            ],
-            [
-              "w1-q2",
-              "Alexander von Humboldt developed the systematic approach to Geography.",
-            ],
-            [
-              "w1-q6",
-              "Liebig's law of the minimum: a biological process is limited by the factor available in the least amount relative to need.",
-            ],
-            [
-              "w1-q1",
-              "Migration = the regular, seasonal movement of animals, often along fixed routes.",
-            ],
-            [
-              "w1-q10",
-              "A good climate works as a pull factor — it attracts movement towards a place.",
-            ],
-            [
-              "w1-q3",
-              "Allelopathy: chemicals released by one plant (like teak) can stop other plants growing nearby.",
-            ],
-          ],
-          quiz: ["w1-q1", "w1-q5", "w1-q6", "w1-q10"],
-        },
-        2: {
-          obj: [
-            "Tell shield volcanoes and stratovolcanoes apart",
-            "Know where magma comes from and the main dating principles",
-            "Recall the terrestrial planets",
-          ],
-          intro: [
-            "The solid Earth is restless. Magma — molten rock below the surface — comes mainly from the mantle. Eruptions that flow gently again and again build broad shield volcanoes like Hawaii's; eruptions alternating lava and ash build steep stratovolcanoes like Mount Fuji. The Deccan Traps of India are a flood basalt province: enormous lava outpourings.",
-            "Geologists read Earth's history in its rocks. Fossil assemblages are unique to the time they lived in (principle of fossil succession), rock layers continue sideways until the edge of a basin (lateral continuity), and absolute dating uses physical methods — an inclusion study is not one of them.",
-          ],
-          points: [
-            ["w2-q2", "The main source of magma is the mantle."],
-            [
-              "w2-q1",
-              "Mount Fuji is a stratovolcano; Hawaii's volcanoes are shield volcanoes (Week 2 · Q5).",
-            ],
-            ["w2-q10", "The Deccan Traps are a flood basalt province."],
-            [
-              "w2-q7",
-              "Principle of fossil succession: fossil assemblages are unique to their time, so they can be used to age rocks.",
-            ],
-            ["w2-q3", "Inclusion study is NOT a method of absolute dating."],
-            [
-              "w2-q8",
-              "The terrestrial planets are Mercury, Venus, Earth and Mars.",
-            ],
-          ],
-          quiz: ["w2-q2", "w2-q1", "w2-q3", "w2-q7"],
-        },
-        3: {
-          obj: [
-            "Classify mudrock and sandstone",
-            "Separate chemical weathering from other processes",
-            "Identify minerals by streak and cleavage",
-          ],
-          intro: [
-            "Rocks are recognised by how they formed and what they contain. Mudrock and sandstone are siliciclastic rocks — built from fragments of older rocks. At the surface, weathering breaks rock down: carbonation and hydrolysis are chemical weathering, changing the minerals themselves, while slow cooling of magma deep underground gives coarse-grained igneous rocks.",
-            "Minerals carry diagnostic habits. Amphiboles are green or black inosilicate minerals forming prism- or needle-like crystals. A mineral's streak — the colour of its powder — is often steadier than its surface colour, and cleavage is the tendency to break along flat planes in set directions.",
-          ],
-          points: [
-            [
-              "w3-q1",
-              "Mudrock is a siliciclastic rock — and so is sandstone (Week 3 · Q8).",
-            ],
-            [
-              "w3-q2",
-              "Carbonation is chemical weathering — and so is hydrolysis (Week 3 · Q4).",
-            ],
-            [
-              "w3-q10",
-              "Slow cooling of magma produces coarse-grained igneous rocks.",
-            ],
-            [
-              "w3-q6",
-              "Streak — the colour of the powdered mineral — is often more useful than surface colour for identification.",
-            ],
-            [
-              "w3-q9",
-              "Cleavage = the tendency to break in given directions, producing relatively plane surfaces.",
-            ],
-          ],
-          quiz: ["w3-q2", "w3-q1", "w3-q10", "w3-q9"],
-        },
-        4: {
-          obj: [
-            "Distinguish mitigation from adaptation",
-            "Name the atmosphere layers the questions use",
-            "Explain isobars, advection and climate normals",
-          ],
-          intro: [
-            "Climate action has two halves: mitigation tackles the causes (for example, locking carbon away in geological sites), while adaptation copes with the effects — reserve managers responding to drought, or seed and sperm banking that builds resilience to climate change.",
-            "The atmosphere is layered: jet planes cruise in the stratosphere, and noctilucent clouds shine in the mesosphere. Air pressure at a point is mainly the weight of the air above it, so isobars are drawn after converting pressures to sea-level values. Heat carried sideways by moving air is advection, and a climate average is classically taken over 30 years.",
-          ],
-          points: [
-            [
-              "w4-q1",
-              "Carbon sequestration in geological sites is a mitigation option.",
-            ],
-            [
-              "w4-q3",
-              "Responding to drought impacts (as at Mudumalai) is adaptation; seed and sperm banking supports resilience (Week 4 · Q4).",
-            ],
-            [
-              "w4-q5",
-              "Jet planes typically fly in the stratosphere; noctilucent clouds occur in the mesosphere (Week 4 · Q8).",
-            ],
-            [
-              "w4-q6",
-              "Advection = heat movement through the horizontal movement of air.",
-            ],
-            [
-              "w4-q7",
-              "The classical period for taking climate averages is 30 years.",
-            ],
-            ["w4-q10", "An mT air mass is generally warm and moist."],
-          ],
-          quiz: ["w4-q1", "w4-q5", "w4-q6", "w4-q7"],
-        },
-        5: {
-          obj: [
-            "Describe the ocean floor's big features",
-            "Explain tides, density and shelf productivity",
-            "Use isohaline and sublimation correctly",
-          ],
-          intro: [
-            "The ocean floor is not flat. The largest mountain ranges on Earth are the mid-oceanic ridges; the vast abyssal plains — Earth's largest habitat — are floored with fine clay and silt, and deep submarine canyons cut across shelves and slopes. Continental shelves slope very gently (0–1 degree) and are highly productive because they receive both light and nutrients.",
-            "Tidal range is the difference between high- and low-tide sea levels. Ocean water density changes with hydrostatic pressure, salinity and temperature, and ice can turn straight into water vapour by sublimation. Lines joining places of equal salinity are isohaline curves.",
-          ],
-          points: [
-            [
-              "w5-q3",
-              "The mid-oceanic ridge system forms the largest mountain ranges on Earth.",
-            ],
-            [
-              "w5-q2",
-              "The abyssal plain is the largest habitat on Earth; its common sediment is clay and silt (Week 5 · Q1).",
-            ],
-            [
-              "w5-q4",
-              "Continental shelves are productive because they receive both light and nutrients; a shelf's gradient is 0–1 degree (Week 5 · Q9).",
-            ],
-            [
-              "w5-q5",
-              "Tidal range = the difference between sea level at high tide and at low tide.",
-            ],
-            ["w5-q10", "Equal salinity curves are called isohaline curves."],
-          ],
-          quiz: ["w5-q3", "w5-q5", "w5-q9", "w5-q10"],
-        },
-        6: {
-          obj: [
-            "Recognise drainage patterns",
-            "Explain India's water divide and peninsular rivers",
-            "Recall Köppen's polar frost symbol",
-          ],
-          intro: [
-            "River networks mirror the land they drain. A network that follows the structure and slope of the land is accordant; one that does not match the present structure is discordant; and a tree-like pattern of smaller streams joining a main channel is dendritic drainage.",
-            "The Western Ghats form a water divide: rain falling on opposite sides flows towards different seas. The Narmada and Tapi flow west into the Arabian Sea, while peninsular rivers keep fixed courses because they are cut into older, harder rock. The Himalayas are built mainly of sedimentary rocks, and in Köppen's classification F is the polar frost temperature regime.",
-          ],
-          points: [
-            [
-              "w6-q1",
-              "The Western Ghats act as a water divide — water on opposite sides flows in different directions.",
-            ],
-            [
-              "w6-q3",
-              "A tree-like river network is dendritic drainage; accordant networks follow the land's structure (Week 6 · Q2) and discordant ones do not (Week 6 · Q4).",
-            ],
-            [
-              "w6-q6",
-              "The Narmada and Tapi flow westwards into the Arabian Sea.",
-            ],
-            [
-              "w6-q8",
-              "Peninsular rivers have fixed courses mainly because their courses are cut into older, harder rock.",
-            ],
-            [
-              "w6-q9",
-              "In Köppen classification, F is the polar frost temperature regime.",
-            ],
-          ],
-          quiz: ["w6-q3", "w6-q1", "w6-q6", "w6-q9"],
-        },
-        7: {
-          obj: [
-            "Place cryofracturing in the right weathering type",
-            "Use alpha and gamma biodiversity correctly",
-            "Describe a soil profile and the disturbance rule",
-          ],
-          intro: [
-            "Soils form where rock, climate and life meet. Frost shattering rock — cryofracturing — is physical weathering. Bangar, the older alluvium, is a type of alluvial soil; the vertical arrangement of soil horizons is called the soil profile, while soil structure means the arrangement of solid soil parts and the pore spaces between them.",
-            "Diversity is measured at several scales: alpha diversity exists within one ecosystem, gamma diversity among different geographies. Diversity tends to peak at intermediate levels of disturbance, and a climax community produced by wildfire is a catastrophic climax.",
-          ],
-          points: [
-            ["w7-q2", "Cryofracturing is an example of physical weathering."],
-            ["w7-q3", "Bangar is a type of alluvial soil."],
-            [
-              "w7-q4",
-              "Alpha (α) biodiversity = diversity within an ecosystem; gamma (γ) = diversity among different geographies (Week 7 · Q7).",
-            ],
-            [
-              "w7-q6",
-              "For more biodiversity, the level of disturbance should be intermediate.",
-            ],
-            ["w7-q5", "A climax caused by wildfires is a catastrophic climax."],
-            [
-              "w7-q8",
-              "The vertical arrangement of soil horizons is called the soil profile.",
-            ],
-          ],
-          quiz: ["w7-q2", "w7-q4", "w7-q6", "w7-q8"],
-        },
-        8: {
-          obj: [
-            "Compare ex-situ and in-situ conservation",
-            "Explain keystone species, rarity and biomagnification",
-            "Use the species–area relationship",
-          ],
-          intro: [
-            "Conservation protects species in their habitat or away from it. A seed bank is the classic ex-situ method — powerful, though captive-bred individuals may find reintroduction difficult. Small populations are especially vulnerable to inbreeding depression, caused by mating among close relatives, and a species can be rare simply because its geographical range is limited.",
-            "Some species matter far beyond their numbers: a keystone species plays a much greater ecological role than expected from its abundance. In the species–area relationship, S represents species richness; poisons can biomagnify up food chains, as DDD did at Clear Lake; and the HIPPO acronym lists major threats — pollination is not among them.",
-          ],
-          points: [
-            ["w8-q1", "A seed bank is an ex-situ conservation method."],
-            [
-              "w8-q3",
-              "A keystone species plays a much greater ecological role than expected from its abundance.",
-            ],
-            [
-              "w8-q2",
-              "Smaller populations are especially vulnerable to inbreeding depression — mating among close relatives.",
-            ],
-            [
-              "w8-q7",
-              "Biomagnification: at Clear Lake, DDD concentration increased from water to plankton, fish and fish-eating birds.",
-            ],
-            [
-              "w8-q6",
-              "In the species–area relationship, S represents species richness.",
-            ],
-          ],
-          quiz: ["w8-q1", "w8-q3", "w8-q7", "w8-q6"],
-        },
-        9: {
-          obj: [
-            "Read population ratios and growth curves",
-            "Use Malthus's two kinds of checks correctly",
-            "State the demographic transition and sustainability pillars",
-          ],
-          intro: [
-            "Human geography counts people and how their numbers change. The age dependency ratio compares the dependent population with the working-age population — generally the 15–64 years group. Logistic growth traces an S-shaped curve, and the demographic transition moves a society from high birth and death rates to low birth and death rates.",
-            "Malthus separated positive checks, such as war, from preventive checks, such as foresight. Economic development is often measured as GDP per capita; humanising of nature is commonly linked with possibilism; and 'trans-boundary sustainability' is not a pillar of sustainability.",
-          ],
-          points: [
-            [
-              "w9-q3",
-              "The age dependency ratio compares the dependent population with the working-age population (15–64 years, Week 9 · Q10).",
-            ],
-            [
-              "w9-q4",
-              "The logistic growth equation produces an S-shaped curve.",
-            ],
-            [
-              "w9-q5",
-              "For Malthus, war is a positive check; foresight is a preventive check (Week 9 · Q9).",
-            ],
-            [
-              "w9-q8",
-              "The demographic transition moves a society from high birth rate and high death rate to low birth rate and low death rate.",
-            ],
-            [
-              "w9-q7",
-              "Trans-boundary sustainability is NOT a pillar of sustainability.",
-            ],
-          ],
-          quiz: ["w9-q3", "w9-q4", "w9-q5", "w9-q8"],
-        },
-        10: {
-          obj: [
-            "Sort resources into actual, potential, reserve and stock",
-            "Trace how roads drive forest loss",
-            "Name the largest sources of NOx and ammonia",
-          ],
-          intro: [
-            "Resources are classified by how usable they are today. Timber that is being harvested is an actual resource; oil that has not been drilled is a potential resource; low-concentration ores are reserve resources; and resources that have been surveyed but cannot be used for lack of technology — such as hydrogen for nuclear fusion — are stock resources.",
-            "In the Rondônia rainforest example, road construction contributed to forest loss mainly by allowing easier human access into forest areas. Cropland contributes more to the global calorie supply than livestock despite using a smaller share of agricultural land, while mobile sources are the largest source of nitrogen oxides and animal manure the largest source of ammonia.",
-          ],
-          points: [
-            [
-              "w10-q9",
-              "Timber being harvested is an actual resource; oil not yet drilled is a potential resource (Week 10 · Q4).",
-            ],
-            [
-              "w10-q7",
-              "Resources surveyed but unusable for lack of technology are stock resources — hydrogen for fusion is one (Week 10 · Q2).",
-            ],
-            [
-              "w10-q6",
-              "Low-concentration ores come in the category of reserve resources.",
-            ],
-            [
-              "w10-q3",
-              "In Rondônia, roads drove forest loss by allowing easier human access into forest areas.",
-            ],
-            [
-              "w10-q8",
-              "Mobile sources are the largest source of nitrogen oxides; animal manure is the largest source of ammonia (Week 10 · Q10).",
-            ],
-          ],
-          quiz: ["w10-q7", "w10-q9", "w10-q3", "w10-q8"],
-        },
-        11: {
-          obj: [
-            "Explain the barrier effect of roads",
-            "Use comparative advantage correctly",
-            "See how transport affects wildlife and towns",
-          ],
-          intro: [
-            "Transport connects places but also cuts through habitats. Roads disturb wildlife at night through light pollution from headlamps, and their barrier effect is governed by several factors acting together; young male tigers or leopards may need to move away from their home areas to reduce conflict and avoid inbreeding. Railways require more money and technology to construct than the modes they are compared with in the set.",
-            "In trade, comparative advantage is the ability to produce a good at a lower opportunity cost than another producer. Even ship exhaust leaves a trail: dust particles act as nuclei for condensation, revealing ship movement — and a town like Oxford is best categorised as an educational town.",
-          ],
-          points: [
-            [
-              "w11-q7",
-              "Dust released from ships reveals their movement because the particles act as nuclei for condensation.",
-            ],
-            [
-              "w11-q8",
-              "Roads disturb wildlife at night through light pollution from headlamps.",
-            ],
-            [
-              "w11-q9",
-              "Young male tigers or leopards may move away to reduce conflict and avoid inbreeding.",
-            ],
-            [
-              "w11-q6",
-              "Comparative advantage = the ability to produce a good at a lower opportunity cost than another producer.",
-            ],
-            [
-              "w11-q10",
-              "Oxford can best be categorised as an educational town.",
-            ],
-          ],
-          quiz: ["w11-q6", "w11-q8", "w11-q9", "w11-q10"],
-        },
-        12: {
-          obj: [
-            "Define hazard and vulnerability precisely",
-            "Work the LiDAR time-of-flight calculation",
-            "Name GIS components and photogrammetry types",
-          ],
-          intro: [
-            "The final week turns to measuring and mapping risk. A hazard is a process, phenomenon or human activity that may cause loss of life, injury or other health impacts; vulnerability means the conditions — physical, social, economic and environmental — that make a community susceptible to a hazard's impacts.",
-            "LiDAR measures distance by timing a light pulse: distance = (speed of light × time of flight) ÷ 2, so 0.00001 seconds gives 1500 m. Photogrammetry has metric applications (measuring, e.g. forest area) and interpretive applications (understanding what is happening); a GIS needs humanware along with hardware and software; IMU stands for Inertial Measurement Unit; an oblique camera axis is intentionally tilted between vertical and horizontal; and ground-borne platforms carry cameras at ground level.",
-          ],
-          points: [
-            [
-              "w12-q4",
-              "A hazard is a process, phenomenon or human activity that may cause loss of life, injury or other health impacts.",
-            ],
-            [
-              "w12-q1",
-              "Vulnerability = the conditions determined by physical, social, economic and environmental factors or processes that increase susceptibility.",
-            ],
-            [
-              "w12-q2",
-              "LiDAR distance = (3×10⁸ × time of flight) ÷ 2 — for 0.00001 s, the object is 1500 m away.",
-            ],
-            [
-              "w12-q7",
-              "Along with hardware and software, an essential GIS component is humanware.",
-            ],
-            ["w12-q5", "IMU stands for Inertial Measurement Unit."],
-            [
-              "w12-q9",
-              "An oblique camera axis is intentionally tilted between vertical and horizontal.",
-            ],
-          ],
-          quiz: ["w12-q2", "w12-q4", "w12-q7", "w12-q5"],
-        },
-      };
-      let CURLESSON = 1,
-        LQ = { picks: {}, checked: {} };
       let CURSTUDY = 0;
-      function openLesson(w) {
-        CURLESSON = w;
-        LQ = { picks: {}, checked: {} };
-        if (D && D.learn) {
-          D.learn.last = w;
-          save();
-        }
-        curView = "lesson";
-        render();
-      }
       function learnHTML() {
-        const L = D.learn || { done: [], last: null };
-        const done = L.done || [];
-        const firstOpen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].find(
-          (w) => !done.includes(w),
-        );
         let h =
-          '<div class="wrap"><p class="crumb">Home › <b>Learn</b></p><h2 style="font-size:24px;font-weight:800">Learn from Zero</h2><p class="small" style="margin-top:4px;font-size:15px">Geography &amp; Environment · 12 theme lessons — one per week, each built from the concepts that week’s questions actually test.</p>' +
-          '<div class="note-box" style="margin-top:12px">' +
-          LEARN_NOTE +
-          "</div>";
-        if (L.last && done.length < 12)
-          h +=
-            '<div class="card continue-card" style="margin-top:14px"><b>Continue Learning</b><p class="small" style="margin-top:4px">Week ' +
-            L.last +
-            " · " +
-            esc(WEEK_TITLES[L.last]) +
-            '</p><button class="btn btn-p btn-sm" data-lesson="' +
-            L.last +
-            '" style="margin-top:10px">Continue</button></div>';
-        h +=
-          '<div class="card" style="margin-top:14px"><b>Your learning progress</b><p class="small" style="margin-top:4px">' +
-          done.length +
-          " of 12 lessons completed · " +
-          Math.round((done.length / 12) * 100) +
-          '%</p><div class="prog" style="margin-top:8px"><i style="background:var(--blue);width:' +
-          Math.round((done.length / 12) * 100) +
-          '%"></i></div></div>';
-        h +=
-          '<div class="mode-grid learn-modes">' +
-          '<button class="mode-card" data-startzero="1"><span class="tile" style="background:#12B981">' +
-          icoBookW +
-          "</span><span class=\"mtxt\"><h3>Learn from Zero</h3><p>Start at " +
-          (firstOpen
-            ? "Week " + firstOpen + " · " + esc(WEEK_TITLES[firstOpen])
-            : "Week 1") +
-          " and build up lesson by lesson</p></span></button>" +
-          '<button class="mode-card" data-scrollist="1"><span class="tile" style="background:#F59E0B">' +
-          icoLayersW +
-          "</span><span class=\"mtxt\"><h3>Week-wise Learning</h3><p>All 12 theme lessons, one for each week — pick any week below</p></span></button>" +
-          '<button class="mode-card" data-studyqs="1"><span class="tile" style="background:#0EA5E9">' +
-          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M3.5 6l1.2 1.2L7 4.9"/><path d="M3.5 12l1.2 1.2L7 10.9"/><path d="M3.5 18l1.2 1.2L7 16.9"/></svg>' +
-          "</span><span class=\"mtxt\"><h3>Study Questions</h3><p>Every question with its correct answer marked in green — Weeks 0–12, read &amp; learn</p></span></button>" +
-          '<button class="mode-card" data-gorev="quick"><span class="tile" style="background:#8B5CF6">' +
-          icoCardW +
-          "</span><span class=\"mtxt\"><h3>Quick Revision</h3><p>Flashcards from your wrong + bookmarked questions</p></span></button>" +
-          "</div>";
-        h +=
-          '<h3 style="font-size:18px;font-weight:800;margin-top:22px" id="lessonList">All 12 theme lessons</h3><div class="week-list">';
-        for (let w = 1; w <= 12; w++) {
-          const isDone = done.includes(w);
-          const isLast = L.last === w && !isDone;
-          h +=
-            '<div class="week-row" data-lesson="' +
-            w +
-            '" role="button" tabindex="0" style="cursor:pointer"><div class="top"><span class="wtile" style="background:' +
-            TILEC[w - 1] +
-            '">' +
-            w +
-            '</span><span class="info"><b>Week ' +
-            w +
-            " · " +
-            esc(WEEK_TITLES[w]) +
-            '</b><br><span class="cnt">Concepts tested in Week ' +
-            w +
-            " questions · " +
-            weekQs(w).length +
-            " questions in the bank</span></span>" +
-            (isDone
-              ? '<span class="tag g">✓ Completed</span>'
-              : isLast
-                ? '<span class="tag b">In progress</span>'
-                : "") +
-            '<span class="chev">›</span></div></div>';
-        }
-        h +=
-          '</div><p class="small" style="margin-top:14px">' +
-          LEARN_NOTE +
-          "</p></div>";
-        return h;
-      }
-      function lqCard(qid) {
-        const q = BYID[qid];
-        const picked = LQ.picks[qid];
-        const checked = !!LQ.checked[qid];
-        const ok = checked && picked === q.correct_letter;
-        const pt = (LESSONS[CURLESSON].points.find((p) => p[0] === qid) ||
-          [])[1];
-        let h =
-          '<div class="card" style="margin-top:12px"><div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap"><span class="tag b">Week ' +
-          q.week +
-          " • Q" +
-          q.number +
-          '</span><span style="flex:1"></span><button class="bm-btn' +
-          (isBookmarked(qid) ? " on" : "") +
-          '" data-lqbm="' +
-          qid +
-          '" aria-label="Bookmark this question">' +
-          '<svg viewBox="0 0 24 24" width="19" height="19"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z" fill="' +
-          (isBookmarked(qid) ? "#2878F9" : "none") +
-          '" stroke="currentColor" stroke-width="1.8"/></svg>' +
-          "</button></div>" +
-          '<p class="q" style="margin-top:8px">' +
-          esc(q.question) +
-          '</p><div class="opts' +
-          (checked ? " locked" : "") +
-          '" role="group" aria-label="Answer options" style="margin-top:10px">' +
-          ["A", "B", "C", "D"]
-            .map((L) => {
-              let cls = "opt";
-              if (picked === L) cls += " sel";
-              if (checked) {
-                if (L === q.correct_letter) cls += " correct";
-                else if (picked === L) cls += " wrong";
-              }
-              return (
-                '<button class="' +
-                cls +
-                '" data-lqpick="' +
-                qid +
-                ":" +
-                L +
-                '" ' +
-                (checked ? "disabled" : "") +
-                '><span class="ltr">' +
-                L +
-                "</span><span>" +
-                esc(optText(q, L)) +
-                "</span></button>"
-              );
-            })
-            .join("") +
-          "</div>";
-        if (!checked)
-          h +=
-            '<button class="btn btn-p" data-lqcheck="' +
-            qid +
-            '" style="width:100%;margin-top:12px">Check Answer</button>';
-        else if (ok)
-          h +=
-            '<div class="feedback ok" style="margin-top:12px" role="status"><span class="fb-head"><span class="fb-ic">' +
-            ICO_FB_OK +
-            '</span>Correct!</span> <span class="sub">Accepted answer: ' +
-            esc(q.correct_letter) +
-            ". " +
-            esc(q.correct_text) +
-            "</span></div>";
-        else
-          h +=
-            '<div class="feedback bad" style="margin-top:12px" role="status"><span class="fb-head"><span class="fb-ic">' +
-            ICO_FB_X +
-            '</span>Not quite</span> <span class="sub">Accepted answer from source: <b>' +
-            esc(q.correct_letter) +
-            ". " +
-            esc(q.correct_text) +
-            "</b> · No explanation in source.</span></div>" +
-            (pt
-              ? '<div class="acc-box" style="margin-top:10px"><b>Key point:</b> ' +
-                esc(pt) +
-                "</div>"
-              : "") +
-            '<button class="btn btn-g" data-lqretry="' +
-            qid +
-            '" style="width:100%;margin-top:10px">↻ Retry this question</button>';
-        return h + "</div>";
-      }
-      function lessonHTML() {
-        const w = CURLESSON;
-        const ls = LESSONS[w];
-        const L = D.learn || { done: [], last: null };
-        const isDone = (L.done || []).includes(w);
-        let h =
-          '<div class="wrap"><button class="back-btn" data-nav="learn" aria-label="Back to Learn">←</button>' +
-          '<h2 style="font-size:23px;font-weight:800;margin-top:6px">Week ' +
-          w +
-          " · " +
-          esc(WEEK_TITLES[w]) +
-          "</h2>" +
-          '<p class="small" style="margin-top:3px">Lesson ' +
-          w +
-          " of 12 · Concepts tested in Week " +
-          w +
-          " questions · " +
-          weekQs(w).length +
-          " questions in the bank</p>" +
-          '<div class="note-box" style="margin-top:12px">' +
-          LEARN_NOTE +
-          "</div>" +
-          '<div class="card lesson-sec" style="margin-top:14px"><b>Learning objectives</b><ul class="lobj">' +
-          ls.obj.map((o) => "<li>" + esc(o) + "</li>").join("") +
-          "</ul></div>" +
-          '<div class="card lesson-sec" style="margin-top:12px"><b>Learn the concepts</b>' +
-          ls.intro
-            .map(
-              (p) =>
-                '<p style="margin-top:8px;line-height:1.65">' + esc(p) + "</p>",
-            )
-            .join("") +
-          "</div>" +
-          '<div class="card lesson-sec" style="margin-top:12px"><b>Key Points</b><ul class="lkey">' +
-          ls.points
-            .map(
-              (p) =>
-                "<li>" +
-                esc(p[1]) +
-                ' <span class="tag b">Week ' +
-                w +
-                " • Q" +
-                BYID[p[0]].number +
-                "</span></li>",
-            )
-            .join("") +
-          "</ul></div>" +
-          '<h3 style="font-size:18px;font-weight:800;margin-top:22px">Mini-quiz — real questions from Week ' +
-          w +
-          '</h3><p class="small" style="margin-top:4px">Your first try on each question is recorded in your practice history, exactly like normal practice — mistakes land in Revision.</p>' +
-          ls.quiz.map(lqCard).join("") +
-          '<div class="card" style="margin-top:16px"><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-p" data-lqweek="' +
-          w +
-          '">Practise Week ' +
-          w +
-          " Questions</button>" +
-          (isDone
-            ? '<span class="tag g" style="align-self:center">✓ Lesson completed</span>'
-            : '<button class="btn btn-g" id="lessonDone">✓ Mark as Completed</button>') +
-          (w < 12
-            ? '<button class="btn btn-g" data-lesson="' +
-              (w + 1) +
-              '">Next Lesson →</button>'
-            : '<button class="btn btn-g" data-nav="learn">Back to Learn</button>') +
-          "</div></div></div>";
-        return h;
-      }
-      function studyHTML() {
-        let h =
-          '<div class="wrap"><button class="back-btn" data-nav="learn" aria-label="Back to Learn">←</button>' +
-          '<h2 style="font-size:24px;font-weight:800;margin-top:6px">Study Questions</h2><p class="small" style="margin-top:4px;font-size:15px">Read every question with its correct answer already marked in <b style="color:var(--green)">green</b> — pure study, no test, nothing is recorded. Pick a week:</p>' +
-          '<div class="week-list" style="margin-top:14px">';
+          '<div class="wrap"><p class="crumb">Home › <b>Learn</b></p><h2 style="font-size:24px;font-weight:800">Learn</h2><div class="week-list" style="margin-top:14px">';
         for (let w = 0; w <= 12; w++) {
           h +=
-            '<div class="week-row" data-studyweek="' +
+            '<div class="week-row" data-learnweek="' +
             w +
             '" role="button" tabindex="0" style="cursor:pointer"><div class="top"><span class="wtile" style="background:' +
             (TILEC[w - 1] || "#0EA5E9") +
@@ -3838,10 +3184,29 @@
             esc(WEEK_TITLES[w]) +
             '</b><br><span class="cnt">' +
             weekQs(w).length +
-            " questions · answers shown in green</span></span>" +
+            " questions</span></span>" +
             '<span class="chev">›</span></div></div>';
         }
         h += "</div></div>";
+        return h;
+      }
+      function learnWeekHTML() {
+        const w = CURSTUDY;
+        const qs = weekQs(w)
+          .slice()
+          .sort((a, b) => a.number - b.number);
+        let h =
+          '<div class="wrap"><button class="back-btn" data-nav="learn" aria-label="Back to Learn">←</button>' +
+          '<h2 style="font-size:23px;font-weight:800;margin-top:6px">Week ' +
+          w +
+          " · " +
+          esc(WEEK_TITLES[w]) +
+          "</h2>" +
+          (w === 0
+            ? '<p class="small" style="margin-top:4px">Answers: course material</p>'
+            : "");
+        h += qs.map(studyCard).join("");
+        h += "</div>";
         return h;
       }
       function studyCard(q) {
@@ -3866,148 +3231,26 @@
           q.number +
           '</span><span class="tag">Week ' +
           q.week +
-          '</span></div><p class="q" style="margin-top:8px">' +
+          '</span><span style="flex:1"></span><button class="bm-btn" data-bm2="' +
+          q.id +
+          '" aria-label="Toggle bookmark" style="width:36px;height:36px"><svg viewBox="0 0 24 24" width="19" height="19"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z" class="bmp" data-on="' +
+          (isBookmarked(q.id) ? 1 : 0) +
+          '"/></svg></button></div><p class="q" style="margin-top:8px">' +
           esc(q.question) +
           '</p><div class="study-opts">' +
           opts +
           "</div></div>"
         );
       }
-      function studyWeekHTML() {
-        const w = CURSTUDY;
-        const qs = weekQs(w)
-          .slice()
-          .sort((a, b) => a.number - b.number);
-        let chips = "";
-        for (let x = 0; x <= 12; x++)
-          chips +=
-            '<button class="wkchip' +
-            (x === w ? " on" : "") +
-            '" data-studyweek="' +
-            x +
-            '">W' +
-            x +
-            "</button>";
-        let h =
-          '<div class="wrap"><button class="back-btn" data-studyqs="1" aria-label="Back to Study Questions week list">←</button>' +
-          '<h2 style="font-size:23px;font-weight:800;margin-top:6px">Week ' +
-          w +
-          " · " +
-          esc(WEEK_TITLES[w]) +
-          "</h2>" +
-          '<p class="small" style="margin-top:3px">Study Questions · ' +
-          qs.length +
-          ' questions · the correct answer to each question is highlighted in <b style="color:var(--green)">green</b>. Just scroll and read — nothing is recorded.</p>' +
-          '<div class="wkchips" role="group" aria-label="Switch week">' +
-          chips +
-          "</div>";
-        h += qs.map(studyCard).join("");
-        h +=
-          '<button class="btn btn-g" data-studyqs="1" style="width:100%;margin-top:16px">← Back to all weeks</button></div>';
-        return h;
-      }
       function wireLearn() {
-        document
-          .querySelectorAll("[data-studyqs]")
-          .forEach((b) => (b.onclick = () => go("study")));
-        document.querySelectorAll("[data-studyweek]").forEach(
+        document.querySelectorAll("[data-learnweek]").forEach(
           (b) =>
             (b.onclick = () => {
-              CURSTUDY = +b.dataset.studyweek;
-              curView = "studyweek";
+              CURSTUDY = +b.dataset.learnweek;
+              curView = "learnweek";
               render();
             }),
         );
-        document
-          .querySelectorAll("[data-lesson]")
-          .forEach((b) => (b.onclick = () => openLesson(+b.dataset.lesson)));
-        document.querySelectorAll("[data-startzero]").forEach(
-          (b) =>
-            (b.onclick = () => {
-              const done = (D.learn && D.learn.done) || [];
-              const w =
-                [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].find(
-                  (x) => !done.includes(x),
-                ) || 1;
-              openLesson(w);
-            }),
-        );
-        document.querySelectorAll("[data-scrollist]").forEach(
-          (b) =>
-            (b.onclick = () => {
-              const el = document.getElementById("lessonList");
-              if (el) el.scrollIntoView({ behavior: "smooth" });
-            }),
-        );
-        const keepScroll = (fn) => () => {
-          const y = window.scrollY;
-          fn();
-          render();
-          window.scrollTo(0, y);
-        };
-        document.querySelectorAll("[data-lqpick]").forEach(
-          (b) =>
-            (b.onclick = keepScroll(() => {
-              const parts = b.dataset.lqpick.split(":");
-              LQ.picks[parts[0]] = parts[1];
-            })),
-        );
-        document.querySelectorAll("[data-lqcheck]").forEach(
-          (b) =>
-            (b.onclick = keepScroll(() => {
-              const qid = b.dataset.lqcheck;
-              const pick = LQ.picks[qid];
-              if (!pick) {
-                toast("Choose an option first");
-                return;
-              }
-              if (!LQ.checked[qid]) {
-                recordAttempt(qid, pick);
-                save();
-              }
-              LQ.checked[qid] = true;
-            })),
-        );
-        document.querySelectorAll("[data-lqretry]").forEach(
-          (b) =>
-            (b.onclick = keepScroll(() => {
-              const qid = b.dataset.lqretry;
-              LQ.checked[qid] = false;
-              LQ.picks[qid] = null;
-            })),
-        );
-        document.querySelectorAll("[data-lqbm]").forEach(
-          (b) =>
-            (b.onclick = keepScroll(() => {
-              toggleBookmark(b.dataset.lqbm);
-            })),
-        );
-        document.querySelectorAll("[data-lqweek]").forEach(
-          (b) =>
-            (b.onclick = () => {
-              const w = +b.dataset.lqweek;
-              startSession({
-                mode: "weektest",
-                title: "Week " + w + " Test",
-                qids: weekQs(w).map((q) => q.id),
-                shuffleOpts: false,
-                submitAll: true,
-              });
-            }),
-        );
-        const ld = document.getElementById("lessonDone");
-        if (ld)
-          ld.onclick = () => {
-            if (!D.learn.done.includes(CURLESSON)) D.learn.done.push(CURLESSON);
-            D.learn.last = CURLESSON;
-            save();
-            render();
-            toast(
-              "Lesson marked completed — " +
-                D.learn.done.length +
-                " of 12 done",
-            );
-          };
       }
       const icoBookW =
         '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>';
@@ -4026,122 +3269,35 @@
           (sel
             ? '<button class="back-btn" data-nav="account" aria-label="Back">←</button>'
             : "") +
-          '<h2 style="font-size:26px;font-weight:800;margin-top:22px">Choose Your Subject</h2><p class="small" style="margin-top:4px;font-size:15px">Select a subject to start preparing for your NPTEL exam.</p>' +
+          '<h2 style="font-size:26px;font-weight:800;margin-top:22px">Choose Your Subject</h2>' +
           '<div class="card" style="margin-top:18px"><div style="display:flex;gap:14px;align-items:flex-start"><span class="tile" style="background:var(--blue);width:54px;height:54px;border-radius:14px">' +
           globe +
-          '</span><div style="flex:1;min-width:0"><b style="font-size:16px;color:var(--head);letter-spacing:.01em">GEOGRAPHY &amp; ENVIRONMENT</b><p class="small" style="margin-top:2px">Latest Question Set · Weeks 0–12</p><p style="margin-top:7px"><span class="tag g"><span class="dot"></span>Available</span> <span class="small"><b>' +
+          '</span><div style="flex:1;min-width:0"><b style="font-size:16px;color:var(--head);letter-spacing:.01em">GEOGRAPHY &amp; ENVIRONMENT</b><p style="margin-top:7px"><span class="tag g"><span class="dot"></span>Available</span> <span class="small"><b>' +
           s.questions +
           " questions · " +
           s.weeks +
-          " weeks</b> · accepted answers verified from source</span></p></div></div>" +
+          " weeks</b></span></p></div></div>" +
           '<button class="btn btn-p" id="subjGo" style="width:100%;margin-top:16px">' +
           (sel ? "Continue with this Subject" : "Select Subject") +
           "</button>" +
-          (sel
-            ? '<p class="small" style="margin-top:8px;text-align:center">This is your current subject — it is the only subject available right now, so selecting again simply re-confirms it.</p>'
-            : "") +
-          '</div><p class="small" style="margin-top:14px">Only one subject exists in this app today — no empty categories, no “coming soon” cards. Your attempts, bookmarks, notes and progress are all recorded under this subject.</p></div></div>'
+          "</div></div></div>"
         );
       }
       function welcomeHTML() {
-        const feats = [
-          "Week-wise practice",
-          "Random mock tests",
-          "Accepted answers",
-          "Bookmark & revise",
-          "Track your progress",
-        ]
-          .map((f) => '<li><span class="ck">✓</span>' + f + "</li>")
-          .join("");
-        const cic = (p) =>
-          '<span class="cic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
-          p +
-          "</svg></span>";
-        const caps = [
-          [
-            '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>',
-            "Week-wise Practice",
-            "Practise one week at a time — submit once, then review",
-          ],
-          [
-            '<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 12.5l2 2 4-4.5"/>',
-            "Submit-All Week Test",
-            "Answer the whole week, submit once, then review",
-          ],
-          [
-            '<path d="M12 2l9 5-9 5-9-5 9-5z"/><path d="M3 12l9 5 9-5"/><path d="M3 17l9 5 9-5"/>',
-            "All Questions",
-            "Work through the complete 130-question bank",
-          ],
-          [
-            '<path d="M4 7h9M19 7h1M4 17h3M13 17h7"/><circle cx="16" cy="7" r="2.2"/><circle cx="10" cy="17" r="2.2"/>',
-            "Custom Practice Generator",
-            "Build your own test from any weeks",
-          ],
-          [
-            '<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9 2h6"/>',
-            "Timed Mock Test",
-            "Practise against the clock, like the real exam",
-          ],
-          [
-            '<path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/>',
-            "Learn from Zero",
-            "12 short lessons — one per week, from the basics",
-          ],
-          [
-            '<path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/>',
-            "Revision",
-            "Wrong answers, bookmarks, flashcards and notes",
-          ],
-          [
-            '<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/>',
-            "Search",
-            "Find any question by keyword",
-          ],
-          [
-            '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
-            "Exam Countdown",
-            "Set your exam date and watch the days left",
-          ],
-          [
-            '<path d="M4.5 19a9 9 0 1 1 15 0"/><path d="M12 14l3.8-5.7"/><circle cx="12" cy="14" r="1.1" fill="currentColor"/>',
-            "Exam Readiness Score",
-            "See how ready you are, from your real practice",
-          ],
-        ]
-          .map(
-            (c) =>
-              '<div class="cap">' +
-              cic(c[0]) +
-              "<div><b>" +
-              c[1] +
-              "</b><span>" +
-              c[2] +
-              "</span></div></div>",
-          )
-          .join("");
         return (
           '<div class="wrap"><div class="narrow"><section class="hero"><h1>NPTEL<br>Exam Practice</h1><p class="sub" style="font-size:19px;color:var(--ink);font-weight:600">Practice Today. Score Higher Tomorrow.</p>' +
           BOOKSVG +
-          '<ul class="feat">' +
-          feats +
-          "</ul>" +
-          '<h2 style="font-size:19px;font-weight:800;margin-top:26px">What you can do here</h2><p class="small" style="margin-top:3px">Everything this app offers — free, on your phone.</p><div class="caps">' +
-          caps +
-          "</div>" +
           '<div style="display:flex;flex-direction:column;gap:10px;margin-top:22px"><button class="btn btn-p" data-nav="signup">Get Started</button></div>' +
           '<p style="text-align:center;margin-top:16px;font-size:15px">Already have an account? <a href="#" data-nav="login" style="font-weight:700">Log In</a></p>' +
-          '<p class="small" style="margin-top:16px">Geography &amp; Environment · Weeks 0–12 · 130 questions · Accepted answers verified — Weeks 1–12 from the supplied source export and the owner\'s NPTEL portal; Week 0 from public course material. An account is required to start practising.</p>' +
-          (S.legacy
-            ? '<p class="small" style="margin-top:8px">Progress saved earlier on this device (before accounts existed) will be attached to the first account created here — nothing is wiped.</p>'
-            : "") +
-          '<p class="small" style="margin-top:8px">Accounts are stored <b>on this device only</b>: passwords are hashed, never plain text; no server, no cross-device sync. <a href="#" data-nav="about">Source &amp; Limits</a></p>' +
+          '<p class="small" style="text-align:center;margin-top:18px">Geography &amp; Environment · Weeks 0–12 · ' +
+          BANK.length +
+          " questions</p>" +
           "</section></div></div>"
         );
       }
       function loginHTML() {
         return (
-          '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="welcome" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Welcome Back</h2><p class="small" style="margin-top:4px">Log in to continue practising. Device-local account — your data is in this browser, on this device.</p>' +
+          '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="welcome" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Welcome Back</h2>' +
           '<form class="auth-card" id="liForm" style="max-width:none"><div class="field"><span class="fic">' +
           icoMail() +
           '</span><input id="liEmail" type="email" autocomplete="email" required placeholder="Email"></div>' +
@@ -4155,7 +3311,7 @@
       }
       function signupHTML() {
         return (
-          '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="welcome" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Create Your Account</h2><p class="small" style="margin-top:4px">Join and start practising for your NPTEL exam.</p>' +
+          '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="welcome" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Create Your Account</h2>' +
           '<form class="auth-card" id="suForm" style="max-width:none"><div class="field"><span class="fic">' +
           icoPerson() +
           '</span><input id="suName" type="text" autocomplete="name" required placeholder="Full Name"></div>' +
@@ -4170,13 +3326,12 @@
           '</span><input id="suPw2" type="password" autocomplete="new-password" required placeholder="Confirm Password"><button type="button" class="eye" data-eye="suPw2" aria-label="Show or hide password"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button></div>' +
           '<p class="small" id="authErr" style="color:var(--red);font-weight:600;margin-top:10px"></p>' +
           '<button class="btn btn-p" type="submit" style="width:100%;margin-top:14px">Sign Up</button>' +
-          '<p class="small" style="margin-top:14px;text-align:center">Already have an account? <a href="#" data-nav="login">Log in</a></p>' +
-          '<p class="small" style="margin-top:8px;text-align:center">Stored on this device only — password hashed, never plain text.</p></form></div></div>'
+          '<p class="small" style="margin-top:14px;text-align:center">Already have an account? <a href="#" data-nav="login">Log in</a></p></form></div></div>'
         );
       }
       function forgotHTML() {
         return (
-          '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="login" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Reset Your Password</h2><p class="small" style="margin-top:4px">Because accounts live only on this device, resetting here sets a new password for the account stored in this browser. Anyone with access to this device could do the same — device-local accounts are for convenience, not high security. There is no email reset link.</p>' +
+          '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="login" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Reset Your Password</h2><p class="small" style="margin-top:4px">Set a new password for the account on this device.</p>' +
           '<form class="auth-card" id="fpForm" style="max-width:none"><div class="field"><span class="fic">' +
           icoMail() +
           '</span><input id="fpEmail" type="email" autocomplete="email" required placeholder="Account email"></div>' +
@@ -4230,7 +3385,7 @@
           .sort((a, b) => a - b);
         if (!weeks.length)
           return (
-            '<div class="card" id="perfGraph" style="margin-top:16px"><b>Your week-wise accuracy</b><p class="small" style="margin-top:4px">Attempt a week test to see your graph — one bar per week, from your own results on this device.</p></div>'
+            '<div class="card" id="perfGraph" style="margin-top:16px"><b>Your week-wise accuracy</b><p class="small" style="margin-top:4px">Attempt a week test to see your graph.</p></div>'
           );
         let weakW = weeks[0],
           weakAcc = Infinity;
@@ -4262,9 +3417,7 @@
           })
           .join("");
         return (
-          '<div class="card" id="perfGraph" style="margin-top:16px"><b>Your week-wise accuracy</b><p class="small" style="margin-top:4px">Accuracy per week across your submitted tests on this device (' +
-          "correct ÷ questions in the test" +
-          ').</p><div style="margin-top:6px">' +
+          '<div class="card" id="perfGraph" style="margin-top:16px"><b>Your week-wise accuracy</b><div style="margin-top:6px">' +
           rows +
           (weakAcc >= 1
             ? '</div><p class="small" style="margin-top:10px">Every attempted week is at <b>100%</b> — excellent work.</p></div>'
@@ -4326,10 +3479,6 @@
           '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M16 3h5v5"/><path d="M4 20L21 3"/><path d="M21 16v5h-5"/><path d="M15 15l6 6"/><path d="M4 4l5 5"/></svg>';
         const icTimer =
           '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9 2h6"/></svg>';
-        const icWarn =
-          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 3L1 21h22L12 3z"/><path d="M12 10v5"/><circle cx="12" cy="18" r="0.5" fill="#fff"/></svg>';
-        const icBm =
-          '<svg viewBox="0 0 24 24" fill="#061426"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>';
         const card = (go, title, desc, bg, svg, tab) =>
           '<button class="mode-card" data-goto="' +
           go +
@@ -4372,23 +3521,11 @@
             pct +
             '%</b></div><div style="display:flex;gap:10px;margin-top:14px"><button class="btn btn-p" id="pResume" style="flex:1">Continue</button><button class="btn btn-g" id="pDiscard" style="flex:1">Discard</button></div></div>';
         }
-        const ld = D.learn || { done: [], last: null };
-        h +=
-          '<div class="card learn-card" style="margin-top:16px"><div style="display:flex;gap:12px;align-items:flex-start"><span class="tile" style="background:#10a878"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></svg></span><div style="flex:1;min-width:0"><b>Learn from Zero</b><p class="small" style="margin-top:3px">12 concept lessons — one per week — built from the concepts the questions test. ' +
-          (ld.done.length
-            ? ld.done.length + " of 12 lessons completed."
-            : ld.last
-              ? "Week " +
-                ld.last +
-                " in progress — pick up where you left off."
-              : "Not started yet — begin with Week 1.") +
-          '</p></div><span class="chev" aria-hidden="true" style="flex-shrink:0;align-self:center;width:8px;height:8px;border-right:2.5px solid var(--muted);border-top:2.5px solid var(--muted);transform:rotate(45deg);opacity:.65"></span></div><button class="btn btn-green" data-nav="learn" style="margin-top:12px;min-width:200px">' +
-          (ld.done.length || ld.last ? "Continue Learning" : "Start Learning") +
-          "</button></div>";
+        let cd = "";
         const dte = daysToExam();
         if (dte !== null) {
           const weak = weakestWeek();
-          h +=
+          cd +=
             '<div class="card" style="margin-top:16px"><b>' +
             (dte > 0
               ? "Exam in " + dte + " day" + (dte === 1 ? "" : "s")
@@ -4413,8 +3550,8 @@
           '<div class="mode-grid">' +
           card(
             "weeks",
-            "Week-wise Practice",
-            "Practise weeks 0 – 12 questions",
+            "Week Test",
+            "Weeks 0–12 · " + BANK.length + " questions — answer all, submit once",
             "#2878F9",
             icBook,
           ) +
@@ -4439,22 +3576,6 @@
             "#F04452",
             icTimer,
           ) +
-          card(
-            "revision",
-            "My Mistakes",
-            "Revise incorrect questions",
-            "#F59E0B",
-            icWarn,
-            "wrong",
-          ) +
-          card(
-            "revision",
-            "Bookmarks",
-            "Your saved questions",
-            "#F6C94A",
-            icBm,
-            "bookmarks",
-          ) +
           "</div>";
         const rd = readinessInfo();
         if (rd) {
@@ -4475,131 +3596,12 @@
               : "Coverage " +
                 rd.cov +
                 "% of the bank · keep accuracy climbing.") +
-            '</p><p class="small" style="margin-top:3px">Estimate — not a guarantee of exam performance.</p><details class="calc"><summary class="small" style="cursor:pointer;font-weight:700"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--blue)" stroke-width="2" style="flex-shrink:0"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><circle cx="12" cy="8" r="0.6" fill="var(--blue)"/></svg>How is this calculated?</summary><p class="small" style="margin-top:4px">Readiness = 45% × coverage (questions attempted ÷ ' +
-            BANK.length +
-            ') + 45% × your overall accuracy + 10% × tests completed (week tests &amp; mocks, capped at 5). Yours: coverage ' +
-            rd.cov +
-            "%, accuracy " +
-            o.accuracy +
-            "%, tests completed " +
-            rd.tests +
-            ".</p></details></div></div></div>";
+            "</p></div></div></div>";
         } else {
           h +=
-            '<div class="card" id="rdCard" style="margin-top:16px"><b>Exam Readiness Score</b><p class="small" style="margin-top:4px">Attempt some questions to see your readiness — it is calculated from your real coverage and accuracy, never invented.</p></div>';
+            '<div class="card" id="rdCard" style="margin-top:16px"><b>Exam Readiness Score</b><p class="small" style="margin-top:4px">Attempt some questions to see your readiness.</p></div>';
         }
-        h +=
-          '<div class="card" style="margin-top:16px"><b>Your Progress</b><div class="ring-wrap" style="margin-top:12px"><div class="ring"><svg width="76" height="76"><circle cx="38" cy="38" r="32" stroke="var(--surface2)" stroke-width="8" fill="none"/><circle cx="38" cy="38" r="32" stroke="var(--green)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="' +
-          circ.toFixed(1) +
-          '" stroke-dashoffset="' +
-          (circ - (o.accuracy / 100) * circ).toFixed(1) +
-          '"/></svg><span class="pct">' +
-          o.accuracy +
-          '%</span></div><div style="flex:1"><p style="display:flex;justify-content:space-between;font-size:14.5px"><span class="small">Questions attempted</span><b>' +
-          o.attempted +
-          " / " +
-          BANK.length +
-          '</b></p><p style="display:flex;justify-content:space-between;font-size:14.5px;margin-top:5px"><span class="small">Correct answers</span><b>' +
-          o.correct +
-          '</b></p><p style="display:flex;justify-content:space-between;font-size:14.5px;margin-top:5px"><span class="small">Accuracy</span><b>' +
-          o.accuracy +
-          "%</b></p></div></div></div>";
-        h += perfGraphHTML();
-        const icClip =
-          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 12.5l2 2 4-4.5"/></svg>';
-        const icLearnW =
-          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></svg>';
-        const icSearchW =
-          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/></svg>';
-        const icCalW =
-          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>';
-        const icGaugeW =
-          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4.5 19a9 9 0 1 1 15 0"/><path d="M12 14l3.8-5.7"/></svg>';
-        const xrow = (attrs, bg, svg, title, desc) =>
-          '<button class="xrow" ' +
-          attrs +
-          '><span class="tile tile-sm" style="background:' +
-          bg +
-          '">' +
-          svg +
-          '</span><span class="xt"><b>' +
-          title +
-          "</b><span>" +
-          desc +
-          '</span></span><span class="xchev"></span></button>';
-        h +=
-          '<div style="margin-top:24px"><h3 style="font-size:17px;font-weight:800">Explore the app</h3><p class="small" style="margin-top:2px">Everything you can do here — tap any row to open it.</p><div class="xlist">' +
-          xrow(
-            'data-goto="weeks"',
-            "#347FF0",
-            icBook,
-            "Week-wise Practice",
-            "Practise one week at a time",
-          ) +
-          xrow(
-            'data-goto="weeks"',
-            "#8B5CF6",
-            icClip,
-            "Submit-All Week Test",
-            "Answer the whole week, submit once, then review",
-          ) +
-          xrow(
-            'data-goto="allq"',
-            "#12B981",
-            icLayers,
-            "All Questions",
-            "Work through the complete question bank",
-          ) +
-          xrow(
-            'data-goto="setup-random"',
-            "#6366F1",
-            icShuffle,
-            "Custom Practice Generator",
-            "Build your own test from any weeks",
-          ) +
-          xrow(
-            'data-goto="setup-mock"',
-            "#EF5350",
-            icTimer,
-            "Timed Mock Test",
-            "Practise against the clock",
-          ) +
-          xrow(
-            'data-nav="learn"',
-            "#06B6D4",
-            icLearnW,
-            "Learn from Zero",
-            "12 short lessons — one per week, from the basics",
-          ) +
-          xrow(
-            'data-goto="revision" data-gotab="wrong"',
-            "#F5C451",
-            icBm,
-            "Revision",
-            "Wrong answers · Bookmarks · Flashcards · Notes",
-          ) +
-          xrow(
-            'data-nav="search"',
-            "#F97316",
-            icSearchW,
-            "Search",
-            "Find any question by keyword",
-          ) +
-          xrow(
-            'data-nav="account"',
-            "#EC4899",
-            icCalW,
-            "Exam Countdown",
-            "Set your exam date and see the days left",
-          ) +
-          xrow(
-            'data-scroll="rdCard"',
-            "#22C55E",
-            icGaugeW,
-            "Exam Readiness Score",
-            "Your score from real coverage and accuracy — above",
-          ) +
-          "</div></div>";
+        h += cd;
         h += "</div>";
         return h;
       }
@@ -4637,7 +3639,7 @@
             '">Week Test</button></div></div>';
         }
         return (
-          '<div class="wrap"><p class="crumb">Practice › <b>Week-wise Practice</b></p><h2 style="font-size:24px;font-weight:800">Week-wise Practice</h2><p class="small" style="margin-top:4px">Select a week to start. Every session here is <b>submit-all</b>: answer every question first — no answers are revealed while you attempt — then submit once to see your score and the full review.</p><div class="week-list">' +
+          '<div class="wrap"><p class="crumb">Practice › <b>Week Test</b></p><h2 style="font-size:24px;font-weight:800">Week Test</h2><div class="week-list" style="margin-top:14px">' +
           rows +
           "</div></div>"
         );
@@ -4655,7 +3657,7 @@
               weekQs(w).length +
               " questions)</option>";
           return (
-            '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="practice" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Mock Test</h2><p class="small" style="margin-top:4px">Create a timed test and challenge yourself. A practice mock — it does not reproduce or guarantee the official NPTEL format. Answers are revealed only after you submit, or when time runs out (auto-submit).</p>' +
+            '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="practice" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Mock Test</h2>' +
             '<div class="card" style="margin-top:16px"><span class="f" style="margin-top:0">Number of Questions</span><div class="seg" id="mCountSeg"><button type="button" data-v="10">10</button><button type="button" data-v="20" class="on">20</button><button type="button" data-v="50">50</button></div>' +
             '<label class="f" for="mWeekSel">Select Weeks</label><select class="inp" id="mWeekSel">' +
             wkOpts +
@@ -4675,12 +3677,12 @@
               "</label>",
           );
         return (
-          '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="practice" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Custom Practice Generator</h2><p class="small" style="margin-top:4px">Build your own practice set: pick weeks, a question count, and which pool to draw from. Questions and options are shuffled — the accepted-answer mapping always stays correct.</p>' +
+          '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="practice" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Custom Practice Generator</h2>' +
           '<div class="card" style="margin-top:16px"><span class="f" style="margin-top:0">Weeks included</span><div style="display:flex;gap:8px;margin-top:6px"><button class="btn btn-g btn-sm" id="wkAll" type="button">Select all</button><button class="btn btn-g btn-sm" id="wkNone" type="button">Clear</button></div><div class="weekchecks">' +
           wc.join("") +
           "</div>" +
           '<label class="f" for="sCount">Number of questions</label><select class="inp" id="sCount"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>30</option><option>50</option></select>' +
-          '<span class="f">Draw questions from</span><div class="poolchips"><button type="button" class="chip poolchip" data-pool="new">New (unattempted)</button><button type="button" class="chip poolchip" data-pool="incorrect">Incorrect before</button><button type="button" class="chip poolchip" data-pool="bookmarked">Bookmarked</button></div><p class="small" style="margin-top:6px">Tap one or more pools to combine them — or leave all off to use every question in the selected weeks.</p>' +
+          '<span class="f">Draw questions from</span><div class="poolchips"><button type="button" class="chip poolchip" data-pool="new">New (unattempted)</button><button type="button" class="chip poolchip" data-pool="incorrect">Incorrect before</button><button type="button" class="chip poolchip" data-pool="bookmarked">Bookmarked</button></div><p class="small" style="margin-top:6px">Leave all off to use every question.</p>' +
           '<p class="small" id="sPoolInfo" style="margin-top:10px"></p>' +
           '<button class="btn btn-p" id="sGo" style="margin-top:12px;width:100%">Build My Practice</button></div></div></div>'
         );
@@ -4729,7 +3731,7 @@
       function noteEditor(id) {
         const n = D.notes[id] || {};
         return (
-          '<details class="sheet"><summary>My revision note (saved on this device)</summary>' +
+          '<details class="sheet"><summary>My revision note</summary>' +
           '<label class="f">Key concept</label><input class="inp" data-nc="' +
           id +
           '" value="' +
@@ -4796,7 +3798,6 @@
             .sort((x, y) => att(y.id).wrong - att(x.id).wrong)
             .map((q) => q.id);
           h +=
-            '<p class="small" style="margin-top:12px">Questions you answered incorrectly, most-missed first. History is preserved even after you later get a question right.</p>' +
             (weakIds.length
               ? '<button class="btn btn-p" id="weakBtn" style="width:100%;margin-top:12px">Practise Weak Questions (' +
                 weakIds.length +
@@ -4856,11 +3857,10 @@
                   })
                   .join("") +
                 "</div>"
-              : '<div class="empty"><b>No mistakes yet</b>Answer a question incorrectly and it will appear here automatically, sorted by how often you miss it.</div>');
+              : '<div class="empty"><b>No mistakes yet</b>Questions you answer incorrectly will appear here.</div>');
         } else if (revTab === "bookmarks") {
           const ids = D.bookmarks.filter((id) => BYID[id]);
           h +=
-            '<p class="small" style="margin-top:12px">Your saved questions. Incorrect-attempt counts are shown where you have missed a bookmarked question before.</p>' +
             (ids.length
               ? '<button class="btn btn-p" id="revBmBtn" style="width:100%;margin-top:12px">Revise Bookmarks (' +
                 ids.length +
@@ -4908,18 +3908,17 @@
                   })
                   .join("") +
                 "</div>"
-              : '<div class="empty"><b>No bookmarks yet</b>Tap the bookmark icon on any question while practising and it will appear here.</div>');
+              : '<div class="empty"><b>No bookmarks yet</b>Bookmark a question while practising and it will appear here.</div>');
         } else if (revTab === "quick") {
           const pool = qrPool();
           if (!pool.length) {
             h +=
-              '<div class="empty"><b>Nothing to flip through yet</b>Quick Revision is built from your wrong answers and bookmarks. Get a question wrong or bookmark one, and it will show up here as a flashcard.</div>';
+              '<div class="empty"><b>Nothing to flip through yet</b>Wrong answers and bookmarks show up here as flashcards.</div>';
           } else {
             if (qrIdx >= pool.length) qrIdx = pool.length - 1;
             const q = BYID[pool[qrIdx]];
             const a = att(q.id);
             h +=
-              '<p class="small" style="margin-top:12px">Flashcards from your wrong + bookmarked questions. “Need Revision” cards resurface first next time; “Remembered” cards move to the back — your attempt history is never deleted.</p>' +
               '<div class="flash"><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="tag b">Week ' +
               q.week +
               " • Q" +
@@ -4974,7 +3973,6 @@
               (D.notes[id].concept || D.notes[id].why || D.notes[id].mnemonic),
           );
           h +=
-            '<p class="small" style="margin-top:12px">All your personal revision notes in one list. Notes are private to your account on this device.</p>' +
             (notedIds.length
               ? '<div class="list">' +
                 notedIds
@@ -5013,7 +4011,7 @@
                   })
                   .join("") +
                 "</div>"
-              : '<div class="empty"><b>No notes yet</b>While practising, open “My revision note” under any question to save a key concept, your reasoning, or a mnemonic.</div>');
+              : '<div class="empty"><b>No notes yet</b>Save a note under any question while practising.</div>');
         }
         h += "</div>";
         return h;
@@ -5025,13 +4023,13 @@
           (down ? ' style="transform:rotate(180deg)"' : "") +
           '><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.3a2 2 0 0 0 2-1.7l1.2-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>';
         return (
-          '<div class="card" style="margin-top:16px"><b>Did this app help you?</b><p class="small" style="margin-top:4px">' +
+          '<div class="card" style="margin-top:16px"><b>Did this app help you?</b>' +
           (fb
-            ? "You marked this app <b>" +
+            ? '<p class="small" style="margin-top:4px">You marked this app <b>' +
               (fb === "up" ? "Helpful" : "Not helpful") +
-              "</b> — tap either button to change your answer. Saved on this device only."
-            : "Tap one — your answer is saved on this device only and helps improve the app.") +
-          '</p><div class="fb-btns"><button class="fb-btn' +
+              "</b>.</p>"
+            : "") +
+          '<div class="fb-btns"><button class="fb-btn' +
           (fb === "up" ? " on-up" : "") +
           '" id="fbUp">' +
           thumb(false) +
@@ -5060,16 +4058,6 @@
             ? '<span class="val">' + val + "</span>"
             : '<span class="chev">›</span>') +
           "</button>";
-        const icP =
-          '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>';
-        const icB =
-          '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12v18l-6-4-6-4z" transform="scale(0.92) translate(1,0)"/></svg>';
-        const icW =
-          '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L1 21h22L12 3z"/><path d="M12 10v5"/></svg>';
-        const icN =
-          '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3h14v18H5z"/><path d="M9 8h6M9 12h6"/></svg>';
-        const icS =
-          '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/></svg>';
         const icT =
           '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.5 4.5l2 2M17.5 17.5l2 2M19.5 4.5l-2 2M6.5 17.5l-2 2"/></svg>';
         const icC =
@@ -5084,7 +4072,7 @@
           '</h2><p class="small">' +
           esc(a.email) +
           "</p></div>" +
-          '<div class="stat-grid" style="grid-template-columns:1fr 1fr"><div class="stat"><div class="n">' +
+          '<div class="stat-grid" style="grid-template-columns:repeat(2,minmax(0,1fr))"><div class="stat"><div class="n">' +
           o.attempted +
           "/" +
           BANK.length +
@@ -5099,12 +4087,8 @@
           '</div><div class="l">Bookmarks</div></div><div class="stat"><div class="n">' +
           D.sessions.length +
           '</div><div class="l">Sessions completed</div></div></div>' +
+          perfGraphHTML() +
           '<div class="prof-rows">' +
-          row(icP, "My Progress", 'data-gograph="1"') +
-          row(icB, "Bookmarks", 'data-gorev="bookmarks"') +
-          row(icW, "My Mistakes", 'data-gorev="wrong"') +
-          row(icN, "My Notes", 'data-gorev="notes"') +
-          row(icS, "Search Questions", 'data-nav="search"') +
           row(icT, "Theme", 'id="themeRow"', theme) +
           row(
             '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.7 2.6 4 5.7 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.7-4-9s1.3-6.4 4-9z"/></svg>',
@@ -5138,9 +4122,9 @@
           ) +
           "</div>" +
           feedbackCardHTML() +
-          '<div class="card" style="margin-top:16px"><b>Your exam date</b><p class="small" style="margin-top:4px">' +
+          '<div class="card" style="margin-top:16px"><b>Your exam date</b>' +
           (D.examDate
-            ? "Exam date set: <b>" +
+            ? '<p class="small" style="margin-top:4px">Exam date set: <b>' +
               esc(D.examDate) +
               "</b>" +
               (dte !== null
@@ -5149,265 +4133,20 @@
                   : dte === 0
                     ? " — it is today. Good luck!"
                     : " — this date has passed."
-                : "")
-            : "Optionally set your NPTEL exam date and the app will count down the days and point you at your weakest week.") +
-          '</p><div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><input class="inp" type="date" id="examDate" value="' +
+                : "") +
+              "</p>"
+            : "") +
+          '<div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><input class="inp" type="date" id="examDate" value="' +
           esc(D.examDate || "") +
           '" style="flex:1;min-width:170px"><button class="btn btn-p btn-sm" id="examSave">Save date</button>' +
           (D.examDate
             ? '<button class="btn btn-g btn-sm" id="examClear">Clear</button>'
             : "") +
           "</div></div>" +
-          '<div class="item" style="margin-top:16px"><b>Device-local account</b><p class="small" style="margin-top:4px">Your account, bookmarks, notes, mistakes and progress live in this browser on this device only, fully separated per account. Passwords are stored <b>hashed, never plain text</b>. There is no server account and no sync to other devices; clearing this browser\'s data deletes everything.</p></div>' +
+          '<div class="item" style="margin-top:16px">Your data stays on this device.</div>' +
           '<div class="prof-rows" style="margin-top:16px"><button class="prof-row danger" id="logoutBtn"><span class="ic">' +
           icO +
-          "</span>Logout</button></div>" +
-          '<p class="small" style="margin-top:12px;text-align:center">Logging out keeps everything saved on this device. Another student can create their own account here and will see none of your data.</p></div></div>'
-        );
-      }
-      function doSearch(term, weeksFilter, statusFilter) {
-        const t = (term || "").trim().toLowerCase();
-        if (!t) return BANK.slice();
-        return BANK.filter((q) => {
-          if (weeksFilter && q.week !== +weeksFilter) return false;
-          const hay = (
-            q.question +
-            " " +
-            q.options.map((o) => o.text).join(" ") +
-            " week " +
-            q.week +
-            " geography environment"
-          ).toLowerCase();
-          const hit = t.split(/\s+/).every((w) => hay.includes(w));
-          if (!hit) return false;
-          if (statusFilter === "attempted") return !!att(q.id);
-          if (statusFilter === "unattempted") return !att(q.id);
-          if (statusFilter === "correct")
-            return att(q.id) && att(q.id).last === "correct";
-          if (statusFilter === "incorrect")
-            return att(q.id) && att(q.id).last === "incorrect";
-          if (statusFilter === "bookmarked") return isBookmarked(q.id);
-          return true;
-        });
-      }
-      function searchHTML(term, wf, sf) {
-        term = term || "";
-        let res = term ? doSearch(term, wf, sf) : null;
-        if (term && res) {
-          S.searches.push({
-            term: term,
-            results: res.length,
-            at: new Date().toISOString(),
-          });
-          if (S.searches.length > 100) S.searches = S.searches.slice(-100);
-          save();
-        }
-        let wkOpts = '<option value="">All Weeks</option>';
-        for (let w = 0; w <= 12; w++)
-          wkOpts +=
-            '<option value="' +
-            w +
-            '"' +
-            (wf !== "" && +wf === w ? " selected" : "") +
-            ">Week " +
-            w +
-            "</option>";
-        const typeOpts = [
-          ["", "All Types"],
-          ["attempted", "Attempted"],
-          ["unattempted", "Not attempted"],
-          ["incorrect", "Incorrect before"],
-          ["bookmarked", "Bookmarked"],
-        ]
-          .map(
-            (t) =>
-              '<option value="' +
-              t[0] +
-              '"' +
-              (sf === t[0] ? " selected" : "") +
-              ">" +
-              t[1] +
-              "</option>",
-          )
-          .join("");
-        const cards = res
-          ? res
-              .map((q) => {
-                const a = att(q.id);
-                return (
-                  '<div class="item"><div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><span class="tag b">Week ' +
-                  q.week +
-                  " • Q" +
-                  q.number +
-                  "</span>" +
-                  (a
-                    ? '<span class="tag ' +
-                      (a.last === "correct" ? "g" : "r") +
-                      '">' +
-                      (a.last === "correct"
-                        ? "✓ Attempted — correct"
-                        : "Attempted — incorrect") +
-                      "</span>"
-                    : '<span class="tag">Not attempted</span>') +
-                  '<span style="flex:1"></span><button class="bm-btn" data-bm2="' +
-                  q.id +
-                  '" aria-label="Toggle bookmark" style="width:36px;height:36px"><svg viewBox="0 0 24 24" width="19" height="19"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z" class="bmp" data-on="' +
-                  (isBookmarked(q.id) ? 1 : 0) +
-                  '"/></svg></button></div><p class="q" style="margin-top:6px">' +
-                  esc(q.question) +
-                  '</p><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="btn btn-p btn-sm" data-single="' +
-                  q.id +
-                  '">Practise this question</button></div></div>'
-                );
-              })
-              .join("")
-          : "";
-        return (
-          '<div class="wrap"><p class="crumb">Practice › <b>Search</b></p><h2 style="font-size:24px;font-weight:800">Search Questions</h2>' +
-          '<form class="searchbox" id="sForm" role="search" style="max-width:640px"><span style="display:flex;align-items:center;padding-left:8px;color:var(--muted)"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/></svg></span><input id="sInput" type="search" value="' +
-          esc(term) +
-          '" placeholder="Search questions… e.g. migration, LiDAR, volcano" aria-label="Search questions">' +
-          (term
-            ? '<button type="button" class="clear-btn" id="sClear" aria-label="Clear search">✕</button>'
-            : "") +
-          '<button class="btn btn-p btn-sm" type="submit">Search</button></form>' +
-          '<div class="filters"><select id="sWeek" aria-label="Filter by week">' +
-          wkOpts +
-          '</select><select id="sType" aria-label="Filter by type">' +
-          typeOpts +
-          "</select></div>" +
-          (res === null
-            ? '<div class="empty" style="max-width:640px"><b>Search all 130 questions</b>Search matches question text and option text, week by week.</div>'
-            : res.length
-              ? '<p class="small" style="margin-top:14px"><b>' +
-                res.length +
-                " result" +
-                (res.length === 1 ? "" : "s") +
-                " found</b> for “" +
-                esc(term) +
-                '”</p><div class="list" style="max-width:640px">' +
-                cards +
-                "</div>"
-              : '<div class="empty" style="max-width:640px"><b>0 results found for “' +
-                esc(term) +
-                "”</b>Check the spelling, try fewer words, or browse by week instead. This search was logged locally (Admin preview) so missing content can be spotted.</div>") +
-          "</div>"
-        );
-      }
-      function importantHTML() {
-        const repeat = BANK.filter((q) => {
-          const a = att(q.id);
-          return a && a.wrong >= 2;
-        });
-        const weakWeeks = [];
-        for (let w = 0; w <= 12; w++) {
-          let t = 0,
-            c = 0;
-          weekQs(w).forEach((q) => {
-            const a = att(q.id);
-            if (a) {
-              t += a.total;
-              c += a.correct;
-            }
-          });
-          if (t >= 3 && c / t < 0.6) weakWeeks.push(w);
-        }
-        const weakQs = BANK.filter(
-          (q) =>
-            weakWeeks.includes(q.week) && !(att(q.id) && att(q.id).wrong >= 2),
-        );
-        const bm = BANK.filter((q) => isBookmarked(q.id));
-        const sec = (title, desc, qs, tag) =>
-          '<section class="sec"><h2>' +
-          title +
-          '</h2><p class="hint">' +
-          desc +
-          "</p>" +
-          (qs.length
-            ? '<div class="list">' +
-              qs
-                .map(
-                  (q) =>
-                    '<div class="item"><span class="tag b">' +
-                    tag +
-                    '</span> <span class="tag b">Week ' +
-                    q.week +
-                    " · Q" +
-                    q.number +
-                    '</span><p class="q" style="margin-top:6px">' +
-                    esc(q.question) +
-                    '</p><p class="small" style="margin-top:4px">Accepted answer from source: <b>' +
-                    esc(q.correct_text) +
-                    '</b></p><button class="btn btn-g btn-sm" data-single="' +
-                    q.id +
-                    '" style="margin-top:8px">Practise</button></div>',
-                )
-                .join("") +
-              '</div><button class="btn btn-p btn-sm" data-batch="' +
-              qs.map((q) => q.id).join(",") +
-              '" style="margin-top:12px">Practise all ' +
-              qs.length +
-              " together</button>"
-            : '<div class="empty"><b>Nothing here yet</b>This section fills from your own attempts and bookmarks — it is never pre-filled or faked.</div>') +
-          "</section>";
-        return (
-          '<div class="wrap"><p class="crumb">Home › <b>Important Questions</b></p><h2 style="font-size:24px;font-weight:800">Important — for you</h2><p class="small" style="margin-top:4px">Chosen transparently from <b>your</b> data only. “Important” here means worth revising — it is <b>not</b> a claim that any question is guaranteed to appear in the exam.</p>' +
-          sec(
-            "Personal weak area — repeatedly incorrect",
-            "Questions you have answered wrong 2 or more times.",
-            repeat,
-            "Personal weak-area",
-          ) +
-          sec(
-            "Weak weeks (below 60%)",
-            "Weeks where your accuracy is under 60% across 3+ attempts: " +
-              (weakWeeks.length
-                ? weakWeeks.map((w) => "Week " + w).join(", ")
-                : "none yet") +
-              ".",
-            weakQs,
-            "Weak week",
-          ) +
-          sec(
-            "Bookmarked by you",
-            "Questions you chose to save.",
-            bm,
-            "Bookmarked",
-          ) +
-          "</div>"
-        );
-      }
-      function aboutHTML() {
-        let rows = "";
-        for (let w = 0; w <= 12; w++) {
-          const n = weekQs(w).length;
-          rows +=
-            "<tr><td><b>Week " +
-            w +
-            "</b></td><td>" +
-            esc(WEEK_TITLES[w]) +
-            "</td><td>" +
-            n +
-            "</td><td>" +
-            (MISSING[w] ? "Q" + MISSING[w].join(", Q") : "—") +
-            "</td></tr>";
-        }
-        return (
-          '<div class="wrap"><p class="crumb">Home › <b>Source &amp; Limits</b></p><h2 style="font-size:24px;font-weight:800">Source &amp; Limits — Honesty &amp; QA</h2><div class="list">' +
-          '<div class="item"><b>Source file</b><p class="small" style="margin-top:4px">Geography_Environment_Weeks_1-12_Updated_Accepted_Answers.pdf — the supplied NPTEL assignment export for <b>Geography &amp; Environment</b>, extended with the owner’s portal records and the Week 0 orientation set. Total: <b>130 questions</b>, each with exactly 4 options (A–D). Spot-checks: Week 1 Q1 → “migration” · Week 5 Q9 → “0-1 degree” · Week 12 Q2 → “1500 m”.</p></div>' +
-          '<div class="item"><b>Answer provenance</b><p class="small" style="margin-top:4px">Every answer shown is the <b>accepted answer from source</b>, recorded in the export as both a marked option and a “Correct Answer:” line. No answer has been generated, replaced or silently corrected.</p></div>' +
-          '<div class="item"><b>How answers were verified</b><p class="small" style="margin-top:4px">On 23 Oct 2026, every Weeks 1–12 question was re-verified one-by-one against the Accepted Answers shown in the owner’s own NPTEL portal — <b>120 of 120 match, 0 differences</b> — in addition to the original source double-recording check (the export records each answer twice, marked option + “Correct Answer:” line; 113/113 agreed). Weeks 1–12 are therefore complete and portal-verified. No answer in this app has been “corrected” or regenerated.</p></div>' +
-          '<div class="item"><b>Week 0 — Orientation &amp; Key Concepts</b><p class="small" style="margin-top:4px">Week 0 (10 questions) is the course orientation week. The portal shows no accepted answers for it (the quiz there is unsubmitted), so Week 0 answers were sourced and verified from public course material for this course. They are the only answers in this app not taken from an NPTEL accepted-answer record.</p></div>' +
-          '<div class="item"><b>Explanations</b><p class="small" style="margin-top:4px">The source contains <b>no explanations</b> for any of the 130 questions. The app therefore shows “No explanation in source” everywhere rather than inventing one. Your own notes are yours — they are labelled as personal notes, never as verified explanations.</p></div>' +
-          '<div class="item"><b>Persistence &amp; privacy</b><p class="small" style="margin-top:4px">Progress, bookmarks, notes, mistakes, searches and reports are stored in <b>browser local storage on this device only</b>. There is no server, no account and no tracking. Clearing browser data deletes them.</p></div>' +
-          '<div class="item"><b>Mock exam</b><p class="small" style="margin-top:4px">The mock is a <b>practice tool</b> built from assignment questions. It does not reproduce or guarantee the official NPTEL examination format.</p></div>' +
-          '<div class="item"><b>Content rights</b><p class="small" style="margin-top:4px">Question text comes from the supplied NPTEL assignment export and is provided here for <b>personal revision use</b>. Open-source code does not by itself grant rights to redistribute third-party course content.</p></div>' +
-          '<div class="item"><b>Per-week counts</b><div style="overflow-x:auto"><table><thead><tr><th>Week</th><th>Theme</th><th>Questions in bank</th><th>Missing numbers</th></tr></thead><tbody>' +
-          rows +
-          '</tbody></table></div><p class="small" style="margin-top:8px">Total: 130. Weeks 1–12 are complete — there are no missing question numbers. The 7 numbers absent from the original PDF export (Week 6 Q10; Week 7 Q1 &amp; Q9; Week 9 Q1; Week 10 Q1; Week 11 Q1 &amp; Q5) were recovered from the owner’s own NPTEL portal and are included.</p></div>' +
-          '<div class="item"><b>Project structure &amp; code maintenance</b><p class="small" style="margin-top:4px">The code is kept clean and organised so anyone can review or maintain it. In the <a href="https://github.com/Thunderdoc/nptel-exam-practice-hub" target="_blank" rel="noopener"><b>GitHub repository</b></a> it lives in a proper split layout:</p><p class="small" style="margin-top:6px"><b>index.html</b> — app markup only · <b>assets/css/style.css</b> — the full design system · <b>assets/js/app.js</b> — app logic, organised in labelled sections (question bank, state &amp; accounts, session engine, learn, views, router) · <b>data/questions.json</b> — the 130-question bank, one entry per question so every change is a small, reviewable diff · <b>docs/VERIFICATION.md</b> — the answer-verification report · <b>README.md</b> — setup, structure and deployment notes.</p><p class="small" style="margin-top:6px">The bank is fully data-driven — a future NPTEL session or a new subject is added as new data (data/questions.json and the embedded bank), not as code changes.</p><p class="small" style="margin-top:6px">The code is consistently formatted, dead code is removed, and data changes are never mixed with design changes. This page runs the single-file build of the same code.</p></div>' +
-          '<div class="item"><b>Built by</b><p class="small" style="margin-top:4px">Built by <a href="https://github.com/Thunderdoc" target="_blank" rel="noopener"><b>Thunderdoc</b></a> — for NPTEL students preparing for their exam.</p></div>' +
-          "</div></div>"
+          "</span>Logout</button></div></div></div>"
         );
       }
       function allIssues() {
@@ -5438,7 +4177,7 @@
       let ADMIN_ON = false;
       function adminLoginHTML() {
         return (
-          '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="welcome" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Admin Sign In</h2><p class="small" style="margin-top:4px">For the site owner only. The panel shows real visitor stats (via Vercel) plus this device’s local data.</p>' +
+          '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="welcome" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Admin Sign In</h2>' +
           '<form class="auth-card" id="admForm" style="max-width:none"><div class="field"><span class="fic">' +
           icoPerson() +
           '</span><input id="admUser" type="text" autocomplete="username" required placeholder="Username"></div>' +
@@ -5525,9 +4264,9 @@
             "</span></td></tr>",
         ).join("");
         return (
-          '<div class="wrap"><p class="crumb">Account › <b>Admin panel</b></p><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><h2 style="font-size:24px;font-weight:800;flex:1">Admin Panel</h2><button class="btn btn-g btn-sm" id="admOut">Sign out of Admin</button></div><div class="item" style="border-color:var(--amber);background:var(--amber-bg);margin-top:12px"><b>Please read — what this panel can and cannot show.</b><p class="small" style="margin-top:4px">This is a static site with no backend. Per-student attempts, feedback and activity from OTHER students’ devices are not collected here — that needs a backend (Phase 2). The only whole-site numbers are the real visitor stats in Vercel Analytics above.</p></div>' +
-          '<section class="sec"><h2>Real site traffic</h2><div class="item"><b>Whole-site visitor stats live in Vercel Analytics</b><p class="small" style="margin-top:4px">Real visits, pages and referrers for the whole site — collected by Vercel, not by this page.</p><a class="btn btn-p btn-sm" href="https://vercel.com/thunderdoc/nptel-exam-practice-hub/analytics" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex">View live visitor stats ↗</a></div></section>' +
-          '<h2 style="font-size:19px;font-weight:800;margin-top:22px">This device</h2><p class="small" style="margin-top:2px">Everything below comes only from accounts and activity stored in this browser, on this device.</p>' +
+          '<div class="wrap"><p class="crumb">Account › <b>Admin panel</b></p><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><h2 style="font-size:24px;font-weight:800;flex:1">Admin Panel</h2><button class="btn btn-g btn-sm" id="admOut">Sign out of Admin</button></div><div class="item" style="border-color:var(--amber);background:var(--amber-bg);margin-top:12px"><b>Other students\' data needs a backend.</b></div>' +
+          '<section class="sec"><h2>Real site traffic</h2><div class="item"><b>Whole-site visitor stats live in Vercel Analytics</b><br><a class="btn btn-p btn-sm" href="https://vercel.com/thunderdoc/nptel-exam-practice-hub/analytics" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex">View live visitor stats ↗</a></div></section>' +
+          '<h2 style="font-size:19px;font-weight:800;margin-top:22px">This device</h2>' +
           '<div class="stat-grid"><div class="stat"><div class="n">' +
           accts.length +
           '</div><div class="l">Local accounts (this device)</div></div><div class="stat"><div class="n">' +
@@ -5569,13 +4308,13 @@
           " / " +
           BANK.length +
           '</b> — the source contains no explanations. Questions with missing options or missing accepted answers: <b>0</b>.</div></div></section>' +
-          '<section class="sec"><h2>Feedback (this device)</h2><div class="stat-grid" style="grid-template-columns:1fr 1fr 1fr"><div class="stat"><div class="n">' +
+          '<section class="sec"><h2>Feedback (this device)</h2><div class="stat-grid" style="grid-template-columns:repeat(3,minmax(0,1fr))"><div class="stat"><div class="n">' +
           fbUp +
           '</div><div class="l">Helpful</div></div><div class="stat"><div class="n">' +
           fbDown +
           '</div><div class="l">Not helpful</div></div><div class="stat"><div class="n">' +
           (fbUp + fbDown) +
-          '</div><div class="l">Responses (this device)</div></div></div><p class="hint">From the “Did this app help you?” prompt on the Account page — stored per account on this device only.</p></section>' +
+          '</div><div class="l">Responses (this device)</div></div></div></section>' +
           '<section class="sec"><h2>Reported issues (this device)</h2>' +
           (issues.length
             ? '<div class="list">' +
@@ -5607,30 +4346,9 @@
           '<section class="sec"><h2>Per-week bank</h2><div class="item" style="overflow-x:auto"><table><thead><tr><th>Week</th><th>Questions</th><th>Missing numbers</th></tr></thead><tbody>' +
           rows +
           "</tbody></table></div></section>" +
-          '<section class="sec"><h2>Search Insights (this device only)</h2><div class="list"><div class="item"><b>Top search terms:</b> ' +
-          (topTerms.length
-            ? topTerms.map((t) => esc(t[0]) + " ×" + t[1]).join(" · ")
-            : "No searches yet.") +
-          '</div><div class="item"><b>Searches with no results (' +
-          noRes.length +
-          "):</b> " +
-          (noRes.length
-            ? noRes
-                .slice(-10)
-                .map((s) => '"' + esc(s.term) + "”")
-                .join(" · ")
-            : "None.") +
-          '</div><div class="item"><b>Recent searches:</b> ' +
-          (searches.length
-            ? searches
-                .slice(0, 10)
-                .map((s) => '"' + esc(s.term) + '" — ' + s.results + " results")
-                .join(" · ")
-            : "None yet.") +
-          "</div></div></section>" +
           '<section class="sec"><h2>Question bank (' +
           BANK.length +
-          ')</h2><p class="hint">Verification status per question: Weeks 1–12 show “Accepted answer from source” (portal-verified); Week 0 shows “Public course material”.</p><div class="item" style="overflow-x:auto"><table><thead><tr><th>ID</th><th>Question</th><th>Accepted answer</th><th>Status</th></tr></thead><tbody>' +
+          ')</h2><div class="item" style="overflow-x:auto"><table><thead><tr><th>ID</th><th>Question</th><th>Accepted answer</th><th>Status</th></tr></thead><tbody>' +
           bankRows +
           "</tbody></table></div></section></div>"
         );
@@ -5639,7 +4357,6 @@
          SECTION JS-8 · ROUTER & CHROME — navigation, header, bottom nav.
          ================================================================== */
       let curView = "home",
-        searchState = { term: "", wf: "", sf: "" },
         mistState = { wf: "", rep: false };
       let revTab = "wrong",
         qrIdx = 0,
@@ -5665,7 +4382,7 @@
         document.querySelectorAll("[data-gograph]").forEach(
           (b) =>
             (b.onclick = () => {
-              go("practice");
+              go("account");
               const el = document.getElementById("perfGraph");
               if (el)
                 el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -5829,7 +4546,7 @@
             b.classList.toggle(
               "on",
               b.dataset.nav ===
-                (["lesson", "study", "studyweek"].includes(curView)
+                (["learnweek"].includes(curView)
                   ? "learn"
                   : curView),
             ),
@@ -5838,15 +4555,57 @@
       function renderChrome() {
         const li = isLoggedIn();
         const tn = document.getElementById("topNav");
-        if (tn)
-          tn.innerHTML = li
-            ? '<button data-nav="practice">Home</button><button data-nav="weeks">Practice</button><button data-nav="learn">Learn</button><button data-nav="revision">Revision</button><button data-nav="search">Search</button>'
-            : '<button data-nav="about">Source &amp; Limits</button><button data-nav="login">Log In</button><button data-nav="signup">Sign Up</button>';
+        if (tn) {
+          if (li) {
+            const a2 = curAcct();
+            const dteM = daysToExam();
+            const examLbl =
+              "Exam Date" +
+              (D.examDate
+                ? dteM === null
+                  ? ""
+                  : dteM > 0
+                    ? " · " + dteM + " day" + (dteM === 1 ? "" : "s") + " left"
+                    : dteM === 0
+                      ? " · Today"
+                      : " · Passed"
+                : " · Not set");
+            tn.innerHTML =
+              '<span class="nav-desk"><button data-nav="practice">Home</button><button data-nav="weeks">Practice</button><button data-nav="learn">Learn</button><button data-nav="revision">Revision</button></span>' +
+              '<span class="nav-sec"><span class="menu-id"><b>' +
+              esc(a2 ? a2.name : "Student") +
+              "</b><span>" +
+              esc(a2 ? a2.email : "") +
+              '</span></span><button data-gograph="1">My Progress</button><button data-nav="account">' +
+              examLbl +
+              '</button><button class="menu-theme" type="button">Theme</button><button data-nav="about">Source &amp; Limits</button><button data-nav="admin">Admin</button><button class="menu-logout" type="button">Logout</button></span>';
+            const mt = tn.querySelector(".menu-theme");
+            if (mt)
+              mt.onclick = () => {
+                document.getElementById("themeBtn").click();
+                render();
+              };
+            const ml = tn.querySelector(".menu-logout");
+            if (ml)
+              ml.onclick = () => {
+                tn.classList.remove("open");
+                S.current = null;
+                D = blankData();
+                save();
+                curView = "welcome";
+                render();
+                toast("Logged out — your data stays saved on this device");
+              };
+          } else {
+            tn.innerHTML =
+              '<button data-nav="about">Source &amp; Limits</button><button data-nav="login">Log In</button><button data-nav="signup">Sign Up</button>';
+          }
+        }
         const bn = document.getElementById("bnav");
         if (bn) {
           bn.style.display = li ? "flex" : "none";
           bn.innerHTML =
-            '<button data-nav="practice"><span class="ic"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5"/><path d="M5.5 9.2V20h13V9.2"/></svg></span>Home</button><button data-nav="learn"><span class="ic"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span>Learn</button><button data-nav="weeks"><span class="ic"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span>Practice</button><button data-nav="revision"><span class="ic"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></span>Revision</button><button data-nav="search"><span class="ic"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/></svg></span>Search</button>';
+            '<button data-nav="practice"><span class="ic"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5"/><path d="M5.5 9.2V20h13V9.2"/></svg></span>Home</button><button data-nav="learn"><span class="ic"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span>Learn</button><button data-nav="weeks"><span class="ic"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span>Practice</button><button data-nav="revision"><span class="ic"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></span>Revision</button>';
         }
         const av = document.getElementById("avatarBtn");
         if (av) {
@@ -5911,18 +4670,10 @@
         else if (curView === "forgot") app.innerHTML = forgotHTML();
         else if (curView === "subject") app.innerHTML = subjectHTML();
         else if (curView === "learn") app.innerHTML = learnHTML();
-        else if (curView === "lesson") app.innerHTML = lessonHTML();
-        else if (curView === "study") app.innerHTML = studyHTML();
-        else if (curView === "studyweek") app.innerHTML = studyWeekHTML();
+        else if (curView === "learnweek") app.innerHTML = learnWeekHTML();
         else if (curView === "practice") app.innerHTML = practiceHTML();
         else if (curView === "weeks") app.innerHTML = weeksHTML();
         else if (curView === "revision") app.innerHTML = revisionHTML();
-        else if (curView === "search")
-          app.innerHTML = searchHTML(
-            searchState.term,
-            searchState.wf,
-            searchState.sf,
-          );
         else if (curView === "account") app.innerHTML = accountHTML();
         else if (curView === "about") app.innerHTML = aboutHTML();
         else if (curView === "admin")
@@ -6332,44 +5083,6 @@
             qrShow = false;
             render();
           });
-        const sf = document.getElementById("sForm");
-        if (sf) {
-          let deb = null;
-          const inp = document.getElementById("sInput");
-          sf.addEventListener("submit", (e) => e.preventDefault());
-          inp.addEventListener("input", () => {
-            clearTimeout(deb);
-            deb = setTimeout(() => {
-              searchState.term = inp.value;
-              searchState.wf = document.getElementById("sWeek").value;
-              searchState.sf = document.getElementById("sType").value;
-              render();
-              const ni = document.getElementById("sInput");
-              if (ni) {
-                ni.focus();
-                ni.setSelectionRange(ni.value.length, ni.value.length);
-              }
-            }, 350);
-          });
-          const sw = document.getElementById("sWeek");
-          if (sw)
-            sw.addEventListener("change", (e) => {
-              searchState.wf = e.target.value;
-              render();
-            });
-          const st = document.getElementById("sType");
-          if (st)
-            st.addEventListener("change", (e) => {
-              searchState.sf = e.target.value;
-              render();
-            });
-          const sc = document.getElementById("sClear");
-          if (sc)
-            sc.addEventListener("click", () => {
-              searchState.term = "";
-              render();
-            });
-        }
         const sGo = document.getElementById("sGo");
         if (sGo) {
           const upd = () => {
