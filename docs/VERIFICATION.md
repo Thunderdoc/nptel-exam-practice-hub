@@ -33,6 +33,46 @@ Q2 (no Q1, no Q9); Week 9 starts at Q2; Week 10 starts at Q2; Week 11 starts at 
 They are NOT invented in the app; the UI states the real count per week.
 If the owner supplies the missing pages/exports, they can be added exactly.
 
-## Conclusion
+## Conclusion (original 113-question bank)
 113 questions, all answers double-verified inside the source, sample cross-checked
 externally with 0 conflicts. Confidence: high for the 113 included questions.
+
+---
+
+## Update — 2026-10-23: portal re-verification, gap recovery, Week 0 (bank now 130)
+
+### Layer 4 — Full re-verification against the owner's own NPTEL portal
+The owner supplied review screenshots from their enrolled NPTEL portal for every
+week (Weeks 1–12). Every question in the bank was re-extracted from those
+screenshots and machine-diffed against the bank (question text, option set and
+order, accepted answer):
+- **120/120 Weeks 1–12 portal questions match the bank — 0 answer differences.**
+- The portal set confirmed the bank's numbering exactly, including two same-stem
+  pairs that are genuinely distinct questions (W6 Q7 vs Q10; W11 Q4 vs Q5).
+
+### Gap recovery — the 7 PDF gaps, filled from the portal (NOT invented)
+| Question | Accepted answer (from portal) |
+| --- | --- |
+| W6 Q10 — factors determining the climate of India (latitudinal-extent options) | all of these |
+| W7 Q1 — sandy, saline soils of Rajasthan & Gujarat | Arid soils |
+| W7 Q9 — Carbonation is an example of | chemical weathering |
+| W9 Q1 — Sex ratio is calculated as | Female population divided by male population multiplied by 1000 |
+| W10 Q1 — carbon released when forests are cleared also comes from | soil organic matter |
+| W11 Q1 — "ability to produce a good using fewer inputs…" | absolute advantage |
+| W11 Q5 — factor governing barrier effect of roads (traffic-intensity options) | all of these |
+
+Weeks 1–12 are now complete: 12 weeks × 10 questions, all portal-verified.
+
+### Week 0 — 10 questions, web/course-material verified (NOT portal-verified)
+Week 0 is the course orientation week; the owner's portal page for it is
+unsubmitted and shows no accepted answers. Its 10 questions were extracted from
+the owner's portal screenshot and each answer was verified against public
+sources (course-companion answer key for this course, a Docsity NPTEL
+accepted-answers document, and standard references): **10 confirmed,
+0 corrected, 0 unverified.** These are the only answers in the bank not taken
+from an NPTEL accepted-answer record, and the app labels them as such
+("sourced from public course material") on its Source & Limits page.
+
+## Conclusion (current bank)
+130 questions: Weeks 1–12 complete at 120/120 portal-verified accepted answers;
+Week 0 at 10/10 verified against public course material. 0 known differences.

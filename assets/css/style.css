@@ -881,6 +881,151 @@
       .opt:disabled {
         cursor: default;
       }
+      /* Study Questions (Learn) — read-only options, correct one in green */
+      .study-opts {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .study-opt {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        width: 100%;
+        background: var(--surface);
+        border: 1.5px solid var(--line);
+        border-radius: 14px;
+        padding: 13px 14px;
+        font-size: 15.5px;
+        color: var(--ink);
+      }
+      .study-opt .ltr {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: var(--surface2);
+        border: 1.5px solid var(--line);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 14px;
+      }
+      .study-opt .stxt {
+        flex: 1;
+        min-width: 0;
+      }
+      .study-opt.correct {
+        border-color: var(--green);
+        background: var(--green-bg);
+      }
+      .study-opt.correct .ltr {
+        background: var(--green);
+        border-color: var(--green);
+        color: #fff;
+      }
+      .ok-tag {
+        margin-left: auto;
+        flex-shrink: 0;
+        background: var(--green);
+        color: #fff;
+        font-size: 11.5px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        padding: 4px 10px;
+        border-radius: 999px;
+        white-space: nowrap;
+      }
+      .wkchips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 14px;
+      }
+      .wkchip {
+        border: 1.5px solid var(--line);
+        background: var(--surface);
+        color: var(--ink);
+        border-radius: 999px;
+        padding: 6px 12px;
+        font-size: 13.5px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .wkchip.on {
+        background: var(--blue);
+        border-color: var(--blue);
+        color: #fff;
+      }
+      /* Performance graph (Home) — hand-rolled week accuracy bars */
+      .pg-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .pg-w {
+        width: 36px;
+        flex-shrink: 0;
+        font-weight: 700;
+        font-size: 13.5px;
+        color: var(--head);
+      }
+      .pg-track {
+        flex: 1;
+        height: 12px;
+        border-radius: 999px;
+        background: var(--surface2);
+        overflow: hidden;
+      }
+      .pg-track i {
+        display: block;
+        height: 100%;
+        border-radius: 999px;
+        background: var(--blue);
+      }
+      .pg-row.weak .pg-track i {
+        background: var(--red);
+      }
+      .pg-pct {
+        width: 44px;
+        flex-shrink: 0;
+        text-align: right;
+        font-weight: 700;
+        font-size: 13.5px;
+      }
+      .fb-btns {
+        display: flex;
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .fb-btn {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px;
+        border-radius: 14px;
+        border: 1.5px solid var(--line);
+        background: var(--surface);
+        color: var(--ink);
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .fb-btn.on-up {
+        border-color: var(--green);
+        background: var(--green-bg);
+        color: var(--green);
+      }
+      .fb-btn.on-down {
+        border-color: var(--red);
+        background: var(--red-bg);
+        color: var(--red);
+      }
       .bmp {
         fill: none;
         stroke: currentColor;

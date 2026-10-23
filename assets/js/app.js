@@ -1,10 +1,162 @@
 /* ==================================================================
          SECTION JS-1 · QUESTION BANK
-         All 113 questions from the supplied source export — one entry per
-         question so changes stay small and reviewable. Answers are the
-         source's accepted answers, double-verified (see header note).
+         All 130 questions (Weeks 0–12) — one entry per
+         question so changes stay small and reviewable. Weeks 1–12 answers
+         are the source's accepted answers, portal-verified; Week 0 answers
+         come from public course material (see Source & Limits).
          ================================================================== */
       const BANK = [
+        {
+          id: "w0-q1",
+          week: 0,
+          number: 1,
+          question:
+            "The geographical area within which a species can naturally be found is its:",
+          options: [
+            { letter: "A", text: "Tolerance" },
+            { letter: "B", text: "Abundance" },
+            { letter: "C", text: "Range" },
+            { letter: "D", text: "Affluence" },
+          ],
+          correct_letter: "C",
+          correct_text: "Range",
+        },
+        {
+          id: "w0-q2",
+          week: 0,
+          number: 2,
+          question:
+            "Excess nitrogen fertilizer enters a pond, causes algal growth, and later creates oxygen-poor conditions. This process shows disturbance in:",
+          options: [
+            { letter: "A", text: "Political geography" },
+            { letter: "B", text: "Biogeochemical cycles" },
+            { letter: "C", text: "Cartographic methods" },
+            { letter: "D", text: "Habitat selection" },
+          ],
+          correct_letter: "B",
+          correct_text: "Biogeochemical cycles",
+        },
+        {
+          id: "w0-q3",
+          week: 0,
+          number: 3,
+          question: "The discipline of Demography is most closely related to:",
+          options: [
+            { letter: "A", text: "Phytogeography" },
+            { letter: "B", text: "Zoogeography" },
+            { letter: "C", text: "Population Geography" },
+            { letter: "D", text: "Economic Geography" },
+          ],
+          correct_letter: "C",
+          correct_text: "Population Geography",
+        },
+        {
+          id: "w0-q4",
+          week: 0,
+          number: 4,
+          question:
+            "A dam traps sediment upstream, reducing the amount of silt reaching a delta. The likely result is:",
+          options: [
+            { letter: "A", text: "Expansion of the ozone layer" },
+            { letter: "B", text: "Increase in coral shell formation" },
+            {
+              letter: "C",
+              text: "Change in the geomorphology of the delta",
+            },
+            { letter: "D", text: "Increase in ultraviolet radiation" },
+          ],
+          correct_letter: "C",
+          correct_text: "Change in the geomorphology of the delta",
+        },
+        {
+          id: "w0-q5",
+          week: 0,
+          number: 5,
+          question: "The quantum of human impacts can be written as",
+          options: [
+            { letter: "A", text: "I = P + A + T" },
+            { letter: "B", text: "I = P X A + T" },
+            { letter: "C", text: "I = P X A X T" },
+            { letter: "D", text: "I = P + A X T" },
+          ],
+          correct_letter: "C",
+          correct_text: "I = P X A X T",
+        },
+        {
+          id: "w0-q6",
+          week: 0,
+          number: 6,
+          question:
+            "A large continuous forest is split by a highway into two smaller patches, each too small to support wide-ranging animals. This is:",
+          options: [
+            { letter: "A", text: "Habitat degradation" },
+            { letter: "B", text: "Habitat displacement" },
+            { letter: "C", text: "Habitat loss" },
+            { letter: "D", text: "Habitat fragmentation" },
+          ],
+          correct_letter: "D",
+          correct_text: "Habitat fragmentation",
+        },
+        {
+          id: "w0-q7",
+          week: 0,
+          number: 7,
+          question:
+            "Increased atmospheric carbon dioxide dissolves into oceans and makes survival difficult for organisms with calcium carbonate shells. This is mainly due to:",
+          options: [
+            { letter: "A", text: "Nitrogen fixation" },
+            { letter: "B", text: "Ozone formation" },
+            { letter: "C", text: "Ocean acidification" },
+            { letter: "D", text: "Soil waterlogging" },
+          ],
+          correct_letter: "C",
+          correct_text: "Ocean acidification",
+        },
+        {
+          id: "w0-q8",
+          week: 0,
+          number: 8,
+          question:
+            "The Trinity explosion of 1945 is taken as the beginning of the",
+          options: [
+            { letter: "A", text: "Holocene" },
+            { letter: "B", text: "Cenocene" },
+            { letter: "C", text: "Anthropocene" },
+            { letter: "D", text: "Eocene" },
+          ],
+          correct_letter: "C",
+          correct_text: "Anthropocene",
+        },
+        {
+          id: "w0-q9",
+          week: 0,
+          number: 9,
+          question:
+            "The movement of individuals away from their place of birth or hatching or seed production into a new habitat or area to survive and reproduce is called",
+          options: [
+            { letter: "A", text: "translocation" },
+            { letter: "B", text: "migration" },
+            { letter: "C", text: "dispersal" },
+            { letter: "D", text: "drifting" },
+          ],
+          correct_letter: "C",
+          correct_text: "dispersal",
+        },
+        {
+          id: "w0-q10",
+          week: 0,
+          number: 10,
+          question:
+            "Sustainable harvest of resources falls under the category of:",
+          options: [
+            { letter: "A", text: "conservation" },
+            { letter: "B", text: "preservation" },
+            { letter: "C", text: "environmentalism" },
+            { letter: "D", text: "none of the above" },
+          ],
+          correct_letter: "A",
+          correct_text: "conservation",
+        },
         {
           id: "w1-q1",
           week: 1,
@@ -902,6 +1054,39 @@
           correct_text: "F",
         },
         {
+          id: "w6-q10",
+          week: 6,
+          number: 10,
+          question:
+            "Which of these are factors determining the climate of India?",
+          options: [
+            { letter: "A", text: "the latitudinal extent" },
+            {
+              letter: "B",
+              text: "the Himalayas forming a climatic divide",
+            },
+            { letter: "C", text: "distribution of land and water" },
+            { letter: "D", text: "all of these" },
+          ],
+          correct_letter: "D",
+          correct_text: "all of these",
+        },
+        {
+          id: "w7-q1",
+          week: 7,
+          number: 1,
+          question:
+            "Which soils are generally sandy, saline, low in moisture and commonly found in Rajasthan and Gujarat?",
+          options: [
+            { letter: "A", text: "Forest soils" },
+            { letter: "B", text: "Arid soils" },
+            { letter: "C", text: "Peaty soils" },
+            { letter: "D", text: "Red and yellow soils" },
+          ],
+          correct_letter: "B",
+          correct_text: "Arid soils",
+        },
+        {
           id: "w7-q2",
           week: 7,
           number: 2,
@@ -999,6 +1184,20 @@
           ],
           correct_letter: "C",
           correct_text: "soil profile",
+        },
+        {
+          id: "w7-q9",
+          week: 7,
+          number: 9,
+          question: "Carbonation is an example of",
+          options: [
+            { letter: "A", text: "chemical weathering" },
+            { letter: "B", text: "physical weathering" },
+            { letter: "C", text: "biological weathering" },
+            { letter: "D", text: "none of the above" },
+          ],
+          correct_letter: "A",
+          correct_text: "chemical weathering",
         },
         {
           id: "w7-q10",
@@ -1178,6 +1377,33 @@
           correct_text: "all of the above",
         },
         {
+          id: "w9-q1",
+          week: 9,
+          number: 1,
+          question: "Sex ratio is calculated as",
+          options: [
+            {
+              letter: "A",
+              text: "Female population divided by male population multiplied by 1000",
+            },
+            {
+              letter: "B",
+              text: "Male population divided by female population multiplied by 1000",
+            },
+            {
+              letter: "C",
+              text: "Total population divided by female population multiplied by 1000",
+            },
+            {
+              letter: "D",
+              text: "Working population divided by dependent population multiplied by 1000",
+            },
+          ],
+          correct_letter: "A",
+          correct_text:
+            "Female population divided by male population multiplied by 1000",
+        },
+        {
           id: "w9-q2",
           week: 9,
           number: 2,
@@ -1321,6 +1547,21 @@
           correct_text: "15-64 years",
         },
         {
+          id: "w10-q1",
+          week: 10,
+          number: 1,
+          question:
+            "When forests are cleared, carbon may be released not only from removed wood but also from",
+          options: [
+            { letter: "A", text: "ocean sediments" },
+            { letter: "B", text: "glaciers" },
+            { letter: "C", text: "soil organic matter" },
+            { letter: "D", text: "desert sand" },
+          ],
+          correct_letter: "C",
+          correct_text: "soil organic matter",
+        },
+        {
           id: "w10-q2",
           week: 10,
           number: 2,
@@ -1456,6 +1697,21 @@
           correct_text: "animal manure",
         },
         {
+          id: "w11-q1",
+          week: 11,
+          number: 1,
+          question:
+            "“the ability to produce a good using fewer inputs than another producer” is",
+          options: [
+            { letter: "A", text: "comparative advantage" },
+            { letter: "B", text: "absolute advantage" },
+            { letter: "C", text: "production advantage" },
+            { letter: "D", text: "resource advantage" },
+          ],
+          correct_letter: "B",
+          correct_text: "absolute advantage",
+        },
+        {
           id: "w11-q2",
           week: 11,
           number: 2,
@@ -1495,6 +1751,21 @@
             { letter: "A", text: "road edge features" },
             { letter: "B", text: "time of day and year" },
             { letter: "C", text: "species diversity in the surroundings" },
+            { letter: "D", text: "all of these" },
+          ],
+          correct_letter: "D",
+          correct_text: "all of these",
+        },
+        {
+          id: "w11-q5",
+          week: 11,
+          number: 5,
+          question:
+            "Which of these is a factor governing barrier effect of roads?",
+          options: [
+            { letter: "A", text: "traffic intensity" },
+            { letter: "B", text: "speed of vehicles" },
+            { letter: "C", text: "driver sensitivity" },
             { letter: "D", text: "all of these" },
           ],
           correct_letter: "D",
@@ -1728,9 +1999,11 @@
       ];
       const BYID = {};
       BANK.forEach((q) => (BYID[q.id] = q));
-      /* Week themes + the question numbers that are absent from the
-         source itself (never invented — shown honestly in the UI). */
+      /* Week themes. MISSING lists question numbers absent from the
+         bank — currently none: Weeks 1–12 are complete (portal-verified)
+         and the Week 0 orientation set is included. */
       const WEEK_TITLES = {
+        0: "Orientation & Key Concepts",
         1: "Foundations of Geography & Ecology",
         2: "Earth, Volcanoes & Geological Time",
         3: "Rocks, Minerals & Weathering",
@@ -1744,7 +2017,7 @@
         11: "Transport, Trade & Settlements",
         12: "Hazards, GIS & Remote Sensing",
       };
-      const MISSING = { 6: [10], 7: [1, 9], 9: [1], 10: [1], 11: [1, 5] };
+      const MISSING = {};
       const LSKEY = "nptel-hub-v1";
       /* ==================================================================
          SECTION JS-3 · STATE, STORAGE & ACCOUNTS
@@ -1761,6 +2034,7 @@
           sessions: [],
           examDate: null,
           qrFlags: {},
+          feedback: null,
           issues: [],
           activeSes: null,
         };
@@ -2029,7 +2303,9 @@
         }
       }
       function startSession(cfg) {
-        // cfg: {mode,title,qids,shuffleOpts,durationMin,isMock,submitAll}
+        // cfg: {mode,title,qids,shuffleOpts,durationMin,isMock}
+        // Every attempt session is submit-all by design: no answer is
+        // revealed until the single final submit (see finishSession).
         if (!isLoggedIn()) {
           toast("Log in or sign up to start practising");
           curView = "welcome";
@@ -2065,7 +2341,7 @@
           idx: 0,
           start: Date.now(),
           isMock: !!cfg.isMock,
-          submitAll: !!cfg.submitAll,
+          submitAll: true,
           remain: cfg.durationMin ? cfg.durationMin * 60 : null,
           durationMin: cfg.durationMin || null,
           poolNote: cfg.poolNote || "",
@@ -2143,7 +2419,7 @@
         const picked = SES.answers[q.id],
           checked = SES.checked[q.id];
         const answeredN = SES.qids.filter((id) => SES.answers[id]).length;
-        const progN = SES.submitAll ? answeredN : idx + 1;
+        const progN = answeredN;
         const order = SES.optOrder[q.id];
         let optsHtml = order
           .map((letter, di) => {
@@ -2282,9 +2558,10 @@
           '<span style="flex:1"></span><button class="bm-btn" id="tBook" aria-label="Bookmark this question"><svg viewBox="0 0 24 24" width="21" height="21"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z" class="bmp" data-on="' +
           (isBookmarked(q.id) ? 1 : 0) +
           '"/></svg></button><span class="small">' +
-          (SES.submitAll
-            ? "Answered " + answeredN + " of " + total
-            : "Session score so far: " + sessionScore()) +
+          "Answered " +
+          answeredN +
+          " of " +
+          total +
           "</span></div>" +
           '<div class="progress" role="progressbar" aria-valuenow="' +
           progN +
@@ -2315,13 +2592,13 @@
           "</button>" +
           '<button class="tool-btn" id="tReport">Report an issue</button></div>' +
           noteHtml +
-          '<p class="small kbd-hint" style="margin-top:14px">Keyboard: <span class="kbd">1–4</span> select · <span class="kbd">Enter</span> check / next · <span class="kbd">←</span> <span class="kbd">→</span> navigate · <span class="kbd">B</span> bookmark · <span class="kbd">M</span> mark</p></div>' +
+          '<p class="small kbd-hint" style="margin-top:14px">Keyboard: <span class="kbd">1–4</span> select · <span class="kbd">Enter</span> next · <span class="kbd">←</span> <span class="kbd">→</span> navigate · <span class="kbd">B</span> bookmark · <span class="kbd">M</span> mark</p></div>' +
           '<div class="desktop-nav-row"><button class="btn btn-g" id="dPrev" ' +
           (idx === 0 ? "disabled" : "") +
           '>← Previous</button><button class="btn btn-p" id="dMain"></button><button class="btn btn-g" id="dNext">' +
           (idx === total - 1 ? "Finish" : "Next →") +
           '</button><button class="btn btn-s" id="dQuit">End session</button></div>' +
-          (SES.submitAll
+          (SES.submitAll && !SES.isMock
             ? '<button class="btn btn-p" id="submitTestBottom" style="width:100%;margin-top:14px">✓ Submit ' +
               (SES.mode === "weektest" ? "Week Test" : "Test") +
               ' — see your score &amp; full review</button><p class="small" style="margin-top:8px;text-align:center">Answered ' +
@@ -2357,25 +2634,17 @@
             SES.idx++;
             renderPractice();
             window.scrollTo({ top: 0 });
-          } else if (SES.submitAll) {
+          } else {
             confirmSubmit();
-          } else finishSession(false);
+          }
         };
         const mainAct = () => {
           if (SES.isMock) {
             next();
             return;
           }
-          if (SES.submitAll) {
-            if (SES.idx === SES.qids.length - 1) confirmSubmit();
-            else next();
-            return;
-          }
-          if (!SES.checked[q.id]) {
-            doCheck();
-          } else {
-            next();
-          }
+          if (SES.idx === SES.qids.length - 1) confirmSubmit();
+          else next();
         };
         document.getElementById("dPrev").addEventListener("click", prev);
         document.getElementById("dNext").addEventListener("click", next);
@@ -2450,58 +2719,21 @@
           return;
         }
         pbar.classList.add("on");
-        const q = curQ(),
-          checked = SES.checked[q.id];
         const main = document.getElementById("dMain"),
           pb = document.getElementById("pbMain");
         const label = SES.isMock
           ? "Next"
-          : SES.submitAll
-            ? SES.idx === SES.qids.length - 1
-              ? "Submit Test"
-              : "Next →"
-            : checked
-              ? SES.idx === SES.qids.length - 1
-                ? "See results"
-                : "Next →"
-              : "Check Answer";
+          : SES.idx === SES.qids.length - 1
+            ? "Submit Test"
+            : "Next →";
         if (main) main.textContent = label;
         pb.textContent = label;
         document.getElementById("pbPrev").disabled = SES.idx === 0;
         document.getElementById("pbNext").textContent =
           SES.idx === SES.qids.length - 1 ? "Finish" : "Next →";
-        const showSkip = label === "Check Answer";
-        document.getElementById("pbNext").style.display = showSkip
-          ? ""
-          : "none";
+        document.getElementById("pbNext").style.display = "none";
         const dNext = document.getElementById("dNext");
-        if (dNext) dNext.style.display = showSkip ? "" : "none";
-      }
-      function sessionScore() {
-        if (!SES) return "—";
-        let c = 0,
-          n = 0;
-        SES.qids.forEach((id) => {
-          if (SES.checked[id]) {
-            n++;
-            if (SES.answers[id] === BYID[id].correct_letter) c++;
-          }
-        });
-        return n ? c + "/" + n + " correct" : "not checked yet";
-      }
-      function doCheck() {
-        const q = curQ();
-        const picked = SES.answers[q.id];
-        if (!picked) {
-          toast("Pick an option first");
-          return;
-        }
-        SES.checked[q.id] = true;
-        if (!SES.recorded[q.id]) {
-          recordAttempt(q.id, picked);
-          SES.recorded[q.id] = true;
-        }
-        renderPractice();
+        if (dNext) dNext.style.display = "none";
       }
       function confirmSubmit() {
         if (!SES) return;
@@ -2908,14 +3140,12 @@
           st.remaining +
           ' remaining</p><button class="btn btn-p btn-sm" data-week="' +
           w +
-          '" style="margin-top:auto">Start Week Test</button><button class="btn btn-g btn-sm" data-weekpractice="' +
-          w +
-          '">Practice mode (check each answer)</button></div>'
+          '" style="margin-top:auto">Start Week Test</button></div>'
         );
       }
       function allWeekCards() {
         let h = "";
-        for (let w = 1; w <= 12; w++) h += weekCard(w);
+        for (let w = 0; w <= 12; w++) h += weekCard(w);
         return h;
       }
       const CAPSVG =
@@ -2937,7 +3167,7 @@
         {
           id: "geo-env",
           name: "Geography & Environment",
-          weeks: 12,
+          weeks: 13,
           questions: BANK.length,
         },
       ];
@@ -3345,6 +3575,7 @@
       };
       let CURLESSON = 1,
         LQ = { picks: {}, checked: {} };
+      let CURSTUDY = 0;
       function openLesson(w) {
         CURLESSON = w;
         LQ = { picks: {}, checked: {} };
@@ -3395,6 +3626,9 @@
           '<button class="mode-card" data-scrollist="1"><span class="tile" style="background:#F59E0B">' +
           icoLayersW +
           "</span><span class=\"mtxt\"><h3>Week-wise Learning</h3><p>All 12 theme lessons, one for each week — pick any week below</p></span></button>" +
+          '<button class="mode-card" data-studyqs="1"><span class="tile" style="background:#0EA5E9">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M3.5 6l1.2 1.2L7 4.9"/><path d="M3.5 12l1.2 1.2L7 10.9"/><path d="M3.5 18l1.2 1.2L7 16.9"/></svg>' +
+          "</span><span class=\"mtxt\"><h3>Study Questions</h3><p>Every question with its correct answer marked in green — Weeks 0–12, read &amp; learn</p></span></button>" +
           '<button class="mode-card" data-gorev="quick"><span class="tile" style="background:#8B5CF6">' +
           icoCardW +
           "</span><span class=\"mtxt\"><h3>Quick Revision</h3><p>Flashcards from your wrong + bookmarked questions</p></span></button>" +
@@ -3585,7 +3819,105 @@
           "</div></div></div>";
         return h;
       }
+      function studyHTML() {
+        let h =
+          '<div class="wrap"><button class="back-btn" data-nav="learn" aria-label="Back to Learn">←</button>' +
+          '<h2 style="font-size:24px;font-weight:800;margin-top:6px">Study Questions</h2><p class="small" style="margin-top:4px;font-size:15px">Read every question with its correct answer already marked in <b style="color:var(--green)">green</b> — pure study, no test, nothing is recorded. Pick a week:</p>' +
+          '<div class="week-list" style="margin-top:14px">';
+        for (let w = 0; w <= 12; w++) {
+          h +=
+            '<div class="week-row" data-studyweek="' +
+            w +
+            '" role="button" tabindex="0" style="cursor:pointer"><div class="top"><span class="wtile" style="background:' +
+            (TILEC[w - 1] || "#0EA5E9") +
+            '">' +
+            w +
+            '</span><span class="info"><b>Week ' +
+            w +
+            " · " +
+            esc(WEEK_TITLES[w]) +
+            '</b><br><span class="cnt">' +
+            weekQs(w).length +
+            " questions · answers shown in green</span></span>" +
+            '<span class="chev">›</span></div></div>';
+        }
+        h += "</div></div>";
+        return h;
+      }
+      function studyCard(q) {
+        const opts = q.options
+          .map((o) => {
+            const ok = o.letter === q.correct_letter;
+            return (
+              '<div class="study-opt' +
+              (ok ? " correct" : "") +
+              '"><span class="ltr">' +
+              o.letter +
+              '</span><span class="stxt">' +
+              esc(o.text) +
+              "</span>" +
+              (ok ? '<span class="ok-tag">✓ Correct Answer</span>' : "") +
+              "</div>"
+            );
+          })
+          .join("");
+        return (
+          '<div class="card" style="margin-top:12px"><div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap"><span class="tag b">Q' +
+          q.number +
+          '</span><span class="tag">Week ' +
+          q.week +
+          '</span></div><p class="q" style="margin-top:8px">' +
+          esc(q.question) +
+          '</p><div class="study-opts">' +
+          opts +
+          "</div></div>"
+        );
+      }
+      function studyWeekHTML() {
+        const w = CURSTUDY;
+        const qs = weekQs(w)
+          .slice()
+          .sort((a, b) => a.number - b.number);
+        let chips = "";
+        for (let x = 0; x <= 12; x++)
+          chips +=
+            '<button class="wkchip' +
+            (x === w ? " on" : "") +
+            '" data-studyweek="' +
+            x +
+            '">W' +
+            x +
+            "</button>";
+        let h =
+          '<div class="wrap"><button class="back-btn" data-studyqs="1" aria-label="Back to Study Questions week list">←</button>' +
+          '<h2 style="font-size:23px;font-weight:800;margin-top:6px">Week ' +
+          w +
+          " · " +
+          esc(WEEK_TITLES[w]) +
+          "</h2>" +
+          '<p class="small" style="margin-top:3px">Study Questions · ' +
+          qs.length +
+          ' questions · the correct answer to each question is highlighted in <b style="color:var(--green)">green</b>. Just scroll and read — nothing is recorded.</p>' +
+          '<div class="wkchips" role="group" aria-label="Switch week">' +
+          chips +
+          "</div>";
+        h += qs.map(studyCard).join("");
+        h +=
+          '<button class="btn btn-g" data-studyqs="1" style="width:100%;margin-top:16px">← Back to all weeks</button></div>';
+        return h;
+      }
       function wireLearn() {
+        document
+          .querySelectorAll("[data-studyqs]")
+          .forEach((b) => (b.onclick = () => go("study")));
+        document.querySelectorAll("[data-studyweek]").forEach(
+          (b) =>
+            (b.onclick = () => {
+              CURSTUDY = +b.dataset.studyweek;
+              curView = "studyweek";
+              render();
+            }),
+        );
         document
           .querySelectorAll("[data-lesson]")
           .forEach((b) => (b.onclick = () => openLesson(+b.dataset.lesson)));
@@ -3655,10 +3987,11 @@
             (b.onclick = () => {
               const w = +b.dataset.lqweek;
               startSession({
-                mode: "week",
-                title: "Week " + w + " practice (check each answer)",
+                mode: "weektest",
+                title: "Week " + w + " Test",
                 qids: weekQs(w).map((q) => q.id),
                 shuffleOpts: false,
+                submitAll: true,
               });
             }),
         );
@@ -3696,7 +4029,7 @@
           '<h2 style="font-size:26px;font-weight:800;margin-top:22px">Choose Your Subject</h2><p class="small" style="margin-top:4px;font-size:15px">Select a subject to start preparing for your NPTEL exam.</p>' +
           '<div class="card" style="margin-top:18px"><div style="display:flex;gap:14px;align-items:flex-start"><span class="tile" style="background:var(--blue);width:54px;height:54px;border-radius:14px">' +
           globe +
-          '</span><div style="flex:1;min-width:0"><b style="font-size:16px;color:var(--head);letter-spacing:.01em">GEOGRAPHY &amp; ENVIRONMENT</b><p class="small" style="margin-top:2px">Latest Question Set · Weeks 1–12</p><p style="margin-top:7px"><span class="tag g"><span class="dot"></span>Available</span> <span class="small"><b>' +
+          '</span><div style="flex:1;min-width:0"><b style="font-size:16px;color:var(--head);letter-spacing:.01em">GEOGRAPHY &amp; ENVIRONMENT</b><p class="small" style="margin-top:2px">Latest Question Set · Weeks 0–12</p><p style="margin-top:7px"><span class="tag g"><span class="dot"></span>Available</span> <span class="small"><b>' +
           s.questions +
           " questions · " +
           s.weeks +
@@ -3728,7 +4061,7 @@
           [
             '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>',
             "Week-wise Practice",
-            "Practise one week at a time and check each answer",
+            "Practise one week at a time — submit once, then review",
           ],
           [
             '<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 12.5l2 2 4-4.5"/>',
@@ -3738,7 +4071,7 @@
           [
             '<path d="M12 2l9 5-9 5-9-5 9-5z"/><path d="M3 12l9 5 9-5"/><path d="M3 17l9 5 9-5"/>',
             "All Questions",
-            "Work through the complete 113-question bank",
+            "Work through the complete 130-question bank",
           ],
           [
             '<path d="M4 7h9M19 7h1M4 17h3M13 17h7"/><circle cx="16" cy="7" r="2.2"/><circle cx="10" cy="17" r="2.2"/>',
@@ -3798,7 +4131,7 @@
           "</div>" +
           '<div style="display:flex;flex-direction:column;gap:10px;margin-top:22px"><button class="btn btn-p" data-nav="signup">Get Started</button></div>' +
           '<p style="text-align:center;margin-top:16px;font-size:15px">Already have an account? <a href="#" data-nav="login" style="font-weight:700">Log In</a></p>' +
-          '<p class="small" style="margin-top:16px">Geography &amp; Environment · Weeks 1–12 · 113 questions · Accepted answers verified from the supplied source export. An account is required to start practising.</p>' +
+          '<p class="small" style="margin-top:16px">Geography &amp; Environment · Weeks 0–12 · 130 questions · Accepted answers verified — Weeks 1–12 from the supplied source export and the owner\'s NPTEL portal; Week 0 from public course material. An account is required to start practising.</p>' +
           (S.legacy
             ? '<p class="small" style="margin-top:8px">Progress saved earlier on this device (before accounts existed) will be attached to the first account created here — nothing is wiped.</p>'
             : "") +
@@ -3881,9 +4214,68 @@
         "#84CC16",
         "#6366F1",
       ];
+      function perfGraphHTML() {
+        const agg = {};
+        (D.sessions || []).forEach((s) => {
+          const bw = s.byWeek || {};
+          Object.keys(bw).forEach((w) => {
+            const a = agg[w] || (agg[w] = { t: 0, c: 0 });
+            a.t += bw[w].t || 0;
+            a.c += bw[w].c || 0;
+          });
+        });
+        const weeks = Object.keys(agg)
+          .map(Number)
+          .filter((w) => agg[w].t > 0)
+          .sort((a, b) => a - b);
+        if (!weeks.length)
+          return (
+            '<div class="card" id="perfGraph" style="margin-top:16px"><b>Your week-wise accuracy</b><p class="small" style="margin-top:4px">Attempt a week test to see your graph — one bar per week, from your own results on this device.</p></div>'
+          );
+        let weakW = weeks[0],
+          weakAcc = Infinity;
+        weeks.forEach((w) => {
+          const acc = agg[w].c / agg[w].t;
+          if (acc < weakAcc) {
+            weakAcc = acc;
+            weakW = w;
+          }
+        });
+        const rows = weeks
+          .map((w) => {
+            const v = agg[w];
+            const acc = Math.round((v.c / v.t) * 100);
+            const weak = w === weakW && weeks.length > 1 && weakAcc < 1;
+            return (
+              '<div class="pg-row' +
+              (weak ? " weak" : "") +
+              '"><span class="pg-w">W' +
+              w +
+              '</span><div class="pg-track"><i style="width:' +
+              Math.max(acc, 2) +
+              '%"></i></div><span class="pg-pct">' +
+              acc +
+              "%</span>" +
+              (weak ? '<span class="tag r">Weakest</span>' : "") +
+              "</div>"
+            );
+          })
+          .join("");
+        return (
+          '<div class="card" id="perfGraph" style="margin-top:16px"><b>Your week-wise accuracy</b><p class="small" style="margin-top:4px">Accuracy per week across your submitted tests on this device (' +
+          "correct ÷ questions in the test" +
+          ').</p><div style="margin-top:6px">' +
+          rows +
+          (weakAcc >= 1
+            ? '</div><p class="small" style="margin-top:10px">Every attempted week is at <b>100%</b> — excellent work.</p></div>'
+            : '</div><p class="small" style="margin-top:10px">Weakest right now: <b>Week ' +
+              weakW +
+              "</b> — revise it next.</p></div>")
+        );
+      }
       function weakestWeek() {
         let weak = null;
-        for (let w = 1; w <= 12; w++) {
+        for (let w = 0; w <= 12; w++) {
           let t = 0,
             c = 0;
           weekQs(w).forEach((q) => {
@@ -3903,7 +4295,7 @@
       function readinessInfo() {
         const o = overall();
         if (!o.totalAttempts) return null;
-        const cov = (o.attempted / 113) * 100;
+        const cov = (o.attempted / BANK.length) * 100;
         const tests = D.sessions.filter(
           (s) => s.mode === "mock" || s.mode === "weektest",
         ).length;
@@ -3958,7 +4350,7 @@
         let h =
           '<div class="wrap"><div class="home-hero"><div class="hh-txt"><p style="font-size:24px;font-weight:800;line-height:1.2">Hello, ' +
           esc(first) +
-          ' 👋</p><p class="small" style="margin-top:4px;font-size:15px">Let’s practise and improve today!</p><p class="small" style="margin-top:10px;line-height:1.45">Subject: <b style="color:var(--head)">Geography &amp; Environment</b><br>Weeks 1–12 · 113 questions</p></div><div class="hh-art" aria-hidden="true">' +
+          ' 👋</p><p class="small" style="margin-top:4px;font-size:15px">Let’s practise and improve today!</p><p class="small" style="margin-top:10px;line-height:1.45">Subject: <b style="color:var(--head)">Geography &amp; Environment</b><br>Weeks 0–12 · 130 questions</p></div><div class="hh-art" aria-hidden="true">' +
           heroArt +
           "</div></div>";
         if (D.activeSes && D.activeSes.qids && D.activeSes.qids.length) {
@@ -4005,13 +4397,15 @@
                 : "Your exam date has passed — set a new one in Account") +
             "</b>" +
             (weak
-              ? '<p class="small" style="margin-top:4px">Weakest right now: <b>Week ' +
-                weak.w +
-                "</b> (" +
-                Math.round(weak.acc * 100) +
-                "% across " +
-                weak.t +
-                ' attempts).</p><button class="btn btn-p btn-sm" id="pWeakRev" style="margin-top:10px">View</button>'
+              ? weak.acc >= 1
+                ? '<p class="small" style="margin-top:4px">Every attempted week is at <b>100%</b> — excellent work, keep it up.</p>'
+                : '<p class="small" style="margin-top:4px">Weakest right now: <b>Week ' +
+                  weak.w +
+                  "</b> (" +
+                  Math.round(weak.acc * 100) +
+                  "% across " +
+                  weak.t +
+                  ' attempts).</p><button class="btn btn-p btn-sm" id="pWeakRev" style="margin-top:10px">View</button>'
               : "") +
             "</div>";
         }
@@ -4020,7 +4414,7 @@
           card(
             "weeks",
             "Week-wise Practice",
-            "Practise week 1 – 12 questions",
+            "Practise weeks 0 – 12 questions",
             "#2878F9",
             icBook,
           ) +
@@ -4073,13 +4467,17 @@
             rd.score +
             '%</span></div><div style="flex:1;min-width:0"><b>Exam Readiness Score</b><p class="small" style="margin-top:3px">' +
             (rd.weak
-              ? "Weakest right now: <b>Week " +
-                rd.weak.w +
-                "</b> — revise it next."
+              ? rd.weak.acc >= 1
+                ? "Every attempted week is at <b>100%</b> — keep it up."
+                : "Weakest right now: <b>Week " +
+                  rd.weak.w +
+                  "</b> — revise it next."
               : "Coverage " +
                 rd.cov +
                 "% of the bank · keep accuracy climbing.") +
-            '</p><p class="small" style="margin-top:3px">Estimate — not a guarantee of exam performance.</p><details class="calc"><summary class="small" style="cursor:pointer;font-weight:700"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--blue)" stroke-width="2" style="flex-shrink:0"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><circle cx="12" cy="8" r="0.6" fill="var(--blue)"/></svg>How is this calculated?</summary><p class="small" style="margin-top:4px">Readiness = 45% × coverage (questions attempted ÷ 113) + 45% × your overall accuracy + 10% × tests completed (week tests &amp; mocks, capped at 5). Yours: coverage ' +
+            '</p><p class="small" style="margin-top:3px">Estimate — not a guarantee of exam performance.</p><details class="calc"><summary class="small" style="cursor:pointer;font-weight:700"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--blue)" stroke-width="2" style="flex-shrink:0"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><circle cx="12" cy="8" r="0.6" fill="var(--blue)"/></svg>How is this calculated?</summary><p class="small" style="margin-top:4px">Readiness = 45% × coverage (questions attempted ÷ ' +
+            BANK.length +
+            ') + 45% × your overall accuracy + 10% × tests completed (week tests &amp; mocks, capped at 5). Yours: coverage ' +
             rd.cov +
             "%, accuracy " +
             o.accuracy +
@@ -4099,11 +4497,14 @@
           o.accuracy +
           '%</span></div><div style="flex:1"><p style="display:flex;justify-content:space-between;font-size:14.5px"><span class="small">Questions attempted</span><b>' +
           o.attempted +
-          ' / 113</b></p><p style="display:flex;justify-content:space-between;font-size:14.5px;margin-top:5px"><span class="small">Correct answers</span><b>' +
+          " / " +
+          BANK.length +
+          '</b></p><p style="display:flex;justify-content:space-between;font-size:14.5px;margin-top:5px"><span class="small">Correct answers</span><b>' +
           o.correct +
           '</b></p><p style="display:flex;justify-content:space-between;font-size:14.5px;margin-top:5px"><span class="small">Accuracy</span><b>' +
           o.accuracy +
           "%</b></p></div></div></div>";
+        h += perfGraphHTML();
         const icClip =
           '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 12.5l2 2 4-4.5"/></svg>';
         const icLearnW =
@@ -4204,12 +4605,12 @@
       }
       function weeksHTML() {
         let rows = "";
-        for (let w = 1; w <= 12; w++) {
+        for (let w = 0; w <= 12; w++) {
           const st = weekStats(w);
           const pct = st.total
             ? Math.round((st.attempted / st.total) * 100)
             : 0;
-          const col = TILEC[w - 1];
+          const col = TILEC[w - 1] || "#0EA5E9";
           rows +=
             '<div class="week-row"><div class="top"><span class="wtile" style="background:' +
             col +
@@ -4233,20 +4634,18 @@
             col +
             '"></i></div><div class="acts"><button class="btn btn-p btn-sm" data-week="' +
             w +
-            '">Week Test</button><button class="btn btn-g btn-sm" data-weekpractice="' +
-            w +
-            '">Practice mode</button></div></div>';
+            '">Week Test</button></div></div>';
         }
         return (
-          '<div class="wrap"><p class="crumb">Practice › <b>Week-wise Practice</b></p><h2 style="font-size:24px;font-weight:800">Week-wise Practice</h2><p class="small" style="margin-top:4px">Select a week to start practising. <b>Week Test</b> = answer every question, submit once, then review. <b>Practice mode</b> = check each answer as you go.</p><div class="week-list">' +
+          '<div class="wrap"><p class="crumb">Practice › <b>Week-wise Practice</b></p><h2 style="font-size:24px;font-weight:800">Week-wise Practice</h2><p class="small" style="margin-top:4px">Select a week to start. Every session here is <b>submit-all</b>: answer every question first — no answers are revealed while you attempt — then submit once to see your score and the full review.</p><div class="week-list">' +
           rows +
           "</div></div>"
         );
       }
       function setupHTML(kind) {
         if (kind === "mock") {
-          let wkOpts = '<option value="all">All Weeks (1 – 12)</option>';
-          for (let w = 1; w <= 12; w++)
+          let wkOpts = '<option value="all">All Weeks (0 – 12)</option>';
+          for (let w = 0; w <= 12; w++)
             wkOpts +=
               '<option value="' +
               w +
@@ -4267,7 +4666,7 @@
           );
         }
         const wc = [];
-        for (let w = 1; w <= 12; w++)
+        for (let w = 0; w <= 12; w++)
           wc.push(
             '<label class="wc"><input type="checkbox" class="wkchk" value="' +
               w +
@@ -4619,6 +5018,30 @@
         h += "</div>";
         return h;
       }
+      function feedbackCardHTML() {
+        const fb = D.feedback || null;
+        const thumb = (down) =>
+          '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"' +
+          (down ? ' style="transform:rotate(180deg)"' : "") +
+          '><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.3a2 2 0 0 0 2-1.7l1.2-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>';
+        return (
+          '<div class="card" style="margin-top:16px"><b>Did this app help you?</b><p class="small" style="margin-top:4px">' +
+          (fb
+            ? "You marked this app <b>" +
+              (fb === "up" ? "Helpful" : "Not helpful") +
+              "</b> — tap either button to change your answer. Saved on this device only."
+            : "Tap one — your answer is saved on this device only and helps improve the app.") +
+          '</p><div class="fb-btns"><button class="fb-btn' +
+          (fb === "up" ? " on-up" : "") +
+          '" id="fbUp">' +
+          thumb(false) +
+          'Helpful</button><button class="fb-btn' +
+          (fb === "down" ? " on-down" : "") +
+          '" id="fbDown">' +
+          thumb(true) +
+          "Not helpful</button></div></div>"
+        );
+      }
       function accountHTML() {
         const a = curAcct();
         const o = overall();
@@ -4663,7 +5086,9 @@
           "</p></div>" +
           '<div class="stat-grid" style="grid-template-columns:1fr 1fr"><div class="stat"><div class="n">' +
           o.attempted +
-          '/113</div><div class="l">Questions attempted</div></div><div class="stat"><div class="n">' +
+          "/" +
+          BANK.length +
+          '</div><div class="l">Questions attempted</div></div><div class="stat"><div class="n">' +
           o.accuracy +
           '%</div><div class="l">Accuracy · ' +
           o.correct +
@@ -4675,7 +5100,7 @@
           D.sessions.length +
           '</div><div class="l">Sessions completed</div></div></div>' +
           '<div class="prof-rows">' +
-          row(icP, "My Progress", 'data-nav="practice"') +
+          row(icP, "My Progress", 'data-gograph="1"') +
           row(icB, "Bookmarks", 'data-gorev="bookmarks"') +
           row(icW, "My Mistakes", 'data-gorev="wrong"') +
           row(icN, "My Notes", 'data-gorev="notes"') +
@@ -4708,10 +5133,11 @@
           ) +
           row(
             '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h9M19 8h1M4 16h3M13 16h7"/><circle cx="16" cy="8" r="2"/><circle cx="10" cy="16" r="2"/></svg>',
-            "Admin (local preview)",
+            "Admin",
             'data-nav="admin"',
           ) +
           "</div>" +
+          feedbackCardHTML() +
           '<div class="card" style="margin-top:16px"><b>Your exam date</b><p class="small" style="margin-top:4px">' +
           (D.examDate
             ? "Exam date set: <b>" +
@@ -4777,12 +5203,12 @@
           save();
         }
         let wkOpts = '<option value="">All Weeks</option>';
-        for (let w = 1; w <= 12; w++)
+        for (let w = 0; w <= 12; w++)
           wkOpts +=
             '<option value="' +
             w +
             '"' +
-            (wf == w ? " selected" : "") +
+            (wf !== "" && +wf === w ? " selected" : "") +
             ">Week " +
             w +
             "</option>";
@@ -4851,7 +5277,7 @@
           typeOpts +
           "</select></div>" +
           (res === null
-            ? '<div class="empty" style="max-width:640px"><b>Search all 113 questions</b>Search matches question text and option text, week by week.</div>'
+            ? '<div class="empty" style="max-width:640px"><b>Search all 130 questions</b>Search matches question text and option text, week by week.</div>'
             : res.length
               ? '<p class="small" style="margin-top:14px"><b>' +
                 res.length +
@@ -4874,7 +5300,7 @@
           return a && a.wrong >= 2;
         });
         const weakWeeks = [];
-        for (let w = 1; w <= 12; w++) {
+        for (let w = 0; w <= 12; w++) {
           let t = 0,
             c = 0;
           weekQs(w).forEach((q) => {
@@ -4953,7 +5379,7 @@
       }
       function aboutHTML() {
         let rows = "";
-        for (let w = 1; w <= 12; w++) {
+        for (let w = 0; w <= 12; w++) {
           const n = weekQs(w).length;
           rows +=
             "<tr><td><b>Week " +
@@ -4968,17 +5394,18 @@
         }
         return (
           '<div class="wrap"><p class="crumb">Home › <b>Source &amp; Limits</b></p><h2 style="font-size:24px;font-weight:800">Source &amp; Limits — Honesty &amp; QA</h2><div class="list">' +
-          '<div class="item"><b>Source file</b><p class="small" style="margin-top:4px">Geography_Environment_Weeks_1-12_Updated_Accepted_Answers.pdf — the supplied NPTEL assignment export for <b>Geography &amp; Environment</b>. Total: <b>113 questions</b>, each with exactly 4 options (A–D). Spot-checks: Week 1 Q1 → “migration” · Week 5 Q9 → “0-1 degree” · Week 12 Q2 → “1500 m”.</p></div>' +
+          '<div class="item"><b>Source file</b><p class="small" style="margin-top:4px">Geography_Environment_Weeks_1-12_Updated_Accepted_Answers.pdf — the supplied NPTEL assignment export for <b>Geography &amp; Environment</b>, extended with the owner’s portal records and the Week 0 orientation set. Total: <b>130 questions</b>, each with exactly 4 options (A–D). Spot-checks: Week 1 Q1 → “migration” · Week 5 Q9 → “0-1 degree” · Week 12 Q2 → “1500 m”.</p></div>' +
           '<div class="item"><b>Answer provenance</b><p class="small" style="margin-top:4px">Every answer shown is the <b>accepted answer from source</b>, recorded in the export as both a marked option and a “Correct Answer:” line. No answer has been generated, replaced or silently corrected.</p></div>' +
-          '<div class="item"><b>How answers were verified</b><p class="small" style="margin-top:4px">Every accepted answer was double-checked: the source records it twice (marked option + “Correct Answer:” line) and <b>all 113 agree</b> — an automated comparison found 0 mismatches. A sample was also cross-checked against independent NPTEL course materials with no conflicts. NPTEL does not publish a public answer key for this course (keys live inside the enrolled course), so the supplied quiz export is the authoritative source. No answer in this app has been “corrected” or regenerated.</p></div>' +
-          '<div class="item"><b>Explanations</b><p class="small" style="margin-top:4px">The source contains <b>no explanations</b> for any of the 113 questions. The app therefore shows “No explanation in source” everywhere rather than inventing one. Your own notes are yours — they are labelled as personal notes, never as verified explanations.</p></div>' +
+          '<div class="item"><b>How answers were verified</b><p class="small" style="margin-top:4px">On 23 Oct 2026, every Weeks 1–12 question was re-verified one-by-one against the Accepted Answers shown in the owner’s own NPTEL portal — <b>120 of 120 match, 0 differences</b> — in addition to the original source double-recording check (the export records each answer twice, marked option + “Correct Answer:” line; 113/113 agreed). Weeks 1–12 are therefore complete and portal-verified. No answer in this app has been “corrected” or regenerated.</p></div>' +
+          '<div class="item"><b>Week 0 — Orientation &amp; Key Concepts</b><p class="small" style="margin-top:4px">Week 0 (10 questions) is the course orientation week. The portal shows no accepted answers for it (the quiz there is unsubmitted), so Week 0 answers were sourced and verified from public course material for this course. They are the only answers in this app not taken from an NPTEL accepted-answer record.</p></div>' +
+          '<div class="item"><b>Explanations</b><p class="small" style="margin-top:4px">The source contains <b>no explanations</b> for any of the 130 questions. The app therefore shows “No explanation in source” everywhere rather than inventing one. Your own notes are yours — they are labelled as personal notes, never as verified explanations.</p></div>' +
           '<div class="item"><b>Persistence &amp; privacy</b><p class="small" style="margin-top:4px">Progress, bookmarks, notes, mistakes, searches and reports are stored in <b>browser local storage on this device only</b>. There is no server, no account and no tracking. Clearing browser data deletes them.</p></div>' +
           '<div class="item"><b>Mock exam</b><p class="small" style="margin-top:4px">The mock is a <b>practice tool</b> built from assignment questions. It does not reproduce or guarantee the official NPTEL examination format.</p></div>' +
           '<div class="item"><b>Content rights</b><p class="small" style="margin-top:4px">Question text comes from the supplied NPTEL assignment export and is provided here for <b>personal revision use</b>. Open-source code does not by itself grant rights to redistribute third-party course content.</p></div>' +
-          '<div class="item"><b>Per-week counts &amp; missing question numbers</b><div style="overflow-x:auto"><table><thead><tr><th>Week</th><th>Theme</th><th>In source</th><th>Missing numbers</th></tr></thead><tbody>' +
+          '<div class="item"><b>Per-week counts</b><div style="overflow-x:auto"><table><thead><tr><th>Week</th><th>Theme</th><th>Questions in bank</th><th>Missing numbers</th></tr></thead><tbody>' +
           rows +
-          '</tbody></table></div><p class="small" style="margin-top:8px">Total: 113. The missing question numbers (Week 6 Q10; Week 7 Q1 &amp; Q9; Week 9 Q1; Week 10 Q1; Week 11 Q1 &amp; Q5) are absent from the supplied PDF itself — they were never in the export, and they have not been invented here.</p></div>' +
-          '<div class="item"><b>Project structure &amp; code maintenance</b><p class="small" style="margin-top:4px">The code is kept clean and organised so anyone can review or maintain it. In the <a href="https://github.com/Thunderdoc/nptel-exam-practice-hub" target="_blank" rel="noopener"><b>GitHub repository</b></a> it lives in a proper split layout:</p><p class="small" style="margin-top:6px"><b>index.html</b> — app markup only · <b>assets/css/style.css</b> — the full design system · <b>assets/js/app.js</b> — app logic, organised in labelled sections (question bank, state &amp; accounts, session engine, learn, views, router) · <b>data/questions.json</b> — the 113-question bank, one entry per question so every change is a small, reviewable diff · <b>docs/VERIFICATION.md</b> — the answer-verification report · <b>README.md</b> — setup, structure and deployment notes.</p><p class="small" style="margin-top:6px">The code is consistently formatted, dead code is removed, and data changes are never mixed with design changes. This page runs the single-file build of the same code.</p></div>' +
+          '</tbody></table></div><p class="small" style="margin-top:8px">Total: 130. Weeks 1–12 are complete — there are no missing question numbers. The 7 numbers absent from the original PDF export (Week 6 Q10; Week 7 Q1 &amp; Q9; Week 9 Q1; Week 10 Q1; Week 11 Q1 &amp; Q5) were recovered from the owner’s own NPTEL portal and are included.</p></div>' +
+          '<div class="item"><b>Project structure &amp; code maintenance</b><p class="small" style="margin-top:4px">The code is kept clean and organised so anyone can review or maintain it. In the <a href="https://github.com/Thunderdoc/nptel-exam-practice-hub" target="_blank" rel="noopener"><b>GitHub repository</b></a> it lives in a proper split layout:</p><p class="small" style="margin-top:6px"><b>index.html</b> — app markup only · <b>assets/css/style.css</b> — the full design system · <b>assets/js/app.js</b> — app logic, organised in labelled sections (question bank, state &amp; accounts, session engine, learn, views, router) · <b>data/questions.json</b> — the 130-question bank, one entry per question so every change is a small, reviewable diff · <b>docs/VERIFICATION.md</b> — the answer-verification report · <b>README.md</b> — setup, structure and deployment notes.</p><p class="small" style="margin-top:6px">The bank is fully data-driven — a future NPTEL session or a new subject is added as new data (data/questions.json and the embedded bank), not as code changes.</p><p class="small" style="margin-top:6px">The code is consistently formatted, dead code is removed, and data changes are never mixed with design changes. This page runs the single-file build of the same code.</p></div>' +
           '<div class="item"><b>Built by</b><p class="small" style="margin-top:4px">Built by <a href="https://github.com/Thunderdoc" target="_blank" rel="noopener"><b>Thunderdoc</b></a> — for NPTEL students preparing for their exam.</p></div>' +
           "</div></div>"
         );
@@ -5004,6 +5431,24 @@
         });
         return out.sort((x, y) => new Date(y.at) - new Date(x.at));
       }
+      const ADMIN_USER = "admin";
+      const ADMIN_SALT = "nptel-admin-2026";
+      const ADMIN_HASH =
+        "36f86475239d11595ec2b5ff5ab177f9830f2bf7202dd8dc381ba6b00c747213";
+      let ADMIN_ON = false;
+      function adminLoginHTML() {
+        return (
+          '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="welcome" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Admin Sign In</h2><p class="small" style="margin-top:4px">For the site owner only. The panel shows real visitor stats (via Vercel) plus this device’s local data.</p>' +
+          '<form class="auth-card" id="admForm" style="max-width:none"><div class="field"><span class="fic">' +
+          icoPerson() +
+          '</span><input id="admUser" type="text" autocomplete="username" required placeholder="Username"></div>' +
+          '<div class="field"><span class="fic">' +
+          icoLock() +
+          '</span><input id="admPw" type="password" autocomplete="current-password" required placeholder="Password"></div>' +
+          '<p class="small" id="admErr" style="color:var(--red);font-weight:600;margin-top:10px"></p>' +
+          '<button class="btn btn-p" type="submit" style="width:100%;margin-top:14px">Sign in to Admin</button></form></div></div>'
+        );
+      }
       function adminHTML() {
         const accts = Object.values(S.accounts || {});
         const agg = {};
@@ -5021,7 +5466,7 @@
           0,
         );
         const wkAgg = [];
-        for (let w = 1; w <= 12; w++) {
+        for (let w = 0; w <= 12; w++) {
           let t = 0;
           weekQs(w).forEach((q) => {
             if (agg[q.id]) t += agg[q.id].total;
@@ -5033,6 +5478,13 @@
           .sort((a, b) => b[1].total - a[1].total)
           .slice(0, 5);
         const issues = allIssues();
+        let fbUp = 0,
+          fbDown = 0;
+        accts.forEach((a) => {
+          const f = a.data && a.data.feedback;
+          if (f === "up") fbUp++;
+          else if (f === "down") fbDown++;
+        });
         const searches = S.searches.slice().reverse();
         const termCounts = {};
         S.searches.forEach((s) => {
@@ -5044,7 +5496,7 @@
           .slice(0, 10);
         const noRes = S.searches.filter((s) => s.results === 0);
         let rows = "";
-        for (let w = 1; w <= 12; w++)
+        for (let w = 0; w <= 12; w++)
           rows +=
             "<tr><td>Week " +
             w +
@@ -5066,15 +5518,23 @@
             esc(q.correct_letter) +
             ". " +
             esc(q.correct_text) +
-            '</td><td><span class="tag g">Accepted answer from source</span></td></tr>',
+            '</td><td><span class="tag g">' +
+            (q.week === 0
+              ? "Public course material"
+              : "Accepted answer from source") +
+            "</span></td></tr>",
         ).join("");
         return (
-          '<div class="wrap"><p class="crumb">Account › <b>Admin preview</b></p><h2 style="font-size:24px;font-weight:800">Admin — Local Preview</h2><div class="item" style="border-color:var(--amber);background:var(--amber-bg);margin-top:12px"><b>Local / device admin preview — not server-secured.</b><p class="small" style="margin-top:4px">This page aggregates only this browser\'s local data (all accounts on this device). It is not protected by a server login. No users, DAU or platform-wide stats are fabricated — there is no server collecting them. Reports never change an answer automatically.</p></div>' +
+          '<div class="wrap"><p class="crumb">Account › <b>Admin panel</b></p><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><h2 style="font-size:24px;font-weight:800;flex:1">Admin Panel</h2><button class="btn btn-g btn-sm" id="admOut">Sign out of Admin</button></div><div class="item" style="border-color:var(--amber);background:var(--amber-bg);margin-top:12px"><b>Please read — what this panel can and cannot show.</b><p class="small" style="margin-top:4px">This is a static site with no backend. Per-student attempts, feedback and activity from OTHER students’ devices are not collected here — that needs a backend (Phase 2). The only whole-site numbers are the real visitor stats in Vercel Analytics above.</p></div>' +
+          '<section class="sec"><h2>Real site traffic</h2><div class="item"><b>Whole-site visitor stats live in Vercel Analytics</b><p class="small" style="margin-top:4px">Real visits, pages and referrers for the whole site — collected by Vercel, not by this page.</p><a class="btn btn-p btn-sm" href="https://vercel.com/thunderdoc/nptel-exam-practice-hub/analytics" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex">View live visitor stats ↗</a></div></section>' +
+          '<h2 style="font-size:19px;font-weight:800;margin-top:22px">This device</h2><p class="small" style="margin-top:2px">Everything below comes only from accounts and activity stored in this browser, on this device.</p>' +
           '<div class="stat-grid"><div class="stat"><div class="n">' +
           accts.length +
-          '</div><div class="l">Local accounts (this device)</div></div><div class="stat"><div class="n">113</div><div class="l">Questions in bank</div></div><div class="stat"><div class="n">' +
+          '</div><div class="l">Local accounts (this device)</div></div><div class="stat"><div class="n">' +
+          BANK.length +
+          '</div><div class="l">Questions in bank</div></div><div class="stat"><div class="n">' +
           totSess +
-          '</div><div class="l">Sessions completed (all accounts)</div></div><div class="stat"><div class="n">' +
+          '</div><div class="l">Sessions completed (all accounts, this device)</div></div><div class="stat"><div class="n">' +
           issues.length +
           '</div><div class="l">Reported issues</div></div></div>' +
           '<section class="sec"><h2>Usage on this device</h2><div class="list"><div class="item"><b>Most-used weeks:</b> ' +
@@ -5104,8 +5564,19 @@
                 })
                 .join(" · ")
             : "No attempts yet.") +
-          '</div><div class="item">Missing explanations: <b>113 / 113</b> — the source contains no explanations. Questions with missing options or missing accepted answers: <b>0</b>.</div></div></section>' +
-          '<section class="sec"><h2>Reported issues</h2>' +
+          '</div><div class="item">Missing explanations: <b>' +
+          BANK.length +
+          " / " +
+          BANK.length +
+          '</b> — the source contains no explanations. Questions with missing options or missing accepted answers: <b>0</b>.</div></div></section>' +
+          '<section class="sec"><h2>Feedback (this device)</h2><div class="stat-grid" style="grid-template-columns:1fr 1fr 1fr"><div class="stat"><div class="n">' +
+          fbUp +
+          '</div><div class="l">Helpful</div></div><div class="stat"><div class="n">' +
+          fbDown +
+          '</div><div class="l">Not helpful</div></div><div class="stat"><div class="n">' +
+          (fbUp + fbDown) +
+          '</div><div class="l">Responses (this device)</div></div></div><p class="hint">From the “Did this app help you?” prompt on the Account page — stored per account on this device only.</p></section>' +
+          '<section class="sec"><h2>Reported issues (this device)</h2>' +
           (issues.length
             ? '<div class="list">' +
               issues
@@ -5157,7 +5628,9 @@
                 .join(" · ")
             : "None yet.") +
           "</div></div></section>" +
-          '<section class="sec"><h2>Question bank (113)</h2><p class="hint">Verification status for every question: Accepted answer from source.</p><div class="item" style="overflow-x:auto"><table><thead><tr><th>ID</th><th>Question</th><th>Accepted answer</th><th>Status</th></tr></thead><tbody>' +
+          '<section class="sec"><h2>Question bank (' +
+          BANK.length +
+          ')</h2><p class="hint">Verification status per question: Weeks 1–12 show “Accepted answer from source” (portal-verified); Week 0 shows “Public course material”.</p><div class="item" style="overflow-x:auto"><table><thead><tr><th>ID</th><th>Question</th><th>Accepted answer</th><th>Status</th></tr></thead><tbody>' +
           bankRows +
           "</tbody></table></div></section></div>"
         );
@@ -5187,6 +5660,15 @@
               const tn = document.getElementById("topNav");
               if (tn) tn.classList.remove("open");
               go(b.dataset.nav);
+            }),
+        );
+        document.querySelectorAll("[data-gograph]").forEach(
+          (b) =>
+            (b.onclick = () => {
+              go("practice");
+              const el = document.getElementById("perfGraph");
+              if (el)
+                el.scrollIntoView({ behavior: "smooth", block: "start" });
             }),
         );
         document.querySelectorAll("[data-goto]").forEach(
@@ -5281,18 +5763,6 @@
               });
             }),
         );
-        document.querySelectorAll("[data-weekpractice]").forEach(
-          (b) =>
-            (b.onclick = () => {
-              const w = +b.dataset.weekpractice;
-              startSession({
-                mode: "week",
-                title: "Week " + w + " practice (check each answer)",
-                qids: weekQs(w).map((q) => q.id),
-                shuffleOpts: false,
-              });
-            }),
-        );
         document.querySelectorAll("[data-weekun]").forEach(
           (b) =>
             (b.onclick = () => {
@@ -5358,7 +5828,10 @@
           .forEach((b) =>
             b.classList.toggle(
               "on",
-              b.dataset.nav === (curView === "lesson" ? "learn" : curView),
+              b.dataset.nav ===
+                (["lesson", "study", "studyweek"].includes(curView)
+                  ? "learn"
+                  : curView),
             ),
           );
       }
@@ -5439,6 +5912,8 @@
         else if (curView === "subject") app.innerHTML = subjectHTML();
         else if (curView === "learn") app.innerHTML = learnHTML();
         else if (curView === "lesson") app.innerHTML = lessonHTML();
+        else if (curView === "study") app.innerHTML = studyHTML();
+        else if (curView === "studyweek") app.innerHTML = studyWeekHTML();
         else if (curView === "practice") app.innerHTML = practiceHTML();
         else if (curView === "weeks") app.innerHTML = weeksHTML();
         else if (curView === "revision") app.innerHTML = revisionHTML();
@@ -5450,7 +5925,8 @@
           );
         else if (curView === "account") app.innerHTML = accountHTML();
         else if (curView === "about") app.innerHTML = aboutHTML();
-        else if (curView === "admin") app.innerHTML = adminHTML();
+        else if (curView === "admin")
+          app.innerHTML = ADMIN_ON ? adminHTML() : adminLoginHTML();
         else if (curView === "setup-random")
           app.innerHTML = setupHTML("random");
         else if (curView === "setup-mock") app.innerHTML = setupHTML("mock");
@@ -5460,6 +5936,29 @@
         window.scrollTo({ top: 0 });
       }
       function wireView() {
+        const admF = document.getElementById("admForm");
+        if (admF)
+          admF.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const err = document.getElementById("admErr");
+            const u = document.getElementById("admUser").value.trim();
+            const pw = document.getElementById("admPw").value;
+            const h = await hashPw(pw, ADMIN_SALT);
+            if (u === ADMIN_USER && h === ADMIN_HASH) {
+              ADMIN_ON = true;
+              render();
+              toast("Welcome back, Admin");
+            } else {
+              err.textContent =
+                "Wrong username or password — access denied.";
+            }
+          });
+        const admO = document.getElementById("admOut");
+        if (admO)
+          admO.addEventListener("click", () => {
+            ADMIN_ON = false;
+            render();
+          });
         document.querySelectorAll(".eye").forEach((b) =>
           b.addEventListener("click", () => {
             const inp = document.getElementById(b.dataset.eye);
@@ -5647,6 +6146,22 @@
             render();
             toast("Exam date cleared");
           });
+        const fbU = document.getElementById("fbUp");
+        if (fbU)
+          fbU.addEventListener("click", () => {
+            D.feedback = "up";
+            save();
+            render();
+            toast("Thanks for the feedback!");
+          });
+        const fbD = document.getElementById("fbDown");
+        if (fbD)
+          fbD.addEventListener("click", () => {
+            D.feedback = "down";
+            save();
+            render();
+            toast("Thanks — feedback noted, we'll keep improving");
+          });
         const pr = document.getElementById("pResume");
         if (pr)
           pr.addEventListener("click", () => {
@@ -5658,13 +6173,13 @@
               qids: s.qids,
               optOrder: s.optOrder || {},
               answers: s.answers || {},
-              checked: s.checked || {},
+              checked: {},
               recorded: s.recorded || {},
               marked: s.marked || {},
               idx: s.idx || 0,
               start: s.start || Date.now(),
               isMock: !!s.isMock,
-              submitAll: !!s.submitAll,
+              submitAll: true,
               remain: null,
               durationMin: s.durationMin || null,
               poolNote: s.poolNote || "",
