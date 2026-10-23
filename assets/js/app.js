@@ -4116,11 +4116,6 @@
             "Source &amp; Limits",
             'data-nav="about"',
           ) +
-          row(
-            '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h9M19 8h1M4 16h3M13 16h7"/><circle cx="16" cy="8" r="2"/><circle cx="10" cy="16" r="2"/></svg>',
-            "Admin",
-            'data-nav="admin"',
-          ) +
           "</div>" +
           feedbackCardHTML() +
           '<div class="card" style="margin-top:16px"><b>Your exam date</b>' +
