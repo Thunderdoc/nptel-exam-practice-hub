@@ -1256,6 +1256,164 @@
         border-color: var(--sel);
         box-shadow: inset 0 0 0 2px var(--sel);
       }
+      /* session screen: slim sticky header */
+      .ses-head {
+        position: sticky;
+        top: var(--header-h);
+        z-index: 30;
+        background: var(--bg);
+        padding: 10px 0 8px;
+        margin-bottom: 12px;
+      }
+      .ses-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .ses-row .pill {
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .ses-title {
+        font-weight: 800;
+        font-size: 15px;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .ses-meta {
+        font-size: 13px;
+        color: var(--muted);
+        font-weight: 600;
+      }
+      .ses-head .timer {
+        font-size: 14px;
+        padding: 4px 11px;
+      }
+      .ses-head .progress {
+        height: 5px;
+        margin: 8px 0 0;
+        background: var(--surface2);
+      }
+      .qchip {
+        border: 1.5px solid var(--line);
+        background: var(--surface);
+        color: var(--ink);
+        border-radius: 999px;
+        padding: 6px 12px;
+        font-weight: 700;
+        font-size: 13px;
+        min-height: 34px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        flex-shrink: 0;
+      }
+      /* question palette: overlay bottom sheet (never in page flow) */
+      .pal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(8, 12, 24, 0.52);
+        z-index: 65;
+        display: none;
+      }
+      .pal-backdrop.open {
+        display: block;
+      }
+      .pal-sheet {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 66;
+        background: var(--surface);
+        border-top: 1px solid var(--line);
+        border-radius: 18px 18px 0 0;
+        box-shadow: var(--shadow-lg);
+        max-height: 60vh;
+        display: none;
+        flex-direction: column;
+        padding: 14px 16px calc(14px + env(safe-area-inset-bottom, 0px));
+      }
+      .pal-sheet.open {
+        display: flex;
+      }
+      @media (min-width: 900px) {
+        .pal-sheet {
+          left: 50%;
+          right: auto;
+          transform: translateX(-50%);
+          width: min(680px, 100%);
+        }
+      }
+      .pal-sheet-head {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .pal-sheet .palette {
+        overflow-y: auto;
+        margin-top: 12px;
+        padding: 2px;
+      }
+      .pal-legend {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+      .pal-legend .lg {
+        font-size: 12px;
+        font-weight: 700;
+        padding: 3px 9px;
+        border-radius: 999px;
+        border: 1.5px solid var(--line);
+        background: var(--surface2);
+        color: var(--ink);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .pal-legend .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 3px;
+        display: inline-block;
+        flex-shrink: 0;
+      }
+      /* session question card: one compact tool row */
+      .q-tools .tool-btn {
+        min-height: 36px;
+        padding: 6px 12px;
+        font-size: 13px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .q-tools .tool-ic {
+        width: 38px;
+        height: 38px;
+        min-height: 38px;
+        padding: 0;
+        justify-content: center;
+      }
+      .q-tools .bm-btn {
+        width: 38px;
+        height: 38px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--surface);
+      }
+      /* learn: week-to-week navigation row */
+      .learn-week-nav {
+        display: flex;
+        gap: 8px;
+        margin-top: 16px;
+      }
+      .learn-week-nav .btn {
+        white-space: nowrap;
+      }
       details.sheet {
         margin-top: 14px;
         background: var(--surface);
@@ -2327,7 +2485,7 @@
       #pbNext {
         flex: 0 0 auto;
       }
-      #pbMain {
+      #pbSubmit {
         flex: 1 1 auto;
       }
       @media (max-width: 380px) {

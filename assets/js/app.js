@@ -2393,9 +2393,8 @@
         return o ? o.text : "";
       }
       function renderMockTop() {
-        const el = document.getElementById("mockTop");
-        if (!el || !SES) return;
-        const t = el.querySelector(".timer");
+        if (!SES) return;
+        const t = document.querySelector(".ses-head .timer");
         if (t && SES.remain != null) {
           const m = Math.floor(SES.remain / 60),
             s = SES.remain % 60;
@@ -2474,99 +2473,57 @@
             esc(q.correct_text) +
             '</div><div class="noexp">No explanation in source.</div></div>';
         }
-        const note = D.notes[q.id] || {};
-        const noteHtml =
-          checked || !SES.isMock
-            ? '<details class="sheet"><summary>My revision note</summary>' +
-              '<label class="f" for="nConcept">Key concept</label><input class="inp" id="nConcept" value="' +
-              esc(note.concept || "") +
-              '" placeholder="e.g. migration vs dispersal">' +
-              '<label class="f" for="nWhy">Why the accepted answer is correct</label><textarea class="inp" id="nWhy" placeholder="In your own words…">' +
-              esc(note.why || "") +
-              "</textarea>" +
-              '<label class="f" for="nMnem">Mnemonic / reminder</label><input class="inp" id="nMnem" value="' +
-              esc(note.mnemonic || "") +
-              '" placeholder="A short memory hook">' +
-              '<div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="btn btn-p btn-sm" id="saveNote">Save note</button><button class="btn btn-g btn-sm" id="delNote">Delete note</button></div></details>'
-            : "";
-        const mockTop = SES.isMock
-          ? '<div class="mock-top" id="mockTop"><span class="timer">--:--</span><span class="pill">' +
-            esc(SES.title) +
-            '</span><button class="btn btn-s btn-sm" id="submitMock">Submit mock</button></div>' +
-            '<details class="sheet" open><summary>Question palette — tap a number to jump</summary><div class="palette">' +
-            SES.qids
-              .map(
-                (id, i) =>
-                  '<button class="pal-btn" data-jump="' +
-                  i +
-                  '">' +
-                  (i + 1) +
-                  "</button>",
-              )
-              .join("") +
-            '</div><p class="small" style="margin-top:8px">Green = answered · Red = marked · Blue outline = current</p></details>'
-          : "";
-        const testTop =
-          SES.submitAll && !SES.isMock
-            ? '<div class="mock-top" id="testTop"><span class="pill">Answered ' +
-              answeredN +
-              " of " +
-              total +
-              '</span><span class="small">No answers are revealed until you submit.</span><button class="btn btn-p btn-sm" id="submitTest">✓ Submit ' +
-              (SES.mode === "weektest" ? "Week Test" : "Test") +
-              "</button></div>" +
-              '<details class="sheet" open><summary>Question palette — tap a number to jump</summary><div class="palette">' +
-              SES.qids
-                .map(
-                  (id, i) =>
-                    '<button class="pal-btn' +
-                    (SES.answers[id] ? " ans" : "") +
-                    (SES.marked[id] ? " mark" : "") +
-                    (i === idx ? " cur" : "") +
-                    '" data-jump="' +
-                    i +
-                    '">' +
-                    (i + 1) +
-                    "</button>",
-                )
-                .join("") +
-              '</div><p class="small" style="margin-top:8px">Green = answered · Red = marked · Blue outline = current</p></details>'
-            : "";
-        app.innerHTML =
-          '<div class="wrap"><p class="crumb"><b>Week ' +
-          q.week +
-          " • Question " +
+        const palBtns = SES.qids
+          .map(
+            (id, i) =>
+              '<button class="pal-btn' +
+              (SES.answers[id] ? " ans" : "") +
+              (SES.marked[id] ? " mark" : "") +
+              (i === idx ? " cur" : "") +
+              '" data-jump="' +
+              i +
+              '">' +
+              (i + 1) +
+              "</button>",
+          )
+          .join("");
+        const palSheet =
+          '<div class="pal-backdrop" id="palBackdrop"></div>' +
+          '<div class="pal-sheet" id="palSheet" role="dialog" aria-modal="false" aria-label="Question palette">' +
+          '<div class="pal-sheet-head"><b style="font-size:16px">Questions</b><span style="flex:1"></span><button class="bm-btn" id="palClose" aria-label="Close question list" style="width:38px;height:38px"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>' +
+          '<div class="pal-legend"><span class="lg"><span class="dot" style="background:var(--green)"></span>Answered</span><span class="lg"><span class="dot" style="background:var(--red)"></span>Marked</span><span class="lg"><span class="dot" style="border:2px solid var(--sel)"></span>Current</span></div>' +
+          '<div class="palette">' +
+          palBtns +
+          "</div></div>";
+        const sesHead =
+          '<div class="ses-head"><div class="ses-row"><span class="pill">Q ' +
           (idx + 1) +
-          " of " +
+          " / " +
           total +
-          "</b> · " +
+          '</span><span class="ses-title">' +
           esc(SES.title) +
-          "</p>" +
-          mockTop +
-          testTop +
-          '<div class="p-head"><span class="pill">Question ' +
-          (idx + 1) +
+          '</span><span style="flex:1"></span>' +
+          (SES.isMock ? '<span class="timer">--:--</span>' : "") +
+          '<button class="qchip" id="palOpen" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg>Questions</button></div>' +
+          '<div class="ses-row" style="margin-top:5px"><span class="ses-meta">Answered ' +
+          answeredN +
           " of " +
           total +
           "</span>" +
           (SES.marked[q.id]
             ? '<span class="tag a">' + ICO_STAR_ON + " Marked for review</span>"
             : "") +
-          '<span style="flex:1"></span><button class="bm-btn" id="tBook" aria-label="Bookmark this question"><svg viewBox="0 0 24 24" width="21" height="21"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z" class="bmp" data-on="' +
-          (isBookmarked(q.id) ? 1 : 0) +
-          '"/></svg></button><span class="small">' +
-          "Answered " +
-          answeredN +
-          " of " +
-          total +
-          "</span></div>" +
+          "</div>" +
           '<div class="progress" role="progressbar" aria-valuenow="' +
           progN +
           '" aria-valuemax="' +
           total +
           '"><i style="width:' +
           Math.round((progN / total) * 100) +
-          '%"></i></div>' +
+          '%"></i></div></div>';
+        app.innerHTML =
+          '<div class="wrap">' +
+          sesHead +
           (SES.poolNote
             ? '<p class="small" style="margin-bottom:10px">' +
               esc(SES.poolNote) +
@@ -2580,31 +2537,23 @@
           optsHtml +
           "</div>" +
           fb +
-          '<div class="q-tools"><button class="tool-btn' +
+          '<div class="q-tools"><button class="bm-btn" id="tBook" aria-label="Bookmark this question"><svg viewBox="0 0 24 24" width="19" height="19"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z" class="bmp" data-on="' +
+          (isBookmarked(q.id) ? 1 : 0) +
+          '"/></svg></button><button class="tool-btn' +
           (SES.marked[q.id] ? " active" : "") +
           '" id="tMark">' +
           (SES.marked[q.id]
             ? ICO_STAR_ON + " Marked"
             : ICO_STAR_OFF + " Mark for review") +
-          "</button>" +
-          '<button class="tool-btn" id="tReport">Report an issue</button></div>' +
-          noteHtml +
+          '</button><button class="tool-btn tool-ic" id="tReport" aria-label="Report an issue"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4L17 12H5"/></svg></button></div>' +
           '<p class="small kbd-hint" style="margin-top:14px">Keyboard: <span class="kbd">1–4</span> select · <span class="kbd">Enter</span> next · <span class="kbd">←</span> <span class="kbd">→</span> navigate · <span class="kbd">B</span> bookmark · <span class="kbd">M</span> mark</p></div>' +
           '<div class="desktop-nav-row"><button class="btn btn-g" id="dPrev" ' +
           (idx === 0 ? "disabled" : "") +
-          '>← Previous</button><button class="btn btn-p" id="dMain"></button><button class="btn btn-g" id="dNext">' +
-          (idx === total - 1 ? "Finish" : "Next →") +
-          '</button><button class="btn btn-s" id="dQuit">End session</button></div>' +
-          (SES.submitAll && !SES.isMock
-            ? '<button class="btn btn-p" id="submitTestBottom" style="width:100%;margin-top:14px">✓ Submit ' +
-              (SES.mode === "weektest" ? "Week Test" : "Test") +
-              ' — see your score &amp; full review</button><p class="small" style="margin-top:8px;text-align:center">Answered ' +
-              answeredN +
-              " of " +
-              total +
-              "</p>"
-            : "") +
-          "</div>";
+          '>← Previous</button><button class="btn btn-p" id="dSubmit">Submit</button><button class="btn btn-g" id="dNext" ' +
+          (idx === total - 1 ? "disabled" : "") +
+          '>Next →</button><button class="btn btn-s" id="dQuit">End session</button></div>' +
+          "</div>" +
+          palSheet;
         updateBars();
         app.querySelectorAll("[data-pick]").forEach((b) =>
           b.addEventListener("click", () => {
@@ -2631,21 +2580,21 @@
             SES.idx++;
             renderPractice();
             window.scrollTo({ top: 0 });
+          }
+        };
+        const doSubmit = () => {
+          if (SES.isMock) {
+            confirmDlg(
+              "Submit this mock now? You can't change answers after submitting.",
+              () => finishSession(false),
+            );
           } else {
             confirmSubmit();
           }
         };
-        const mainAct = () => {
-          if (SES.isMock) {
-            next();
-            return;
-          }
-          if (SES.idx === SES.qids.length - 1) confirmSubmit();
-          else next();
-        };
         document.getElementById("dPrev").addEventListener("click", prev);
         document.getElementById("dNext").addEventListener("click", next);
-        document.getElementById("dMain").addEventListener("click", mainAct);
+        document.getElementById("dSubmit").addEventListener("click", doSubmit);
         document.getElementById("dQuit").addEventListener("click", () =>
           confirmDlg(
             SES.submitAll
@@ -2661,13 +2610,25 @@
             },
           ),
         );
-        const stb = document.getElementById("submitTest");
-        if (stb) stb.addEventListener("click", confirmSubmit);
-        const sbb = document.getElementById("submitTestBottom");
-        if (sbb) sbb.addEventListener("click", confirmSubmit);
         document.getElementById("pbPrev").onclick = prev;
         document.getElementById("pbNext").onclick = next;
-        document.getElementById("pbMain").onclick = mainAct;
+        document.getElementById("pbSubmit").onclick = doSubmit;
+        const palSheetEl = document.getElementById("palSheet"),
+          palBackdropEl = document.getElementById("palBackdrop");
+        const closePal = () => {
+          palSheetEl.classList.remove("open");
+          palBackdropEl.classList.remove("open");
+        };
+        document
+          .getElementById("palOpen")
+          .addEventListener("click", () => {
+            palSheetEl.classList.add("open");
+            palBackdropEl.classList.add("open");
+          });
+        document
+          .getElementById("palClose")
+          .addEventListener("click", closePal);
+        palBackdropEl.addEventListener("click", closePal);
         document.getElementById("tMark").addEventListener("click", () => {
           SES.marked[q.id] = !SES.marked[q.id];
           renderPractice();
@@ -2679,33 +2640,6 @@
         document
           .getElementById("tReport")
           .addEventListener("click", () => reportDlg(q.id));
-        const sn = document.getElementById("saveNote");
-        if (sn)
-          sn.addEventListener("click", () => {
-            D.notes[q.id] = {
-              concept: document.getElementById("nConcept").value.trim(),
-              why: document.getElementById("nWhy").value.trim(),
-              mnemonic: document.getElementById("nMnem").value.trim(),
-            };
-            save();
-            toast("Note saved on this device");
-          });
-        const dn = document.getElementById("delNote");
-        if (dn)
-          dn.addEventListener("click", () => {
-            delete D.notes[q.id];
-            save();
-            renderPractice();
-            toast("Note deleted");
-          });
-        const sm = document.getElementById("submitMock");
-        if (sm)
-          sm.addEventListener("click", () =>
-            confirmDlg(
-              "Submit this mock now? You can't change answers after submitting.",
-              () => finishSession(false),
-            ),
-          );
         if (SES.isMock) renderMockTop();
         saveActiveSes();
         window.scrollTo({ top: 0 });
@@ -2716,21 +2650,9 @@
           return;
         }
         pbar.classList.add("on");
-        const main = document.getElementById("dMain"),
-          pb = document.getElementById("pbMain");
-        const label = SES.isMock
-          ? "Next"
-          : SES.idx === SES.qids.length - 1
-            ? "Submit Test"
-            : "Next →";
-        if (main) main.textContent = label;
-        pb.textContent = label;
         document.getElementById("pbPrev").disabled = SES.idx === 0;
-        document.getElementById("pbNext").textContent =
-          SES.idx === SES.qids.length - 1 ? "Finish" : "Next →";
-        document.getElementById("pbNext").style.display = "none";
-        const dNext = document.getElementById("dNext");
-        if (dNext) dNext.style.display = "none";
+        document.getElementById("pbNext").disabled =
+          SES.idx === SES.qids.length - 1;
       }
       function confirmSubmit() {
         if (!SES) return;
@@ -3206,6 +3128,23 @@
             ? '<p class="small" style="margin-top:4px">Answers: course material</p>'
             : "");
         h += qs.map(studyCard).join("");
+        if (w < 12) {
+          h +=
+            '<div class="learn-week-nav">' +
+            (w > 0
+              ? '<button class="btn btn-g" data-learnprev="' +
+                (w - 1) +
+                '">← Previous Week</button>'
+              : "") +
+            '<button class="btn btn-p" data-learnnext="' +
+            (w + 1) +
+            '" style="flex:1">Next Week →</button></div>';
+        } else {
+          h +=
+            '<div class="learn-week-nav"><button class="btn btn-g" data-learnprev="' +
+            (w - 1) +
+            '">← Previous Week</button><button class="btn btn-p" data-nav="learn" style="flex:1">Back to week list</button></div>';
+        }
         h += "</div>";
         return h;
       }
@@ -3247,6 +3186,22 @@
           (b) =>
             (b.onclick = () => {
               CURSTUDY = +b.dataset.learnweek;
+              curView = "learnweek";
+              render();
+            }),
+        );
+        document.querySelectorAll("[data-learnnext]").forEach(
+          (b) =>
+            (b.onclick = () => {
+              CURSTUDY = +b.dataset.learnnext;
+              curView = "learnweek";
+              render();
+            }),
+        );
+        document.querySelectorAll("[data-learnprev]").forEach(
+          (b) =>
+            (b.onclick = () => {
+              CURSTUDY = +b.dataset.learnprev;
               curView = "learnweek";
               render();
             }),
@@ -5238,7 +5193,7 @@
         } else if (e.key === "a" || e.key === "A" || (e.key === "b" && false)) {
         } else if (e.key === "Enter" && !dlg.open) {
           e.preventDefault();
-          document.getElementById("pbMain").click();
+          document.getElementById("pbNext").click();
         } else if (e.key === "ArrowRight") {
           document.getElementById("pbNext").click();
         } else if (e.key === "ArrowLeft") {
