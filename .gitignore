@@ -1,0 +1,13 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local sync + tooling records (never commit)
+*.muse-github-snapshot-sync.json
+*.muse-github-snapshot-sync.json.tmp-*
+
+# Misc
+*.log
+.vercel/

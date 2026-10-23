@@ -1,700 +1,5843 @@
-const BANK = [{"id":"w1-q1","week":1,"number":1,"question":"The regular, seasonal movement of animals, often along fixed routes is called","options":[{"letter":"A","text":"translocation"},{"letter":"B","text":"migration"},{"letter":"C","text":"dispersal"},{"letter":"D","text":"drifting"}],"correct_letter":"B","correct_text":"migration"},{"id":"w1-q2","week":1,"number":2,"question":"The systematic approach to Geography was developed by:","options":[{"letter":"A","text":"Alexander von Humboldt"},{"letter":"B","text":"Karl Ritter"},{"letter":"C","text":"Rene Descartes"},{"letter":"D","text":"Eratosthenes"}],"correct_letter":"A","correct_text":"Alexander von Humboldt"},{"id":"w1-q3","week":1,"number":3,"question":"I tried growing vegetables under my teak plantation, but the vegetable plants died out. I should be concerned about","options":[{"letter":"A","text":"autophagy"},{"letter":"B","text":"allelophagy"},{"letter":"C","text":"autopathy"},{"letter":"D","text":"allelopathy"}],"correct_letter":"D","correct_text":"allelopathy"},{"id":"w1-q4","week":1,"number":4,"question":"A lake still exists physically, but sewage and plastic waste reduce the number of fish it can support. This is best called:","options":[{"letter":"A","text":"Habitat degradation"},{"letter":"B","text":"Habitat fragmentation"},{"letter":"C","text":"Jump dispersal"},{"letter":"D","text":"Secular dispersal"}],"correct_letter":"A","correct_text":"Habitat degradation"},{"id":"w1-q5","week":1,"number":5,"question":"“Science of relationships between organisms and their environments” is the definition of:","options":[{"letter":"A","text":"conservation"},{"letter":"B","text":"preservation"},{"letter":"C","text":"environmentalism"},{"letter":"D","text":"ecology"}],"correct_letter":"D","correct_text":"ecology"},{"id":"w1-q6","week":1,"number":6,"question":"\"The rate of any biological process is limited by that factor in least amount relative to requirement, so there is a single limiting factor.\" This is the statement for","options":[{"letter":"A","text":"Liebig’s law of the minimum"},{"letter":"B","text":"Liebig’s law of the maximum"},{"letter":"C","text":"Shelford’s law of tolerance"},{"letter":"D","text":"Shelford’s law of intolerance"}],"correct_letter":"A","correct_text":"Liebig’s law of the minimum"},{"id":"w1-q7","week":1,"number":7,"question":"In the word root for conservation, con stands for","options":[{"letter":"A","text":"together"},{"letter":"B","text":"to keep"},{"letter":"C","text":"house"},{"letter":"D","text":"manage"}],"correct_letter":"A","correct_text":"together"},{"id":"w1-q8","week":1,"number":8,"question":"In the word root for conservation, servare stands for","options":[{"letter":"A","text":"together"},{"letter":"B","text":"to keep"},{"letter":"C","text":"house"},{"letter":"D","text":"manage"}],"correct_letter":"B","correct_text":"to keep"},{"id":"w1-q9","week":1,"number":9,"question":"The Geographical discipline of Climatology is most closely related to:","options":[{"letter":"A","text":"Geology"},{"letter":"B","text":"Meteorology"},{"letter":"C","text":"Hydrology"},{"letter":"D","text":"Pedology"}],"correct_letter":"B","correct_text":"Meteorology"},{"id":"w1-q10","week":1,"number":10,"question":"Good climate is a","options":[{"letter":"A","text":"chemical factor"},{"letter":"B","text":"demographic factor"},{"letter":"C","text":"push factor"},{"letter":"D","text":"pull factor"}],"correct_letter":"D","correct_text":"pull factor"},{"id":"w2-q1","week":2,"number":1,"question":"Mount Fuji is an example of","options":[{"letter":"A","text":"Shield volcano"},{"letter":"B","text":"Stratovolcano"},{"letter":"C","text":"Caldera"},{"letter":"D","text":"Flood basalt province"}],"correct_letter":"B","correct_text":"Stratovolcano"},{"id":"w2-q2","week":2,"number":2,"question":"The main source of magma is","options":[{"letter":"A","text":"Crust"},{"letter":"B","text":"Mantle"},{"letter":"C","text":"Outer core"},{"letter":"D","text":"Inner core"}],"correct_letter":"B","correct_text":"Mantle"},{"id":"w2-q3","week":2,"number":3,"question":"Which of these is not a method of absolute dating?","options":[{"letter":"A","text":"radioisotope dating"},{"letter":"B","text":"thermoluminescence dating"},{"letter":"C","text":"inclusion study"},{"letter":"D","text":"fission track dating"}],"correct_letter":"C","correct_text":"inclusion study"},{"id":"w2-q4","week":2,"number":4,"question":"What are planetesimals?","options":[{"letter":"A","text":"Fully formed gas giants"},{"letter":"B","text":"Fragments of continental crust"},{"letter":"C","text":"Small bodies formed from gas and dust that can accrete into planets"},{"letter":"D","text":"Layers of volcanic ash within a mountain"}],"correct_letter":"C","correct_text":"Small bodies formed from gas and dust that can accrete into planets"},{"id":"w2-q5","week":2,"number":5,"question":"Hawaiian volcanoes are an example of","options":[{"letter":"A","text":"Shield volcano"},{"letter":"B","text":"Stratovolcano"},{"letter":"C","text":"Caldera"},{"letter":"D","text":"Flood basalt province"}],"correct_letter":"A","correct_text":"Shield volcano"},{"id":"w2-q6","week":2,"number":6,"question":"Which of these is true about P waves?","options":[{"letter":"A","text":"They are longitudinal in nature"},{"letter":"B","text":"They are transverse in nature"},{"letter":"C","text":"They cannot move through gases"},{"letter":"D","text":"They cannot move through liquids"}],"correct_letter":"A","correct_text":"They are longitudinal in nature"},{"id":"w2-q7","week":2,"number":7,"question":"Assemblage of fossils are unique to the time that they lived in, and so can be used to age rocks across a wide geographic distribution. This is known as","options":[{"letter":"A","text":"Principle of fossil succession"},{"letter":"B","text":"Principle of original horizontality"},{"letter":"C","text":"Principle of superposition"},{"letter":"D","text":"Principle of cross-cutting relationships"}],"correct_letter":"A","correct_text":"Principle of fossil succession"},{"id":"w2-q8","week":2,"number":8,"question":"Which set contains only terrestrial planets?","options":[{"letter":"A","text":"Jupiter, Saturn, Uranus, Neptune"},{"letter":"B","text":"Earth, Jupiter, Mars, Saturn"},{"letter":"C","text":"Mercury, Venus, Uranus, Neptune"},{"letter":"D","text":"Mercury, Venus, Earth, Mars"}],"correct_letter":"D","correct_text":"Mercury, Venus, Earth, Mars"},{"id":"w2-q9","week":2,"number":9,"question":"Within a depositional basin, strata are laterally continuous in all directions till the edge of the basin. This is known as","options":[{"letter":"A","text":"Principle of superposition"},{"letter":"B","text":"Principle of original horizontality"},{"letter":"C","text":"Principle of lateral continuity"},{"letter":"D","text":"Principle of inclusions"}],"correct_letter":"C","correct_text":"Principle of lateral continuity"},{"id":"w2-q10","week":2,"number":10,"question":"Deccan traps are an example of","options":[{"letter":"A","text":"Shield volcano"},{"letter":"B","text":"Stratovolcano"},{"letter":"C","text":"Caldera"},{"letter":"D","text":"Flood basalt province"}],"correct_letter":"D","correct_text":"Flood basalt province"},{"id":"w3-q1","week":3,"number":1,"question":"Mudrock is an example of","options":[{"letter":"A","text":"siliciclastic rock"},{"letter":"B","text":"carbonate rock"},{"letter":"C","text":"evaporite rock"},{"letter":"D","text":"phosphatic rock"}],"correct_letter":"A","correct_text":"siliciclastic rock"},{"id":"w3-q2","week":3,"number":2,"question":"Carbonation is an example of","options":[{"letter":"A","text":"chemical weathering"},{"letter":"B","text":"physical weathering"},{"letter":"C","text":"biological weathering"},{"letter":"D","text":"none of the above"}],"correct_letter":"A","correct_text":"chemical weathering"},{"id":"w3-q3","week":3,"number":3,"question":"“green or black coloured inosilicate minerals forming prism or needle-like crystals” is a description of","options":[{"letter":"A","text":"amphiboles"},{"letter":"B","text":"feldspar"},{"letter":"C","text":"mica"},{"letter":"D","text":"pyroxene"}],"correct_letter":"A","correct_text":"amphiboles"},{"id":"w3-q4","week":3,"number":4,"question":"Hydrolysis is an example of","options":[{"letter":"A","text":"chemical weathering"},{"letter":"B","text":"physical weathering"},{"letter":"C","text":"biological weathering"},{"letter":"D","text":"none of the above"}],"correct_letter":"A","correct_text":"chemical weathering"},{"id":"w3-q5","week":3,"number":5,"question":"Which of these is an example of exogenic process?","options":[{"letter":"A","text":"volcanism"},{"letter":"B","text":"earthquake"},{"letter":"C","text":"plate tectonics"},{"letter":"D","text":"deposition"}],"correct_letter":"D","correct_text":"deposition"},{"id":"w3-q6","week":3,"number":6,"question":"Which statement best explains why streak is often more useful than surface colour for mineral identification?","options":[{"letter":"A","text":"Streak measures the density of the mineral"},{"letter":"B","text":"Surface colour never changes in minerals"},{"letter":"C","text":"Streak shows the colour of the powdered mineral and may reduce the effect of minor impurities"},{"letter":"D","text":"Streak reveals the age of the mineral"}],"correct_letter":"C","correct_text":"Streak shows the colour of the powdered mineral and may reduce the effect of minor impurities"},{"id":"w3-q7","week":3,"number":7,"question":"Which factor is listed as an independent control over landform development?","options":[{"letter":"A","text":"Mineral streak"},{"letter":"B","text":"Crystal habit"},{"letter":"C","text":"Knife-blade hardness"},{"letter":"D","text":"Stability of sea level"}],"correct_letter":"D","correct_text":"Stability of sea level"},{"id":"w3-q8","week":3,"number":8,"question":"Sandstone is an example of","options":[{"letter":"A","text":"siliciclastic rock"},{"letter":"B","text":"carbonate rock"},{"letter":"C","text":"evaporite rock"},{"letter":"D","text":"phosphatic rock"}],"correct_letter":"A","correct_text":"siliciclastic rock"},{"id":"w3-q9","week":3,"number":9,"question":"“tendency to break in given directions producing relatively plane surfaces” is known as","options":[{"letter":"A","text":"cleavage"},{"letter":"B","text":"fracture"},{"letter":"C","text":"lustre"},{"letter":"D","text":"streak"}],"correct_letter":"A","correct_text":"cleavage"},{"id":"w3-q10","week":3,"number":10,"question":"Slow cooling of magma results in","options":[{"letter":"A","text":"smooth grained sedimentary rocks"},{"letter":"B","text":"coarse grained sedimentary rocks"},{"letter":"C","text":"smooth grained igneous rocks"},{"letter":"D","text":"coarse grained igneous rocks"}],"correct_letter":"D","correct_text":"coarse grained igneous rocks"},{"id":"w4-q1","week":4,"number":1,"question":"Carbon sequestration in geological sites is an option for","options":[{"letter":"A","text":"mitigation"},{"letter":"B","text":"adaptation"},{"letter":"C","text":"both of these"},{"letter":"D","text":"none of these"}],"correct_letter":"A","correct_text":"mitigation"},{"id":"w4-q2","week":4,"number":2,"question":"To reduce the effect of altitude, isobars are generally drawn after converting pressure values to","options":[{"letter":"A","text":"surface temperature level"},{"letter":"B","text":"cloud base level"},{"letter":"C","text":"tropopause level"},{"letter":"D","text":"sea level"}],"correct_letter":"D","correct_text":"sea level"},{"id":"w4-q3","week":4,"number":3,"question":"Because of climate change, Mudumalai Tiger Reserve is suffering from frequent droughts. The management has built several artificial water holes for animals, and fills them up regularly with tankers. In the context of climate change, such an action would be called","options":[{"letter":"A","text":"adaptation"},{"letter":"B","text":"mitigation"},{"letter":"C","text":"deceleration"},{"letter":"D","text":"maladaptation"}],"correct_letter":"A","correct_text":"adaptation"},{"id":"w4-q4","week":4,"number":4,"question":"Surplus seed and sperm banking is an adaptation option to facilitate","options":[{"letter":"A","text":"resistance to climate changes"},{"letter":"B","text":"resilience to climate changes"},{"letter":"C","text":"response to climate changes"},{"letter":"D","text":"none of these"}],"correct_letter":"B","correct_text":"resilience to climate changes"},{"id":"w4-q5","week":4,"number":5,"question":"Flights of jet planes typically occur in","options":[{"letter":"A","text":"Troposphere"},{"letter":"B","text":"Stratosphere"},{"letter":"C","text":"Mesosphere"},{"letter":"D","text":"Thermosphere"}],"correct_letter":"B","correct_text":"Stratosphere"},{"id":"w4-q6","week":4,"number":6,"question":"Heat movement through horizontal movement of air is called","options":[{"letter":"A","text":"convection"},{"letter":"B","text":"radiation"},{"letter":"C","text":"advection"},{"letter":"D","text":"conduction"}],"correct_letter":"C","correct_text":"advection"},{"id":"w4-q7","week":4,"number":7,"question":"The classical period for taking averages for climate is","options":[{"letter":"A","text":"10 years"},{"letter":"B","text":"20 years"},{"letter":"C","text":"30 years"},{"letter":"D","text":"40 years"}],"correct_letter":"C","correct_text":"30 years"},{"id":"w4-q8","week":4,"number":8,"question":"Noctilucent clouds are present in which layer?","options":[{"letter":"A","text":"Troposphere"},{"letter":"B","text":"Stratosphere"},{"letter":"C","text":"Mesosphere"},{"letter":"D","text":"Thermosphere"}],"correct_letter":"C","correct_text":"Mesosphere"},{"id":"w4-q9","week":4,"number":9,"question":"Atmospheric pressure is mainly caused by","options":[{"letter":"A","text":"horizontal movement of clouds"},{"letter":"B","text":"the weight of air above the point of measurement"},{"letter":"C","text":"absorption of ultraviolet radiation"},{"letter":"D","text":"seasonal movement of pressure belts"}],"correct_letter":"B","correct_text":"the weight of air above the point of measurement"},{"id":"w4-q10","week":4,"number":10,"question":"Which of these air masses is generally warm and moist?","options":[{"letter":"A","text":"cP"},{"letter":"B","text":"cT"},{"letter":"C","text":"mP"},{"letter":"D","text":"mT"}],"correct_letter":"D","correct_text":"mT"},{"id":"w5-q1","week":5,"number":1,"question":"What type of sediment is commonly found over abyssal plains?","options":[{"letter":"A","text":"Coral fragments and gravel"},{"letter":"B","text":"Basalt blocks and volcanic ash"},{"letter":"C","text":"Sand and large pebbles"},{"letter":"D","text":"Clay and silt"}],"correct_letter":"D","correct_text":"Clay and silt"},{"id":"w5-q2","week":5,"number":2,"question":"Which of these is the largest habitat on the Earth?","options":[{"letter":"A","text":"continental shelf"},{"letter":"B","text":"continental slope"},{"letter":"C","text":"guyot"},{"letter":"D","text":"abyssal plain"}],"correct_letter":"D","correct_text":"abyssal plain"},{"id":"w5-q3","week":5,"number":3,"question":"Which of these are the largest mountain ranges on Earth?","options":[{"letter":"A","text":"oceanic deep / trench"},{"letter":"B","text":"mid-oceanic ridge"},{"letter":"C","text":"seamount"},{"letter":"D","text":"atoll"}],"correct_letter":"B","correct_text":"mid-oceanic ridge"},{"id":"w5-q4","week":5,"number":4,"question":"Which factor helps explain why continental shelves are often highly productive?","options":[{"letter":"A","text":"They are the deepest parts of the ocean floor"},{"letter":"B","text":"They are completely isolated from runoff"},{"letter":"C","text":"They receive both light and nutrients"},{"letter":"D","text":"They lack sediments and organisms"}],"correct_letter":"C","correct_text":"They receive both light and nutrients"},{"id":"w5-q5","week":5,"number":5,"question":"What is tidal range?","options":[{"letter":"A","text":"The horizontal movement of water parallel to the beach"},{"letter":"B","text":"The difference between sea level at high tide and low tide"},{"letter":"C","text":"The speed at which waves approach the coast"},{"letter":"D","text":"The movement of cold water from deep ocean layers"}],"correct_letter":"B","correct_text":"The difference between sea level at high tide and low tide"},{"id":"w5-q6","week":5,"number":6,"question":"Which process converts ice and snow directly into water vapour?","options":[{"letter":"A","text":"Condensation"},{"letter":"B","text":"Precipitation"},{"letter":"C","text":"Snowmelt"},{"letter":"D","text":"Sublimation"}],"correct_letter":"D","correct_text":"Sublimation"},{"id":"w5-q7","week":5,"number":7,"question":"Which group of factors affects the density of ocean water with depth?","options":[{"letter":"A","text":"Runoff, tides and beach slope"},{"letter":"B","text":"Hydrostatic pressure, salinity and temperature"},{"letter":"C","text":"Wind speed, wave height and latitude only"},{"letter":"D","text":"Sediment size, coral growth and river mouths"}],"correct_letter":"B","correct_text":"Hydrostatic pressure, salinity and temperature"},{"id":"w5-q8","week":5,"number":8,"question":"“deep valleys, often cutting across continental shelves and slopes” is a description of","options":[{"letter":"A","text":"oceanic deep / trench"},{"letter":"B","text":"mid-oceanic ridge"},{"letter":"C","text":"guyot"},{"letter":"D","text":"submarine canyon"}],"correct_letter":"D","correct_text":"submarine canyon"},{"id":"w5-q9","week":5,"number":9,"question":"Continental shelf has a gradient of","options":[{"letter":"A","text":"0-1 degree"},{"letter":"B","text":"1-2 degree"},{"letter":"C","text":"2-5 degree"},{"letter":"D","text":"5-10 degree"}],"correct_letter":"A","correct_text":"0-1 degree"},{"id":"w5-q10","week":5,"number":10,"question":"Equal salinity curves are called","options":[{"letter":"A","text":"isopycnal curves"},{"letter":"B","text":"isohaline curves"},{"letter":"C","text":"isotherm curves"},{"letter":"D","text":"isobuoyant curves"}],"correct_letter":"B","correct_text":"isohaline curves"},{"id":"w6-q1","week":6,"number":1,"question":"The Western Ghats act as a water divide because","options":[{"letter":"A","text":"they prevent all rivers from reaching the sea"},{"letter":"B","text":"water on opposite sides flows in different directions"},{"letter":"C","text":"they cause all rivers to become seasonal"},{"letter":"D","text":"they convert rivers into lakes"}],"correct_letter":"B","correct_text":"water on opposite sides flows in different directions"},{"id":"w6-q2","week":6,"number":2,"question":"A river network that follows the structure and slope of the land is best described as","options":[{"letter":"A","text":"discordant"},{"letter":"B","text":"antecedent"},{"letter":"C","text":"accordant"},{"letter":"D","text":"centripetal"}],"correct_letter":"C","correct_text":"accordant"},{"id":"w6-q3","week":6,"number":3,"question":"A tree-like river network in which smaller streams join a main channel is called","options":[{"letter":"A","text":"trellis drainage"},{"letter":"B","text":"dendritic drainage"},{"letter":"C","text":"centripetal drainage"},{"letter":"D","text":"rectangular drainage"}],"correct_letter":"B","correct_text":"dendritic drainage"},{"id":"w6-q4","week":6,"number":4,"question":"A river system that does not match the present structure and relief of the landscape is called","options":[{"letter":"A","text":"discordant drainage"},{"letter":"B","text":"dendritic drainage"},{"letter":"C","text":"radial drainage"},{"letter":"D","text":"parallel drainage"}],"correct_letter":"A","correct_text":"discordant drainage"},{"id":"w6-q5","week":6,"number":5,"question":"The Himalayas are primarily comprised of","options":[{"letter":"A","text":"sedimentary rocks"},{"letter":"B","text":"igneous rocks"},{"letter":"C","text":"metamorphic rocks"},{"letter":"D","text":"b and c"}],"correct_letter":"A","correct_text":"sedimentary rocks"},{"id":"w6-q6","week":6,"number":6,"question":"Which pair of rivers is described as flowing westwards into the Arabian Sea?","options":[{"letter":"A","text":"Ganga and Yamuna"},{"letter":"B","text":"Mahanadi and Godavari"},{"letter":"C","text":"Narmada and Tapi"},{"letter":"D","text":"Krishna and Kaveri"}],"correct_letter":"C","correct_text":"Narmada and Tapi"},{"id":"w6-q7","week":6,"number":7,"question":"Which of these are factors determining the climate of India?","options":[{"letter":"A","text":"distance from the sea"},{"letter":"B","text":"altitude"},{"letter":"C","text":"relief"},{"letter":"D","text":"all of these"}],"correct_letter":"D","correct_text":"all of these"},{"id":"w6-q8","week":6,"number":8,"question":"Peninsular rivers usually have fixed courses mainly because","options":[{"letter":"A","text":"they flow through newly formed mountains"},{"letter":"B","text":"they carry very high sediment loads"},{"letter":"C","text":"they are controlled only by monsoon winds"},{"letter":"D","text":"their courses are cut into older, harder rocks"}],"correct_letter":"D","correct_text":"their courses are cut into older, harder rocks"},{"id":"w6-q9","week":6,"number":9,"question":"In Koeppen classification, which is polar frost temperature?","options":[{"letter":"A","text":"C"},{"letter":"B","text":"D"},{"letter":"C","text":"F"},{"letter":"D","text":"T"}],"correct_letter":"C","correct_text":"F"},{"id":"w7-q2","week":7,"number":2,"question":"Cryofracturing is an example of","options":[{"letter":"A","text":"chemical weathering"},{"letter":"B","text":"physical weathering"},{"letter":"C","text":"biological weathering"},{"letter":"D","text":"none of the above"}],"correct_letter":"B","correct_text":"physical weathering"},{"id":"w7-q3","week":7,"number":3,"question":"Bangar is a type of","options":[{"letter":"A","text":"black cotton soil"},{"letter":"B","text":"alluvial soil"},{"letter":"C","text":"saline soil"},{"letter":"D","text":"red and yellow soil"}],"correct_letter":"B","correct_text":"alluvial soil"},{"id":"w7-q4","week":7,"number":4,"question":"\"the diversity that exists within an ecosystem\" is","options":[{"letter":"A","text":"alpha (α) biodiversity"},{"letter":"B","text":"beta (β) biodiversity"},{"letter":"C","text":"gamma (γ) biodiversity"},{"letter":"D","text":"delta (δ) biodiversity"}],"correct_letter":"A","correct_text":"alpha (α) biodiversity"},{"id":"w7-q5","week":7,"number":5,"question":"A climax caused by wildfires is an example of","options":[{"letter":"A","text":"climatic climax"},{"letter":"B","text":"edaphic climax"},{"letter":"C","text":"disclimax"},{"letter":"D","text":"catastrophic climax"}],"correct_letter":"D","correct_text":"catastrophic climax"},{"id":"w7-q6","week":7,"number":6,"question":"For more biodiversity, the level of disturbance should be","options":[{"letter":"A","text":"less"},{"letter":"B","text":"intermediate"},{"letter":"C","text":"more"},{"letter":"D","text":"none of these"}],"correct_letter":"B","correct_text":"intermediate"},{"id":"w7-q7","week":7,"number":7,"question":"\"the diversity that exists among different geographies\" is","options":[{"letter":"A","text":"alpha (α) biodiversity"},{"letter":"B","text":"beta (β) biodiversity"},{"letter":"C","text":"gamma (γ) biodiversity"},{"letter":"D","text":"delta (δ) biodiversity"}],"correct_letter":"C","correct_text":"gamma (γ) biodiversity"},{"id":"w7-q8","week":7,"number":8,"question":"Vertical arrangement of soil horizons is called","options":[{"letter":"A","text":"soil texture"},{"letter":"B","text":"soil structure"},{"letter":"C","text":"soil profile"},{"letter":"D","text":"soil science"}],"correct_letter":"C","correct_text":"soil profile"},{"id":"w7-q10","week":7,"number":10,"question":"Which soil property refers to the arrangement of solid soil parts and pore spaces between them?","options":[{"letter":"A","text":"Soil fertility"},{"letter":"B","text":"Soil texture"},{"letter":"C","text":"Soil horizon"},{"letter":"D","text":"Soil structure"}],"correct_letter":"D","correct_text":"Soil structure"},{"id":"w8-q1","week":8,"number":1,"question":"Which of the following is listed as an ex-situ conservation method?","options":[{"letter":"A","text":"Wildlife sanctuary"},{"letter":"B","text":"National park"},{"letter":"C","text":"Seed bank"},{"letter":"D","text":"Biosphere reserve"}],"correct_letter":"C","correct_text":"Seed bank"},{"id":"w8-q2","week":8,"number":2,"question":"Which factor makes smaller populations especially vulnerable due to mating among close relatives?","options":[{"letter":"A","text":"Habitat displacement"},{"letter":"B","text":"Eutrophication"},{"letter":"C","text":"Inbreeding depression"},{"letter":"D","text":"Carbon storage"}],"correct_letter":"C","correct_text":"Inbreeding depression"},{"id":"w8-q3","week":8,"number":3,"question":"Which type of species plays a much greater ecological role than expected from its abundance?","options":[{"letter":"A","text":"Umbrella species"},{"letter":"B","text":"Flagship species"},{"letter":"C","text":"Least concern species"},{"letter":"D","text":"Keystone species"}],"correct_letter":"D","correct_text":"Keystone species"},{"id":"w8-q4","week":8,"number":4,"question":"A species found only in a single lake is rare mainly because of","options":[{"letter":"A","text":"high birth rate"},{"letter":"B","text":"limited geographical range"},{"letter":"C","text":"high adaptability"},{"letter":"D","text":"large home range"}],"correct_letter":"B","correct_text":"limited geographical range"},{"id":"w8-q5","week":8,"number":5,"question":"Which of the following is a disadvantage of ex-situ conservation?","options":[{"letter":"A","text":"It always protects the natural habitat of the species"},{"letter":"B","text":"Captive-bred individuals may find reintroduction difficult"},{"letter":"C","text":"It prevents all inbreeding risks automatically"},{"letter":"D","text":"It can be planned for all species at the same time"}],"correct_letter":"B","correct_text":"Captive-bred individuals may find reintroduction difficult"},{"id":"w8-q6","week":8,"number":6,"question":"In the species-area relationship, what does “S” represent?","options":[{"letter":"A","text":"Size of the habitat"},{"letter":"B","text":"Species richness"},{"letter":"C","text":"Survival rate"},{"letter":"D","text":"Stochastic pressure"}],"correct_letter":"B","correct_text":"Species richness"},{"id":"w8-q7","week":8,"number":7,"question":"In the Clear Lake example, DDD concentration increased from water to plankton, fish, and piscivorous birds. This illustrates","options":[{"letter":"A","text":"ecological redundancy"},{"letter":"B","text":"habitat selection"},{"letter":"C","text":"biomagnification"},{"letter":"D","text":"ex-situ management"}],"correct_letter":"C","correct_text":"biomagnification"},{"id":"w8-q8","week":8,"number":8,"question":"We prefer those areas for the creation of a conservation reserve where the level of threat is","options":[{"letter":"A","text":"very high"},{"letter":"B","text":"medium"},{"letter":"C","text":"very low"},{"letter":"D","text":"non-existent"}],"correct_letter":"B","correct_text":"medium"},{"id":"w8-q9","week":8,"number":9,"question":"The acronym HIPPO does not include","options":[{"letter":"A","text":"habitat loss"},{"letter":"B","text":"invasive species"},{"letter":"C","text":"pollination"},{"letter":"D","text":"pollution"}],"correct_letter":"C","correct_text":"pollination"},{"id":"w8-q10","week":8,"number":10,"question":"The elephant has a home range of several square kilometres, regulates the ecosystem by its habit of destructive feeding, and people can relate to this animal which is important for conservation. Given this background, the elephant can be called as","options":[{"letter":"A","text":"umbrella species"},{"letter":"B","text":"keystone species"},{"letter":"C","text":"flagship species"},{"letter":"D","text":"all of the above"}],"correct_letter":"D","correct_text":"all of the above"},{"id":"w9-q2","week":9,"number":2,"question":"Which of these is commonly observed during humanising of nature?","options":[{"letter":"A","text":"environmental determinism"},{"letter":"B","text":"possibilism"},{"letter":"C","text":"neodeterminism"},{"letter":"D","text":"stop and go determinism"}],"correct_letter":"B","correct_text":"possibilism"},{"id":"w9-q3","week":9,"number":3,"question":"The age dependency ratio compares dependent population with:","options":[{"letter":"A","text":"total female population"},{"letter":"B","text":"working-age population"},{"letter":"C","text":"urban population"},{"letter":"D","text":"migrant population"}],"correct_letter":"B","correct_text":"working-age population"},{"id":"w9-q4","week":9,"number":4,"question":"The logistic growth equation curve is","options":[{"letter":"A","text":"I-shaped"},{"letter":"B","text":"J-shaped"},{"letter":"C","text":"S-shaped"},{"letter":"D","text":"U-shaped"}],"correct_letter":"C","correct_text":"S-shaped"},{"id":"w9-q5","week":9,"number":5,"question":"Which of these is a positive check according to Malthus?","options":[{"letter":"A","text":"late marriage"},{"letter":"B","text":"war"},{"letter":"C","text":"celibacy"},{"letter":"D","text":"moral restraint"}],"correct_letter":"B","correct_text":"war"},{"id":"w9-q6","week":9,"number":6,"question":"Economic development is often measured in terms of:","options":[{"letter":"A","text":"age dependency ratio"},{"letter":"B","text":"total land area"},{"letter":"C","text":"GDP per capita"},{"letter":"D","text":"sex ratio"}],"correct_letter":"C","correct_text":"GDP per capita"},{"id":"w9-q7","week":9,"number":7,"question":"Which of these is not a pillar of sustainability?","options":[{"letter":"A","text":"environmental sustainability"},{"letter":"B","text":"economic sustainability"},{"letter":"C","text":"trans-boundary sustainability"},{"letter":"D","text":"social sustainability"}],"correct_letter":"C","correct_text":"trans-boundary sustainability"},{"id":"w9-q8","week":9,"number":8,"question":"The demographic transition sees a society move from","options":[{"letter":"A","text":"high birth rate, low death rate to low birth rate, high death rate"},{"letter":"B","text":"low birth rate, high death rate to low birth rate, low death rate"},{"letter":"C","text":"high birth rate, high death rate to low birth rate, low death rate"},{"letter":"D","text":"high birth rate, high death rate to low birth rate, high death rate"}],"correct_letter":"C","correct_text":"high birth rate, high death rate to low birth rate, low death rate"},{"id":"w9-q9","week":9,"number":9,"question":"Which of these is a preventive check according to Malthus?","options":[{"letter":"A","text":"foresight"},{"letter":"B","text":"vice"},{"letter":"C","text":"misery"},{"letter":"D","text":"flood"}],"correct_letter":"A","correct_text":"foresight"},{"id":"w9-q10","week":9,"number":10,"question":"Which population group is generally treated as the working population?","options":[{"letter":"A","text":"0-15 years"},{"letter":"B","text":"15-64 years"},{"letter":"C","text":"65 years and above"},{"letter":"D","text":"0-15 and 65 years and above"}],"correct_letter":"B","correct_text":"15-64 years"},{"id":"w10-q2","week":10,"number":2,"question":"Hydrogen for nuclear fusion comes under the category of","options":[{"letter":"A","text":"potential resources"},{"letter":"B","text":"actual resources"},{"letter":"C","text":"reserve resources"},{"letter":"D","text":"stock resources"}],"correct_letter":"D","correct_text":"stock resources"},{"id":"w10-q3","week":10,"number":3,"question":"In the Rondonia rainforest example, road construction mainly contributed to forest loss by","options":[{"letter":"A","text":"increasing rainfall in cleared patches"},{"letter":"B","text":"allowing easier human access into forest areas"},{"letter":"C","text":"preventing agricultural plots from forming"},{"letter":"D","text":"converting cropland back into forest"}],"correct_letter":"B","correct_text":"allowing easier human access into forest areas"},{"id":"w10-q4","week":10,"number":4,"question":"Oil that has not been drilled can be categorised under","options":[{"letter":"A","text":"potential resources"},{"letter":"B","text":"actual resources"},{"letter":"C","text":"reserve resources"},{"letter":"D","text":"stock resources"}],"correct_letter":"A","correct_text":"potential resources"},{"id":"w10-q5","week":10,"number":5,"question":"Although cropland uses a smaller share of agricultural land than livestock, it contributes more to","options":[{"letter":"A","text":"global calorie supply"},{"letter":"B","text":"mineral extraction"},{"letter":"C","text":"groundwater recharge"},{"letter":"D","text":"built-up land expansion"}],"correct_letter":"A","correct_text":"global calorie supply"},{"id":"w10-q6","week":10,"number":6,"question":"Low concentration ores come in the category of","options":[{"letter":"A","text":"potential resources"},{"letter":"B","text":"actual resources"},{"letter":"C","text":"reserve resources"},{"letter":"D","text":"stock resources"}],"correct_letter":"C","correct_text":"reserve resources"},{"id":"w10-q7","week":10,"number":7,"question":"“those resources that have been surveyed but we lack the technology to use them” is a definition of","options":[{"letter":"A","text":"potential resources"},{"letter":"B","text":"actual resources"},{"letter":"C","text":"reserve resources"},{"letter":"D","text":"stock resources"}],"correct_letter":"D","correct_text":"stock resources"},{"id":"w10-q8","week":10,"number":8,"question":"Which of these is the largest source of nitrogen oxides in the atmosphere?","options":[{"letter":"A","text":"electricity generation"},{"letter":"B","text":"mobile sources"},{"letter":"C","text":"industrial processes"},{"letter":"D","text":"waste disposal"}],"correct_letter":"B","correct_text":"mobile sources"},{"id":"w10-q9","week":10,"number":9,"question":"Timber from forests that is being harvested can be categorised under","options":[{"letter":"A","text":"potential resources"},{"letter":"B","text":"actual resources"},{"letter":"C","text":"reserve resources"},{"letter":"D","text":"stock resources"}],"correct_letter":"B","correct_text":"actual resources"},{"id":"w10-q10","week":10,"number":10,"question":"Which of these is the largest source of ammonia (NH3) in the atmosphere?","options":[{"letter":"A","text":"animal manure"},{"letter":"B","text":"mineral fertiliser"},{"letter":"C","text":"crops and their decomposition"},{"letter":"D","text":"human waste"}],"correct_letter":"A","correct_text":"animal manure"},{"id":"w11-q2","week":11,"number":2,"question":"Which of these is / are example(s) of mitigation measures to mitigate impacts of linear infrastructure on wildlife?","options":[{"letter":"A","text":"bridge underpasses"},{"letter":"B","text":"box culverts"},{"letter":"C","text":"pipe culverts"},{"letter":"D","text":"all of these"}],"correct_letter":"D","correct_text":"all of these"},{"id":"w11-q3","week":11,"number":3,"question":"Which mode of connection is described as requiring more money and technology to construct than roads?","options":[{"letter":"A","text":"Shipping lines"},{"letter":"B","text":"Railways"},{"letter":"C","text":"Inland waterways"},{"letter":"D","text":"Footpaths"}],"correct_letter":"B","correct_text":"Railways"},{"id":"w11-q4","week":11,"number":4,"question":"Which of these is a factor governing barrier effect of roads?","options":[{"letter":"A","text":"road edge features"},{"letter":"B","text":"time of day and year"},{"letter":"C","text":"species diversity in the surroundings"},{"letter":"D","text":"all of these"}],"correct_letter":"D","correct_text":"all of these"},{"id":"w11-q6","week":11,"number":6,"question":"“the ability to produce a good at a lower opportunity cost than another producer” is a definition of","options":[{"letter":"A","text":"real advantage"},{"letter":"B","text":"monetary advantage"},{"letter":"C","text":"comparative advantage"},{"letter":"D","text":"opportunity advantage"}],"correct_letter":"C","correct_text":"comparative advantage"},{"id":"w11-q7","week":11,"number":7,"question":"Dust released from ships can help reveal ship movement because dust particles act as:","options":[{"letter":"A","text":"Fuel particles"},{"letter":"B","text":"Noise absorbers"},{"letter":"C","text":"Nuclei for condensation"},{"letter":"D","text":"Ocean-current markers"}],"correct_letter":"C","correct_text":"Nuclei for condensation"},{"id":"w11-q8","week":11,"number":8,"question":"Which of the following is identified as a way in which roads disturb wildlife at night?","options":[{"letter":"A","text":"They reduce wind movement"},{"letter":"B","text":"They increase soil moisture"},{"letter":"C","text":"They create silent zones"},{"letter":"D","text":"They cause light pollution through headlamps"}],"correct_letter":"D","correct_text":"They cause light pollution through headlamps"},{"id":"w11-q9","week":11,"number":9,"question":"Which statement best describes why young male tigers or leopards may need to move away from their natal area?","options":[{"letter":"A","text":"To avoid seasonal flooding"},{"letter":"B","text":"To reduce conflict and avoid inbreeding"},{"letter":"C","text":"To follow shipping routes"},{"letter":"D","text":"To increase road density"}],"correct_letter":"B","correct_text":"To reduce conflict and avoid inbreeding"},{"id":"w11-q10","week":11,"number":10,"question":"Oxford can best be categorised as","options":[{"letter":"A","text":"mining town"},{"letter":"B","text":"garrison town"},{"letter":"C","text":"educational town"},{"letter":"D","text":"religious town"}],"correct_letter":"C","correct_text":"educational town"},{"id":"w12-q1","week":12,"number":1,"question":"“The conditions determined by physical, social, economic and environmental factors or processes which increase the susceptibility of an individual, a community, assets or systems to the impacts of hazards.” is a definition for","options":[{"letter":"A","text":"hazard"},{"letter":"B","text":"exposure"},{"letter":"C","text":"vulnerability"},{"letter":"D","text":"disaster"}],"correct_letter":"C","correct_text":"vulnerability"},{"id":"w12-q2","week":12,"number":2,"question":"The time of flight for LiDAR is 0.00001 sec. Find the distance of the object from the instrument.","options":[{"letter":"A","text":"500 m"},{"letter":"B","text":"1000 m"},{"letter":"C","text":"1500 m"},{"letter":"D","text":"2000 m"}],"correct_letter":"C","correct_text":"1500 m"},{"id":"w12-q3","week":12,"number":3,"question":"Which application of photogrammetry focuses on understanding what is happening in an area rather than measuring quantities?","options":[{"letter":"A","text":"Metric application"},{"letter":"B","text":"Radiometric application"},{"letter":"C","text":"Interpretive application"},{"letter":"D","text":"Fiducial application"}],"correct_letter":"C","correct_text":"Interpretive application"},{"id":"w12-q4","week":12,"number":4,"question":"“A process, phenomenon or human activity that may cause loss of life, injury or other health impacts, property damage, social and economic disruption or environmental degradation.” is a definition for","options":[{"letter":"A","text":"hazard"},{"letter":"B","text":"exposure"},{"letter":"C","text":"vulnerability"},{"letter":"D","text":"disaster"}],"correct_letter":"A","correct_text":"hazard"},{"id":"w12-q5","week":12,"number":5,"question":"IMU stands for","options":[{"letter":"A","text":"Imperial metering unit"},{"letter":"B","text":"Inertial metering unit"},{"letter":"C","text":"Imperial measurement unit"},{"letter":"D","text":"Inertial measurement unit"}],"correct_letter":"D","correct_text":"Inertial measurement unit"},{"id":"w12-q6","week":12,"number":6,"question":"Which application of photogrammetry is involved when the area of forest cover or the size of plantation pits is calculated?","options":[{"letter":"A","text":"Interpretive application"},{"letter":"B","text":"Metric application"},{"letter":"C","text":"Oblique application"},{"letter":"D","text":"Passive application"}],"correct_letter":"B","correct_text":"Metric application"},{"id":"w12-q7","week":12,"number":7,"question":"Which component is essential in a GIS along with hardware and software?","options":[{"letter":"A","text":"Mirror system"},{"letter":"B","text":"Humanware"},{"letter":"C","text":"Shutter speed"},{"letter":"D","text":"Focal length"}],"correct_letter":"B","correct_text":"Humanware"},{"id":"w12-q8","week":12,"number":8,"question":"Which of these uses revealed willingness to pay?","options":[{"letter":"A","text":"market price method"},{"letter":"B","text":"replacement cost method"},{"letter":"C","text":"damage cost avoided method"},{"letter":"D","text":"contingent valuation method"}],"correct_letter":"A","correct_text":"market price method"},{"id":"w12-q9","week":12,"number":9,"question":"Which camera-axis orientation is intentionally tilted between vertical and horizontal?","options":[{"letter":"A","text":"True vertical"},{"letter":"B","text":"Near vertical"},{"letter":"C","text":"Oblique"},{"letter":"D","text":"Fiducial"}],"correct_letter":"C","correct_text":"Oblique"},{"id":"w12-q10","week":12,"number":10,"question":"Which platform normally uses cameras placed at ground level with a horizontal camera orientation?","options":[{"letter":"A","text":"Space-borne platform"},{"letter":"B","text":"Air-borne platform"},{"letter":"C","text":"Ground-borne platform"},{"letter":"D","text":"Orbital platform"}],"correct_letter":"C","correct_text":"Ground-borne platform"}];
-const BYID = {}; BANK.forEach(q=>BYID[q.id]=q);
-const WEEK_TITLES = {1:"Foundations of Geography & Ecology",2:"Earth, Volcanoes & Geological Time",3:"Rocks, Minerals & Weathering",4:"Atmosphere & Climate Change",5:"Oceans & Ocean Floor",6:"Rivers, Drainage & India",7:"Soils, Biodiversity & Succession",8:"Conservation & Species",9:"Population & Sustainability",10:"Resources & Pollution",11:"Transport, Trade & Settlements",12:"Hazards, GIS & Remote Sensing"};
-const MISSING = {6:[10],7:[1,9],9:[1],10:[1],11:[1,5]};
-const LSKEY="nptel-hub-v1";
-function blankData(){return {subject:null,learn:{done:[],last:null},attempts:{},bookmarks:[],notes:{},sessions:[],examDate:null,qrFlags:{},issues:[],activeSes:null};}
-function blankState(){return {accounts:{},current:null,legacy:null,searches:[],issues:[],theme:null};}
-function load(){try{const s=JSON.parse(localStorage.getItem(LSKEY));if(s&&typeof s==="object"){if(s.attempts&&!s.accounts){const st=blankState();st.legacy={attempts:s.attempts||{},bookmarks:s.bookmarks||[],notes:s.notes||{},sessions:s.sessions||[]};st.searches=s.searches||[];st.issues=s.issues||[];st.theme=s.theme||null;return st;}if(s.accounts)return Object.assign(blankState(),s);}}catch(e){}return blankState();}
-let S=load();
-let D=blankData();
-if(S.current&&S.accounts[S.current])setD(S.accounts[S.current]);
-if(D.themePref)S.theme=D.themePref;
-function save(){try{localStorage.setItem(LSKEY,JSON.stringify(S));}catch(e){}}
-function curAcct(){return (S.current&&S.accounts[S.current])?S.accounts[S.current]:null;}
-function isLoggedIn(){return !!curAcct();}
-function setD(a){a.data=Object.assign(blankData(),a.data||{});D=a.data;}
-function newSalt(){return Math.random().toString(36).slice(2,10)+Date.now().toString(36);}
-async function hashPw(pw,salt){const s=salt+"::"+pw;if(window.crypto&&crypto.subtle&&crypto.subtle.digest){try{const buf=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s));return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,"0")).join("");}catch(e){}}let h1=0xdeadbeef,h2=0x41c6ce57;for(let i=0;i<s.length;i++){const c=s.charCodeAt(i);h1=Math.imul(h1^c,2654435761);h2=Math.imul(h2^c,1597334677);}return "fb"+(h1>>>0).toString(16)+(h2>>>0).toString(16);}
-// theme
-function applyTheme(){const t=S.theme||"light";document.documentElement.dataset.theme=t;document.getElementById("themeBtn").innerHTML=t==="dark"?'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg> Light':'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg> Dark';}
-document.getElementById("themeBtn").addEventListener("click",()=>{const cur=document.documentElement.dataset.theme;S.theme=cur==="dark"?"light":"dark";if(isLoggedIn())D.themePref=S.theme;save();applyTheme();});
-applyTheme();
-const app=document.getElementById("app"), pbar=document.getElementById("pbar"), toastEl=document.getElementById("toast"), dlg=document.getElementById("dlg");
-function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-function toast(m){toastEl.textContent=m;toastEl.classList.add("on");setTimeout(()=>toastEl.classList.remove("on"),2600);}
-function shuffle(a){const x=a.slice();for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]];}return x;}
-function att(id){return D.attempts[id]||null;}
-function isBookmarked(id){return D.bookmarks.includes(id);}
-function toggleBookmark(id){if(isBookmarked(id)){D.bookmarks=D.bookmarks.filter(x=>x!==id);toast("Bookmark removed");}else{D.bookmarks.push(id);toast("Bookmarked — saved on this device");}save();}
-function recordAttempt(id,picked){const a=D.attempts[id]||{total:0,correct:0,wrong:0,streak:0,last:null,lastPicked:null,lastDate:null,hist:[]};const q=BYID[id];const ok=picked===q.correct_letter;a.total++;if(ok){a.correct++;a.streak++;}else{a.wrong++;a.streak=0;}a.last=ok?"correct":"incorrect";a.lastPicked=picked;a.lastDate=new Date().toISOString();a.hist.push({picked:picked,ok:ok,at:a.lastDate});if(a.hist.length>20)a.hist=a.hist.slice(-20);D.attempts[id]=a;save();}
-function weekQs(w){return BANK.filter(q=>q.week===w);}
-function weekStats(w){const qs=weekQs(w);let at=0,co=0;qs.forEach(q=>{const a=att(q.id);if(a){at++;if(a.last==="correct")co++;}});return{total:qs.length,attempted:at,correct:co,remaining:qs.length-at};}
-function overall(){let at=0,co=0,tot=0,wr=0;Object.values(D.attempts).forEach(a=>{tot+=a.total;co+=a.correct;wr+=a.wrong;});at=Object.keys(D.attempts).length;const acc=tot?Math.round(co/tot*100):0;return{attempted:at,correct:co,wrong:wr,totalAttempts:tot,accuracy:acc,remaining:BANK.length-at};}
-function mastery(id){const a=att(id);if(!a)return null;if(a.streak>=2)return"Consistently Correct";if(a.correct>0)return"Improving";return"Needs Revision";}
-function fmtTime(sec){sec=Math.max(0,Math.round(sec));const m=Math.floor(sec/60),s=sec%60;return m+"m "+String(s).padStart(2,"0")+"s";}
-function fmtDate(iso){if(!iso)return"—";try{return new Date(iso).toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"});}catch(e){return"—";}}
-function showDialog(html){document.getElementById("dlgBody").innerHTML=html;if(!dlg.open)dlg.showModal();}
-function closeDialog(){if(dlg.open)dlg.close();}
-// ---------- session ----------
-let SES=null, timerId=null;
-function stopTimer(){if(timerId){clearInterval(timerId);timerId=null;}}
-function startSession(cfg){
-  // cfg: {mode,title,qids,shuffleOpts,durationMin,isMock,submitAll}
-  if(!isLoggedIn()){toast("Log in or sign up to start practising");curView="welcome";render();return;}
-  if(!D.subject){curView="subject";render();toast("Select your subject first");return;}
-  let qids=cfg.qids.slice(); if(!qids.length){toast("No questions in this selection yet");return;}
-  const optOrder={}; qids.forEach(id=>{optOrder[id]=cfg.shuffleOpts?shuffle(BYID[id].options.map(o=>o.letter)):BYID[id].options.map(o=>o.letter);});
-  SES={mode:cfg.mode,title:cfg.title,qids:qids,optOrder:optOrder,answers:{},checked:{},recorded:{},marked:{},idx:0,start:Date.now(),isMock:!!cfg.isMock,submitAll:!!cfg.submitAll,remain:cfg.durationMin?cfg.durationMin*60:null,durationMin:cfg.durationMin||null,poolNote:cfg.poolNote||""};
-  if(SES.isMock&&SES.remain!=null){SES.endAt=Date.now()+SES.remain*1000;stopTimer();timerId=setInterval(()=>{SES.remain=Math.max(0,Math.round((SES.endAt-Date.now())/1000));renderMockTop();if(SES.remain<=0){stopTimer();toast("Time's up — mock submitted automatically");finishSession(true);}},1000);}
-  renderPractice();
-}
-function saveActiveSes(){if(!SES||!isLoggedIn())return;D.activeSes={mode:SES.mode,title:SES.title,qids:SES.qids,optOrder:SES.optOrder,answers:SES.answers,checked:SES.checked,recorded:SES.recorded,marked:SES.marked,idx:SES.idx,start:SES.start,isMock:SES.isMock,submitAll:SES.submitAll,durationMin:SES.durationMin,endAt:SES.endAt||null,poolNote:SES.poolNote||""};save();}
-function curQ(){return BYID[SES.qids[SES.idx]];}
-function optText(q,letter){const o=q.options.find(x=>x.letter===letter);return o?o.text:"";}
-function renderMockTop(){
-  const el=document.getElementById("mockTop"); if(!el||!SES)return;
-  const t=el.querySelector(".timer"); if(t&&SES.remain!=null){const m=Math.floor(SES.remain/60),s=SES.remain%60;t.textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");t.classList.toggle("low",SES.remain<=60);}
-  document.querySelectorAll(".pal-btn").forEach((b,i)=>{const id=SES.qids[i];b.className="pal-btn"+(SES.answers[id]?" ans":"")+(SES.marked[id]?" mark":"")+(i===SES.idx?" cur":"");});
-}
-function renderPractice(){
-  const q=curQ(), total=SES.qids.length, idx=SES.idx;
-  const picked=SES.answers[q.id], checked=SES.checked[q.id];
-  const answeredN=SES.qids.filter(id=>SES.answers[id]).length;
-  const progN=SES.submitAll?answeredN:(idx+1);
-  const order=SES.optOrder[q.id];
-  let optsHtml=order.map((letter,di)=>{
-    const dl="ABCD"[di]; let cls="opt"; if(picked===letter)cls+=" sel";
-    if(checked){if(letter===q.correct_letter)cls+=" correct";else if(picked===letter)cls+=" wrong";}
-    const dis=checked?"disabled":"";
-    let tail=""; if(checked&&letter===q.correct_letter)tail=' <span class="tag g">Accepted answer</span>'; else if(checked&&picked===letter&&letter!==q.correct_letter)tail=' <span class="tag r">Your answer</span>';
-    return '<button class="'+cls+'" data-pick="'+letter+'" '+dis+'><span class="ltr">'+dl+'</span><span>'+esc(optText(q,letter))+tail+'</span></button>';
-  }).join("");
-  let fb="";
-  if(checked&&!SES.isMock){const ok=picked===q.correct_letter;fb='<div class="feedback '+(ok?"ok":"bad")+'" role="status">'+(ok?"✓ Correct Answer!":"✗ Incorrect Answer")+(ok?"":'<div class="sub">Your pick is marked red below — the accepted answer is green.</div>')+'</div><div class="acc-box"><b>Accepted Answer:</b> '+esc(q.correct_letter)+'. '+esc(q.correct_text)+'<div class="noexp">No explanation in source.</div></div>';}
-  const note=D.notes[q.id]||{};
-  const noteHtml=checked||!SES.isMock?'<details class="sheet"><summary>My revision note (saved on this device)</summary>'+
-    '<label class="f" for="nConcept">Key concept</label><input class="inp" id="nConcept" value="'+esc(note.concept||"")+'" placeholder="e.g. migration vs dispersal">'
-    +'<label class="f" for="nWhy">Why the accepted answer is correct</label><textarea class="inp" id="nWhy" placeholder="In your own words…">'+esc(note.why||"")+'</textarea>'
-    +'<label class="f" for="nMnem">Mnemonic / reminder</label><input class="inp" id="nMnem" value="'+esc(note.mnemonic||"")+'" placeholder="A short memory hook">'
-    +'<div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="btn btn-p btn-sm" id="saveNote">Save note</button><button class="btn btn-g btn-sm" id="delNote">Delete note</button></div></details>':"";
-  const mockTop=SES.isMock?'<div class="mock-top" id="mockTop"><span class="timer">--:--</span><span class="pill">'+esc(SES.title)+'</span><button class="btn btn-s btn-sm" id="submitMock">Submit mock</button></div>'
-    +'<details class="sheet" open><summary>Question palette — tap a number to jump</summary><div class="palette">'+SES.qids.map((id,i)=>'<button class="pal-btn" data-jump="'+i+'">'+(i+1)+'</button>').join("")+'</div><p class="small" style="margin-top:8px">Green = answered · Red = marked for review · Blue outline = current. Answers are not revealed during a mock.</p></details>':"";
-  const testTop=SES.submitAll&&!SES.isMock?'<div class="mock-top" id="testTop"><span class="pill">Answered '+answeredN+' of '+total+'</span><span class="small">No answers are revealed until you submit.</span><button class="btn btn-p btn-sm" id="submitTest">✓ Submit '+(SES.mode==="weektest"?"Week Test":"Test")+'</button></div>'
-    +'<details class="sheet" open><summary>Question palette — tap a number to jump</summary><div class="palette">'+SES.qids.map((id,i)=>'<button class="pal-btn'+(SES.answers[id]?" ans":"")+(SES.marked[id]?" mark":"")+(i===idx?" cur":"")+'" data-jump="'+i+'">'+(i+1)+'</button>').join("")+'</div><p class="small" style="margin-top:8px">Green = answered · Red = marked for review · Blue outline = current. You can change any answer any time before submitting.</p></details>':"";
-  app.innerHTML='<div class="wrap"><p class="crumb"><b>Week '+q.week+' • Question '+(idx+1)+' of '+total+'</b> · '+esc(SES.title)+'</p>'
-    +mockTop+testTop
-    +'<div class="p-head"><span class="pill">Question '+(idx+1)+' of '+total+'</span>'+(SES.marked[q.id]?'<span class="tag a">★ Marked for review</span>':"")+'<span style="flex:1"></span><button class="bm-btn" id="tBook" aria-label="Bookmark this question"><svg viewBox="0 0 24 24" width="21" height="21"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z" class="bmp" data-on="'+(isBookmarked(q.id)?1:0)+'"/></svg></button><span class="small">'+(SES.submitAll?("Answered "+answeredN+" of "+total):("Session score so far: "+sessionScore()))+'</span></div>'
-    +'<div class="progress" role="progressbar" aria-valuenow="'+progN+'" aria-valuemax="'+total+'"><i style="width:'+Math.round(progN/total*100)+'%"></i></div>'
-    +(SES.poolNote?'<p class="small" style="margin-bottom:10px">'+esc(SES.poolNote)+'</p>':"")
-    +'<div class="q-card"><p class="q-text">'+esc(q.question)+'</p><div class="opts" role="group" aria-label="Answer options">'+optsHtml+'</div>'+fb
-    +'<div class="q-tools"><button class="tool-btn'+(SES.marked[q.id]?" active":"")+'" id="tMark">'+(SES.marked[q.id]?"★ Marked":"☆ Mark for review")+'</button>'
-    
-    +'<button class="tool-btn" id="tReport">Report an issue</button></div>'+noteHtml
-    +'<p class="small" style="margin-top:14px">Keyboard: <span class="kbd">1–4</span> select · <span class="kbd">Enter</span> check / next · <span class="kbd">←</span> <span class="kbd">→</span> navigate · <span class="kbd">B</span> bookmark · <span class="kbd">M</span> mark</p></div>'
-    +'<div class="desktop-nav-row"><button class="btn btn-g" id="dPrev" '+(idx===0?"disabled":"")+'>← Previous</button><button class="btn btn-p" id="dMain"></button><button class="btn btn-g" id="dNext">'+(idx===total-1?"Finish":"Next →")+'</button><button class="btn btn-s" id="dQuit">End session</button></div>'
-    +(SES.submitAll?'<button class="btn btn-p" id="submitTestBottom" style="width:100%;margin-top:14px">✓ Submit '+(SES.mode==="weektest"?"Week Test":"Test")+' — see your score &amp; full review</button><p class="small" style="margin-top:8px;text-align:center">Answered '+answeredN+' of '+total+' · Correct answers are revealed only after you submit.</p>':"")
-    +'</div>';
-  updateBars();
-  app.querySelectorAll("[data-pick]").forEach(b=>b.addEventListener("click",()=>{SES.answers[q.id]=b.dataset.pick;renderPractice();}));
-  app.querySelectorAll("[data-jump]").forEach(b=>b.addEventListener("click",()=>{SES.idx=+b.dataset.jump;renderPractice();window.scrollTo({top:0});}));
-  const prev=()=>{if(SES.idx>0){SES.idx--;renderPractice();window.scrollTo({top:0});}};
-  const next=()=>{if(SES.idx<SES.qids.length-1){SES.idx++;renderPractice();window.scrollTo({top:0});}else if(SES.submitAll){confirmSubmit();}else finishSession(false);};
-  const mainAct=()=>{if(SES.isMock){next();return;} if(SES.submitAll){if(SES.idx===SES.qids.length-1)confirmSubmit();else next();return;} if(!SES.checked[q.id]){doCheck();}else{next();}};
-  document.getElementById("dPrev").addEventListener("click",prev);
-  document.getElementById("dNext").addEventListener("click",next);
-  document.getElementById("dMain").addEventListener("click",mainAct);
-  document.getElementById("dQuit").addEventListener("click",()=>confirmDlg(SES.submitAll?"End this test now? Nothing has been submitted, so these answers will not be saved or scored.":"End this session now? Answered questions already checked are saved.",()=>{stopTimer();SES=null;D.activeSes=null;save();pbar.classList.remove("on");go("practice");}));
-  const stb=document.getElementById("submitTest"); if(stb)stb.addEventListener("click",confirmSubmit);
-  const sbb=document.getElementById("submitTestBottom"); if(sbb)sbb.addEventListener("click",confirmSubmit);
-  document.getElementById("pbPrev").onclick=prev; document.getElementById("pbNext").onclick=next; document.getElementById("pbMain").onclick=mainAct;
-  document.getElementById("tMark").addEventListener("click",()=>{SES.marked[q.id]=!SES.marked[q.id];renderPractice();});
-  document.getElementById("tBook").addEventListener("click",()=>{toggleBookmark(q.id);renderPractice();});
-  document.getElementById("tReport").addEventListener("click",()=>reportDlg(q.id));
-  const sn=document.getElementById("saveNote"); if(sn)sn.addEventListener("click",()=>{D.notes[q.id]={concept:document.getElementById("nConcept").value.trim(),why:document.getElementById("nWhy").value.trim(),mnemonic:document.getElementById("nMnem").value.trim()};save();toast("Note saved on this device");});
-  const dn=document.getElementById("delNote"); if(dn)dn.addEventListener("click",()=>{delete D.notes[q.id];save();renderPractice();toast("Note deleted");});
-  const sm=document.getElementById("submitMock"); if(sm)sm.addEventListener("click",()=>confirmDlg("Submit this mock now? You can't change answers after submitting.",()=>finishSession(false)));
-  if(SES.isMock)renderMockTop();
-  saveActiveSes();
-  window.scrollTo({top:0});
-}
-function updateBars(){
-  if(!SES){pbar.classList.remove("on");return;}
-  pbar.classList.add("on");
-  const q=curQ(),checked=SES.checked[q.id];
-  const main=document.getElementById("dMain"), pb=document.getElementById("pbMain");
-  const label=SES.isMock?"Next":SES.submitAll?(SES.idx===SES.qids.length-1?"Submit Test":"Next →"):(checked?(SES.idx===SES.qids.length-1?"See results":"Next →"):"Check Answer");
-  if(main)main.textContent=label; pb.textContent=label;
-  document.getElementById("pbPrev").disabled=SES.idx===0;
-  document.getElementById("pbNext").textContent=SES.idx===SES.qids.length-1?"Finish":"Next →";
-}
-function sessionScore(){if(!SES)return"—";let c=0,n=0;SES.qids.forEach(id=>{if(SES.checked[id]){n++;if(SES.answers[id]===BYID[id].correct_letter)c++;}});return n?c+"/"+n+" correct":"not checked yet";}
-function doCheck(){const q=curQ();const picked=SES.answers[q.id];if(!picked){toast("Pick an option first");return;}SES.checked[q.id]=true;if(!SES.recorded[q.id]){recordAttempt(q.id,picked);SES.recorded[q.id]=true;}renderPractice();}
-function confirmSubmit(){if(!SES)return;const total=SES.qids.length;const un=SES.qids.filter(id=>!SES.answers[id]).length;const msg=un>0?("You have answered "+(total-un)+" of "+total+" questions. "+un+" question"+(un===1?" is":"s are")+" still unanswered — unanswered questions score 0. Submit now and see your results?"):("You have answered all "+total+" questions. Submit now to see your score and the full answer review?");showDialog('<h3 style="font-size:18px">Submit '+(SES.mode==="weektest"?"Week Test":"Test")+'?</h3><p class="small" style="margin-top:8px">'+esc(msg)+'</p><div style="display:flex;gap:8px;margin-top:18px"><button class="btn btn-g" style="flex:1" id="dlgNo">Keep answering</button><button class="btn btn-p" style="flex:1" id="dlgYes">Submit</button></div>');document.getElementById("dlgNo").onclick=closeDialog;document.getElementById("dlgYes").onclick=()=>{closeDialog();finishSession(false);};}
-function confirmDlg(msg,onYes){showDialog('<h3 style="font-size:18px">Are you sure?</h3><p class="small" style="margin-top:8px">'+esc(msg)+'</p><div style="display:flex;gap:8px;margin-top:18px"><button class="btn btn-g" style="flex:1" id="dlgNo">Keep going</button><button class="btn btn-p" style="flex:1" id="dlgYes">Yes, continue</button></div>');document.getElementById("dlgNo").onclick=closeDialog;document.getElementById("dlgYes").onclick=()=>{closeDialog();onYes();};}
-function reportDlg(qid){const q=BYID[qid];showDialog('<h3 style="font-size:18px">Report an issue</h3><p class="small" style="margin-top:6px">Week '+q.week+' · Q'+q.number+'. Saved to your account on this device and shown in the Admin preview. A report never changes an answer automatically.</p><label class="f" for="repType">What is the problem?</label><select class="inp" id="repType"><option>Accepted answer looks wrong</option><option>Missing or wrong option</option><option>Question unclear</option><option>Formatting problem</option></select><label class="f" for="repTxt">Comment (optional)</label><textarea class="inp" id="repTxt" placeholder="Add a short note if it helps…"></textarea><div style="display:flex;gap:8px;margin-top:14px"><button class="btn btn-g" style="flex:1" id="repCancel">Cancel</button><button class="btn btn-p" style="flex:1" id="repSave">Save report</button></div>');document.getElementById("repCancel").onclick=closeDialog;document.getElementById("repSave").onclick=()=>{const t=document.getElementById("repTxt").value.trim();const ty=document.getElementById("repType").value;if(!D.issues)D.issues=[];D.issues.push({qid:qid,type:ty,text:t,at:new Date().toISOString()});save();closeDialog();toast("Report saved — thank you");};}
-function finishSession(auto){
-  if(!SES)return; stopTimer();
-  // mock & submit-all tests: record all attempts now (answers were not checked during the test)
-  if(SES.isMock||SES.submitAll){SES.qids.forEach(id=>{const p=SES.answers[id];if(p&&!SES.recorded[id]){recordAttempt(id,p);SES.recorded[id]=true;}SES.checked[id]=true;});}
-  const total=SES.qids.length;let correct=0,incorrect=0,unans=0;const byWeek={};
-  SES.qids.forEach(id=>{const q=BYID[id];byWeek[q.week]=byWeek[q.week]||{t:0,c:0};byWeek[q.week].t++;const p=SES.answers[id];if(!p)unans++;else if(p===q.correct_letter){correct++;byWeek[q.week].c++;}else incorrect++;});
-  const timeSec=(Date.now()-SES.start)/1000;
-  const res={mode:SES.mode,title:SES.title,subject:D.subject||"geo-env",submitAll:!!SES.submitAll,total:total,correct:correct,incorrect:incorrect,unanswered:unans,accuracy:total?Math.round(correct/total*100):0,timeSec:Math.round(timeSec),byWeek:byWeek,qids:SES.qids.slice(),answers:Object.assign({},SES.answers),optOrder:SES.optOrder,at:new Date().toISOString()};
-  D.activeSes=null; D.sessions.push(res); if(D.sessions.length>50)D.sessions=D.sessions.slice(-50); save();
-  LASTRES=res; SES=null; pbar.classList.remove("on"); renderResults(res);
-}
-let LASTRES=null, reviewFilter="all";
-function renderResults(r){
-  const wkRows=Object.keys(r.byWeek).sort((a,b)=>a-b).map(w=>{const v=r.byWeek[w];return '<div class="item" style="display:flex;justify-content:space-between;align-items:center"><span><b>Week '+w+'</b> <span class="small">'+esc(WEEK_TITLES[w]||"")+'</span></span><span class="tag '+(v.c===v.t?"g":v.c===0?"r":"a")+'">'+v.c+' / '+v.t+' correct</span></div>';}).join("");
-  if(r.mode==="mock"){
-    const nm=curAcct()?(curAcct().name||"Student").trim().split(/\s+/)[0]:"Student";
-    app.innerHTML='<div class="wrap"><div class="narrow"><div style="text-align:center;padding-top:24px">'+TROPHYSVG+'<h2 style="font-size:26px;font-weight:800;margin-top:8px">Mock Test Completed!</h2><p class="small" style="margin-top:4px">Great effort, '+esc(nm)+'!</p></div>'
-    +'<div class="stat-grid" style="grid-template-columns:1fr 1fr 1fr"><div class="stat" style="text-align:center"><div class="n">'+r.correct+'/'+r.total+'</div><div class="l">Score</div></div><div class="stat" style="text-align:center"><div class="n">'+r.accuracy+'%</div><div class="l">Accuracy</div></div><div class="stat" style="text-align:center"><div class="n" style="color:var(--green)">'+r.correct+'</div><div class="l">Correct</div></div></div>'
-    +'<p style="text-align:center;margin-top:12px"><span style="color:var(--red);font-weight:800;font-size:19px">'+r.incorrect+'</span> <span class="small">Incorrect · '+r.unanswered+' unanswered · '+fmtTime(r.timeSec)+'</span></p>'
-    +'<div style="display:flex;flex-direction:column;gap:10px;margin-top:18px"><button class="btn btn-p" id="rReview">Review Answers</button>'+(r.incorrect>0?'<button class="btn btn-g" id="rWrong">Practise Wrong Questions ('+r.incorrect+')</button>':"")+'<button class="btn btn-g" id="rAnother">Try Another Test</button><button class="btn btn-g" data-nav="practice">Back to Practice</button></div>'
-    +'<div id="reviewBox"></div></div></div>';
-  } else {
-    app.innerHTML='<div class="wrap"><div class="sec" style="margin-top:24px"><h2>'+(r.correct/r.total>=0.7?"":"")+esc(r.title)+' — Results</h2><p class="hint">Calculated from your actual answers in this session.</p>'
-    +'<div class="stat-grid"><div class="stat"><div class="n">'+r.correct+'/'+r.total+'</div><div class="l">Score</div></div><div class="stat"><div class="n">'+r.accuracy+'%</div><div class="l">Accuracy</div></div><div class="stat"><div class="n">'+r.incorrect+'</div><div class="l">Incorrect</div></div><div class="stat"><div class="n">'+fmtTime(r.timeSec)+'</div><div class="l">Time taken · '+r.unanswered+' unanswered</div></div></div>'
-    +'<h3 style="margin-top:22px;font-size:16px">Week-wise performance</h3><div class="list">'+wkRows+'</div>'
-    +'<div class="cta-row"><button class="btn btn-p" id="rReview">Review All Answers</button>'+(r.incorrect>0?'<button class="btn btn-s" id="rWrong">Practise Wrong Questions ('+r.incorrect+')</button>':"")+'<button class="btn btn-g" id="rRetry">Retry Test</button><button class="btn btn-g" data-nav="practice">Back to Practice</button></div>'
-    +'<div id="reviewBox"></div></div></div>';
-  }
-  bindNav(); renderReview(r);
-  document.getElementById("rReview").addEventListener("click",()=>{document.getElementById("reviewBox").scrollIntoView({behavior:"smooth"});});
-  const rw=document.getElementById("rWrong"); if(rw)rw.addEventListener("click",()=>{const ids=r.qids.filter(id=>r.answers[id]&&r.answers[id]!==BYID[id].correct_letter);startSession({mode:"retry-wrong",title:"Retry wrong questions",qids:ids,shuffleOpts:false});});
-  const rt=document.getElementById("rRetry"); if(rt)rt.addEventListener("click",()=>{startSession({mode:r.mode,title:r.title,qids:r.qids.slice(),shuffleOpts:true,isMock:r.mode==="mock",submitAll:!!r.submitAll,durationMin:null});});
-  const ra=document.getElementById("rAnother"); if(ra)ra.addEventListener("click",()=>{curView="setup-mock";render();});
-}
-function renderReview(r){
-  const box=document.getElementById("reviewBox"); if(!box)return;
-  const items=r.qids.map((id,i)=>{const q=BYID[id];const p=r.answers[id];const st=!p?"unanswered":(p===q.correct_letter?"correct":"incorrect");return{id:id,q:q,p:p,st:st,i:i};}).filter(x=>reviewFilter==="all"||x.st===reviewFilter);
-  box.innerHTML='<h3 style="margin-top:26px;font-size:16px">Answer review</h3><div class="filters" role="group" aria-label="Review filter">'
-  +[["all","All"],["correct","✓ Correct"],["incorrect","✗ Incorrect"],["unanswered","Unanswered"]].map(f=>'<button class="chip'+(reviewFilter===f[0]?" on":"")+'" data-rf="'+f[0]+'">'+f[1]+'</button>').join("")+'</div>'
-  +(items.length?'<div class="list">'+items.map(x=>{
-    const opts=x.q.options.map(o=>{let cls="review-opt";let t="";if(o.letter===x.q.correct_letter){cls+=" c";t=' <span class="tag g">Accepted answer from source</span>';}if(x.p===o.letter&&o.letter!==x.q.correct_letter){cls+=" w";t=' <span class="tag r">Your answer</span>';}if(x.p===o.letter&&o.letter===x.q.correct_letter)t+=' <span class="tag g">Your answer ✓</span>';return '<div class="'+cls+'"><b>'+o.letter+'.</b> '+esc(o.text)+t+'</div>';}).join("");
-    return '<div class="item"><p class="small">Week '+x.q.week+' · Q'+x.q.number+' · '+(x.st==="correct"?'<span class="tag g">✓ Correct</span>':x.st==="incorrect"?'<span class="tag r">✗ Incorrect</span>':'<span class="tag a">Not answered</span>')+'</p><p class="q" style="margin-top:6px">'+esc(x.q.question)+'</p>'+opts+'<p class="small" style="margin-top:8px">Accepted answer from source: <b>'+esc(x.q.correct_letter)+'. '+esc(x.q.correct_text)+'</b> · No explanation in source.</p><div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-g btn-sm" data-single="'+x.id+'">Practise this question</button><button class="btn btn-g btn-sm" data-bm2="'+x.id+'">'+(isBookmarked(x.id)?"Remove bookmark":"Bookmark")+'</button><button class="btn btn-g btn-sm" data-rep="'+x.id+'">Report an issue</button></div></div>';
-  }).join("")+'</div>':'<div class="empty"><b>Nothing in this filter</b>Try another filter above.</div>');
-  box.querySelectorAll("[data-rf]").forEach(b=>b.addEventListener("click",()=>{reviewFilter=b.dataset.rf;renderReview(r);}));
-  box.querySelectorAll("[data-single]").forEach(b=>b.addEventListener("click",()=>startSession({mode:"single",title:"Single question practice",qids:[b.dataset.single],shuffleOpts:false})));
-  box.querySelectorAll("[data-bm2]").forEach(b=>b.addEventListener("click",()=>{toggleBookmark(b.dataset.bm2);renderReview(r);}));
-  box.querySelectorAll("[data-rep]").forEach(b=>b.addEventListener("click",()=>reportDlg(b.dataset.rep)));
-}
-// ---------- views ----------
-function weekCard(w){const st=weekStats(w);const pct=st.total?Math.round(st.attempted/st.total*100):0;return '<div class="week-card"><h3>Week '+w+'</h3><p class="cnt">'+esc(WEEK_TITLES[w])+'</p><p class="cnt"><b style="color:var(--ink)">'+st.total+' questions</b> in source'+(MISSING[w]?' · missing Q'+MISSING[w].join(", Q"):"")+'</p><div class="prog"><i style="width:'+pct+'%"></i></div><p class="meta">'+st.attempted+' attempted · '+st.correct+' last-correct · '+st.remaining+' remaining</p><button class="btn btn-p btn-sm" data-week="'+w+'" style="margin-top:auto">Start Week Test</button><button class="btn btn-g btn-sm" data-weekpractice="'+w+'">Practice mode (check each answer)</button></div>';}
-function allWeekCards(){let h="";for(let w=1;w<=12;w++)h+=weekCard(w);return h;}
-const CAPSVG='<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" fill="#347FF0" opacity=".72"/><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z" fill="#347FF0"/></svg>';
-const BOOKSVG='<svg class="illus" viewBox="0 0 340 200" role="img" aria-label="Study books beside a laptop with a play button"><ellipse cx="172" cy="100" rx="160" ry="90" fill="#E1EDFF"/><ellipse cx="172" cy="182" rx="138" ry="10" fill="#101C4A" opacity=".07"/><g><rect x="36" y="142" width="120" height="23" rx="7" fill="#12A66A"/><rect x="49" y="150" width="72" height="6" rx="3" fill="#CFF5E2"/><rect x="29" y="117" width="126" height="25" rx="7" fill="#F5C451"/><rect x="43" y="126" width="56" height="6" rx="3" fill="#FFFFFF" opacity=".65"/><rect x="37" y="92" width="118" height="25" rx="7" fill="#2878F9"/><rect x="51" y="100" width="70" height="6" rx="3" fill="#BFD9FF"/><rect x="51" y="109" width="44" height="5" rx="2.5" fill="#8FB9F5"/></g><g><rect x="170" y="62" width="134" height="94" rx="10" fill="#FFFFFF" stroke="#2878F9" stroke-width="3"/><circle cx="237" cy="105" r="23" fill="#2878F9"/><path d="M230 94l19 11-19 11z" fill="#fff"/><rect x="158" y="158" width="158" height="9" rx="4.5" fill="#C9DBF7"/></g><path d="M52 30v18M43 39h18" stroke="#FFB51B" stroke-width="3.5" stroke-linecap="round"/><path d="M298 172v12M292 178h12" stroke="#12A66A" stroke-width="3" stroke-linecap="round"/><circle cx="312" cy="38" r="3.5" fill="#12A66A"/><circle cx="146" cy="26" r="2.6" fill="#2878F9"/><circle cx="24" cy="70" r="2.6" fill="#FFB51B"/></svg>';
-const TROPHYSVG='<svg viewBox="0 0 120 100" width="104" height="86" role="img" aria-label="Trophy"><circle cx="14" cy="16" r="3" fill="#F5C451"/><circle cx="106" cy="12" r="3" fill="#3988FF"/><circle cx="98" cy="30" r="2.2" fill="#12B981"/><circle cx="22" cy="34" r="2.2" fill="#EF5350"/><path d="M38 12h44v10H38z" fill="#F5C451"/><path d="M42 22h36v22a18 18 0 0 1-36 0V22z" fill="#F5C451"/><path d="M42 26c-10 0-14-4-14-12V12h14M78 26c10 0 14-4 14-12V12H78" stroke="#F5C451" stroke-width="5" fill="none"/><rect x="55" y="58" width="10" height="10" fill="#E0A92E"/><rect x="44" y="68" width="32" height="7" rx="2" fill="#F5C451"/><rect x="38" y="75" width="44" height="7" rx="2" fill="#C78F1B"/></svg>';
-function icoPerson(){return '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>';}
-function icoMail(){return '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>';}
-function icoLock(){return '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>';}
-const SUBJECTS=[{id:"geo-env",name:"Geography & Environment",weeks:12,questions:BANK.length}];
-const LEARN_NOTE="Learning notes created for this app from the concepts in the question set — supplementary study material, not official NPTEL content. Accepted answers always come from the supplied source.";
-const LCOLORS_UNUSED=["#F59E0B","#3B82F6","#8B5CF6","#EC4899","#10B981","#F97316","#06B6D4","#6366F1","#84CC16","#EF4444","#14B8A6","#A855F7"];
-const LESSONS={
-1:{obj:["Say what ecology studies, in one line","Use migration, pull factors and Liebig's law correctly","Know who developed the systematic approach to Geography"],intro:["Geography studies how people and nature fit together across places. Its systematic approach — studying one theme at a time across the world — was developed by Alexander von Humboldt. Ecology is the science of relationships between organisms and their environments: who eats whom, what limits growth, and how living things move and spread.","Two ideas unlock many Week 1 questions. Liebig's law of the minimum says growth is limited by whichever needed factor is in shortest supply. And when conditions in a place attract movers — good climate, food, safety — those are pull factors; the regular, seasonal movement of animals along fixed routes is migration."],points:[["w1-q5","Ecology = the science of relationships between organisms and their environments."],["w1-q2","Alexander von Humboldt developed the systematic approach to Geography."],["w1-q6","Liebig's law of the minimum: a biological process is limited by the factor available in the least amount relative to need."],["w1-q1","Migration = the regular, seasonal movement of animals, often along fixed routes."],["w1-q10","A good climate works as a pull factor — it attracts movement towards a place."],["w1-q3","Allelopathy: chemicals released by one plant (like teak) can stop other plants growing nearby."]],quiz:["w1-q1","w1-q5","w1-q6","w1-q10"]},
-2:{obj:["Tell shield volcanoes and stratovolcanoes apart","Know where magma comes from and the main dating principles","Recall the terrestrial planets"],intro:["The solid Earth is restless. Magma — molten rock below the surface — comes mainly from the mantle. Eruptions that flow gently again and again build broad shield volcanoes like Hawaii's; eruptions alternating lava and ash build steep stratovolcanoes like Mount Fuji. The Deccan Traps of India are a flood basalt province: enormous lava outpourings.","Geologists read Earth's history in its rocks. Fossil assemblages are unique to the time they lived in (principle of fossil succession), rock layers continue sideways until the edge of a basin (lateral continuity), and absolute dating uses physical methods — an inclusion study is not one of them."],points:[["w2-q2","The main source of magma is the mantle."],["w2-q1","Mount Fuji is a stratovolcano; Hawaii's volcanoes are shield volcanoes (Week 2 · Q5)."],["w2-q10","The Deccan Traps are a flood basalt province."],["w2-q7","Principle of fossil succession: fossil assemblages are unique to their time, so they can be used to age rocks."],["w2-q3","Inclusion study is NOT a method of absolute dating."],["w2-q8","The terrestrial planets are Mercury, Venus, Earth and Mars."]],quiz:["w2-q2","w2-q1","w2-q3","w2-q7"]},
-3:{obj:["Classify mudrock and sandstone","Separate chemical weathering from other processes","Identify minerals by streak and cleavage"],intro:["Rocks are recognised by how they formed and what they contain. Mudrock and sandstone are siliciclastic rocks — built from fragments of older rocks. At the surface, weathering breaks rock down: carbonation and hydrolysis are chemical weathering, changing the minerals themselves, while slow cooling of magma deep underground gives coarse-grained igneous rocks.","Minerals carry diagnostic habits. Amphiboles are green or black inosilicate minerals forming prism- or needle-like crystals. A mineral's streak — the colour of its powder — is often steadier than its surface colour, and cleavage is the tendency to break along flat planes in set directions."],points:[["w3-q1","Mudrock is a siliciclastic rock — and so is sandstone (Week 3 · Q8)."],["w3-q2","Carbonation is chemical weathering — and so is hydrolysis (Week 3 · Q4)."],["w3-q10","Slow cooling of magma produces coarse-grained igneous rocks."],["w3-q6","Streak — the colour of the powdered mineral — is often more useful than surface colour for identification."],["w3-q9","Cleavage = the tendency to break in given directions, producing relatively plane surfaces."]],quiz:["w3-q2","w3-q1","w3-q10","w3-q9"]},
-4:{obj:["Distinguish mitigation from adaptation","Name the atmosphere layers the questions use","Explain isobars, advection and climate normals"],intro:["Climate action has two halves: mitigation tackles the causes (for example, locking carbon away in geological sites), while adaptation copes with the effects — reserve managers responding to drought, or seed and sperm banking that builds resilience to climate change.","The atmosphere is layered: jet planes cruise in the stratosphere, and noctilucent clouds shine in the mesosphere. Air pressure at a point is mainly the weight of the air above it, so isobars are drawn after converting pressures to sea-level values. Heat carried sideways by moving air is advection, and a climate average is classically taken over 30 years."],points:[["w4-q1","Carbon sequestration in geological sites is a mitigation option."],["w4-q3","Responding to drought impacts (as at Mudumalai) is adaptation; seed and sperm banking supports resilience (Week 4 · Q4)."],["w4-q5","Jet planes typically fly in the stratosphere; noctilucent clouds occur in the mesosphere (Week 4 · Q8)."],["w4-q6","Advection = heat movement through the horizontal movement of air."],["w4-q7","The classical period for taking climate averages is 30 years."],["w4-q10","An mT air mass is generally warm and moist."]],quiz:["w4-q1","w4-q5","w4-q6","w4-q7"]},
-5:{obj:["Describe the ocean floor's big features","Explain tides, density and shelf productivity","Use isohaline and sublimation correctly"],intro:["The ocean floor is not flat. The largest mountain ranges on Earth are the mid-oceanic ridges; the vast abyssal plains — Earth's largest habitat — are floored with fine clay and silt, and deep submarine canyons cut across shelves and slopes. Continental shelves slope very gently (0–1 degree) and are highly productive because they receive both light and nutrients.","Tidal range is the difference between high- and low-tide sea levels. Ocean water density changes with hydrostatic pressure, salinity and temperature, and ice can turn straight into water vapour by sublimation. Lines joining places of equal salinity are isohaline curves."],points:[["w5-q3","The mid-oceanic ridge system forms the largest mountain ranges on Earth."],["w5-q2","The abyssal plain is the largest habitat on Earth; its common sediment is clay and silt (Week 5 · Q1)."],["w5-q4","Continental shelves are productive because they receive both light and nutrients; a shelf's gradient is 0–1 degree (Week 5 · Q9)."],["w5-q5","Tidal range = the difference between sea level at high tide and at low tide."],["w5-q10","Equal salinity curves are called isohaline curves."]],quiz:["w5-q3","w5-q5","w5-q9","w5-q10"]},
-6:{obj:["Recognise drainage patterns","Explain India's water divide and peninsular rivers","Recall Köppen's polar frost symbol"],intro:["River networks mirror the land they drain. A network that follows the structure and slope of the land is accordant; one that does not match the present structure is discordant; and a tree-like pattern of smaller streams joining a main channel is dendritic drainage.","The Western Ghats form a water divide: rain falling on opposite sides flows towards different seas. The Narmada and Tapi flow west into the Arabian Sea, while peninsular rivers keep fixed courses because they are cut into older, harder rock. The Himalayas are built mainly of sedimentary rocks, and in Köppen's classification F is the polar frost temperature regime."],points:[["w6-q1","The Western Ghats act as a water divide — water on opposite sides flows in different directions."],["w6-q3","A tree-like river network is dendritic drainage; accordant networks follow the land's structure (Week 6 · Q2) and discordant ones do not (Week 6 · Q4)."],["w6-q6","The Narmada and Tapi flow westwards into the Arabian Sea."],["w6-q8","Peninsular rivers have fixed courses mainly because their courses are cut into older, harder rock."],["w6-q9","In Köppen classification, F is the polar frost temperature regime."]],quiz:["w6-q3","w6-q1","w6-q6","w6-q9"]},
-7:{obj:["Place cryofracturing in the right weathering type","Use alpha and gamma biodiversity correctly","Describe a soil profile and the disturbance rule"],intro:["Soils form where rock, climate and life meet. Frost shattering rock — cryofracturing — is physical weathering. Bangar, the older alluvium, is a type of alluvial soil; the vertical arrangement of soil horizons is called the soil profile, while soil structure means the arrangement of solid soil parts and the pore spaces between them.","Diversity is measured at several scales: alpha diversity exists within one ecosystem, gamma diversity among different geographies. Diversity tends to peak at intermediate levels of disturbance, and a climax community produced by wildfire is a catastrophic climax."],points:[["w7-q2","Cryofracturing is an example of physical weathering."],["w7-q3","Bangar is a type of alluvial soil."],["w7-q4","Alpha (α) biodiversity = diversity within an ecosystem; gamma (γ) = diversity among different geographies (Week 7 · Q7)."],["w7-q6","For more biodiversity, the level of disturbance should be intermediate."],["w7-q5","A climax caused by wildfires is a catastrophic climax."],["w7-q8","The vertical arrangement of soil horizons is called the soil profile."]],quiz:["w7-q2","w7-q4","w7-q6","w7-q8"]},
-8:{obj:["Compare ex-situ and in-situ conservation","Explain keystone species, rarity and biomagnification","Use the species–area relationship"],intro:["Conservation protects species in their habitat or away from it. A seed bank is the classic ex-situ method — powerful, though captive-bred individuals may find reintroduction difficult. Small populations are especially vulnerable to inbreeding depression, caused by mating among close relatives, and a species can be rare simply because its geographical range is limited.","Some species matter far beyond their numbers: a keystone species plays a much greater ecological role than expected from its abundance. In the species–area relationship, S represents species richness; poisons can biomagnify up food chains, as DDD did at Clear Lake; and the HIPPO acronym lists major threats — pollination is not among them."],points:[["w8-q1","A seed bank is an ex-situ conservation method."],["w8-q3","A keystone species plays a much greater ecological role than expected from its abundance."],["w8-q2","Smaller populations are especially vulnerable to inbreeding depression — mating among close relatives."],["w8-q7","Biomagnification: at Clear Lake, DDD concentration increased from water to plankton, fish and fish-eating birds."],["w8-q6","In the species–area relationship, S represents species richness."]],quiz:["w8-q1","w8-q3","w8-q7","w8-q6"]},
-9:{obj:["Read population ratios and growth curves","Use Malthus's two kinds of checks correctly","State the demographic transition and sustainability pillars"],intro:["Human geography counts people and how their numbers change. The age dependency ratio compares the dependent population with the working-age population — generally the 15–64 years group. Logistic growth traces an S-shaped curve, and the demographic transition moves a society from high birth and death rates to low birth and death rates.","Malthus separated positive checks, such as war, from preventive checks, such as foresight. Economic development is often measured as GDP per capita; humanising of nature is commonly linked with possibilism; and 'trans-boundary sustainability' is not a pillar of sustainability."],points:[["w9-q3","The age dependency ratio compares the dependent population with the working-age population (15–64 years, Week 9 · Q10)."],["w9-q4","The logistic growth equation produces an S-shaped curve."],["w9-q5","For Malthus, war is a positive check; foresight is a preventive check (Week 9 · Q9)."],["w9-q8","The demographic transition moves a society from high birth rate and high death rate to low birth rate and low death rate."],["w9-q7","Trans-boundary sustainability is NOT a pillar of sustainability."]],quiz:["w9-q3","w9-q4","w9-q5","w9-q8"]},
-10:{obj:["Sort resources into actual, potential, reserve and stock","Trace how roads drive forest loss","Name the largest sources of NOx and ammonia"],intro:["Resources are classified by how usable they are today. Timber that is being harvested is an actual resource; oil that has not been drilled is a potential resource; low-concentration ores are reserve resources; and resources that have been surveyed but cannot be used for lack of technology — such as hydrogen for nuclear fusion — are stock resources.","In the Rondônia rainforest example, road construction contributed to forest loss mainly by allowing easier human access into forest areas. Cropland contributes more to the global calorie supply than livestock despite using a smaller share of agricultural land, while mobile sources are the largest source of nitrogen oxides and animal manure the largest source of ammonia."],points:[["w10-q9","Timber being harvested is an actual resource; oil not yet drilled is a potential resource (Week 10 · Q4)."],["w10-q7","Resources surveyed but unusable for lack of technology are stock resources — hydrogen for fusion is one (Week 10 · Q2)."],["w10-q6","Low-concentration ores come in the category of reserve resources."],["w10-q3","In Rondônia, roads drove forest loss by allowing easier human access into forest areas."],["w10-q8","Mobile sources are the largest source of nitrogen oxides; animal manure is the largest source of ammonia (Week 10 · Q10)."]],quiz:["w10-q7","w10-q9","w10-q3","w10-q8"]},
-11:{obj:["Explain the barrier effect of roads","Use comparative advantage correctly","See how transport affects wildlife and towns"],intro:["Transport connects places but also cuts through habitats. Roads disturb wildlife at night through light pollution from headlamps, and their barrier effect is governed by several factors acting together; young male tigers or leopards may need to move away from their home areas to reduce conflict and avoid inbreeding. Railways require more money and technology to construct than the modes they are compared with in the set.","In trade, comparative advantage is the ability to produce a good at a lower opportunity cost than another producer. Even ship exhaust leaves a trail: dust particles act as nuclei for condensation, revealing ship movement — and a town like Oxford is best categorised as an educational town."],points:[["w11-q7","Dust released from ships reveals their movement because the particles act as nuclei for condensation."],["w11-q8","Roads disturb wildlife at night through light pollution from headlamps."],["w11-q9","Young male tigers or leopards may move away to reduce conflict and avoid inbreeding."],["w11-q6","Comparative advantage = the ability to produce a good at a lower opportunity cost than another producer."],["w11-q10","Oxford can best be categorised as an educational town."]],quiz:["w11-q6","w11-q8","w11-q9","w11-q10"]},
-12:{obj:["Define hazard and vulnerability precisely","Work the LiDAR time-of-flight calculation","Name GIS components and photogrammetry types"],intro:["The final week turns to measuring and mapping risk. A hazard is a process, phenomenon or human activity that may cause loss of life, injury or other health impacts; vulnerability means the conditions — physical, social, economic and environmental — that make a community susceptible to a hazard's impacts.","LiDAR measures distance by timing a light pulse: distance = (speed of light × time of flight) ÷ 2, so 0.00001 seconds gives 1500 m. Photogrammetry has metric applications (measuring, e.g. forest area) and interpretive applications (understanding what is happening); a GIS needs humanware along with hardware and software; IMU stands for Inertial Measurement Unit; an oblique camera axis is intentionally tilted between vertical and horizontal; and ground-borne platforms carry cameras at ground level."],points:[["w12-q4","A hazard is a process, phenomenon or human activity that may cause loss of life, injury or other health impacts."],["w12-q1","Vulnerability = the conditions determined by physical, social, economic and environmental factors or processes that increase susceptibility."],["w12-q2","LiDAR distance = (3×10⁸ × time of flight) ÷ 2 — for 0.00001 s, the object is 1500 m away."],["w12-q7","Along with hardware and software, an essential GIS component is humanware."],["w12-q5","IMU stands for Inertial Measurement Unit."],["w12-q9","An oblique camera axis is intentionally tilted between vertical and horizontal."]],quiz:["w12-q2","w12-q4","w12-q7","w12-q5"]}
-};
-let CURLESSON=1, LQ={picks:{},checked:{}};
-function openLesson(w){CURLESSON=w;LQ={picks:{},checked:{}};if(D&&D.learn){D.learn.last=w;save();}curView="lesson";render();}
-function learnHTML(){
-  const L=D.learn||{done:[],last:null};const done=L.done||[];
-  const firstOpen=[1,2,3,4,5,6,7,8,9,10,11,12].find(w=>!done.includes(w));
-  let h='<div class="wrap"><p class="crumb">Home › <b>Learn</b></p><h2 style="font-size:24px;font-weight:800">Learn from Zero</h2><p class="small" style="margin-top:4px;font-size:15px">Geography &amp; Environment · 12 theme lessons — one per week, each built from the concepts that week’s questions actually test.</p>'
-  +'<div class="note-box" style="margin-top:12px">'+LEARN_NOTE+'</div>';
-  if(L.last&&done.length<12)h+='<div class="card" style="margin-top:14px;border-color:var(--blue)"><b>Continue Learning</b><p class="small" style="margin-top:4px">Week '+L.last+' · '+esc(WEEK_TITLES[L.last])+'</p><button class="btn btn-p btn-sm" data-lesson="'+L.last+'" style="margin-top:10px">Continue</button></div>';
-  h+='<div class="card" style="margin-top:14px"><b>Your learning progress</b><p class="small" style="margin-top:4px">'+done.length+' of 12 lessons completed</p><div class="prog" style="margin-top:8px"><i style="background:var(--blue);width:'+Math.round(done.length/12*100)+'%"></i></div></div>';
-  h+='<div class="mode-grid">'
-  +'<button class="mode-card" data-startzero="1"><span class="tile" style="background:#12B981">'+icoBookW+'</span><h3>Learn from Zero</h3><p>Start at '+(firstOpen?('Week '+firstOpen+' · '+esc(WEEK_TITLES[firstOpen])):'Week 1')+' and build up lesson by lesson</p></button>'
-  +'<button class="mode-card" data-scrollist="1"><span class="tile" style="background:#F59E0B">'+icoLayersW+'</span><h3>Week-wise Learning</h3><p>All 12 theme lessons, one for each week — pick any week below</p></button>'
-  +'<button class="mode-card" data-gorev="quick"><span class="tile" style="background:#8B5CF6">'+icoCardW+'</span><h3>Quick Revision</h3><p>Flashcards from your wrong + bookmarked questions</p></button>'
-  +'</div>';
-  h+='<h3 style="font-size:18px;font-weight:800;margin-top:22px" id="lessonList">All 12 theme lessons</h3><div class="week-list">';
-  for(let w=1;w<=12;w++){const isDone=done.includes(w);const isLast=L.last===w&&!isDone;
-    h+='<div class="week-row" data-lesson="'+w+'" role="button" tabindex="0" style="cursor:pointer"><div class="top"><span class="wtile" style="background:'+TILEC[w-1]+'">'+w+'</span><span class="info"><b>Week '+w+' · '+esc(WEEK_TITLES[w])+'</b><br><span class="cnt">Concepts tested in Week '+w+' questions · '+weekQs(w).length+' questions in the bank</span></span>'+(isDone?'<span class="tag g">✓ Completed</span>':(isLast?'<span class="tag b">In progress</span>':""))+'<span class="chev">›</span></div></div>';}
-  h+='</div><p class="small" style="margin-top:14px">'+LEARN_NOTE+'</p></div>';
-  return h;
-}
-function lqCard(qid){
-  const q=BYID[qid];const picked=LQ.picks[qid];const checked=!!LQ.checked[qid];const ok=checked&&picked===q.correct_letter;
-  const pt=(LESSONS[CURLESSON].points.find(p=>p[0]===qid)||[])[1];
-  let h='<div class="card" style="margin-top:12px"><div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap"><span class="tag b">Week '+q.week+' • Q'+q.number+'</span><span style="flex:1"></span><button class="bm-btn'+(isBookmarked(qid)?" on":"")+'" data-lqbm="'+qid+'" aria-label="Bookmark this question">'+(isBookmarked(qid)?"★":"☆")+'</button></div>'
-  +'<p class="q" style="margin-top:8px">'+esc(q.question)+'</p><div class="opts" role="group" aria-label="Answer options" style="margin-top:10px">'
-  +["A","B","C","D"].map(L=>{let cls="opt";if(picked===L)cls+=" sel";if(checked){if(L===q.correct_letter)cls+=" correct";else if(picked===L)cls+=" wrong";}return '<button class="'+cls+'" data-lqpick="'+qid+':'+L+'" '+(checked?"disabled":"")+'><span class="ltr">'+L+'</span><span>'+esc(optText(q,L))+'</span></button>';}).join("")+'</div>';
-  if(!checked)h+='<button class="btn btn-p" data-lqcheck="'+qid+'" style="width:100%;margin-top:12px">Check Answer</button>';
-  else if(ok)h+='<div class="feedback ok" style="margin-top:12px" role="status">✓ Correct! <span class="sub">Accepted answer: '+esc(q.correct_letter)+'. '+esc(q.correct_text)+'</span></div>';
-  else h+='<div class="feedback bad" style="margin-top:12px" role="status">✗ Not quite <span class="sub">Accepted answer from source: <b>'+esc(q.correct_letter)+'. '+esc(q.correct_text)+'</b> · No explanation in source.</span></div>'
-    +(pt?'<div class="acc-box" style="margin-top:10px"><b>Key point:</b> '+esc(pt)+'</div>':"")
-    +'<button class="btn btn-g" data-lqretry="'+qid+'" style="width:100%;margin-top:10px">↻ Retry this question</button>';
-  return h+'</div>';
-}
-function lessonHTML(){
-  const w=CURLESSON;const ls=LESSONS[w];const L=D.learn||{done:[],last:null};const isDone=(L.done||[]).includes(w);
-  let h='<div class="wrap"><button class="back-btn" data-nav="learn" aria-label="Back to Learn">←</button>'
-  +'<h2 style="font-size:23px;font-weight:800;margin-top:6px">Week '+w+' · '+esc(WEEK_TITLES[w])+'</h2>'
-  +'<p class="small" style="margin-top:3px">Lesson '+w+' of 12 · Concepts tested in Week '+w+' questions · '+weekQs(w).length+' questions in the bank</p>'
-  +'<div class="note-box" style="margin-top:12px">'+LEARN_NOTE+'</div>'
-  +'<div class="card" style="margin-top:14px"><b>Learning objectives</b><ul class="lobj">'+ls.obj.map(o=>'<li>'+esc(o)+'</li>').join("")+'</ul></div>'
-  +'<div class="card" style="margin-top:12px"><b>Learn the concepts</b>'+ls.intro.map(p=>'<p style="margin-top:8px;line-height:1.65">'+esc(p)+'</p>').join("")+'</div>'
-  +'<div class="card" style="margin-top:12px"><b>Key Points</b><ul class="lkey">'+ls.points.map(p=>'<li>'+esc(p[1])+' <span class="tag b">Week '+w+' • Q'+BYID[p[0]].number+'</span></li>').join("")+'</ul></div>'
-  +'<h3 style="font-size:18px;font-weight:800;margin-top:22px">Mini-quiz — real questions from Week '+w+'</h3><p class="small" style="margin-top:4px">Your first try on each question is recorded in your practice history, exactly like normal practice — mistakes land in Revision.</p>'
-  +ls.quiz.map(lqCard).join("")
-  +'<div class="card" style="margin-top:16px"><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-p" data-lqweek="'+w+'">Practise Week '+w+' Questions</button>'
-  +(isDone?'<span class="tag g" style="align-self:center">✓ Lesson completed</span>':'<button class="btn btn-g" id="lessonDone">✓ Mark as Completed</button>')
-  +(w<12?'<button class="btn btn-g" data-lesson="'+(w+1)+'">Next Lesson →</button>':'<button class="btn btn-g" data-nav="learn">Back to Learn</button>')
-  +'</div></div></div>';
-  return h;
-}
-function wireLearn(){
-  document.querySelectorAll("[data-lesson]").forEach(b=>b.onclick=()=>openLesson(+b.dataset.lesson));
-  document.querySelectorAll("[data-startzero]").forEach(b=>b.onclick=()=>{const done=(D.learn&&D.learn.done)||[];const w=[1,2,3,4,5,6,7,8,9,10,11,12].find(x=>!done.includes(x))||1;openLesson(w);});
-  document.querySelectorAll("[data-scrollist]").forEach(b=>b.onclick=()=>{const el=document.getElementById("lessonList");if(el)el.scrollIntoView({behavior:"smooth"});});
-  const keepScroll=fn=>()=>{const y=window.scrollY;fn();render();window.scrollTo(0,y);};
-  document.querySelectorAll("[data-lqpick]").forEach(b=>b.onclick=keepScroll(()=>{const parts=b.dataset.lqpick.split(":");LQ.picks[parts[0]]=parts[1];}));
-  document.querySelectorAll("[data-lqcheck]").forEach(b=>b.onclick=keepScroll(()=>{const qid=b.dataset.lqcheck;const pick=LQ.picks[qid];if(!pick){toast("Choose an option first");return;}if(!LQ.checked[qid]){recordAttempt(qid,pick);save();}LQ.checked[qid]=true;}));
-  document.querySelectorAll("[data-lqretry]").forEach(b=>b.onclick=keepScroll(()=>{const qid=b.dataset.lqretry;LQ.checked[qid]=false;LQ.picks[qid]=null;}));
-  document.querySelectorAll("[data-lqbm]").forEach(b=>b.onclick=keepScroll(()=>{toggleBookmark(b.dataset.lqbm);}));
-  document.querySelectorAll("[data-lqweek]").forEach(b=>b.onclick=()=>{const w=+b.dataset.lqweek;startSession({mode:"week",title:"Week "+w+" practice (check each answer)",qids:weekQs(w).map(q=>q.id),shuffleOpts:false});});
-  const ld=document.getElementById("lessonDone"); if(ld)ld.onclick=()=>{if(!D.learn.done.includes(CURLESSON))D.learn.done.push(CURLESSON);D.learn.last=CURLESSON;save();render();toast("Lesson marked completed — "+D.learn.done.length+" of 12 done");};
-}
-const icoBookW='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>';
-const icoLayersW='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2l9 5-9 5-9-5 9-5z"/><path d="M3 12l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg>';
-const icoCardW='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>';
+/* ==================================================================
+         SECTION JS-1 · QUESTION BANK
+         All 113 questions from the supplied source export — one entry per
+         question so changes stay small and reviewable. Answers are the
+         source's accepted answers, double-verified (see header note).
+         ================================================================== */
+      const BANK = [
+        {
+          id: "w1-q1",
+          week: 1,
+          number: 1,
+          question:
+            "The regular, seasonal movement of animals, often along fixed routes is called",
+          options: [
+            { letter: "A", text: "translocation" },
+            { letter: "B", text: "migration" },
+            { letter: "C", text: "dispersal" },
+            { letter: "D", text: "drifting" },
+          ],
+          correct_letter: "B",
+          correct_text: "migration",
+        },
+        {
+          id: "w1-q2",
+          week: 1,
+          number: 2,
+          question: "The systematic approach to Geography was developed by:",
+          options: [
+            { letter: "A", text: "Alexander von Humboldt" },
+            { letter: "B", text: "Karl Ritter" },
+            { letter: "C", text: "Rene Descartes" },
+            { letter: "D", text: "Eratosthenes" },
+          ],
+          correct_letter: "A",
+          correct_text: "Alexander von Humboldt",
+        },
+        {
+          id: "w1-q3",
+          week: 1,
+          number: 3,
+          question:
+            "I tried growing vegetables under my teak plantation, but the vegetable plants died out. I should be concerned about",
+          options: [
+            { letter: "A", text: "autophagy" },
+            { letter: "B", text: "allelophagy" },
+            { letter: "C", text: "autopathy" },
+            { letter: "D", text: "allelopathy" },
+          ],
+          correct_letter: "D",
+          correct_text: "allelopathy",
+        },
+        {
+          id: "w1-q4",
+          week: 1,
+          number: 4,
+          question:
+            "A lake still exists physically, but sewage and plastic waste reduce the number of fish it can support. This is best called:",
+          options: [
+            { letter: "A", text: "Habitat degradation" },
+            { letter: "B", text: "Habitat fragmentation" },
+            { letter: "C", text: "Jump dispersal" },
+            { letter: "D", text: "Secular dispersal" },
+          ],
+          correct_letter: "A",
+          correct_text: "Habitat degradation",
+        },
+        {
+          id: "w1-q5",
+          week: 1,
+          number: 5,
+          question:
+            "“Science of relationships between organisms and their environments” is the definition of:",
+          options: [
+            { letter: "A", text: "conservation" },
+            { letter: "B", text: "preservation" },
+            { letter: "C", text: "environmentalism" },
+            { letter: "D", text: "ecology" },
+          ],
+          correct_letter: "D",
+          correct_text: "ecology",
+        },
+        {
+          id: "w1-q6",
+          week: 1,
+          number: 6,
+          question:
+            '"The rate of any biological process is limited by that factor in least amount relative to requirement, so there is a single limiting factor." This is the statement for',
+          options: [
+            { letter: "A", text: "Liebig’s law of the minimum" },
+            { letter: "B", text: "Liebig’s law of the maximum" },
+            { letter: "C", text: "Shelford’s law of tolerance" },
+            { letter: "D", text: "Shelford’s law of intolerance" },
+          ],
+          correct_letter: "A",
+          correct_text: "Liebig’s law of the minimum",
+        },
+        {
+          id: "w1-q7",
+          week: 1,
+          number: 7,
+          question: "In the word root for conservation, con stands for",
+          options: [
+            { letter: "A", text: "together" },
+            { letter: "B", text: "to keep" },
+            { letter: "C", text: "house" },
+            { letter: "D", text: "manage" },
+          ],
+          correct_letter: "A",
+          correct_text: "together",
+        },
+        {
+          id: "w1-q8",
+          week: 1,
+          number: 8,
+          question: "In the word root for conservation, servare stands for",
+          options: [
+            { letter: "A", text: "together" },
+            { letter: "B", text: "to keep" },
+            { letter: "C", text: "house" },
+            { letter: "D", text: "manage" },
+          ],
+          correct_letter: "B",
+          correct_text: "to keep",
+        },
+        {
+          id: "w1-q9",
+          week: 1,
+          number: 9,
+          question:
+            "The Geographical discipline of Climatology is most closely related to:",
+          options: [
+            { letter: "A", text: "Geology" },
+            { letter: "B", text: "Meteorology" },
+            { letter: "C", text: "Hydrology" },
+            { letter: "D", text: "Pedology" },
+          ],
+          correct_letter: "B",
+          correct_text: "Meteorology",
+        },
+        {
+          id: "w1-q10",
+          week: 1,
+          number: 10,
+          question: "Good climate is a",
+          options: [
+            { letter: "A", text: "chemical factor" },
+            { letter: "B", text: "demographic factor" },
+            { letter: "C", text: "push factor" },
+            { letter: "D", text: "pull factor" },
+          ],
+          correct_letter: "D",
+          correct_text: "pull factor",
+        },
+        {
+          id: "w2-q1",
+          week: 2,
+          number: 1,
+          question: "Mount Fuji is an example of",
+          options: [
+            { letter: "A", text: "Shield volcano" },
+            { letter: "B", text: "Stratovolcano" },
+            { letter: "C", text: "Caldera" },
+            { letter: "D", text: "Flood basalt province" },
+          ],
+          correct_letter: "B",
+          correct_text: "Stratovolcano",
+        },
+        {
+          id: "w2-q2",
+          week: 2,
+          number: 2,
+          question: "The main source of magma is",
+          options: [
+            { letter: "A", text: "Crust" },
+            { letter: "B", text: "Mantle" },
+            { letter: "C", text: "Outer core" },
+            { letter: "D", text: "Inner core" },
+          ],
+          correct_letter: "B",
+          correct_text: "Mantle",
+        },
+        {
+          id: "w2-q3",
+          week: 2,
+          number: 3,
+          question: "Which of these is not a method of absolute dating?",
+          options: [
+            { letter: "A", text: "radioisotope dating" },
+            { letter: "B", text: "thermoluminescence dating" },
+            { letter: "C", text: "inclusion study" },
+            { letter: "D", text: "fission track dating" },
+          ],
+          correct_letter: "C",
+          correct_text: "inclusion study",
+        },
+        {
+          id: "w2-q4",
+          week: 2,
+          number: 4,
+          question: "What are planetesimals?",
+          options: [
+            { letter: "A", text: "Fully formed gas giants" },
+            { letter: "B", text: "Fragments of continental crust" },
+            {
+              letter: "C",
+              text: "Small bodies formed from gas and dust that can accrete into planets",
+            },
+            { letter: "D", text: "Layers of volcanic ash within a mountain" },
+          ],
+          correct_letter: "C",
+          correct_text:
+            "Small bodies formed from gas and dust that can accrete into planets",
+        },
+        {
+          id: "w2-q5",
+          week: 2,
+          number: 5,
+          question: "Hawaiian volcanoes are an example of",
+          options: [
+            { letter: "A", text: "Shield volcano" },
+            { letter: "B", text: "Stratovolcano" },
+            { letter: "C", text: "Caldera" },
+            { letter: "D", text: "Flood basalt province" },
+          ],
+          correct_letter: "A",
+          correct_text: "Shield volcano",
+        },
+        {
+          id: "w2-q6",
+          week: 2,
+          number: 6,
+          question: "Which of these is true about P waves?",
+          options: [
+            { letter: "A", text: "They are longitudinal in nature" },
+            { letter: "B", text: "They are transverse in nature" },
+            { letter: "C", text: "They cannot move through gases" },
+            { letter: "D", text: "They cannot move through liquids" },
+          ],
+          correct_letter: "A",
+          correct_text: "They are longitudinal in nature",
+        },
+        {
+          id: "w2-q7",
+          week: 2,
+          number: 7,
+          question:
+            "Assemblage of fossils are unique to the time that they lived in, and so can be used to age rocks across a wide geographic distribution. This is known as",
+          options: [
+            { letter: "A", text: "Principle of fossil succession" },
+            { letter: "B", text: "Principle of original horizontality" },
+            { letter: "C", text: "Principle of superposition" },
+            { letter: "D", text: "Principle of cross-cutting relationships" },
+          ],
+          correct_letter: "A",
+          correct_text: "Principle of fossil succession",
+        },
+        {
+          id: "w2-q8",
+          week: 2,
+          number: 8,
+          question: "Which set contains only terrestrial planets?",
+          options: [
+            { letter: "A", text: "Jupiter, Saturn, Uranus, Neptune" },
+            { letter: "B", text: "Earth, Jupiter, Mars, Saturn" },
+            { letter: "C", text: "Mercury, Venus, Uranus, Neptune" },
+            { letter: "D", text: "Mercury, Venus, Earth, Mars" },
+          ],
+          correct_letter: "D",
+          correct_text: "Mercury, Venus, Earth, Mars",
+        },
+        {
+          id: "w2-q9",
+          week: 2,
+          number: 9,
+          question:
+            "Within a depositional basin, strata are laterally continuous in all directions till the edge of the basin. This is known as",
+          options: [
+            { letter: "A", text: "Principle of superposition" },
+            { letter: "B", text: "Principle of original horizontality" },
+            { letter: "C", text: "Principle of lateral continuity" },
+            { letter: "D", text: "Principle of inclusions" },
+          ],
+          correct_letter: "C",
+          correct_text: "Principle of lateral continuity",
+        },
+        {
+          id: "w2-q10",
+          week: 2,
+          number: 10,
+          question: "Deccan traps are an example of",
+          options: [
+            { letter: "A", text: "Shield volcano" },
+            { letter: "B", text: "Stratovolcano" },
+            { letter: "C", text: "Caldera" },
+            { letter: "D", text: "Flood basalt province" },
+          ],
+          correct_letter: "D",
+          correct_text: "Flood basalt province",
+        },
+        {
+          id: "w3-q1",
+          week: 3,
+          number: 1,
+          question: "Mudrock is an example of",
+          options: [
+            { letter: "A", text: "siliciclastic rock" },
+            { letter: "B", text: "carbonate rock" },
+            { letter: "C", text: "evaporite rock" },
+            { letter: "D", text: "phosphatic rock" },
+          ],
+          correct_letter: "A",
+          correct_text: "siliciclastic rock",
+        },
+        {
+          id: "w3-q2",
+          week: 3,
+          number: 2,
+          question: "Carbonation is an example of",
+          options: [
+            { letter: "A", text: "chemical weathering" },
+            { letter: "B", text: "physical weathering" },
+            { letter: "C", text: "biological weathering" },
+            { letter: "D", text: "none of the above" },
+          ],
+          correct_letter: "A",
+          correct_text: "chemical weathering",
+        },
+        {
+          id: "w3-q3",
+          week: 3,
+          number: 3,
+          question:
+            "“green or black coloured inosilicate minerals forming prism or needle-like crystals” is a description of",
+          options: [
+            { letter: "A", text: "amphiboles" },
+            { letter: "B", text: "feldspar" },
+            { letter: "C", text: "mica" },
+            { letter: "D", text: "pyroxene" },
+          ],
+          correct_letter: "A",
+          correct_text: "amphiboles",
+        },
+        {
+          id: "w3-q4",
+          week: 3,
+          number: 4,
+          question: "Hydrolysis is an example of",
+          options: [
+            { letter: "A", text: "chemical weathering" },
+            { letter: "B", text: "physical weathering" },
+            { letter: "C", text: "biological weathering" },
+            { letter: "D", text: "none of the above" },
+          ],
+          correct_letter: "A",
+          correct_text: "chemical weathering",
+        },
+        {
+          id: "w3-q5",
+          week: 3,
+          number: 5,
+          question: "Which of these is an example of exogenic process?",
+          options: [
+            { letter: "A", text: "volcanism" },
+            { letter: "B", text: "earthquake" },
+            { letter: "C", text: "plate tectonics" },
+            { letter: "D", text: "deposition" },
+          ],
+          correct_letter: "D",
+          correct_text: "deposition",
+        },
+        {
+          id: "w3-q6",
+          week: 3,
+          number: 6,
+          question:
+            "Which statement best explains why streak is often more useful than surface colour for mineral identification?",
+          options: [
+            { letter: "A", text: "Streak measures the density of the mineral" },
+            { letter: "B", text: "Surface colour never changes in minerals" },
+            {
+              letter: "C",
+              text: "Streak shows the colour of the powdered mineral and may reduce the effect of minor impurities",
+            },
+            { letter: "D", text: "Streak reveals the age of the mineral" },
+          ],
+          correct_letter: "C",
+          correct_text:
+            "Streak shows the colour of the powdered mineral and may reduce the effect of minor impurities",
+        },
+        {
+          id: "w3-q7",
+          week: 3,
+          number: 7,
+          question:
+            "Which factor is listed as an independent control over landform development?",
+          options: [
+            { letter: "A", text: "Mineral streak" },
+            { letter: "B", text: "Crystal habit" },
+            { letter: "C", text: "Knife-blade hardness" },
+            { letter: "D", text: "Stability of sea level" },
+          ],
+          correct_letter: "D",
+          correct_text: "Stability of sea level",
+        },
+        {
+          id: "w3-q8",
+          week: 3,
+          number: 8,
+          question: "Sandstone is an example of",
+          options: [
+            { letter: "A", text: "siliciclastic rock" },
+            { letter: "B", text: "carbonate rock" },
+            { letter: "C", text: "evaporite rock" },
+            { letter: "D", text: "phosphatic rock" },
+          ],
+          correct_letter: "A",
+          correct_text: "siliciclastic rock",
+        },
+        {
+          id: "w3-q9",
+          week: 3,
+          number: 9,
+          question:
+            "“tendency to break in given directions producing relatively plane surfaces” is known as",
+          options: [
+            { letter: "A", text: "cleavage" },
+            { letter: "B", text: "fracture" },
+            { letter: "C", text: "lustre" },
+            { letter: "D", text: "streak" },
+          ],
+          correct_letter: "A",
+          correct_text: "cleavage",
+        },
+        {
+          id: "w3-q10",
+          week: 3,
+          number: 10,
+          question: "Slow cooling of magma results in",
+          options: [
+            { letter: "A", text: "smooth grained sedimentary rocks" },
+            { letter: "B", text: "coarse grained sedimentary rocks" },
+            { letter: "C", text: "smooth grained igneous rocks" },
+            { letter: "D", text: "coarse grained igneous rocks" },
+          ],
+          correct_letter: "D",
+          correct_text: "coarse grained igneous rocks",
+        },
+        {
+          id: "w4-q1",
+          week: 4,
+          number: 1,
+          question: "Carbon sequestration in geological sites is an option for",
+          options: [
+            { letter: "A", text: "mitigation" },
+            { letter: "B", text: "adaptation" },
+            { letter: "C", text: "both of these" },
+            { letter: "D", text: "none of these" },
+          ],
+          correct_letter: "A",
+          correct_text: "mitigation",
+        },
+        {
+          id: "w4-q2",
+          week: 4,
+          number: 2,
+          question:
+            "To reduce the effect of altitude, isobars are generally drawn after converting pressure values to",
+          options: [
+            { letter: "A", text: "surface temperature level" },
+            { letter: "B", text: "cloud base level" },
+            { letter: "C", text: "tropopause level" },
+            { letter: "D", text: "sea level" },
+          ],
+          correct_letter: "D",
+          correct_text: "sea level",
+        },
+        {
+          id: "w4-q3",
+          week: 4,
+          number: 3,
+          question:
+            "Because of climate change, Mudumalai Tiger Reserve is suffering from frequent droughts. The management has built several artificial water holes for animals, and fills them up regularly with tankers. In the context of climate change, such an action would be called",
+          options: [
+            { letter: "A", text: "adaptation" },
+            { letter: "B", text: "mitigation" },
+            { letter: "C", text: "deceleration" },
+            { letter: "D", text: "maladaptation" },
+          ],
+          correct_letter: "A",
+          correct_text: "adaptation",
+        },
+        {
+          id: "w4-q4",
+          week: 4,
+          number: 4,
+          question:
+            "Surplus seed and sperm banking is an adaptation option to facilitate",
+          options: [
+            { letter: "A", text: "resistance to climate changes" },
+            { letter: "B", text: "resilience to climate changes" },
+            { letter: "C", text: "response to climate changes" },
+            { letter: "D", text: "none of these" },
+          ],
+          correct_letter: "B",
+          correct_text: "resilience to climate changes",
+        },
+        {
+          id: "w4-q5",
+          week: 4,
+          number: 5,
+          question: "Flights of jet planes typically occur in",
+          options: [
+            { letter: "A", text: "Troposphere" },
+            { letter: "B", text: "Stratosphere" },
+            { letter: "C", text: "Mesosphere" },
+            { letter: "D", text: "Thermosphere" },
+          ],
+          correct_letter: "B",
+          correct_text: "Stratosphere",
+        },
+        {
+          id: "w4-q6",
+          week: 4,
+          number: 6,
+          question:
+            "Heat movement through horizontal movement of air is called",
+          options: [
+            { letter: "A", text: "convection" },
+            { letter: "B", text: "radiation" },
+            { letter: "C", text: "advection" },
+            { letter: "D", text: "conduction" },
+          ],
+          correct_letter: "C",
+          correct_text: "advection",
+        },
+        {
+          id: "w4-q7",
+          week: 4,
+          number: 7,
+          question: "The classical period for taking averages for climate is",
+          options: [
+            { letter: "A", text: "10 years" },
+            { letter: "B", text: "20 years" },
+            { letter: "C", text: "30 years" },
+            { letter: "D", text: "40 years" },
+          ],
+          correct_letter: "C",
+          correct_text: "30 years",
+        },
+        {
+          id: "w4-q8",
+          week: 4,
+          number: 8,
+          question: "Noctilucent clouds are present in which layer?",
+          options: [
+            { letter: "A", text: "Troposphere" },
+            { letter: "B", text: "Stratosphere" },
+            { letter: "C", text: "Mesosphere" },
+            { letter: "D", text: "Thermosphere" },
+          ],
+          correct_letter: "C",
+          correct_text: "Mesosphere",
+        },
+        {
+          id: "w4-q9",
+          week: 4,
+          number: 9,
+          question: "Atmospheric pressure is mainly caused by",
+          options: [
+            { letter: "A", text: "horizontal movement of clouds" },
+            {
+              letter: "B",
+              text: "the weight of air above the point of measurement",
+            },
+            { letter: "C", text: "absorption of ultraviolet radiation" },
+            { letter: "D", text: "seasonal movement of pressure belts" },
+          ],
+          correct_letter: "B",
+          correct_text: "the weight of air above the point of measurement",
+        },
+        {
+          id: "w4-q10",
+          week: 4,
+          number: 10,
+          question: "Which of these air masses is generally warm and moist?",
+          options: [
+            { letter: "A", text: "cP" },
+            { letter: "B", text: "cT" },
+            { letter: "C", text: "mP" },
+            { letter: "D", text: "mT" },
+          ],
+          correct_letter: "D",
+          correct_text: "mT",
+        },
+        {
+          id: "w5-q1",
+          week: 5,
+          number: 1,
+          question:
+            "What type of sediment is commonly found over abyssal plains?",
+          options: [
+            { letter: "A", text: "Coral fragments and gravel" },
+            { letter: "B", text: "Basalt blocks and volcanic ash" },
+            { letter: "C", text: "Sand and large pebbles" },
+            { letter: "D", text: "Clay and silt" },
+          ],
+          correct_letter: "D",
+          correct_text: "Clay and silt",
+        },
+        {
+          id: "w5-q2",
+          week: 5,
+          number: 2,
+          question: "Which of these is the largest habitat on the Earth?",
+          options: [
+            { letter: "A", text: "continental shelf" },
+            { letter: "B", text: "continental slope" },
+            { letter: "C", text: "guyot" },
+            { letter: "D", text: "abyssal plain" },
+          ],
+          correct_letter: "D",
+          correct_text: "abyssal plain",
+        },
+        {
+          id: "w5-q3",
+          week: 5,
+          number: 3,
+          question: "Which of these are the largest mountain ranges on Earth?",
+          options: [
+            { letter: "A", text: "oceanic deep / trench" },
+            { letter: "B", text: "mid-oceanic ridge" },
+            { letter: "C", text: "seamount" },
+            { letter: "D", text: "atoll" },
+          ],
+          correct_letter: "B",
+          correct_text: "mid-oceanic ridge",
+        },
+        {
+          id: "w5-q4",
+          week: 5,
+          number: 4,
+          question:
+            "Which factor helps explain why continental shelves are often highly productive?",
+          options: [
+            {
+              letter: "A",
+              text: "They are the deepest parts of the ocean floor",
+            },
+            { letter: "B", text: "They are completely isolated from runoff" },
+            { letter: "C", text: "They receive both light and nutrients" },
+            { letter: "D", text: "They lack sediments and organisms" },
+          ],
+          correct_letter: "C",
+          correct_text: "They receive both light and nutrients",
+        },
+        {
+          id: "w5-q5",
+          week: 5,
+          number: 5,
+          question: "What is tidal range?",
+          options: [
+            {
+              letter: "A",
+              text: "The horizontal movement of water parallel to the beach",
+            },
+            {
+              letter: "B",
+              text: "The difference between sea level at high tide and low tide",
+            },
+            {
+              letter: "C",
+              text: "The speed at which waves approach the coast",
+            },
+            {
+              letter: "D",
+              text: "The movement of cold water from deep ocean layers",
+            },
+          ],
+          correct_letter: "B",
+          correct_text:
+            "The difference between sea level at high tide and low tide",
+        },
+        {
+          id: "w5-q6",
+          week: 5,
+          number: 6,
+          question:
+            "Which process converts ice and snow directly into water vapour?",
+          options: [
+            { letter: "A", text: "Condensation" },
+            { letter: "B", text: "Precipitation" },
+            { letter: "C", text: "Snowmelt" },
+            { letter: "D", text: "Sublimation" },
+          ],
+          correct_letter: "D",
+          correct_text: "Sublimation",
+        },
+        {
+          id: "w5-q7",
+          week: 5,
+          number: 7,
+          question:
+            "Which group of factors affects the density of ocean water with depth?",
+          options: [
+            { letter: "A", text: "Runoff, tides and beach slope" },
+            {
+              letter: "B",
+              text: "Hydrostatic pressure, salinity and temperature",
+            },
+            { letter: "C", text: "Wind speed, wave height and latitude only" },
+            {
+              letter: "D",
+              text: "Sediment size, coral growth and river mouths",
+            },
+          ],
+          correct_letter: "B",
+          correct_text: "Hydrostatic pressure, salinity and temperature",
+        },
+        {
+          id: "w5-q8",
+          week: 5,
+          number: 8,
+          question:
+            "“deep valleys, often cutting across continental shelves and slopes” is a description of",
+          options: [
+            { letter: "A", text: "oceanic deep / trench" },
+            { letter: "B", text: "mid-oceanic ridge" },
+            { letter: "C", text: "guyot" },
+            { letter: "D", text: "submarine canyon" },
+          ],
+          correct_letter: "D",
+          correct_text: "submarine canyon",
+        },
+        {
+          id: "w5-q9",
+          week: 5,
+          number: 9,
+          question: "Continental shelf has a gradient of",
+          options: [
+            { letter: "A", text: "0-1 degree" },
+            { letter: "B", text: "1-2 degree" },
+            { letter: "C", text: "2-5 degree" },
+            { letter: "D", text: "5-10 degree" },
+          ],
+          correct_letter: "A",
+          correct_text: "0-1 degree",
+        },
+        {
+          id: "w5-q10",
+          week: 5,
+          number: 10,
+          question: "Equal salinity curves are called",
+          options: [
+            { letter: "A", text: "isopycnal curves" },
+            { letter: "B", text: "isohaline curves" },
+            { letter: "C", text: "isotherm curves" },
+            { letter: "D", text: "isobuoyant curves" },
+          ],
+          correct_letter: "B",
+          correct_text: "isohaline curves",
+        },
+        {
+          id: "w6-q1",
+          week: 6,
+          number: 1,
+          question: "The Western Ghats act as a water divide because",
+          options: [
+            {
+              letter: "A",
+              text: "they prevent all rivers from reaching the sea",
+            },
+            {
+              letter: "B",
+              text: "water on opposite sides flows in different directions",
+            },
+            { letter: "C", text: "they cause all rivers to become seasonal" },
+            { letter: "D", text: "they convert rivers into lakes" },
+          ],
+          correct_letter: "B",
+          correct_text: "water on opposite sides flows in different directions",
+        },
+        {
+          id: "w6-q2",
+          week: 6,
+          number: 2,
+          question:
+            "A river network that follows the structure and slope of the land is best described as",
+          options: [
+            { letter: "A", text: "discordant" },
+            { letter: "B", text: "antecedent" },
+            { letter: "C", text: "accordant" },
+            { letter: "D", text: "centripetal" },
+          ],
+          correct_letter: "C",
+          correct_text: "accordant",
+        },
+        {
+          id: "w6-q3",
+          week: 6,
+          number: 3,
+          question:
+            "A tree-like river network in which smaller streams join a main channel is called",
+          options: [
+            { letter: "A", text: "trellis drainage" },
+            { letter: "B", text: "dendritic drainage" },
+            { letter: "C", text: "centripetal drainage" },
+            { letter: "D", text: "rectangular drainage" },
+          ],
+          correct_letter: "B",
+          correct_text: "dendritic drainage",
+        },
+        {
+          id: "w6-q4",
+          week: 6,
+          number: 4,
+          question:
+            "A river system that does not match the present structure and relief of the landscape is called",
+          options: [
+            { letter: "A", text: "discordant drainage" },
+            { letter: "B", text: "dendritic drainage" },
+            { letter: "C", text: "radial drainage" },
+            { letter: "D", text: "parallel drainage" },
+          ],
+          correct_letter: "A",
+          correct_text: "discordant drainage",
+        },
+        {
+          id: "w6-q5",
+          week: 6,
+          number: 5,
+          question: "The Himalayas are primarily comprised of",
+          options: [
+            { letter: "A", text: "sedimentary rocks" },
+            { letter: "B", text: "igneous rocks" },
+            { letter: "C", text: "metamorphic rocks" },
+            { letter: "D", text: "b and c" },
+          ],
+          correct_letter: "A",
+          correct_text: "sedimentary rocks",
+        },
+        {
+          id: "w6-q6",
+          week: 6,
+          number: 6,
+          question:
+            "Which pair of rivers is described as flowing westwards into the Arabian Sea?",
+          options: [
+            { letter: "A", text: "Ganga and Yamuna" },
+            { letter: "B", text: "Mahanadi and Godavari" },
+            { letter: "C", text: "Narmada and Tapi" },
+            { letter: "D", text: "Krishna and Kaveri" },
+          ],
+          correct_letter: "C",
+          correct_text: "Narmada and Tapi",
+        },
+        {
+          id: "w6-q7",
+          week: 6,
+          number: 7,
+          question:
+            "Which of these are factors determining the climate of India?",
+          options: [
+            { letter: "A", text: "distance from the sea" },
+            { letter: "B", text: "altitude" },
+            { letter: "C", text: "relief" },
+            { letter: "D", text: "all of these" },
+          ],
+          correct_letter: "D",
+          correct_text: "all of these",
+        },
+        {
+          id: "w6-q8",
+          week: 6,
+          number: 8,
+          question:
+            "Peninsular rivers usually have fixed courses mainly because",
+          options: [
+            { letter: "A", text: "they flow through newly formed mountains" },
+            { letter: "B", text: "they carry very high sediment loads" },
+            { letter: "C", text: "they are controlled only by monsoon winds" },
+            {
+              letter: "D",
+              text: "their courses are cut into older, harder rocks",
+            },
+          ],
+          correct_letter: "D",
+          correct_text: "their courses are cut into older, harder rocks",
+        },
+        {
+          id: "w6-q9",
+          week: 6,
+          number: 9,
+          question:
+            "In Koeppen classification, which is polar frost temperature?",
+          options: [
+            { letter: "A", text: "C" },
+            { letter: "B", text: "D" },
+            { letter: "C", text: "F" },
+            { letter: "D", text: "T" },
+          ],
+          correct_letter: "C",
+          correct_text: "F",
+        },
+        {
+          id: "w7-q2",
+          week: 7,
+          number: 2,
+          question: "Cryofracturing is an example of",
+          options: [
+            { letter: "A", text: "chemical weathering" },
+            { letter: "B", text: "physical weathering" },
+            { letter: "C", text: "biological weathering" },
+            { letter: "D", text: "none of the above" },
+          ],
+          correct_letter: "B",
+          correct_text: "physical weathering",
+        },
+        {
+          id: "w7-q3",
+          week: 7,
+          number: 3,
+          question: "Bangar is a type of",
+          options: [
+            { letter: "A", text: "black cotton soil" },
+            { letter: "B", text: "alluvial soil" },
+            { letter: "C", text: "saline soil" },
+            { letter: "D", text: "red and yellow soil" },
+          ],
+          correct_letter: "B",
+          correct_text: "alluvial soil",
+        },
+        {
+          id: "w7-q4",
+          week: 7,
+          number: 4,
+          question: '"the diversity that exists within an ecosystem" is',
+          options: [
+            { letter: "A", text: "alpha (α) biodiversity" },
+            { letter: "B", text: "beta (β) biodiversity" },
+            { letter: "C", text: "gamma (γ) biodiversity" },
+            { letter: "D", text: "delta (δ) biodiversity" },
+          ],
+          correct_letter: "A",
+          correct_text: "alpha (α) biodiversity",
+        },
+        {
+          id: "w7-q5",
+          week: 7,
+          number: 5,
+          question: "A climax caused by wildfires is an example of",
+          options: [
+            { letter: "A", text: "climatic climax" },
+            { letter: "B", text: "edaphic climax" },
+            { letter: "C", text: "disclimax" },
+            { letter: "D", text: "catastrophic climax" },
+          ],
+          correct_letter: "D",
+          correct_text: "catastrophic climax",
+        },
+        {
+          id: "w7-q6",
+          week: 7,
+          number: 6,
+          question: "For more biodiversity, the level of disturbance should be",
+          options: [
+            { letter: "A", text: "less" },
+            { letter: "B", text: "intermediate" },
+            { letter: "C", text: "more" },
+            { letter: "D", text: "none of these" },
+          ],
+          correct_letter: "B",
+          correct_text: "intermediate",
+        },
+        {
+          id: "w7-q7",
+          week: 7,
+          number: 7,
+          question:
+            '"the diversity that exists among different geographies" is',
+          options: [
+            { letter: "A", text: "alpha (α) biodiversity" },
+            { letter: "B", text: "beta (β) biodiversity" },
+            { letter: "C", text: "gamma (γ) biodiversity" },
+            { letter: "D", text: "delta (δ) biodiversity" },
+          ],
+          correct_letter: "C",
+          correct_text: "gamma (γ) biodiversity",
+        },
+        {
+          id: "w7-q8",
+          week: 7,
+          number: 8,
+          question: "Vertical arrangement of soil horizons is called",
+          options: [
+            { letter: "A", text: "soil texture" },
+            { letter: "B", text: "soil structure" },
+            { letter: "C", text: "soil profile" },
+            { letter: "D", text: "soil science" },
+          ],
+          correct_letter: "C",
+          correct_text: "soil profile",
+        },
+        {
+          id: "w7-q10",
+          week: 7,
+          number: 10,
+          question:
+            "Which soil property refers to the arrangement of solid soil parts and pore spaces between them?",
+          options: [
+            { letter: "A", text: "Soil fertility" },
+            { letter: "B", text: "Soil texture" },
+            { letter: "C", text: "Soil horizon" },
+            { letter: "D", text: "Soil structure" },
+          ],
+          correct_letter: "D",
+          correct_text: "Soil structure",
+        },
+        {
+          id: "w8-q1",
+          week: 8,
+          number: 1,
+          question:
+            "Which of the following is listed as an ex-situ conservation method?",
+          options: [
+            { letter: "A", text: "Wildlife sanctuary" },
+            { letter: "B", text: "National park" },
+            { letter: "C", text: "Seed bank" },
+            { letter: "D", text: "Biosphere reserve" },
+          ],
+          correct_letter: "C",
+          correct_text: "Seed bank",
+        },
+        {
+          id: "w8-q2",
+          week: 8,
+          number: 2,
+          question:
+            "Which factor makes smaller populations especially vulnerable due to mating among close relatives?",
+          options: [
+            { letter: "A", text: "Habitat displacement" },
+            { letter: "B", text: "Eutrophication" },
+            { letter: "C", text: "Inbreeding depression" },
+            { letter: "D", text: "Carbon storage" },
+          ],
+          correct_letter: "C",
+          correct_text: "Inbreeding depression",
+        },
+        {
+          id: "w8-q3",
+          week: 8,
+          number: 3,
+          question:
+            "Which type of species plays a much greater ecological role than expected from its abundance?",
+          options: [
+            { letter: "A", text: "Umbrella species" },
+            { letter: "B", text: "Flagship species" },
+            { letter: "C", text: "Least concern species" },
+            { letter: "D", text: "Keystone species" },
+          ],
+          correct_letter: "D",
+          correct_text: "Keystone species",
+        },
+        {
+          id: "w8-q4",
+          week: 8,
+          number: 4,
+          question:
+            "A species found only in a single lake is rare mainly because of",
+          options: [
+            { letter: "A", text: "high birth rate" },
+            { letter: "B", text: "limited geographical range" },
+            { letter: "C", text: "high adaptability" },
+            { letter: "D", text: "large home range" },
+          ],
+          correct_letter: "B",
+          correct_text: "limited geographical range",
+        },
+        {
+          id: "w8-q5",
+          week: 8,
+          number: 5,
+          question:
+            "Which of the following is a disadvantage of ex-situ conservation?",
+          options: [
+            {
+              letter: "A",
+              text: "It always protects the natural habitat of the species",
+            },
+            {
+              letter: "B",
+              text: "Captive-bred individuals may find reintroduction difficult",
+            },
+            {
+              letter: "C",
+              text: "It prevents all inbreeding risks automatically",
+            },
+            {
+              letter: "D",
+              text: "It can be planned for all species at the same time",
+            },
+          ],
+          correct_letter: "B",
+          correct_text:
+            "Captive-bred individuals may find reintroduction difficult",
+        },
+        {
+          id: "w8-q6",
+          week: 8,
+          number: 6,
+          question:
+            "In the species-area relationship, what does “S” represent?",
+          options: [
+            { letter: "A", text: "Size of the habitat" },
+            { letter: "B", text: "Species richness" },
+            { letter: "C", text: "Survival rate" },
+            { letter: "D", text: "Stochastic pressure" },
+          ],
+          correct_letter: "B",
+          correct_text: "Species richness",
+        },
+        {
+          id: "w8-q7",
+          week: 8,
+          number: 7,
+          question:
+            "In the Clear Lake example, DDD concentration increased from water to plankton, fish, and piscivorous birds. This illustrates",
+          options: [
+            { letter: "A", text: "ecological redundancy" },
+            { letter: "B", text: "habitat selection" },
+            { letter: "C", text: "biomagnification" },
+            { letter: "D", text: "ex-situ management" },
+          ],
+          correct_letter: "C",
+          correct_text: "biomagnification",
+        },
+        {
+          id: "w8-q8",
+          week: 8,
+          number: 8,
+          question:
+            "We prefer those areas for the creation of a conservation reserve where the level of threat is",
+          options: [
+            { letter: "A", text: "very high" },
+            { letter: "B", text: "medium" },
+            { letter: "C", text: "very low" },
+            { letter: "D", text: "non-existent" },
+          ],
+          correct_letter: "B",
+          correct_text: "medium",
+        },
+        {
+          id: "w8-q9",
+          week: 8,
+          number: 9,
+          question: "The acronym HIPPO does not include",
+          options: [
+            { letter: "A", text: "habitat loss" },
+            { letter: "B", text: "invasive species" },
+            { letter: "C", text: "pollination" },
+            { letter: "D", text: "pollution" },
+          ],
+          correct_letter: "C",
+          correct_text: "pollination",
+        },
+        {
+          id: "w8-q10",
+          week: 8,
+          number: 10,
+          question:
+            "The elephant has a home range of several square kilometres, regulates the ecosystem by its habit of destructive feeding, and people can relate to this animal which is important for conservation. Given this background, the elephant can be called as",
+          options: [
+            { letter: "A", text: "umbrella species" },
+            { letter: "B", text: "keystone species" },
+            { letter: "C", text: "flagship species" },
+            { letter: "D", text: "all of the above" },
+          ],
+          correct_letter: "D",
+          correct_text: "all of the above",
+        },
+        {
+          id: "w9-q2",
+          week: 9,
+          number: 2,
+          question:
+            "Which of these is commonly observed during humanising of nature?",
+          options: [
+            { letter: "A", text: "environmental determinism" },
+            { letter: "B", text: "possibilism" },
+            { letter: "C", text: "neodeterminism" },
+            { letter: "D", text: "stop and go determinism" },
+          ],
+          correct_letter: "B",
+          correct_text: "possibilism",
+        },
+        {
+          id: "w9-q3",
+          week: 9,
+          number: 3,
+          question:
+            "The age dependency ratio compares dependent population with:",
+          options: [
+            { letter: "A", text: "total female population" },
+            { letter: "B", text: "working-age population" },
+            { letter: "C", text: "urban population" },
+            { letter: "D", text: "migrant population" },
+          ],
+          correct_letter: "B",
+          correct_text: "working-age population",
+        },
+        {
+          id: "w9-q4",
+          week: 9,
+          number: 4,
+          question: "The logistic growth equation curve is",
+          options: [
+            { letter: "A", text: "I-shaped" },
+            { letter: "B", text: "J-shaped" },
+            { letter: "C", text: "S-shaped" },
+            { letter: "D", text: "U-shaped" },
+          ],
+          correct_letter: "C",
+          correct_text: "S-shaped",
+        },
+        {
+          id: "w9-q5",
+          week: 9,
+          number: 5,
+          question: "Which of these is a positive check according to Malthus?",
+          options: [
+            { letter: "A", text: "late marriage" },
+            { letter: "B", text: "war" },
+            { letter: "C", text: "celibacy" },
+            { letter: "D", text: "moral restraint" },
+          ],
+          correct_letter: "B",
+          correct_text: "war",
+        },
+        {
+          id: "w9-q6",
+          week: 9,
+          number: 6,
+          question: "Economic development is often measured in terms of:",
+          options: [
+            { letter: "A", text: "age dependency ratio" },
+            { letter: "B", text: "total land area" },
+            { letter: "C", text: "GDP per capita" },
+            { letter: "D", text: "sex ratio" },
+          ],
+          correct_letter: "C",
+          correct_text: "GDP per capita",
+        },
+        {
+          id: "w9-q7",
+          week: 9,
+          number: 7,
+          question: "Which of these is not a pillar of sustainability?",
+          options: [
+            { letter: "A", text: "environmental sustainability" },
+            { letter: "B", text: "economic sustainability" },
+            { letter: "C", text: "trans-boundary sustainability" },
+            { letter: "D", text: "social sustainability" },
+          ],
+          correct_letter: "C",
+          correct_text: "trans-boundary sustainability",
+        },
+        {
+          id: "w9-q8",
+          week: 9,
+          number: 8,
+          question: "The demographic transition sees a society move from",
+          options: [
+            {
+              letter: "A",
+              text: "high birth rate, low death rate to low birth rate, high death rate",
+            },
+            {
+              letter: "B",
+              text: "low birth rate, high death rate to low birth rate, low death rate",
+            },
+            {
+              letter: "C",
+              text: "high birth rate, high death rate to low birth rate, low death rate",
+            },
+            {
+              letter: "D",
+              text: "high birth rate, high death rate to low birth rate, high death rate",
+            },
+          ],
+          correct_letter: "C",
+          correct_text:
+            "high birth rate, high death rate to low birth rate, low death rate",
+        },
+        {
+          id: "w9-q9",
+          week: 9,
+          number: 9,
+          question:
+            "Which of these is a preventive check according to Malthus?",
+          options: [
+            { letter: "A", text: "foresight" },
+            { letter: "B", text: "vice" },
+            { letter: "C", text: "misery" },
+            { letter: "D", text: "flood" },
+          ],
+          correct_letter: "A",
+          correct_text: "foresight",
+        },
+        {
+          id: "w9-q10",
+          week: 9,
+          number: 10,
+          question:
+            "Which population group is generally treated as the working population?",
+          options: [
+            { letter: "A", text: "0-15 years" },
+            { letter: "B", text: "15-64 years" },
+            { letter: "C", text: "65 years and above" },
+            { letter: "D", text: "0-15 and 65 years and above" },
+          ],
+          correct_letter: "B",
+          correct_text: "15-64 years",
+        },
+        {
+          id: "w10-q2",
+          week: 10,
+          number: 2,
+          question: "Hydrogen for nuclear fusion comes under the category of",
+          options: [
+            { letter: "A", text: "potential resources" },
+            { letter: "B", text: "actual resources" },
+            { letter: "C", text: "reserve resources" },
+            { letter: "D", text: "stock resources" },
+          ],
+          correct_letter: "D",
+          correct_text: "stock resources",
+        },
+        {
+          id: "w10-q3",
+          week: 10,
+          number: 3,
+          question:
+            "In the Rondonia rainforest example, road construction mainly contributed to forest loss by",
+          options: [
+            { letter: "A", text: "increasing rainfall in cleared patches" },
+            {
+              letter: "B",
+              text: "allowing easier human access into forest areas",
+            },
+            { letter: "C", text: "preventing agricultural plots from forming" },
+            { letter: "D", text: "converting cropland back into forest" },
+          ],
+          correct_letter: "B",
+          correct_text: "allowing easier human access into forest areas",
+        },
+        {
+          id: "w10-q4",
+          week: 10,
+          number: 4,
+          question: "Oil that has not been drilled can be categorised under",
+          options: [
+            { letter: "A", text: "potential resources" },
+            { letter: "B", text: "actual resources" },
+            { letter: "C", text: "reserve resources" },
+            { letter: "D", text: "stock resources" },
+          ],
+          correct_letter: "A",
+          correct_text: "potential resources",
+        },
+        {
+          id: "w10-q5",
+          week: 10,
+          number: 5,
+          question:
+            "Although cropland uses a smaller share of agricultural land than livestock, it contributes more to",
+          options: [
+            { letter: "A", text: "global calorie supply" },
+            { letter: "B", text: "mineral extraction" },
+            { letter: "C", text: "groundwater recharge" },
+            { letter: "D", text: "built-up land expansion" },
+          ],
+          correct_letter: "A",
+          correct_text: "global calorie supply",
+        },
+        {
+          id: "w10-q6",
+          week: 10,
+          number: 6,
+          question: "Low concentration ores come in the category of",
+          options: [
+            { letter: "A", text: "potential resources" },
+            { letter: "B", text: "actual resources" },
+            { letter: "C", text: "reserve resources" },
+            { letter: "D", text: "stock resources" },
+          ],
+          correct_letter: "C",
+          correct_text: "reserve resources",
+        },
+        {
+          id: "w10-q7",
+          week: 10,
+          number: 7,
+          question:
+            "“those resources that have been surveyed but we lack the technology to use them” is a definition of",
+          options: [
+            { letter: "A", text: "potential resources" },
+            { letter: "B", text: "actual resources" },
+            { letter: "C", text: "reserve resources" },
+            { letter: "D", text: "stock resources" },
+          ],
+          correct_letter: "D",
+          correct_text: "stock resources",
+        },
+        {
+          id: "w10-q8",
+          week: 10,
+          number: 8,
+          question:
+            "Which of these is the largest source of nitrogen oxides in the atmosphere?",
+          options: [
+            { letter: "A", text: "electricity generation" },
+            { letter: "B", text: "mobile sources" },
+            { letter: "C", text: "industrial processes" },
+            { letter: "D", text: "waste disposal" },
+          ],
+          correct_letter: "B",
+          correct_text: "mobile sources",
+        },
+        {
+          id: "w10-q9",
+          week: 10,
+          number: 9,
+          question:
+            "Timber from forests that is being harvested can be categorised under",
+          options: [
+            { letter: "A", text: "potential resources" },
+            { letter: "B", text: "actual resources" },
+            { letter: "C", text: "reserve resources" },
+            { letter: "D", text: "stock resources" },
+          ],
+          correct_letter: "B",
+          correct_text: "actual resources",
+        },
+        {
+          id: "w10-q10",
+          week: 10,
+          number: 10,
+          question:
+            "Which of these is the largest source of ammonia (NH3) in the atmosphere?",
+          options: [
+            { letter: "A", text: "animal manure" },
+            { letter: "B", text: "mineral fertiliser" },
+            { letter: "C", text: "crops and their decomposition" },
+            { letter: "D", text: "human waste" },
+          ],
+          correct_letter: "A",
+          correct_text: "animal manure",
+        },
+        {
+          id: "w11-q2",
+          week: 11,
+          number: 2,
+          question:
+            "Which of these is / are example(s) of mitigation measures to mitigate impacts of linear infrastructure on wildlife?",
+          options: [
+            { letter: "A", text: "bridge underpasses" },
+            { letter: "B", text: "box culverts" },
+            { letter: "C", text: "pipe culverts" },
+            { letter: "D", text: "all of these" },
+          ],
+          correct_letter: "D",
+          correct_text: "all of these",
+        },
+        {
+          id: "w11-q3",
+          week: 11,
+          number: 3,
+          question:
+            "Which mode of connection is described as requiring more money and technology to construct than roads?",
+          options: [
+            { letter: "A", text: "Shipping lines" },
+            { letter: "B", text: "Railways" },
+            { letter: "C", text: "Inland waterways" },
+            { letter: "D", text: "Footpaths" },
+          ],
+          correct_letter: "B",
+          correct_text: "Railways",
+        },
+        {
+          id: "w11-q4",
+          week: 11,
+          number: 4,
+          question:
+            "Which of these is a factor governing barrier effect of roads?",
+          options: [
+            { letter: "A", text: "road edge features" },
+            { letter: "B", text: "time of day and year" },
+            { letter: "C", text: "species diversity in the surroundings" },
+            { letter: "D", text: "all of these" },
+          ],
+          correct_letter: "D",
+          correct_text: "all of these",
+        },
+        {
+          id: "w11-q6",
+          week: 11,
+          number: 6,
+          question:
+            "“the ability to produce a good at a lower opportunity cost than another producer” is a definition of",
+          options: [
+            { letter: "A", text: "real advantage" },
+            { letter: "B", text: "monetary advantage" },
+            { letter: "C", text: "comparative advantage" },
+            { letter: "D", text: "opportunity advantage" },
+          ],
+          correct_letter: "C",
+          correct_text: "comparative advantage",
+        },
+        {
+          id: "w11-q7",
+          week: 11,
+          number: 7,
+          question:
+            "Dust released from ships can help reveal ship movement because dust particles act as:",
+          options: [
+            { letter: "A", text: "Fuel particles" },
+            { letter: "B", text: "Noise absorbers" },
+            { letter: "C", text: "Nuclei for condensation" },
+            { letter: "D", text: "Ocean-current markers" },
+          ],
+          correct_letter: "C",
+          correct_text: "Nuclei for condensation",
+        },
+        {
+          id: "w11-q8",
+          week: 11,
+          number: 8,
+          question:
+            "Which of the following is identified as a way in which roads disturb wildlife at night?",
+          options: [
+            { letter: "A", text: "They reduce wind movement" },
+            { letter: "B", text: "They increase soil moisture" },
+            { letter: "C", text: "They create silent zones" },
+            {
+              letter: "D",
+              text: "They cause light pollution through headlamps",
+            },
+          ],
+          correct_letter: "D",
+          correct_text: "They cause light pollution through headlamps",
+        },
+        {
+          id: "w11-q9",
+          week: 11,
+          number: 9,
+          question:
+            "Which statement best describes why young male tigers or leopards may need to move away from their natal area?",
+          options: [
+            { letter: "A", text: "To avoid seasonal flooding" },
+            { letter: "B", text: "To reduce conflict and avoid inbreeding" },
+            { letter: "C", text: "To follow shipping routes" },
+            { letter: "D", text: "To increase road density" },
+          ],
+          correct_letter: "B",
+          correct_text: "To reduce conflict and avoid inbreeding",
+        },
+        {
+          id: "w11-q10",
+          week: 11,
+          number: 10,
+          question: "Oxford can best be categorised as",
+          options: [
+            { letter: "A", text: "mining town" },
+            { letter: "B", text: "garrison town" },
+            { letter: "C", text: "educational town" },
+            { letter: "D", text: "religious town" },
+          ],
+          correct_letter: "C",
+          correct_text: "educational town",
+        },
+        {
+          id: "w12-q1",
+          week: 12,
+          number: 1,
+          question:
+            "“The conditions determined by physical, social, economic and environmental factors or processes which increase the susceptibility of an individual, a community, assets or systems to the impacts of hazards.” is a definition for",
+          options: [
+            { letter: "A", text: "hazard" },
+            { letter: "B", text: "exposure" },
+            { letter: "C", text: "vulnerability" },
+            { letter: "D", text: "disaster" },
+          ],
+          correct_letter: "C",
+          correct_text: "vulnerability",
+        },
+        {
+          id: "w12-q2",
+          week: 12,
+          number: 2,
+          question:
+            "The time of flight for LiDAR is 0.00001 sec. Find the distance of the object from the instrument.",
+          options: [
+            { letter: "A", text: "500 m" },
+            { letter: "B", text: "1000 m" },
+            { letter: "C", text: "1500 m" },
+            { letter: "D", text: "2000 m" },
+          ],
+          correct_letter: "C",
+          correct_text: "1500 m",
+        },
+        {
+          id: "w12-q3",
+          week: 12,
+          number: 3,
+          question:
+            "Which application of photogrammetry focuses on understanding what is happening in an area rather than measuring quantities?",
+          options: [
+            { letter: "A", text: "Metric application" },
+            { letter: "B", text: "Radiometric application" },
+            { letter: "C", text: "Interpretive application" },
+            { letter: "D", text: "Fiducial application" },
+          ],
+          correct_letter: "C",
+          correct_text: "Interpretive application",
+        },
+        {
+          id: "w12-q4",
+          week: 12,
+          number: 4,
+          question:
+            "“A process, phenomenon or human activity that may cause loss of life, injury or other health impacts, property damage, social and economic disruption or environmental degradation.” is a definition for",
+          options: [
+            { letter: "A", text: "hazard" },
+            { letter: "B", text: "exposure" },
+            { letter: "C", text: "vulnerability" },
+            { letter: "D", text: "disaster" },
+          ],
+          correct_letter: "A",
+          correct_text: "hazard",
+        },
+        {
+          id: "w12-q5",
+          week: 12,
+          number: 5,
+          question: "IMU stands for",
+          options: [
+            { letter: "A", text: "Imperial metering unit" },
+            { letter: "B", text: "Inertial metering unit" },
+            { letter: "C", text: "Imperial measurement unit" },
+            { letter: "D", text: "Inertial measurement unit" },
+          ],
+          correct_letter: "D",
+          correct_text: "Inertial measurement unit",
+        },
+        {
+          id: "w12-q6",
+          week: 12,
+          number: 6,
+          question:
+            "Which application of photogrammetry is involved when the area of forest cover or the size of plantation pits is calculated?",
+          options: [
+            { letter: "A", text: "Interpretive application" },
+            { letter: "B", text: "Metric application" },
+            { letter: "C", text: "Oblique application" },
+            { letter: "D", text: "Passive application" },
+          ],
+          correct_letter: "B",
+          correct_text: "Metric application",
+        },
+        {
+          id: "w12-q7",
+          week: 12,
+          number: 7,
+          question:
+            "Which component is essential in a GIS along with hardware and software?",
+          options: [
+            { letter: "A", text: "Mirror system" },
+            { letter: "B", text: "Humanware" },
+            { letter: "C", text: "Shutter speed" },
+            { letter: "D", text: "Focal length" },
+          ],
+          correct_letter: "B",
+          correct_text: "Humanware",
+        },
+        {
+          id: "w12-q8",
+          week: 12,
+          number: 8,
+          question: "Which of these uses revealed willingness to pay?",
+          options: [
+            { letter: "A", text: "market price method" },
+            { letter: "B", text: "replacement cost method" },
+            { letter: "C", text: "damage cost avoided method" },
+            { letter: "D", text: "contingent valuation method" },
+          ],
+          correct_letter: "A",
+          correct_text: "market price method",
+        },
+        {
+          id: "w12-q9",
+          week: 12,
+          number: 9,
+          question:
+            "Which camera-axis orientation is intentionally tilted between vertical and horizontal?",
+          options: [
+            { letter: "A", text: "True vertical" },
+            { letter: "B", text: "Near vertical" },
+            { letter: "C", text: "Oblique" },
+            { letter: "D", text: "Fiducial" },
+          ],
+          correct_letter: "C",
+          correct_text: "Oblique",
+        },
+        {
+          id: "w12-q10",
+          week: 12,
+          number: 10,
+          question:
+            "Which platform normally uses cameras placed at ground level with a horizontal camera orientation?",
+          options: [
+            { letter: "A", text: "Space-borne platform" },
+            { letter: "B", text: "Air-borne platform" },
+            { letter: "C", text: "Ground-borne platform" },
+            { letter: "D", text: "Orbital platform" },
+          ],
+          correct_letter: "C",
+          correct_text: "Ground-borne platform",
+        },
+      ];
+      const BYID = {};
+      BANK.forEach((q) => (BYID[q.id] = q));
+      /* Week themes + the question numbers that are absent from the
+         source itself (never invented — shown honestly in the UI). */
+      const WEEK_TITLES = {
+        1: "Foundations of Geography & Ecology",
+        2: "Earth, Volcanoes & Geological Time",
+        3: "Rocks, Minerals & Weathering",
+        4: "Atmosphere & Climate Change",
+        5: "Oceans & Ocean Floor",
+        6: "Rivers, Drainage & India",
+        7: "Soils, Biodiversity & Succession",
+        8: "Conservation & Species",
+        9: "Population & Sustainability",
+        10: "Resources & Pollution",
+        11: "Transport, Trade & Settlements",
+        12: "Hazards, GIS & Remote Sensing",
+      };
+      const MISSING = { 6: [10], 7: [1, 9], 9: [1], 10: [1], 11: [1, 5] };
+      const LSKEY = "nptel-hub-v1";
+      /* ==================================================================
+         SECTION JS-3 · STATE, STORAGE & ACCOUNTS
+         Everything persists in local storage on this device only,
+         separated per account. Passwords are stored hashed, never plain.
+         ================================================================== */
+      function blankData() {
+        return {
+          subject: null,
+          learn: { done: [], last: null },
+          attempts: {},
+          bookmarks: [],
+          notes: {},
+          sessions: [],
+          examDate: null,
+          qrFlags: {},
+          issues: [],
+          activeSes: null,
+        };
+      }
+      function blankState() {
+        return {
+          accounts: {},
+          current: null,
+          legacy: null,
+          searches: [],
+          issues: [],
+          theme: null,
+        };
+      }
+      function load() {
+        try {
+          const s = JSON.parse(localStorage.getItem(LSKEY));
+          if (s && typeof s === "object") {
+            if (s.attempts && !s.accounts) {
+              const st = blankState();
+              st.legacy = {
+                attempts: s.attempts || {},
+                bookmarks: s.bookmarks || [],
+                notes: s.notes || {},
+                sessions: s.sessions || [],
+              };
+              st.searches = s.searches || [];
+              st.issues = s.issues || [];
+              st.theme = s.theme || null;
+              return st;
+            }
+            if (s.accounts) return Object.assign(blankState(), s);
+          }
+        } catch (e) {}
+        return blankState();
+      }
+      let S = load();
+      let D = blankData();
+      if (S.current && S.accounts[S.current]) setD(S.accounts[S.current]);
+      if (D.themePref) S.theme = D.themePref;
+      function save() {
+        try {
+          localStorage.setItem(LSKEY, JSON.stringify(S));
+        } catch (e) {}
+      }
+      function curAcct() {
+        return S.current && S.accounts[S.current]
+          ? S.accounts[S.current]
+          : null;
+      }
+      function isLoggedIn() {
+        return !!curAcct();
+      }
+      function setD(a) {
+        a.data = Object.assign(blankData(), a.data || {});
+        D = a.data;
+      }
+      function newSalt() {
+        return (
+          Math.random().toString(36).slice(2, 10) + Date.now().toString(36)
+        );
+      }
+      async function hashPw(pw, salt) {
+        const s = salt + "::" + pw;
+        if (window.crypto && crypto.subtle && crypto.subtle.digest) {
+          try {
+            const buf = await crypto.subtle.digest(
+              "SHA-256",
+              new TextEncoder().encode(s),
+            );
+            return Array.from(new Uint8Array(buf))
+              .map((b) => b.toString(16).padStart(2, "0"))
+              .join("");
+          } catch (e) {}
+        }
+        let h1 = 0xdeadbeef,
+          h2 = 0x41c6ce57;
+        for (let i = 0; i < s.length; i++) {
+          const c = s.charCodeAt(i);
+          h1 = Math.imul(h1 ^ c, 2654435761);
+          h2 = Math.imul(h2 ^ c, 1597334677);
+        }
+        return "fb" + (h1 >>> 0).toString(16) + (h2 >>> 0).toString(16);
+      }
+      // theme
+      function applyTheme() {
+        const t = S.theme || "light";
+        document.documentElement.dataset.theme = t;
+        document.getElementById("themeBtn").innerHTML =
+          t === "dark"
+            ? '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg> Light'
+            : '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg> Dark';
+      }
+      document.getElementById("themeBtn").addEventListener("click", () => {
+        const cur = document.documentElement.dataset.theme;
+        S.theme = cur === "dark" ? "light" : "dark";
+        if (isLoggedIn()) D.themePref = S.theme;
+        save();
+        applyTheme();
+      });
+      applyTheme();
+      const app = document.getElementById("app"),
+        pbar = document.getElementById("pbar"),
+        toastEl = document.getElementById("toast"),
+        dlg = document.getElementById("dlg");
+      function esc(s) {
+        return String(s == null ? "" : s).replace(
+          /[&<>"']/g,
+          (c) =>
+            ({
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#39;",
+            })[c],
+        );
+      }
+      function toast(m) {
+        toastEl.textContent = m;
+        toastEl.classList.toggle(
+          "up",
+          !!(pbar && pbar.classList.contains("on")),
+        );
+        toastEl.classList.add("on");
+        if (toastEl._t) clearTimeout(toastEl._t);
+        toastEl._t = setTimeout(() => toastEl.classList.remove("on"), 2400);
+      }
+      function shuffle(a) {
+        const x = a.slice();
+        for (let i = x.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [x[i], x[j]] = [x[j], x[i]];
+        }
+        return x;
+      }
+      function att(id) {
+        return D.attempts[id] || null;
+      }
+      function isBookmarked(id) {
+        return D.bookmarks.includes(id);
+      }
+      function toggleBookmark(id) {
+        if (isBookmarked(id)) {
+          D.bookmarks = D.bookmarks.filter((x) => x !== id);
+          toast("Bookmark removed");
+        } else {
+          D.bookmarks.push(id);
+          toast("Bookmarked — saved on this device");
+        }
+        save();
+      }
+      function recordAttempt(id, picked) {
+        const a = D.attempts[id] || {
+          total: 0,
+          correct: 0,
+          wrong: 0,
+          streak: 0,
+          last: null,
+          lastPicked: null,
+          lastDate: null,
+          hist: [],
+        };
+        const q = BYID[id];
+        const ok = picked === q.correct_letter;
+        a.total++;
+        if (ok) {
+          a.correct++;
+          a.streak++;
+        } else {
+          a.wrong++;
+          a.streak = 0;
+        }
+        a.last = ok ? "correct" : "incorrect";
+        a.lastPicked = picked;
+        a.lastDate = new Date().toISOString();
+        a.hist.push({ picked: picked, ok: ok, at: a.lastDate });
+        if (a.hist.length > 20) a.hist = a.hist.slice(-20);
+        D.attempts[id] = a;
+        save();
+      }
+      function weekQs(w) {
+        return BANK.filter((q) => q.week === w);
+      }
+      function weekStats(w) {
+        const qs = weekQs(w);
+        let at = 0,
+          co = 0;
+        qs.forEach((q) => {
+          const a = att(q.id);
+          if (a) {
+            at++;
+            if (a.last === "correct") co++;
+          }
+        });
+        return {
+          total: qs.length,
+          attempted: at,
+          correct: co,
+          remaining: qs.length - at,
+        };
+      }
+      function overall() {
+        let at = 0,
+          co = 0,
+          tot = 0,
+          wr = 0;
+        Object.values(D.attempts).forEach((a) => {
+          tot += a.total;
+          co += a.correct;
+          wr += a.wrong;
+        });
+        at = Object.keys(D.attempts).length;
+        const acc = tot ? Math.round((co / tot) * 100) : 0;
+        return {
+          attempted: at,
+          correct: co,
+          wrong: wr,
+          totalAttempts: tot,
+          accuracy: acc,
+          remaining: BANK.length - at,
+        };
+      }
+      function mastery(id) {
+        const a = att(id);
+        if (!a) return null;
+        if (a.streak >= 2) return "Consistently Correct";
+        if (a.correct > 0) return "Improving";
+        return "Needs Revision";
+      }
+      function fmtTime(sec) {
+        sec = Math.max(0, Math.round(sec));
+        const m = Math.floor(sec / 60),
+          s = sec % 60;
+        return m + "m " + String(s).padStart(2, "0") + "s";
+      }
+      function fmtDate(iso) {
+        if (!iso) return "—";
+        try {
+          return new Date(iso).toLocaleDateString("en-IN", {
+            day: "numeric",
+            month: "short",
+            year: "numeric",
+          });
+        } catch (e) {
+          return "—";
+        }
+      }
+      function showDialog(html) {
+        document.getElementById("dlgBody").innerHTML = html;
+        if (!dlg.open) dlg.showModal();
+      }
+      function closeDialog() {
+        if (dlg.open) dlg.close();
+      }
+      /* ==================================================================
+         SECTION JS-5 · SESSION ENGINE — practice, week tests & mock.
+         cfg: {mode, title, qids, shuffleOpts, durationMin, isMock, submitAll}
+         ================================================================== */
+      let SES = null,
+        timerId = null;
+      function stopTimer() {
+        if (timerId) {
+          clearInterval(timerId);
+          timerId = null;
+        }
+      }
+      function startSession(cfg) {
+        // cfg: {mode,title,qids,shuffleOpts,durationMin,isMock,submitAll}
+        if (!isLoggedIn()) {
+          toast("Log in or sign up to start practising");
+          curView = "welcome";
+          render();
+          return;
+        }
+        if (!D.subject) {
+          curView = "subject";
+          render();
+          toast("Select your subject first");
+          return;
+        }
+        let qids = cfg.qids.slice();
+        if (!qids.length) {
+          toast("No questions in this selection yet");
+          return;
+        }
+        const optOrder = {};
+        qids.forEach((id) => {
+          optOrder[id] = cfg.shuffleOpts
+            ? shuffle(BYID[id].options.map((o) => o.letter))
+            : BYID[id].options.map((o) => o.letter);
+        });
+        SES = {
+          mode: cfg.mode,
+          title: cfg.title,
+          qids: qids,
+          optOrder: optOrder,
+          answers: {},
+          checked: {},
+          recorded: {},
+          marked: {},
+          idx: 0,
+          start: Date.now(),
+          isMock: !!cfg.isMock,
+          submitAll: !!cfg.submitAll,
+          remain: cfg.durationMin ? cfg.durationMin * 60 : null,
+          durationMin: cfg.durationMin || null,
+          poolNote: cfg.poolNote || "",
+        };
+        if (SES.isMock && SES.remain != null) {
+          SES.endAt = Date.now() + SES.remain * 1000;
+          stopTimer();
+          timerId = setInterval(() => {
+            SES.remain = Math.max(
+              0,
+              Math.round((SES.endAt - Date.now()) / 1000),
+            );
+            renderMockTop();
+            if (SES.remain <= 0) {
+              stopTimer();
+              toast("Time's up — mock submitted automatically");
+              finishSession(true);
+            }
+          }, 1000);
+        }
+        renderPractice();
+      }
+      function saveActiveSes() {
+        if (!SES || !isLoggedIn()) return;
+        D.activeSes = {
+          mode: SES.mode,
+          title: SES.title,
+          qids: SES.qids,
+          optOrder: SES.optOrder,
+          answers: SES.answers,
+          checked: SES.checked,
+          recorded: SES.recorded,
+          marked: SES.marked,
+          idx: SES.idx,
+          start: SES.start,
+          isMock: SES.isMock,
+          submitAll: SES.submitAll,
+          durationMin: SES.durationMin,
+          endAt: SES.endAt || null,
+          poolNote: SES.poolNote || "",
+        };
+        save();
+      }
+      function curQ() {
+        return BYID[SES.qids[SES.idx]];
+      }
+      function optText(q, letter) {
+        const o = q.options.find((x) => x.letter === letter);
+        return o ? o.text : "";
+      }
+      function renderMockTop() {
+        const el = document.getElementById("mockTop");
+        if (!el || !SES) return;
+        const t = el.querySelector(".timer");
+        if (t && SES.remain != null) {
+          const m = Math.floor(SES.remain / 60),
+            s = SES.remain % 60;
+          t.textContent =
+            String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
+          t.classList.toggle("low", SES.remain <= 60);
+        }
+        document.querySelectorAll(".pal-btn").forEach((b, i) => {
+          const id = SES.qids[i];
+          b.className =
+            "pal-btn" +
+            (SES.answers[id] ? " ans" : "") +
+            (SES.marked[id] ? " mark" : "") +
+            (i === SES.idx ? " cur" : "");
+        });
+      }
+      function renderPractice() {
+        const q = curQ(),
+          total = SES.qids.length,
+          idx = SES.idx;
+        const picked = SES.answers[q.id],
+          checked = SES.checked[q.id];
+        const answeredN = SES.qids.filter((id) => SES.answers[id]).length;
+        const progN = SES.submitAll ? answeredN : idx + 1;
+        const order = SES.optOrder[q.id];
+        let optsHtml = order
+          .map((letter, di) => {
+            const dl = "ABCD"[di];
+            let cls = "opt";
+            if (picked === letter) cls += " sel";
+            if (checked) {
+              if (letter === q.correct_letter) cls += " correct";
+              else if (picked === letter) cls += " wrong";
+            }
+            const dis = checked ? "disabled" : "";
+            let tail = "";
+            if (checked && letter === q.correct_letter)
+              tail = ' <span class="tag g">Accepted answer</span>';
+            else if (
+              checked &&
+              picked === letter &&
+              letter !== q.correct_letter
+            )
+              tail = ' <span class="tag r">Your answer</span>';
+            return (
+              '<button class="' +
+              cls +
+              '" data-pick="' +
+              letter +
+              '" ' +
+              dis +
+              '><span class="ltr">' +
+              dl +
+              "</span><span>" +
+              esc(optText(q, letter)) +
+              tail +
+              "</span></button>"
+            );
+          })
+          .join("");
+        let fb = "";
+        if (checked && !SES.isMock) {
+          const ok = picked === q.correct_letter;
+          fb =
+            '<div class="feedback ' +
+            (ok ? "ok" : "bad") +
+            '" role="status"><div class="fb-head">' +
+            '<span class="fb-ic">' +
+            (ok ? ICO_FB_OK : ICO_FB_X) +
+            "</span>" +
+            (ok ? "Correct Answer!" : "Incorrect Answer") +
+            "</div>" +
+            (ok
+              ? ""
+              : '<div class="sub">Your pick is highlighted red above — the accepted answer is green.</div>') +
+            '<div class="fb-acc">Accepted answer: ' +
+            esc(q.correct_letter) +
+            ". " +
+            esc(q.correct_text) +
+            '</div><div class="noexp">No explanation in source.</div></div>';
+        }
+        const note = D.notes[q.id] || {};
+        const noteHtml =
+          checked || !SES.isMock
+            ? '<details class="sheet"><summary>My revision note (saved on this device)</summary>' +
+              '<label class="f" for="nConcept">Key concept</label><input class="inp" id="nConcept" value="' +
+              esc(note.concept || "") +
+              '" placeholder="e.g. migration vs dispersal">' +
+              '<label class="f" for="nWhy">Why the accepted answer is correct</label><textarea class="inp" id="nWhy" placeholder="In your own words…">' +
+              esc(note.why || "") +
+              "</textarea>" +
+              '<label class="f" for="nMnem">Mnemonic / reminder</label><input class="inp" id="nMnem" value="' +
+              esc(note.mnemonic || "") +
+              '" placeholder="A short memory hook">' +
+              '<div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="btn btn-p btn-sm" id="saveNote">Save note</button><button class="btn btn-g btn-sm" id="delNote">Delete note</button></div></details>'
+            : "";
+        const mockTop = SES.isMock
+          ? '<div class="mock-top" id="mockTop"><span class="timer">--:--</span><span class="pill">' +
+            esc(SES.title) +
+            '</span><button class="btn btn-s btn-sm" id="submitMock">Submit mock</button></div>' +
+            '<details class="sheet" open><summary>Question palette — tap a number to jump</summary><div class="palette">' +
+            SES.qids
+              .map(
+                (id, i) =>
+                  '<button class="pal-btn" data-jump="' +
+                  i +
+                  '">' +
+                  (i + 1) +
+                  "</button>",
+              )
+              .join("") +
+            '</div><p class="small" style="margin-top:8px">Green = answered · Red = marked for review · Blue outline = current. Answers are not revealed during a mock.</p></details>'
+          : "";
+        const testTop =
+          SES.submitAll && !SES.isMock
+            ? '<div class="mock-top" id="testTop"><span class="pill">Answered ' +
+              answeredN +
+              " of " +
+              total +
+              '</span><span class="small">No answers are revealed until you submit.</span><button class="btn btn-p btn-sm" id="submitTest">✓ Submit ' +
+              (SES.mode === "weektest" ? "Week Test" : "Test") +
+              "</button></div>" +
+              '<details class="sheet" open><summary>Question palette — tap a number to jump</summary><div class="palette">' +
+              SES.qids
+                .map(
+                  (id, i) =>
+                    '<button class="pal-btn' +
+                    (SES.answers[id] ? " ans" : "") +
+                    (SES.marked[id] ? " mark" : "") +
+                    (i === idx ? " cur" : "") +
+                    '" data-jump="' +
+                    i +
+                    '">' +
+                    (i + 1) +
+                    "</button>",
+                )
+                .join("") +
+              '</div><p class="small" style="margin-top:8px">Green = answered · Red = marked for review · Blue outline = current. You can change any answer any time before submitting.</p></details>'
+            : "";
+        app.innerHTML =
+          '<div class="wrap"><p class="crumb"><b>Week ' +
+          q.week +
+          " • Question " +
+          (idx + 1) +
+          " of " +
+          total +
+          "</b> · " +
+          esc(SES.title) +
+          "</p>" +
+          mockTop +
+          testTop +
+          '<div class="p-head"><span class="pill">Question ' +
+          (idx + 1) +
+          " of " +
+          total +
+          "</span>" +
+          (SES.marked[q.id]
+            ? '<span class="tag a">' + ICO_STAR_ON + " Marked for review</span>"
+            : "") +
+          '<span style="flex:1"></span><button class="bm-btn" id="tBook" aria-label="Bookmark this question"><svg viewBox="0 0 24 24" width="21" height="21"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z" class="bmp" data-on="' +
+          (isBookmarked(q.id) ? 1 : 0) +
+          '"/></svg></button><span class="small">' +
+          (SES.submitAll
+            ? "Answered " + answeredN + " of " + total
+            : "Session score so far: " + sessionScore()) +
+          "</span></div>" +
+          '<div class="progress" role="progressbar" aria-valuenow="' +
+          progN +
+          '" aria-valuemax="' +
+          total +
+          '"><i style="width:' +
+          Math.round((progN / total) * 100) +
+          '%"></i></div>' +
+          (SES.poolNote
+            ? '<p class="small" style="margin-bottom:10px">' +
+              esc(SES.poolNote) +
+              "</p>"
+            : "") +
+          '<div class="q-card"><p class="q-text">' +
+          esc(q.question) +
+          '</p><div class="opts' +
+          (checked ? " locked" : "") +
+          '" role="group" aria-label="Answer options">' +
+          optsHtml +
+          "</div>" +
+          fb +
+          '<div class="q-tools"><button class="tool-btn' +
+          (SES.marked[q.id] ? " active" : "") +
+          '" id="tMark">' +
+          (SES.marked[q.id]
+            ? ICO_STAR_ON + " Marked"
+            : ICO_STAR_OFF + " Mark for review") +
+          "</button>" +
+          '<button class="tool-btn" id="tReport">Report an issue</button></div>' +
+          noteHtml +
+          '<p class="small kbd-hint" style="margin-top:14px">Keyboard: <span class="kbd">1–4</span> select · <span class="kbd">Enter</span> check / next · <span class="kbd">←</span> <span class="kbd">→</span> navigate · <span class="kbd">B</span> bookmark · <span class="kbd">M</span> mark</p></div>' +
+          '<div class="desktop-nav-row"><button class="btn btn-g" id="dPrev" ' +
+          (idx === 0 ? "disabled" : "") +
+          '>← Previous</button><button class="btn btn-p" id="dMain"></button><button class="btn btn-g" id="dNext">' +
+          (idx === total - 1 ? "Finish" : "Next →") +
+          '</button><button class="btn btn-s" id="dQuit">End session</button></div>' +
+          (SES.submitAll
+            ? '<button class="btn btn-p" id="submitTestBottom" style="width:100%;margin-top:14px">✓ Submit ' +
+              (SES.mode === "weektest" ? "Week Test" : "Test") +
+              ' — see your score &amp; full review</button><p class="small" style="margin-top:8px;text-align:center">Answered ' +
+              answeredN +
+              " of " +
+              total +
+              " · Correct answers are revealed only after you submit.</p>"
+            : "") +
+          "</div>";
+        updateBars();
+        app.querySelectorAll("[data-pick]").forEach((b) =>
+          b.addEventListener("click", () => {
+            SES.answers[q.id] = b.dataset.pick;
+            renderPractice();
+          }),
+        );
+        app.querySelectorAll("[data-jump]").forEach((b) =>
+          b.addEventListener("click", () => {
+            SES.idx = +b.dataset.jump;
+            renderPractice();
+            window.scrollTo({ top: 0 });
+          }),
+        );
+        const prev = () => {
+          if (SES.idx > 0) {
+            SES.idx--;
+            renderPractice();
+            window.scrollTo({ top: 0 });
+          }
+        };
+        const next = () => {
+          if (SES.idx < SES.qids.length - 1) {
+            SES.idx++;
+            renderPractice();
+            window.scrollTo({ top: 0 });
+          } else if (SES.submitAll) {
+            confirmSubmit();
+          } else finishSession(false);
+        };
+        const mainAct = () => {
+          if (SES.isMock) {
+            next();
+            return;
+          }
+          if (SES.submitAll) {
+            if (SES.idx === SES.qids.length - 1) confirmSubmit();
+            else next();
+            return;
+          }
+          if (!SES.checked[q.id]) {
+            doCheck();
+          } else {
+            next();
+          }
+        };
+        document.getElementById("dPrev").addEventListener("click", prev);
+        document.getElementById("dNext").addEventListener("click", next);
+        document.getElementById("dMain").addEventListener("click", mainAct);
+        document.getElementById("dQuit").addEventListener("click", () =>
+          confirmDlg(
+            SES.submitAll
+              ? "End this test now? Nothing has been submitted, so these answers will not be saved or scored."
+              : "End this session now? Answered questions already checked are saved.",
+            () => {
+              stopTimer();
+              SES = null;
+              D.activeSes = null;
+              save();
+              pbar.classList.remove("on");
+              go("practice");
+            },
+          ),
+        );
+        const stb = document.getElementById("submitTest");
+        if (stb) stb.addEventListener("click", confirmSubmit);
+        const sbb = document.getElementById("submitTestBottom");
+        if (sbb) sbb.addEventListener("click", confirmSubmit);
+        document.getElementById("pbPrev").onclick = prev;
+        document.getElementById("pbNext").onclick = next;
+        document.getElementById("pbMain").onclick = mainAct;
+        document.getElementById("tMark").addEventListener("click", () => {
+          SES.marked[q.id] = !SES.marked[q.id];
+          renderPractice();
+        });
+        document.getElementById("tBook").addEventListener("click", () => {
+          toggleBookmark(q.id);
+          renderPractice();
+        });
+        document
+          .getElementById("tReport")
+          .addEventListener("click", () => reportDlg(q.id));
+        const sn = document.getElementById("saveNote");
+        if (sn)
+          sn.addEventListener("click", () => {
+            D.notes[q.id] = {
+              concept: document.getElementById("nConcept").value.trim(),
+              why: document.getElementById("nWhy").value.trim(),
+              mnemonic: document.getElementById("nMnem").value.trim(),
+            };
+            save();
+            toast("Note saved on this device");
+          });
+        const dn = document.getElementById("delNote");
+        if (dn)
+          dn.addEventListener("click", () => {
+            delete D.notes[q.id];
+            save();
+            renderPractice();
+            toast("Note deleted");
+          });
+        const sm = document.getElementById("submitMock");
+        if (sm)
+          sm.addEventListener("click", () =>
+            confirmDlg(
+              "Submit this mock now? You can't change answers after submitting.",
+              () => finishSession(false),
+            ),
+          );
+        if (SES.isMock) renderMockTop();
+        saveActiveSes();
+        window.scrollTo({ top: 0 });
+      }
+      function updateBars() {
+        if (!SES) {
+          pbar.classList.remove("on");
+          return;
+        }
+        pbar.classList.add("on");
+        const q = curQ(),
+          checked = SES.checked[q.id];
+        const main = document.getElementById("dMain"),
+          pb = document.getElementById("pbMain");
+        const label = SES.isMock
+          ? "Next"
+          : SES.submitAll
+            ? SES.idx === SES.qids.length - 1
+              ? "Submit Test"
+              : "Next →"
+            : checked
+              ? SES.idx === SES.qids.length - 1
+                ? "See results"
+                : "Next →"
+              : "Check Answer";
+        if (main) main.textContent = label;
+        pb.textContent = label;
+        document.getElementById("pbPrev").disabled = SES.idx === 0;
+        document.getElementById("pbNext").textContent =
+          SES.idx === SES.qids.length - 1 ? "Finish" : "Next →";
+        const showSkip = label === "Check Answer";
+        document.getElementById("pbNext").style.display = showSkip
+          ? ""
+          : "none";
+        const dNext = document.getElementById("dNext");
+        if (dNext) dNext.style.display = showSkip ? "" : "none";
+      }
+      function sessionScore() {
+        if (!SES) return "—";
+        let c = 0,
+          n = 0;
+        SES.qids.forEach((id) => {
+          if (SES.checked[id]) {
+            n++;
+            if (SES.answers[id] === BYID[id].correct_letter) c++;
+          }
+        });
+        return n ? c + "/" + n + " correct" : "not checked yet";
+      }
+      function doCheck() {
+        const q = curQ();
+        const picked = SES.answers[q.id];
+        if (!picked) {
+          toast("Pick an option first");
+          return;
+        }
+        SES.checked[q.id] = true;
+        if (!SES.recorded[q.id]) {
+          recordAttempt(q.id, picked);
+          SES.recorded[q.id] = true;
+        }
+        renderPractice();
+      }
+      function confirmSubmit() {
+        if (!SES) return;
+        const total = SES.qids.length;
+        const un = SES.qids.filter((id) => !SES.answers[id]).length;
+        const msg =
+          un > 0
+            ? "You have answered " +
+              (total - un) +
+              " of " +
+              total +
+              " questions. " +
+              un +
+              " question" +
+              (un === 1 ? " is" : "s are") +
+              " still unanswered — unanswered questions score 0. Submit now and see your results?"
+            : "You have answered all " +
+              total +
+              " questions. Submit now to see your score and the full answer review?";
+        showDialog(
+          '<h3 style="font-size:18px">Submit ' +
+            (SES.mode === "weektest" ? "Week Test" : "Test") +
+            '?</h3><p class="small" style="margin-top:8px">' +
+            esc(msg) +
+            '</p><div style="display:flex;gap:8px;margin-top:18px"><button class="btn btn-g" style="flex:1" id="dlgNo">Keep answering</button><button class="btn btn-p" style="flex:1" id="dlgYes">Submit</button></div>',
+        );
+        document.getElementById("dlgNo").onclick = closeDialog;
+        document.getElementById("dlgYes").onclick = () => {
+          closeDialog();
+          finishSession(false);
+        };
+      }
+      function confirmDlg(msg, onYes) {
+        showDialog(
+          '<h3 style="font-size:18px">Are you sure?</h3><p class="small" style="margin-top:8px">' +
+            esc(msg) +
+            '</p><div style="display:flex;gap:8px;margin-top:18px"><button class="btn btn-g" style="flex:1" id="dlgNo">Keep going</button><button class="btn btn-p" style="flex:1" id="dlgYes">Yes, continue</button></div>',
+        );
+        document.getElementById("dlgNo").onclick = closeDialog;
+        document.getElementById("dlgYes").onclick = () => {
+          closeDialog();
+          onYes();
+        };
+      }
+      function reportDlg(qid) {
+        const q = BYID[qid];
+        showDialog(
+          '<h3 style="font-size:18px">Report an issue</h3><p class="small" style="margin-top:6px">Week ' +
+            q.week +
+            " · Q" +
+            q.number +
+            '. Saved to your account on this device and shown in the Admin preview. A report never changes an answer automatically.</p><label class="f" for="repType">What is the problem?</label><select class="inp" id="repType"><option>Accepted answer looks wrong</option><option>Missing or wrong option</option><option>Question unclear</option><option>Formatting problem</option></select><label class="f" for="repTxt">Comment (optional)</label><textarea class="inp" id="repTxt" placeholder="Add a short note if it helps…"></textarea><div style="display:flex;gap:8px;margin-top:14px"><button class="btn btn-g" style="flex:1" id="repCancel">Cancel</button><button class="btn btn-p" style="flex:1" id="repSave">Save report</button></div>',
+        );
+        document.getElementById("repCancel").onclick = closeDialog;
+        document.getElementById("repSave").onclick = () => {
+          const t = document.getElementById("repTxt").value.trim();
+          const ty = document.getElementById("repType").value;
+          if (!D.issues) D.issues = [];
+          D.issues.push({
+            qid: qid,
+            type: ty,
+            text: t,
+            at: new Date().toISOString(),
+          });
+          save();
+          closeDialog();
+          toast("Report saved — thank you");
+        };
+      }
+      function finishSession(auto) {
+        if (!SES) return;
+        stopTimer();
+        // mock & submit-all tests: record all attempts now (answers were not checked during the test)
+        if (SES.isMock || SES.submitAll) {
+          SES.qids.forEach((id) => {
+            const p = SES.answers[id];
+            if (p && !SES.recorded[id]) {
+              recordAttempt(id, p);
+              SES.recorded[id] = true;
+            }
+            SES.checked[id] = true;
+          });
+        }
+        const total = SES.qids.length;
+        let correct = 0,
+          incorrect = 0,
+          unans = 0;
+        const byWeek = {};
+        SES.qids.forEach((id) => {
+          const q = BYID[id];
+          byWeek[q.week] = byWeek[q.week] || { t: 0, c: 0 };
+          byWeek[q.week].t++;
+          const p = SES.answers[id];
+          if (!p) unans++;
+          else if (p === q.correct_letter) {
+            correct++;
+            byWeek[q.week].c++;
+          } else incorrect++;
+        });
+        const timeSec = (Date.now() - SES.start) / 1000;
+        const res = {
+          mode: SES.mode,
+          title: SES.title,
+          subject: D.subject || "geo-env",
+          submitAll: !!SES.submitAll,
+          total: total,
+          correct: correct,
+          incorrect: incorrect,
+          unanswered: unans,
+          accuracy: total ? Math.round((correct / total) * 100) : 0,
+          timeSec: Math.round(timeSec),
+          byWeek: byWeek,
+          qids: SES.qids.slice(),
+          answers: Object.assign({}, SES.answers),
+          optOrder: SES.optOrder,
+          at: new Date().toISOString(),
+        };
+        D.activeSes = null;
+        D.sessions.push(res);
+        if (D.sessions.length > 50) D.sessions = D.sessions.slice(-50);
+        save();
+        LASTRES = res;
+        SES = null;
+        pbar.classList.remove("on");
+        renderResults(res);
+      }
+      let LASTRES = null,
+        reviewFilter = "all";
+      function renderResults(r) {
+        const wkRows = Object.keys(r.byWeek)
+          .sort((a, b) => a - b)
+          .map((w) => {
+            const v = r.byWeek[w];
+            return (
+              '<div class="item" style="display:flex;justify-content:space-between;align-items:center"><span><b>Week ' +
+              w +
+              '</b> <span class="small">' +
+              esc(WEEK_TITLES[w] || "") +
+              '</span></span><span class="tag ' +
+              (v.c === v.t ? "g" : v.c === 0 ? "r" : "a") +
+              '">' +
+              v.c +
+              " / " +
+              v.t +
+              " correct</span></div>"
+            );
+          })
+          .join("");
+        if (r.mode === "mock") {
+          const nm = curAcct()
+            ? (curAcct().name || "Student").trim().split(/\s+/)[0]
+            : "Student";
+          app.innerHTML =
+            '<div class="wrap"><div class="narrow"><div style="text-align:center;padding-top:24px">' +
+            TROPHYSVG +
+            '<h2 style="font-size:26px;font-weight:800;margin-top:8px">Mock Test Completed!</h2><p class="small" style="margin-top:4px">Great effort, ' +
+            esc(nm) +
+            "!</p></div>" +
+            '<div class="stat-grid" style="grid-template-columns:1fr 1fr 1fr"><div class="stat" style="text-align:center"><div class="n">' +
+            r.correct +
+            "/" +
+            r.total +
+            '</div><div class="l">Score</div></div><div class="stat" style="text-align:center"><div class="n">' +
+            r.accuracy +
+            '%</div><div class="l">Accuracy</div></div><div class="stat" style="text-align:center"><div class="n" style="color:var(--green)">' +
+            r.correct +
+            '</div><div class="l">Correct</div></div></div>' +
+            '<p style="text-align:center;margin-top:12px"><span style="color:var(--red);font-weight:800;font-size:19px">' +
+            r.incorrect +
+            '</span> <span class="small">Incorrect · ' +
+            r.unanswered +
+            " unanswered · " +
+            fmtTime(r.timeSec) +
+            "</span></p>" +
+            '<div style="display:flex;flex-direction:column;gap:10px;margin-top:18px"><button class="btn btn-p" id="rReview">Review Answers</button>' +
+            (r.incorrect > 0
+              ? '<button class="btn btn-g" id="rWrong">Practise Wrong Questions (' +
+                r.incorrect +
+                ")</button>"
+              : "") +
+            '<button class="btn btn-g" id="rAnother">Try Another Test</button><button class="btn btn-g" data-nav="practice">Back to Practice</button></div>' +
+            '<div id="reviewBox"></div></div></div>';
+        } else {
+          app.innerHTML =
+            '<div class="wrap"><div class="sec" style="margin-top:24px"><h2>' +
+            (r.correct / r.total >= 0.7 ? "" : "") +
+            esc(r.title) +
+            ' — Results</h2><p class="hint">Calculated from your actual answers in this session.</p>' +
+            '<div class="stat-grid"><div class="stat"><div class="n">' +
+            r.correct +
+            "/" +
+            r.total +
+            '</div><div class="l">Score</div></div><div class="stat"><div class="n">' +
+            r.accuracy +
+            '%</div><div class="l">Accuracy</div></div><div class="stat"><div class="n">' +
+            r.incorrect +
+            '</div><div class="l">Incorrect</div></div><div class="stat"><div class="n">' +
+            fmtTime(r.timeSec) +
+            '</div><div class="l">Time taken · ' +
+            r.unanswered +
+            " unanswered</div></div></div>" +
+            '<h3 style="margin-top:22px;font-size:16px">Week-wise performance</h3><div class="list">' +
+            wkRows +
+            "</div>" +
+            '<div class="cta-row"><button class="btn btn-p" id="rReview">Review All Answers</button>' +
+            (r.incorrect > 0
+              ? '<button class="btn btn-s" id="rWrong">Practise Wrong Questions (' +
+                r.incorrect +
+                ")</button>"
+              : "") +
+            '<button class="btn btn-g" id="rRetry">Retry Test</button><button class="btn btn-g" data-nav="practice">Back to Practice</button></div>' +
+            '<div id="reviewBox"></div></div></div>';
+        }
+        bindNav();
+        renderReview(r);
+        document.getElementById("rReview").addEventListener("click", () => {
+          document
+            .getElementById("reviewBox")
+            .scrollIntoView({ behavior: "smooth" });
+        });
+        const rw = document.getElementById("rWrong");
+        if (rw)
+          rw.addEventListener("click", () => {
+            const ids = r.qids.filter(
+              (id) =>
+                r.answers[id] && r.answers[id] !== BYID[id].correct_letter,
+            );
+            startSession({
+              mode: "retry-wrong",
+              title: "Retry wrong questions",
+              qids: ids,
+              shuffleOpts: false,
+            });
+          });
+        const rt = document.getElementById("rRetry");
+        if (rt)
+          rt.addEventListener("click", () => {
+            startSession({
+              mode: r.mode,
+              title: r.title,
+              qids: r.qids.slice(),
+              shuffleOpts: true,
+              isMock: r.mode === "mock",
+              submitAll: !!r.submitAll,
+              durationMin: null,
+            });
+          });
+        const ra = document.getElementById("rAnother");
+        if (ra)
+          ra.addEventListener("click", () => {
+            curView = "setup-mock";
+            render();
+          });
+      }
+      function renderReview(r) {
+        const box = document.getElementById("reviewBox");
+        if (!box) return;
+        const items = r.qids
+          .map((id, i) => {
+            const q = BYID[id];
+            const p = r.answers[id];
+            const st = !p
+              ? "unanswered"
+              : p === q.correct_letter
+                ? "correct"
+                : "incorrect";
+            return { id: id, q: q, p: p, st: st, i: i };
+          })
+          .filter((x) => reviewFilter === "all" || x.st === reviewFilter);
+        box.innerHTML =
+          '<h3 style="margin-top:26px;font-size:16px">Answer review</h3><div class="filters" role="group" aria-label="Review filter">' +
+          [
+            ["all", "All"],
+            ["correct", "✓ Correct"],
+            ["incorrect", "Incorrect"],
+            ["unanswered", "Unanswered"],
+          ]
+            .map(
+              (f) =>
+                '<button class="chip' +
+                (reviewFilter === f[0] ? " on" : "") +
+                '" data-rf="' +
+                f[0] +
+                '">' +
+                f[1] +
+                "</button>",
+            )
+            .join("") +
+          "</div>" +
+          (items.length
+            ? '<div class="list">' +
+              items
+                .map((x) => {
+                  const opts = x.q.options
+                    .map((o) => {
+                      let cls = "review-opt";
+                      let t = "";
+                      if (o.letter === x.q.correct_letter) {
+                        cls += " c";
+                        t =
+                          ' <span class="tag g">Accepted answer from source</span>';
+                      }
+                      if (x.p === o.letter && o.letter !== x.q.correct_letter) {
+                        cls += " w";
+                        t = ' <span class="tag r">Your answer</span>';
+                      }
+                      if (x.p === o.letter && o.letter === x.q.correct_letter)
+                        t += ' <span class="tag g">Your answer ✓</span>';
+                      return (
+                        '<div class="' +
+                        cls +
+                        '"><b>' +
+                        o.letter +
+                        ".</b> " +
+                        esc(o.text) +
+                        t +
+                        "</div>"
+                      );
+                    })
+                    .join("");
+                  return (
+                    '<div class="item"><p class="small">Week ' +
+                    x.q.week +
+                    " · Q" +
+                    x.q.number +
+                    " · " +
+                    (x.st === "correct"
+                      ? '<span class="tag g">✓ Correct</span>'
+                      : x.st === "incorrect"
+                        ? '<span class="tag r">Incorrect</span>'
+                        : '<span class="tag a">Not answered</span>') +
+                    '</p><p class="q" style="margin-top:6px">' +
+                    esc(x.q.question) +
+                    "</p>" +
+                    opts +
+                    '<p class="small" style="margin-top:8px">Accepted answer from source: <b>' +
+                    esc(x.q.correct_letter) +
+                    ". " +
+                    esc(x.q.correct_text) +
+                    '</b> · No explanation in source.</p><div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-g btn-sm" data-single="' +
+                    x.id +
+                    '">Practise this question</button><button class="btn btn-g btn-sm" data-bm2="' +
+                    x.id +
+                    '">' +
+                    (isBookmarked(x.id) ? "Remove bookmark" : "Bookmark") +
+                    '</button><button class="btn btn-g btn-sm" data-rep="' +
+                    x.id +
+                    '">Report an issue</button></div></div>'
+                  );
+                })
+                .join("") +
+              "</div>"
+            : '<div class="empty"><b>Nothing in this filter</b>Try another filter above.</div>');
+        box.querySelectorAll("[data-rf]").forEach((b) =>
+          b.addEventListener("click", () => {
+            reviewFilter = b.dataset.rf;
+            renderReview(r);
+          }),
+        );
+        box.querySelectorAll("[data-single]").forEach((b) =>
+          b.addEventListener("click", () =>
+            startSession({
+              mode: "single",
+              title: "Single question practice",
+              qids: [b.dataset.single],
+              shuffleOpts: false,
+            }),
+          ),
+        );
+        box.querySelectorAll("[data-bm2]").forEach((b) =>
+          b.addEventListener("click", () => {
+            toggleBookmark(b.dataset.bm2);
+            renderReview(r);
+          }),
+        );
+        box
+          .querySelectorAll("[data-rep]")
+          .forEach((b) =>
+            b.addEventListener("click", () => reportDlg(b.dataset.rep)),
+          );
+      }
+      /* ==================================================================
+         SECTION JS-7 · VIEWS — one render function per screen.
+         ================================================================== */
+      function weekCard(w) {
+        const st = weekStats(w);
+        const pct = st.total ? Math.round((st.attempted / st.total) * 100) : 0;
+        return (
+          '<div class="week-card"><h3>Week ' +
+          w +
+          '</h3><p class="cnt">' +
+          esc(WEEK_TITLES[w]) +
+          '</p><p class="cnt"><b style="color:var(--ink)">' +
+          st.total +
+          " questions</b> in source" +
+          (MISSING[w] ? " · missing Q" + MISSING[w].join(", Q") : "") +
+          '</p><div class="prog"><i style="width:' +
+          pct +
+          '%"></i></div><p class="meta">' +
+          st.attempted +
+          " attempted · " +
+          st.correct +
+          " last-correct · " +
+          st.remaining +
+          ' remaining</p><button class="btn btn-p btn-sm" data-week="' +
+          w +
+          '" style="margin-top:auto">Start Week Test</button><button class="btn btn-g btn-sm" data-weekpractice="' +
+          w +
+          '">Practice mode (check each answer)</button></div>'
+        );
+      }
+      function allWeekCards() {
+        let h = "";
+        for (let w = 1; w <= 12; w++) h += weekCard(w);
+        return h;
+      }
+      const CAPSVG =
+        '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" fill="#347FF0" opacity=".72"/><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z" fill="#347FF0"/></svg>';
+      const BOOKSVG =
+        '<svg class="illus" viewBox="0 0 340 200" role="img" aria-label="Study books beside a laptop with a play button"><ellipse cx="172" cy="100" rx="160" ry="90" fill="#E1EDFF"/><ellipse cx="172" cy="182" rx="138" ry="10" fill="#101C4A" opacity=".07"/><g><rect x="36" y="142" width="120" height="23" rx="7" fill="#12A66A"/><rect x="49" y="150" width="72" height="6" rx="3" fill="#CFF5E2"/><rect x="29" y="117" width="126" height="25" rx="7" fill="#F5C451"/><rect x="43" y="126" width="56" height="6" rx="3" fill="#FFFFFF" opacity=".65"/><rect x="37" y="92" width="118" height="25" rx="7" fill="#2878F9"/><rect x="51" y="100" width="70" height="6" rx="3" fill="#BFD9FF"/><rect x="51" y="109" width="44" height="5" rx="2.5" fill="#8FB9F5"/></g><g><rect x="170" y="62" width="134" height="94" rx="10" fill="#FFFFFF" stroke="#2878F9" stroke-width="3"/><circle cx="237" cy="105" r="23" fill="#2878F9"/><path d="M230 94l19 11-19 11z" fill="#fff"/><rect x="158" y="158" width="158" height="9" rx="4.5" fill="#C9DBF7"/></g><path d="M52 30v18M43 39h18" stroke="#FFB51B" stroke-width="3.5" stroke-linecap="round"/><path d="M298 172v12M292 178h12" stroke="#12A66A" stroke-width="3" stroke-linecap="round"/><circle cx="312" cy="38" r="3.5" fill="#12A66A"/><circle cx="146" cy="26" r="2.6" fill="#2878F9"/><circle cx="24" cy="70" r="2.6" fill="#FFB51B"/></svg>';
+      const TROPHYSVG =
+        '<svg viewBox="0 0 120 100" width="104" height="86" role="img" aria-label="Trophy"><circle cx="14" cy="16" r="3" fill="#F5C451"/><circle cx="106" cy="12" r="3" fill="#3988FF"/><circle cx="98" cy="30" r="2.2" fill="#12B981"/><circle cx="22" cy="34" r="2.2" fill="#EF5350"/><path d="M38 12h44v10H38z" fill="#F5C451"/><path d="M42 22h36v22a18 18 0 0 1-36 0V22z" fill="#F5C451"/><path d="M42 26c-10 0-14-4-14-12V12h14M78 26c10 0 14-4 14-12V12H78" stroke="#F5C451" stroke-width="5" fill="none"/><rect x="55" y="58" width="10" height="10" fill="#E0A92E"/><rect x="44" y="68" width="32" height="7" rx="2" fill="#F5C451"/><rect x="38" y="75" width="44" height="7" rx="2" fill="#C78F1B"/></svg>';
+      function icoPerson() {
+        return '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>';
+      }
+      function icoMail() {
+        return '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>';
+      }
+      function icoLock() {
+        return '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>';
+      }
+      const SUBJECTS = [
+        {
+          id: "geo-env",
+          name: "Geography & Environment",
+          weeks: 12,
+          questions: BANK.length,
+        },
+      ];
+      const LEARN_NOTE =
+        "Learning notes created for this app from the concepts in the question set — supplementary study material, not official NPTEL content. Accepted answers always come from the supplied source.";
+      const LESSONS = {
+        1: {
+          obj: [
+            "Say what ecology studies, in one line",
+            "Use migration, pull factors and Liebig's law correctly",
+            "Know who developed the systematic approach to Geography",
+          ],
+          intro: [
+            "Geography studies how people and nature fit together across places. Its systematic approach — studying one theme at a time across the world — was developed by Alexander von Humboldt. Ecology is the science of relationships between organisms and their environments: who eats whom, what limits growth, and how living things move and spread.",
+            "Two ideas unlock many Week 1 questions. Liebig's law of the minimum says growth is limited by whichever needed factor is in shortest supply. And when conditions in a place attract movers — good climate, food, safety — those are pull factors; the regular, seasonal movement of animals along fixed routes is migration.",
+          ],
+          points: [
+            [
+              "w1-q5",
+              "Ecology = the science of relationships between organisms and their environments.",
+            ],
+            [
+              "w1-q2",
+              "Alexander von Humboldt developed the systematic approach to Geography.",
+            ],
+            [
+              "w1-q6",
+              "Liebig's law of the minimum: a biological process is limited by the factor available in the least amount relative to need.",
+            ],
+            [
+              "w1-q1",
+              "Migration = the regular, seasonal movement of animals, often along fixed routes.",
+            ],
+            [
+              "w1-q10",
+              "A good climate works as a pull factor — it attracts movement towards a place.",
+            ],
+            [
+              "w1-q3",
+              "Allelopathy: chemicals released by one plant (like teak) can stop other plants growing nearby.",
+            ],
+          ],
+          quiz: ["w1-q1", "w1-q5", "w1-q6", "w1-q10"],
+        },
+        2: {
+          obj: [
+            "Tell shield volcanoes and stratovolcanoes apart",
+            "Know where magma comes from and the main dating principles",
+            "Recall the terrestrial planets",
+          ],
+          intro: [
+            "The solid Earth is restless. Magma — molten rock below the surface — comes mainly from the mantle. Eruptions that flow gently again and again build broad shield volcanoes like Hawaii's; eruptions alternating lava and ash build steep stratovolcanoes like Mount Fuji. The Deccan Traps of India are a flood basalt province: enormous lava outpourings.",
+            "Geologists read Earth's history in its rocks. Fossil assemblages are unique to the time they lived in (principle of fossil succession), rock layers continue sideways until the edge of a basin (lateral continuity), and absolute dating uses physical methods — an inclusion study is not one of them.",
+          ],
+          points: [
+            ["w2-q2", "The main source of magma is the mantle."],
+            [
+              "w2-q1",
+              "Mount Fuji is a stratovolcano; Hawaii's volcanoes are shield volcanoes (Week 2 · Q5).",
+            ],
+            ["w2-q10", "The Deccan Traps are a flood basalt province."],
+            [
+              "w2-q7",
+              "Principle of fossil succession: fossil assemblages are unique to their time, so they can be used to age rocks.",
+            ],
+            ["w2-q3", "Inclusion study is NOT a method of absolute dating."],
+            [
+              "w2-q8",
+              "The terrestrial planets are Mercury, Venus, Earth and Mars.",
+            ],
+          ],
+          quiz: ["w2-q2", "w2-q1", "w2-q3", "w2-q7"],
+        },
+        3: {
+          obj: [
+            "Classify mudrock and sandstone",
+            "Separate chemical weathering from other processes",
+            "Identify minerals by streak and cleavage",
+          ],
+          intro: [
+            "Rocks are recognised by how they formed and what they contain. Mudrock and sandstone are siliciclastic rocks — built from fragments of older rocks. At the surface, weathering breaks rock down: carbonation and hydrolysis are chemical weathering, changing the minerals themselves, while slow cooling of magma deep underground gives coarse-grained igneous rocks.",
+            "Minerals carry diagnostic habits. Amphiboles are green or black inosilicate minerals forming prism- or needle-like crystals. A mineral's streak — the colour of its powder — is often steadier than its surface colour, and cleavage is the tendency to break along flat planes in set directions.",
+          ],
+          points: [
+            [
+              "w3-q1",
+              "Mudrock is a siliciclastic rock — and so is sandstone (Week 3 · Q8).",
+            ],
+            [
+              "w3-q2",
+              "Carbonation is chemical weathering — and so is hydrolysis (Week 3 · Q4).",
+            ],
+            [
+              "w3-q10",
+              "Slow cooling of magma produces coarse-grained igneous rocks.",
+            ],
+            [
+              "w3-q6",
+              "Streak — the colour of the powdered mineral — is often more useful than surface colour for identification.",
+            ],
+            [
+              "w3-q9",
+              "Cleavage = the tendency to break in given directions, producing relatively plane surfaces.",
+            ],
+          ],
+          quiz: ["w3-q2", "w3-q1", "w3-q10", "w3-q9"],
+        },
+        4: {
+          obj: [
+            "Distinguish mitigation from adaptation",
+            "Name the atmosphere layers the questions use",
+            "Explain isobars, advection and climate normals",
+          ],
+          intro: [
+            "Climate action has two halves: mitigation tackles the causes (for example, locking carbon away in geological sites), while adaptation copes with the effects — reserve managers responding to drought, or seed and sperm banking that builds resilience to climate change.",
+            "The atmosphere is layered: jet planes cruise in the stratosphere, and noctilucent clouds shine in the mesosphere. Air pressure at a point is mainly the weight of the air above it, so isobars are drawn after converting pressures to sea-level values. Heat carried sideways by moving air is advection, and a climate average is classically taken over 30 years.",
+          ],
+          points: [
+            [
+              "w4-q1",
+              "Carbon sequestration in geological sites is a mitigation option.",
+            ],
+            [
+              "w4-q3",
+              "Responding to drought impacts (as at Mudumalai) is adaptation; seed and sperm banking supports resilience (Week 4 · Q4).",
+            ],
+            [
+              "w4-q5",
+              "Jet planes typically fly in the stratosphere; noctilucent clouds occur in the mesosphere (Week 4 · Q8).",
+            ],
+            [
+              "w4-q6",
+              "Advection = heat movement through the horizontal movement of air.",
+            ],
+            [
+              "w4-q7",
+              "The classical period for taking climate averages is 30 years.",
+            ],
+            ["w4-q10", "An mT air mass is generally warm and moist."],
+          ],
+          quiz: ["w4-q1", "w4-q5", "w4-q6", "w4-q7"],
+        },
+        5: {
+          obj: [
+            "Describe the ocean floor's big features",
+            "Explain tides, density and shelf productivity",
+            "Use isohaline and sublimation correctly",
+          ],
+          intro: [
+            "The ocean floor is not flat. The largest mountain ranges on Earth are the mid-oceanic ridges; the vast abyssal plains — Earth's largest habitat — are floored with fine clay and silt, and deep submarine canyons cut across shelves and slopes. Continental shelves slope very gently (0–1 degree) and are highly productive because they receive both light and nutrients.",
+            "Tidal range is the difference between high- and low-tide sea levels. Ocean water density changes with hydrostatic pressure, salinity and temperature, and ice can turn straight into water vapour by sublimation. Lines joining places of equal salinity are isohaline curves.",
+          ],
+          points: [
+            [
+              "w5-q3",
+              "The mid-oceanic ridge system forms the largest mountain ranges on Earth.",
+            ],
+            [
+              "w5-q2",
+              "The abyssal plain is the largest habitat on Earth; its common sediment is clay and silt (Week 5 · Q1).",
+            ],
+            [
+              "w5-q4",
+              "Continental shelves are productive because they receive both light and nutrients; a shelf's gradient is 0–1 degree (Week 5 · Q9).",
+            ],
+            [
+              "w5-q5",
+              "Tidal range = the difference between sea level at high tide and at low tide.",
+            ],
+            ["w5-q10", "Equal salinity curves are called isohaline curves."],
+          ],
+          quiz: ["w5-q3", "w5-q5", "w5-q9", "w5-q10"],
+        },
+        6: {
+          obj: [
+            "Recognise drainage patterns",
+            "Explain India's water divide and peninsular rivers",
+            "Recall Köppen's polar frost symbol",
+          ],
+          intro: [
+            "River networks mirror the land they drain. A network that follows the structure and slope of the land is accordant; one that does not match the present structure is discordant; and a tree-like pattern of smaller streams joining a main channel is dendritic drainage.",
+            "The Western Ghats form a water divide: rain falling on opposite sides flows towards different seas. The Narmada and Tapi flow west into the Arabian Sea, while peninsular rivers keep fixed courses because they are cut into older, harder rock. The Himalayas are built mainly of sedimentary rocks, and in Köppen's classification F is the polar frost temperature regime.",
+          ],
+          points: [
+            [
+              "w6-q1",
+              "The Western Ghats act as a water divide — water on opposite sides flows in different directions.",
+            ],
+            [
+              "w6-q3",
+              "A tree-like river network is dendritic drainage; accordant networks follow the land's structure (Week 6 · Q2) and discordant ones do not (Week 6 · Q4).",
+            ],
+            [
+              "w6-q6",
+              "The Narmada and Tapi flow westwards into the Arabian Sea.",
+            ],
+            [
+              "w6-q8",
+              "Peninsular rivers have fixed courses mainly because their courses are cut into older, harder rock.",
+            ],
+            [
+              "w6-q9",
+              "In Köppen classification, F is the polar frost temperature regime.",
+            ],
+          ],
+          quiz: ["w6-q3", "w6-q1", "w6-q6", "w6-q9"],
+        },
+        7: {
+          obj: [
+            "Place cryofracturing in the right weathering type",
+            "Use alpha and gamma biodiversity correctly",
+            "Describe a soil profile and the disturbance rule",
+          ],
+          intro: [
+            "Soils form where rock, climate and life meet. Frost shattering rock — cryofracturing — is physical weathering. Bangar, the older alluvium, is a type of alluvial soil; the vertical arrangement of soil horizons is called the soil profile, while soil structure means the arrangement of solid soil parts and the pore spaces between them.",
+            "Diversity is measured at several scales: alpha diversity exists within one ecosystem, gamma diversity among different geographies. Diversity tends to peak at intermediate levels of disturbance, and a climax community produced by wildfire is a catastrophic climax.",
+          ],
+          points: [
+            ["w7-q2", "Cryofracturing is an example of physical weathering."],
+            ["w7-q3", "Bangar is a type of alluvial soil."],
+            [
+              "w7-q4",
+              "Alpha (α) biodiversity = diversity within an ecosystem; gamma (γ) = diversity among different geographies (Week 7 · Q7).",
+            ],
+            [
+              "w7-q6",
+              "For more biodiversity, the level of disturbance should be intermediate.",
+            ],
+            ["w7-q5", "A climax caused by wildfires is a catastrophic climax."],
+            [
+              "w7-q8",
+              "The vertical arrangement of soil horizons is called the soil profile.",
+            ],
+          ],
+          quiz: ["w7-q2", "w7-q4", "w7-q6", "w7-q8"],
+        },
+        8: {
+          obj: [
+            "Compare ex-situ and in-situ conservation",
+            "Explain keystone species, rarity and biomagnification",
+            "Use the species–area relationship",
+          ],
+          intro: [
+            "Conservation protects species in their habitat or away from it. A seed bank is the classic ex-situ method — powerful, though captive-bred individuals may find reintroduction difficult. Small populations are especially vulnerable to inbreeding depression, caused by mating among close relatives, and a species can be rare simply because its geographical range is limited.",
+            "Some species matter far beyond their numbers: a keystone species plays a much greater ecological role than expected from its abundance. In the species–area relationship, S represents species richness; poisons can biomagnify up food chains, as DDD did at Clear Lake; and the HIPPO acronym lists major threats — pollination is not among them.",
+          ],
+          points: [
+            ["w8-q1", "A seed bank is an ex-situ conservation method."],
+            [
+              "w8-q3",
+              "A keystone species plays a much greater ecological role than expected from its abundance.",
+            ],
+            [
+              "w8-q2",
+              "Smaller populations are especially vulnerable to inbreeding depression — mating among close relatives.",
+            ],
+            [
+              "w8-q7",
+              "Biomagnification: at Clear Lake, DDD concentration increased from water to plankton, fish and fish-eating birds.",
+            ],
+            [
+              "w8-q6",
+              "In the species–area relationship, S represents species richness.",
+            ],
+          ],
+          quiz: ["w8-q1", "w8-q3", "w8-q7", "w8-q6"],
+        },
+        9: {
+          obj: [
+            "Read population ratios and growth curves",
+            "Use Malthus's two kinds of checks correctly",
+            "State the demographic transition and sustainability pillars",
+          ],
+          intro: [
+            "Human geography counts people and how their numbers change. The age dependency ratio compares the dependent population with the working-age population — generally the 15–64 years group. Logistic growth traces an S-shaped curve, and the demographic transition moves a society from high birth and death rates to low birth and death rates.",
+            "Malthus separated positive checks, such as war, from preventive checks, such as foresight. Economic development is often measured as GDP per capita; humanising of nature is commonly linked with possibilism; and 'trans-boundary sustainability' is not a pillar of sustainability.",
+          ],
+          points: [
+            [
+              "w9-q3",
+              "The age dependency ratio compares the dependent population with the working-age population (15–64 years, Week 9 · Q10).",
+            ],
+            [
+              "w9-q4",
+              "The logistic growth equation produces an S-shaped curve.",
+            ],
+            [
+              "w9-q5",
+              "For Malthus, war is a positive check; foresight is a preventive check (Week 9 · Q9).",
+            ],
+            [
+              "w9-q8",
+              "The demographic transition moves a society from high birth rate and high death rate to low birth rate and low death rate.",
+            ],
+            [
+              "w9-q7",
+              "Trans-boundary sustainability is NOT a pillar of sustainability.",
+            ],
+          ],
+          quiz: ["w9-q3", "w9-q4", "w9-q5", "w9-q8"],
+        },
+        10: {
+          obj: [
+            "Sort resources into actual, potential, reserve and stock",
+            "Trace how roads drive forest loss",
+            "Name the largest sources of NOx and ammonia",
+          ],
+          intro: [
+            "Resources are classified by how usable they are today. Timber that is being harvested is an actual resource; oil that has not been drilled is a potential resource; low-concentration ores are reserve resources; and resources that have been surveyed but cannot be used for lack of technology — such as hydrogen for nuclear fusion — are stock resources.",
+            "In the Rondônia rainforest example, road construction contributed to forest loss mainly by allowing easier human access into forest areas. Cropland contributes more to the global calorie supply than livestock despite using a smaller share of agricultural land, while mobile sources are the largest source of nitrogen oxides and animal manure the largest source of ammonia.",
+          ],
+          points: [
+            [
+              "w10-q9",
+              "Timber being harvested is an actual resource; oil not yet drilled is a potential resource (Week 10 · Q4).",
+            ],
+            [
+              "w10-q7",
+              "Resources surveyed but unusable for lack of technology are stock resources — hydrogen for fusion is one (Week 10 · Q2).",
+            ],
+            [
+              "w10-q6",
+              "Low-concentration ores come in the category of reserve resources.",
+            ],
+            [
+              "w10-q3",
+              "In Rondônia, roads drove forest loss by allowing easier human access into forest areas.",
+            ],
+            [
+              "w10-q8",
+              "Mobile sources are the largest source of nitrogen oxides; animal manure is the largest source of ammonia (Week 10 · Q10).",
+            ],
+          ],
+          quiz: ["w10-q7", "w10-q9", "w10-q3", "w10-q8"],
+        },
+        11: {
+          obj: [
+            "Explain the barrier effect of roads",
+            "Use comparative advantage correctly",
+            "See how transport affects wildlife and towns",
+          ],
+          intro: [
+            "Transport connects places but also cuts through habitats. Roads disturb wildlife at night through light pollution from headlamps, and their barrier effect is governed by several factors acting together; young male tigers or leopards may need to move away from their home areas to reduce conflict and avoid inbreeding. Railways require more money and technology to construct than the modes they are compared with in the set.",
+            "In trade, comparative advantage is the ability to produce a good at a lower opportunity cost than another producer. Even ship exhaust leaves a trail: dust particles act as nuclei for condensation, revealing ship movement — and a town like Oxford is best categorised as an educational town.",
+          ],
+          points: [
+            [
+              "w11-q7",
+              "Dust released from ships reveals their movement because the particles act as nuclei for condensation.",
+            ],
+            [
+              "w11-q8",
+              "Roads disturb wildlife at night through light pollution from headlamps.",
+            ],
+            [
+              "w11-q9",
+              "Young male tigers or leopards may move away to reduce conflict and avoid inbreeding.",
+            ],
+            [
+              "w11-q6",
+              "Comparative advantage = the ability to produce a good at a lower opportunity cost than another producer.",
+            ],
+            [
+              "w11-q10",
+              "Oxford can best be categorised as an educational town.",
+            ],
+          ],
+          quiz: ["w11-q6", "w11-q8", "w11-q9", "w11-q10"],
+        },
+        12: {
+          obj: [
+            "Define hazard and vulnerability precisely",
+            "Work the LiDAR time-of-flight calculation",
+            "Name GIS components and photogrammetry types",
+          ],
+          intro: [
+            "The final week turns to measuring and mapping risk. A hazard is a process, phenomenon or human activity that may cause loss of life, injury or other health impacts; vulnerability means the conditions — physical, social, economic and environmental — that make a community susceptible to a hazard's impacts.",
+            "LiDAR measures distance by timing a light pulse: distance = (speed of light × time of flight) ÷ 2, so 0.00001 seconds gives 1500 m. Photogrammetry has metric applications (measuring, e.g. forest area) and interpretive applications (understanding what is happening); a GIS needs humanware along with hardware and software; IMU stands for Inertial Measurement Unit; an oblique camera axis is intentionally tilted between vertical and horizontal; and ground-borne platforms carry cameras at ground level.",
+          ],
+          points: [
+            [
+              "w12-q4",
+              "A hazard is a process, phenomenon or human activity that may cause loss of life, injury or other health impacts.",
+            ],
+            [
+              "w12-q1",
+              "Vulnerability = the conditions determined by physical, social, economic and environmental factors or processes that increase susceptibility.",
+            ],
+            [
+              "w12-q2",
+              "LiDAR distance = (3×10⁸ × time of flight) ÷ 2 — for 0.00001 s, the object is 1500 m away.",
+            ],
+            [
+              "w12-q7",
+              "Along with hardware and software, an essential GIS component is humanware.",
+            ],
+            ["w12-q5", "IMU stands for Inertial Measurement Unit."],
+            [
+              "w12-q9",
+              "An oblique camera axis is intentionally tilted between vertical and horizontal.",
+            ],
+          ],
+          quiz: ["w12-q2", "w12-q4", "w12-q7", "w12-q5"],
+        },
+      };
+      let CURLESSON = 1,
+        LQ = { picks: {}, checked: {} };
+      function openLesson(w) {
+        CURLESSON = w;
+        LQ = { picks: {}, checked: {} };
+        if (D && D.learn) {
+          D.learn.last = w;
+          save();
+        }
+        curView = "lesson";
+        render();
+      }
+      function learnHTML() {
+        const L = D.learn || { done: [], last: null };
+        const done = L.done || [];
+        const firstOpen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].find(
+          (w) => !done.includes(w),
+        );
+        let h =
+          '<div class="wrap"><p class="crumb">Home › <b>Learn</b></p><h2 style="font-size:24px;font-weight:800">Learn from Zero</h2><p class="small" style="margin-top:4px;font-size:15px">Geography &amp; Environment · 12 theme lessons — one per week, each built from the concepts that week’s questions actually test.</p>' +
+          '<div class="note-box" style="margin-top:12px">' +
+          LEARN_NOTE +
+          "</div>";
+        if (L.last && done.length < 12)
+          h +=
+            '<div class="card continue-card" style="margin-top:14px"><b>Continue Learning</b><p class="small" style="margin-top:4px">Week ' +
+            L.last +
+            " · " +
+            esc(WEEK_TITLES[L.last]) +
+            '</p><button class="btn btn-p btn-sm" data-lesson="' +
+            L.last +
+            '" style="margin-top:10px">Continue</button></div>';
+        h +=
+          '<div class="card" style="margin-top:14px"><b>Your learning progress</b><p class="small" style="margin-top:4px">' +
+          done.length +
+          " of 12 lessons completed · " +
+          Math.round((done.length / 12) * 100) +
+          '%</p><div class="prog" style="margin-top:8px"><i style="background:var(--blue);width:' +
+          Math.round((done.length / 12) * 100) +
+          '%"></i></div></div>';
+        h +=
+          '<div class="mode-grid learn-modes">' +
+          '<button class="mode-card" data-startzero="1"><span class="tile" style="background:#12B981">' +
+          icoBookW +
+          "</span><h3>Learn from Zero</h3><p>Start at " +
+          (firstOpen
+            ? "Week " + firstOpen + " · " + esc(WEEK_TITLES[firstOpen])
+            : "Week 1") +
+          " and build up lesson by lesson</p></button>" +
+          '<button class="mode-card" data-scrollist="1"><span class="tile" style="background:#F59E0B">' +
+          icoLayersW +
+          "</span><h3>Week-wise Learning</h3><p>All 12 theme lessons, one for each week — pick any week below</p></button>" +
+          '<button class="mode-card" data-gorev="quick"><span class="tile" style="background:#8B5CF6">' +
+          icoCardW +
+          "</span><h3>Quick Revision</h3><p>Flashcards from your wrong + bookmarked questions</p></button>" +
+          "</div>";
+        h +=
+          '<h3 style="font-size:18px;font-weight:800;margin-top:22px" id="lessonList">All 12 theme lessons</h3><div class="week-list">';
+        for (let w = 1; w <= 12; w++) {
+          const isDone = done.includes(w);
+          const isLast = L.last === w && !isDone;
+          h +=
+            '<div class="week-row" data-lesson="' +
+            w +
+            '" role="button" tabindex="0" style="cursor:pointer"><div class="top"><span class="wtile" style="background:' +
+            TILEC[w - 1] +
+            '">' +
+            w +
+            '</span><span class="info"><b>Week ' +
+            w +
+            " · " +
+            esc(WEEK_TITLES[w]) +
+            '</b><br><span class="cnt">Concepts tested in Week ' +
+            w +
+            " questions · " +
+            weekQs(w).length +
+            " questions in the bank</span></span>" +
+            (isDone
+              ? '<span class="tag g">✓ Completed</span>'
+              : isLast
+                ? '<span class="tag b">In progress</span>'
+                : "") +
+            '<span class="chev">›</span></div></div>';
+        }
+        h +=
+          '</div><p class="small" style="margin-top:14px">' +
+          LEARN_NOTE +
+          "</p></div>";
+        return h;
+      }
+      function lqCard(qid) {
+        const q = BYID[qid];
+        const picked = LQ.picks[qid];
+        const checked = !!LQ.checked[qid];
+        const ok = checked && picked === q.correct_letter;
+        const pt = (LESSONS[CURLESSON].points.find((p) => p[0] === qid) ||
+          [])[1];
+        let h =
+          '<div class="card" style="margin-top:12px"><div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap"><span class="tag b">Week ' +
+          q.week +
+          " • Q" +
+          q.number +
+          '</span><span style="flex:1"></span><button class="bm-btn' +
+          (isBookmarked(qid) ? " on" : "") +
+          '" data-lqbm="' +
+          qid +
+          '" aria-label="Bookmark this question">' +
+          '<svg viewBox="0 0 24 24" width="19" height="19"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z" fill="' +
+          (isBookmarked(qid) ? "#2878F9" : "none") +
+          '" stroke="currentColor" stroke-width="1.8"/></svg>' +
+          "</button></div>" +
+          '<p class="q" style="margin-top:8px">' +
+          esc(q.question) +
+          '</p><div class="opts' +
+          (checked ? " locked" : "") +
+          '" role="group" aria-label="Answer options" style="margin-top:10px">' +
+          ["A", "B", "C", "D"]
+            .map((L) => {
+              let cls = "opt";
+              if (picked === L) cls += " sel";
+              if (checked) {
+                if (L === q.correct_letter) cls += " correct";
+                else if (picked === L) cls += " wrong";
+              }
+              return (
+                '<button class="' +
+                cls +
+                '" data-lqpick="' +
+                qid +
+                ":" +
+                L +
+                '" ' +
+                (checked ? "disabled" : "") +
+                '><span class="ltr">' +
+                L +
+                "</span><span>" +
+                esc(optText(q, L)) +
+                "</span></button>"
+              );
+            })
+            .join("") +
+          "</div>";
+        if (!checked)
+          h +=
+            '<button class="btn btn-p" data-lqcheck="' +
+            qid +
+            '" style="width:100%;margin-top:12px">Check Answer</button>';
+        else if (ok)
+          h +=
+            '<div class="feedback ok" style="margin-top:12px" role="status"><span class="fb-head"><span class="fb-ic">' +
+            ICO_FB_OK +
+            '</span>Correct!</span> <span class="sub">Accepted answer: ' +
+            esc(q.correct_letter) +
+            ". " +
+            esc(q.correct_text) +
+            "</span></div>";
+        else
+          h +=
+            '<div class="feedback bad" style="margin-top:12px" role="status"><span class="fb-head"><span class="fb-ic">' +
+            ICO_FB_X +
+            '</span>Not quite</span> <span class="sub">Accepted answer from source: <b>' +
+            esc(q.correct_letter) +
+            ". " +
+            esc(q.correct_text) +
+            "</b> · No explanation in source.</span></div>" +
+            (pt
+              ? '<div class="acc-box" style="margin-top:10px"><b>Key point:</b> ' +
+                esc(pt) +
+                "</div>"
+              : "") +
+            '<button class="btn btn-g" data-lqretry="' +
+            qid +
+            '" style="width:100%;margin-top:10px">↻ Retry this question</button>';
+        return h + "</div>";
+      }
+      function lessonHTML() {
+        const w = CURLESSON;
+        const ls = LESSONS[w];
+        const L = D.learn || { done: [], last: null };
+        const isDone = (L.done || []).includes(w);
+        let h =
+          '<div class="wrap"><button class="back-btn" data-nav="learn" aria-label="Back to Learn">←</button>' +
+          '<h2 style="font-size:23px;font-weight:800;margin-top:6px">Week ' +
+          w +
+          " · " +
+          esc(WEEK_TITLES[w]) +
+          "</h2>" +
+          '<p class="small" style="margin-top:3px">Lesson ' +
+          w +
+          " of 12 · Concepts tested in Week " +
+          w +
+          " questions · " +
+          weekQs(w).length +
+          " questions in the bank</p>" +
+          '<div class="note-box" style="margin-top:12px">' +
+          LEARN_NOTE +
+          "</div>" +
+          '<div class="card lesson-sec" style="margin-top:14px"><b>Learning objectives</b><ul class="lobj">' +
+          ls.obj.map((o) => "<li>" + esc(o) + "</li>").join("") +
+          "</ul></div>" +
+          '<div class="card lesson-sec" style="margin-top:12px"><b>Learn the concepts</b>' +
+          ls.intro
+            .map(
+              (p) =>
+                '<p style="margin-top:8px;line-height:1.65">' + esc(p) + "</p>",
+            )
+            .join("") +
+          "</div>" +
+          '<div class="card lesson-sec" style="margin-top:12px"><b>Key Points</b><ul class="lkey">' +
+          ls.points
+            .map(
+              (p) =>
+                "<li>" +
+                esc(p[1]) +
+                ' <span class="tag b">Week ' +
+                w +
+                " • Q" +
+                BYID[p[0]].number +
+                "</span></li>",
+            )
+            .join("") +
+          "</ul></div>" +
+          '<h3 style="font-size:18px;font-weight:800;margin-top:22px">Mini-quiz — real questions from Week ' +
+          w +
+          '</h3><p class="small" style="margin-top:4px">Your first try on each question is recorded in your practice history, exactly like normal practice — mistakes land in Revision.</p>' +
+          ls.quiz.map(lqCard).join("") +
+          '<div class="card" style="margin-top:16px"><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-p" data-lqweek="' +
+          w +
+          '">Practise Week ' +
+          w +
+          " Questions</button>" +
+          (isDone
+            ? '<span class="tag g" style="align-self:center">✓ Lesson completed</span>'
+            : '<button class="btn btn-g" id="lessonDone">✓ Mark as Completed</button>') +
+          (w < 12
+            ? '<button class="btn btn-g" data-lesson="' +
+              (w + 1) +
+              '">Next Lesson →</button>'
+            : '<button class="btn btn-g" data-nav="learn">Back to Learn</button>') +
+          "</div></div></div>";
+        return h;
+      }
+      function wireLearn() {
+        document
+          .querySelectorAll("[data-lesson]")
+          .forEach((b) => (b.onclick = () => openLesson(+b.dataset.lesson)));
+        document.querySelectorAll("[data-startzero]").forEach(
+          (b) =>
+            (b.onclick = () => {
+              const done = (D.learn && D.learn.done) || [];
+              const w =
+                [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].find(
+                  (x) => !done.includes(x),
+                ) || 1;
+              openLesson(w);
+            }),
+        );
+        document.querySelectorAll("[data-scrollist]").forEach(
+          (b) =>
+            (b.onclick = () => {
+              const el = document.getElementById("lessonList");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            }),
+        );
+        const keepScroll = (fn) => () => {
+          const y = window.scrollY;
+          fn();
+          render();
+          window.scrollTo(0, y);
+        };
+        document.querySelectorAll("[data-lqpick]").forEach(
+          (b) =>
+            (b.onclick = keepScroll(() => {
+              const parts = b.dataset.lqpick.split(":");
+              LQ.picks[parts[0]] = parts[1];
+            })),
+        );
+        document.querySelectorAll("[data-lqcheck]").forEach(
+          (b) =>
+            (b.onclick = keepScroll(() => {
+              const qid = b.dataset.lqcheck;
+              const pick = LQ.picks[qid];
+              if (!pick) {
+                toast("Choose an option first");
+                return;
+              }
+              if (!LQ.checked[qid]) {
+                recordAttempt(qid, pick);
+                save();
+              }
+              LQ.checked[qid] = true;
+            })),
+        );
+        document.querySelectorAll("[data-lqretry]").forEach(
+          (b) =>
+            (b.onclick = keepScroll(() => {
+              const qid = b.dataset.lqretry;
+              LQ.checked[qid] = false;
+              LQ.picks[qid] = null;
+            })),
+        );
+        document.querySelectorAll("[data-lqbm]").forEach(
+          (b) =>
+            (b.onclick = keepScroll(() => {
+              toggleBookmark(b.dataset.lqbm);
+            })),
+        );
+        document.querySelectorAll("[data-lqweek]").forEach(
+          (b) =>
+            (b.onclick = () => {
+              const w = +b.dataset.lqweek;
+              startSession({
+                mode: "week",
+                title: "Week " + w + " practice (check each answer)",
+                qids: weekQs(w).map((q) => q.id),
+                shuffleOpts: false,
+              });
+            }),
+        );
+        const ld = document.getElementById("lessonDone");
+        if (ld)
+          ld.onclick = () => {
+            if (!D.learn.done.includes(CURLESSON)) D.learn.done.push(CURLESSON);
+            D.learn.last = CURLESSON;
+            save();
+            render();
+            toast(
+              "Lesson marked completed — " +
+                D.learn.done.length +
+                " of 12 done",
+            );
+          };
+      }
+      const icoBookW =
+        '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>';
+      const icoLayersW =
+        '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2l9 5-9 5-9-5 9-5z"/><path d="M3 12l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg>';
+      const icoCardW =
+        '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>';
 
-function subjectHTML(){
-  const s=SUBJECTS[0];const sel=D.subject===s.id;
-  const globe='<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.7 2.6 4 5.7 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.7-4-9s1.3-6.4 4-9z"/></svg>';
-  return '<div class="wrap"><div class="narrow">'+(sel?'<button class="back-btn" data-nav="account" aria-label="Back">←</button>':"")+'<h2 style="font-size:26px;font-weight:800;margin-top:22px">Choose Your Subject</h2><p class="small" style="margin-top:4px;font-size:15px">Select a subject to start preparing for your NPTEL exam.</p>'
-  +'<div class="card" style="margin-top:18px"><div style="display:flex;gap:14px;align-items:flex-start"><span class="tile" style="background:var(--blue);width:54px;height:54px;border-radius:14px">'+globe+'</span><div style="flex:1;min-width:0"><b style="font-size:16px;color:var(--head);letter-spacing:.01em">GEOGRAPHY &amp; ENVIRONMENT</b><p class="small" style="margin-top:2px">Latest Question Set · Weeks 1–12</p><p style="margin-top:7px"><span class="tag g">● Available</span> <span class="small"><b>'+s.questions+' questions · '+s.weeks+' weeks</b> · accepted answers verified from source</span></p></div></div>'
-  +'<button class="btn btn-p" id="subjGo" style="width:100%;margin-top:16px">'+(sel?"Continue with this Subject":"Select Subject")+'</button>'
-  +(sel?'<p class="small" style="margin-top:8px;text-align:center">This is your current subject — it is the only subject available right now, so selecting again simply re-confirms it.</p>':"")
-  +'</div><p class="small" style="margin-top:14px">Only one subject exists in this app today — no empty categories, no “coming soon” cards. Your attempts, bookmarks, notes and progress are all recorded under this subject.</p></div></div>';
-}
-function welcomeHTML(){
-  const feats=["Week-wise practice","Random mock tests","Accepted answers","Bookmark & revise","Track your progress"].map(f=>'<li><span class="ck">✓</span>'+f+'</li>').join("");
-  return '<div class="wrap"><div class="narrow"><section class="hero"><h1>NPTEL<br>Exam Practice</h1><p class="sub" style="font-size:19px;color:var(--ink);font-weight:600">Practice Today. Score Higher Tomorrow.</p>'+BOOKSVG+'<ul class="feat">'+feats+'</ul>'
-  +'<div style="display:flex;flex-direction:column;gap:10px;margin-top:22px"><button class="btn btn-p" data-nav="signup">Get Started</button></div>'
-  +'<p style="text-align:center;margin-top:16px;font-size:15px">Already have an account? <a href="#" data-nav="login" style="font-weight:700">Log In</a></p>'
-  +'<p class="small" style="margin-top:16px">Geography &amp; Environment · Weeks 1–12 · 113 questions · Accepted answers verified from the supplied source export. An account is required to start practising.</p>'
-  +(S.legacy?'<p class="small" style="margin-top:8px">Progress saved earlier on this device (before accounts existed) will be attached to the first account created here — nothing is wiped.</p>':"")
-  +'<p class="small" style="margin-top:8px">Accounts are stored <b>on this device only</b>: passwords are hashed, never plain text; no server, no cross-device sync. <a href="#" data-nav="about">Source &amp; Limits</a></p>'
-  +'</section></div></div>';
-}
-function loginHTML(){
-  return '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="welcome" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Welcome Back</h2><p class="small" style="margin-top:4px">Log in to continue practising. Device-local account — your data is in this browser, on this device.</p>'
-  +'<form class="auth-card" id="liForm" style="max-width:none"><div class="field"><span class="fic">'+icoMail()+'</span><input id="liEmail" type="email" autocomplete="email" required placeholder="Email"></div>'
-  +'<div class="field"><span class="fic">'+icoLock()+'</span><input id="liPw" type="password" autocomplete="current-password" required placeholder="Password"><button type="button" class="eye" data-eye="liPw" aria-label="Show or hide password"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button></div>'
-  +'<p class="small" id="authErr" style="color:var(--red);font-weight:600;margin-top:10px"></p>'
-  +'<button class="btn btn-p" type="submit" style="width:100%;margin-top:14px">Log In</button>'
-  +'<p class="small" style="margin-top:14px;text-align:center"><a href="#" data-nav="forgot">Forgot password?</a> · New here? <a href="#" data-nav="signup">Sign up</a></p></form></div></div>';
-}
-function signupHTML(){
-  return '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="welcome" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Create Your Account</h2><p class="small" style="margin-top:4px">Join and start practising for your NPTEL exam.</p>'
-  +'<form class="auth-card" id="suForm" style="max-width:none"><div class="field"><span class="fic">'+icoPerson()+'</span><input id="suName" type="text" autocomplete="name" required placeholder="Full Name"></div>'
-  +'<div class="field"><span class="fic">'+icoMail()+'</span><input id="suEmail" type="email" autocomplete="email" required placeholder="Email"></div>'
-  +'<div class="field"><span class="fic">'+icoLock()+'</span><input id="suPw" type="password" autocomplete="new-password" required placeholder="Password (min 6 characters)"><button type="button" class="eye" data-eye="suPw" aria-label="Show or hide password"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button></div>'
-  +'<div class="field"><span class="fic">'+icoLock()+'</span><input id="suPw2" type="password" autocomplete="new-password" required placeholder="Confirm Password"><button type="button" class="eye" data-eye="suPw2" aria-label="Show or hide password"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button></div>'
-  +'<p class="small" id="authErr" style="color:var(--red);font-weight:600;margin-top:10px"></p>'
-  +'<button class="btn btn-p" type="submit" style="width:100%;margin-top:14px">Sign Up</button>'
-  +'<p class="small" style="margin-top:14px;text-align:center">Already have an account? <a href="#" data-nav="login">Log in</a></p>'
-  +'<p class="small" style="margin-top:8px;text-align:center">Stored on this device only — password hashed, never plain text.</p></form></div></div>';
-}
-function forgotHTML(){
-  return '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="login" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Reset Your Password</h2><p class="small" style="margin-top:4px">Because accounts live only on this device, resetting here sets a new password for the account stored in this browser. Anyone with access to this device could do the same — device-local accounts are for convenience, not high security. There is no email reset link.</p>'
-  +'<form class="auth-card" id="fpForm" style="max-width:none"><div class="field"><span class="fic">'+icoMail()+'</span><input id="fpEmail" type="email" autocomplete="email" required placeholder="Account email"></div>'
-  +'<div class="field"><span class="fic">'+icoLock()+'</span><input id="fpPw" type="password" autocomplete="new-password" required placeholder="New password (min 6 characters)"><button type="button" class="eye" data-eye="fpPw" aria-label="Show or hide password"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button></div>'
-  +'<div class="field"><span class="fic">'+icoLock()+'</span><input id="fpPw2" type="password" autocomplete="new-password" required placeholder="Confirm new password"><button type="button" class="eye" data-eye="fpPw2" aria-label="Show or hide password"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button></div>'
-  +'<p class="small" id="authErr" style="color:var(--red);font-weight:600;margin-top:10px"></p>'
-  +'<button class="btn btn-p" type="submit" style="width:100%;margin-top:14px">Set New Password</button>'
-  +'<p class="small" style="margin-top:14px;text-align:center">Remembered it? <a href="#" data-nav="login">Back to Log In</a></p></form></div></div>';
-}
+      function subjectHTML() {
+        const s = SUBJECTS[0];
+        const sel = D.subject === s.id;
+        const globe =
+          '<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.7 2.6 4 5.7 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.7-4-9s1.3-6.4 4-9z"/></svg>';
+        return (
+          '<div class="wrap"><div class="narrow">' +
+          (sel
+            ? '<button class="back-btn" data-nav="account" aria-label="Back">←</button>'
+            : "") +
+          '<h2 style="font-size:26px;font-weight:800;margin-top:22px">Choose Your Subject</h2><p class="small" style="margin-top:4px;font-size:15px">Select a subject to start preparing for your NPTEL exam.</p>' +
+          '<div class="card" style="margin-top:18px"><div style="display:flex;gap:14px;align-items:flex-start"><span class="tile" style="background:var(--blue);width:54px;height:54px;border-radius:14px">' +
+          globe +
+          '</span><div style="flex:1;min-width:0"><b style="font-size:16px;color:var(--head);letter-spacing:.01em">GEOGRAPHY &amp; ENVIRONMENT</b><p class="small" style="margin-top:2px">Latest Question Set · Weeks 1–12</p><p style="margin-top:7px"><span class="tag g"><span class="dot"></span>Available</span> <span class="small"><b>' +
+          s.questions +
+          " questions · " +
+          s.weeks +
+          " weeks</b> · accepted answers verified from source</span></p></div></div>" +
+          '<button class="btn btn-p" id="subjGo" style="width:100%;margin-top:16px">' +
+          (sel ? "Continue with this Subject" : "Select Subject") +
+          "</button>" +
+          (sel
+            ? '<p class="small" style="margin-top:8px;text-align:center">This is your current subject — it is the only subject available right now, so selecting again simply re-confirms it.</p>'
+            : "") +
+          '</div><p class="small" style="margin-top:14px">Only one subject exists in this app today — no empty categories, no “coming soon” cards. Your attempts, bookmarks, notes and progress are all recorded under this subject.</p></div></div>'
+        );
+      }
+      function welcomeHTML() {
+        const feats = [
+          "Week-wise practice",
+          "Random mock tests",
+          "Accepted answers",
+          "Bookmark & revise",
+          "Track your progress",
+        ]
+          .map((f) => '<li><span class="ck">✓</span>' + f + "</li>")
+          .join("");
+        return (
+          '<div class="wrap"><div class="narrow"><section class="hero"><h1>NPTEL<br>Exam Practice</h1><p class="sub" style="font-size:19px;color:var(--ink);font-weight:600">Practice Today. Score Higher Tomorrow.</p>' +
+          BOOKSVG +
+          '<ul class="feat">' +
+          feats +
+          "</ul>" +
+          '<div style="display:flex;flex-direction:column;gap:10px;margin-top:22px"><button class="btn btn-p" data-nav="signup">Get Started</button></div>' +
+          '<p style="text-align:center;margin-top:16px;font-size:15px">Already have an account? <a href="#" data-nav="login" style="font-weight:700">Log In</a></p>' +
+          '<p class="small" style="margin-top:16px">Geography &amp; Environment · Weeks 1–12 · 113 questions · Accepted answers verified from the supplied source export. An account is required to start practising.</p>' +
+          (S.legacy
+            ? '<p class="small" style="margin-top:8px">Progress saved earlier on this device (before accounts existed) will be attached to the first account created here — nothing is wiped.</p>'
+            : "") +
+          '<p class="small" style="margin-top:8px">Accounts are stored <b>on this device only</b>: passwords are hashed, never plain text; no server, no cross-device sync. <a href="#" data-nav="about">Source &amp; Limits</a></p>' +
+          "</section></div></div>"
+        );
+      }
+      function loginHTML() {
+        return (
+          '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="welcome" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Welcome Back</h2><p class="small" style="margin-top:4px">Log in to continue practising. Device-local account — your data is in this browser, on this device.</p>' +
+          '<form class="auth-card" id="liForm" style="max-width:none"><div class="field"><span class="fic">' +
+          icoMail() +
+          '</span><input id="liEmail" type="email" autocomplete="email" required placeholder="Email"></div>' +
+          '<div class="field"><span class="fic">' +
+          icoLock() +
+          '</span><input id="liPw" type="password" autocomplete="current-password" required placeholder="Password"><button type="button" class="eye" data-eye="liPw" aria-label="Show or hide password"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button></div>' +
+          '<p class="small" id="authErr" style="color:var(--red);font-weight:600;margin-top:10px"></p>' +
+          '<button class="btn btn-p" type="submit" style="width:100%;margin-top:14px">Log In</button>' +
+          '<p class="small" style="margin-top:14px;text-align:center"><a href="#" data-nav="forgot">Forgot password?</a> · New here? <a href="#" data-nav="signup">Sign up</a></p></form></div></div>'
+        );
+      }
+      function signupHTML() {
+        return (
+          '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="welcome" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Create Your Account</h2><p class="small" style="margin-top:4px">Join and start practising for your NPTEL exam.</p>' +
+          '<form class="auth-card" id="suForm" style="max-width:none"><div class="field"><span class="fic">' +
+          icoPerson() +
+          '</span><input id="suName" type="text" autocomplete="name" required placeholder="Full Name"></div>' +
+          '<div class="field"><span class="fic">' +
+          icoMail() +
+          '</span><input id="suEmail" type="email" autocomplete="email" required placeholder="Email"></div>' +
+          '<div class="field"><span class="fic">' +
+          icoLock() +
+          '</span><input id="suPw" type="password" autocomplete="new-password" required placeholder="Password (min 6 characters)"><button type="button" class="eye" data-eye="suPw" aria-label="Show or hide password"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button></div>' +
+          '<div class="field"><span class="fic">' +
+          icoLock() +
+          '</span><input id="suPw2" type="password" autocomplete="new-password" required placeholder="Confirm Password"><button type="button" class="eye" data-eye="suPw2" aria-label="Show or hide password"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button></div>' +
+          '<p class="small" id="authErr" style="color:var(--red);font-weight:600;margin-top:10px"></p>' +
+          '<button class="btn btn-p" type="submit" style="width:100%;margin-top:14px">Sign Up</button>' +
+          '<p class="small" style="margin-top:14px;text-align:center">Already have an account? <a href="#" data-nav="login">Log in</a></p>' +
+          '<p class="small" style="margin-top:8px;text-align:center">Stored on this device only — password hashed, never plain text.</p></form></div></div>'
+        );
+      }
+      function forgotHTML() {
+        return (
+          '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="login" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Reset Your Password</h2><p class="small" style="margin-top:4px">Because accounts live only on this device, resetting here sets a new password for the account stored in this browser. Anyone with access to this device could do the same — device-local accounts are for convenience, not high security. There is no email reset link.</p>' +
+          '<form class="auth-card" id="fpForm" style="max-width:none"><div class="field"><span class="fic">' +
+          icoMail() +
+          '</span><input id="fpEmail" type="email" autocomplete="email" required placeholder="Account email"></div>' +
+          '<div class="field"><span class="fic">' +
+          icoLock() +
+          '</span><input id="fpPw" type="password" autocomplete="new-password" required placeholder="New password (min 6 characters)"><button type="button" class="eye" data-eye="fpPw" aria-label="Show or hide password"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button></div>' +
+          '<div class="field"><span class="fic">' +
+          icoLock() +
+          '</span><input id="fpPw2" type="password" autocomplete="new-password" required placeholder="Confirm new password"><button type="button" class="eye" data-eye="fpPw2" aria-label="Show or hide password"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button></div>' +
+          '<p class="small" id="authErr" style="color:var(--red);font-weight:600;margin-top:10px"></p>' +
+          '<button class="btn btn-p" type="submit" style="width:100%;margin-top:14px">Set New Password</button>' +
+          '<p class="small" style="margin-top:14px;text-align:center">Remembered it? <a href="#" data-nav="login">Back to Log In</a></p></form></div></div>'
+        );
+      }
 
-const TILEC=["#22C55E","#F59E0B","#F43F5E","#8B5CF6","#3B82F6","#F97316","#7C3AED","#10B981","#06B6D4","#EC4899","#84CC16","#6366F1"];
-function weakestWeek(){let weak=null;for(let w=1;w<=12;w++){let t=0,c=0;weekQs(w).forEach(q=>{const a=att(q.id);if(a){t+=a.total;c+=a.correct;}});if(t>=3){const acc=c/t;if(!weak||acc<weak.acc)weak={w:w,acc:acc,t:t};}}return weak;}
-function readinessInfo(){const o=overall();if(!o.totalAttempts)return null;const cov=o.attempted/113*100;const tests=D.sessions.filter(s=>s.mode==="mock"||s.mode==="weektest").length;const comp=Math.min(tests,5)/5*100;const score=Math.round(0.45*cov+0.45*o.accuracy+0.10*comp);const weak=weakestWeek();return{score:score,cov:Math.round(cov),tests:tests,weak:weak};}
-function daysToExam(){if(!D.examDate)return null;const today=new Date();today.setHours(0,0,0,0);const ex=new Date(D.examDate+"T00:00:00");if(isNaN(ex))return null;return Math.round((ex-today)/86400000);}
-function practiceHTML(){
-  const a=curAcct();const o=overall();
-  const first=(a.name||"Student").trim().split(/\s+/)[0]||"Student";
-  const tile=(bg,svg)=>'<span class="tile" style="background:'+bg+'">'+svg+'</span>';
-  const icBook='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>';
-  const icLayers='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2l9 5-9 5-9-5 9-5z"/><path d="M3 12l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg>';
-  const icShuffle='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M16 3h5v5"/><path d="M4 20L21 3"/><path d="M21 16v5h-5"/><path d="M15 15l6 6"/><path d="M4 4l5 5"/></svg>';
-  const icTimer='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9 2h6"/></svg>';
-  const icWarn='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 3L1 21h22L12 3z"/><path d="M12 10v5"/><circle cx="12" cy="18" r="0.5" fill="#fff"/></svg>';
-  const icBm='<svg viewBox="0 0 24 24" fill="#061426"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>';
-  const card=(go,title,desc,bg,svg,tab)=>'<button class="mode-card" data-goto="'+go+'"'+(tab?' data-gotab="'+tab+'"':"")+' >'+tile(bg,svg)+'<h3>'+title+'</h3><p>'+desc+'</p></button>';
-  const acc=o.accuracy;const circ=2*Math.PI*32;const off=circ-(acc/100)*circ;
-  let h='<div class="wrap"><p style="font-size:21px;font-weight:800;margin-top:18px">Hello, '+esc(first)+' 👋</p><p class="small" style="margin-top:2px;font-size:15px">Let’s practise and improve today!</p><p class="small" style="margin-top:4px">Subject: <b>Geography &amp; Environment</b> · Weeks 1–12 · 113 questions</p>';
-  if(D.activeSes&&D.activeSes.qids&&D.activeSes.qids.length){const s=D.activeSes;const an=s.qids.filter(id=>s.answers&&s.answers[id]).length;h+='<div class="card" style="margin-top:16px;border-color:var(--blue)"><b>Continue where you left off</b><p class="small" style="margin-top:4px">'+esc(s.title)+' · Answered '+an+' of '+s.qids.length+' · You stopped at question '+((s.idx||0)+1)+'.</p><div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="btn btn-p btn-sm" id="pResume">Continue</button><button class="btn btn-g btn-sm" id="pDiscard">Discard</button></div></div>';}
-  const ld=D.learn||{done:[],last:null};
-  h+='<div class="card" style="margin-top:16px"><b>Learn from Zero</b><p class="small" style="margin-top:4px">12 concept lessons — one per week — built from the concepts the questions test. '+(ld.done.length?(ld.done.length+' of 12 lessons completed.'):'Not started yet — begin with Week 1.')+'</p><button class="btn btn-p btn-sm" data-nav="learn" style="margin-top:10px">'+(ld.last?'Continue Learning':'Start Learning')+'</button></div>';
-  const dte=daysToExam();
-  if(dte!==null){const weak=weakestWeek();h+='<div class="card" style="margin-top:16px"><b>'+(dte>0?"Exam in "+dte+" day"+(dte===1?"":"s"):dte===0?"Your exam is today — good luck!":"Your exam date has passed — set a new one in Account")+'</b>'+(weak?'<p class="small" style="margin-top:4px">Weakest right now: <b>Week '+weak.w+'</b> ('+Math.round(weak.acc*100)+'% across '+weak.t+' attempts).</p><button class="btn btn-p btn-sm" id="pWeakRev" style="margin-top:10px">View</button>':"")+'</div>';}
-  h+='<div class="mode-grid">'
-  +card("weeks","Week-wise Practice","Practise week 1 – 12 questions","#347FF0",icBook)
-  +card("allq","All Questions","Practise complete question bank","#12B981",icLayers)
-  +card("setup-random","Random Practice","Custom set of questions","#6366F1",icShuffle)
-  +card("setup-mock","Mock Test","Timed practice test","#EF5350",icTimer)
-  +card("revision","My Mistakes","Revise incorrect questions","#F59E0B",icWarn,"wrong")
-  +card("revision","Bookmarks","Your saved questions","#F5C451",icBm,"bookmarks")
-  +'</div>';
-  const rd=readinessInfo();
-  if(rd){h+='<div class="card" style="margin-top:16px"><div class="ring-wrap"><div class="ring"><svg width="76" height="76"><circle cx="38" cy="38" r="32" stroke="var(--surface2)" stroke-width="8" fill="none"/><circle cx="38" cy="38" r="32" stroke="var(--blue)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="'+circ.toFixed(1)+'" stroke-dashoffset="'+off.toFixed(1)+'"/></svg><span class="pct">'+rd.score+'%</span></div><div style="flex:1"><b>Exam Readiness Score</b><p class="small" style="margin-top:3px">'+(rd.weak?("Weakest right now: <b>Week "+rd.weak.w+"</b> — revise it next."):("Coverage "+rd.cov+"% of the bank · keep accuracy climbing."))+'</p><p class="small" style="margin-top:3px">Estimate — not a guarantee of exam performance.</p><details style="margin-top:4px"><summary class="small" style="cursor:pointer;font-weight:700">How is this calculated?</summary><p class="small" style="margin-top:4px">Readiness = 45% × coverage (questions attempted ÷ 113) + 45% × your overall accuracy + 10% × tests completed (week tests &amp; mocks, capped at 5). Yours: coverage '+rd.cov+'%, accuracy '+o.accuracy+'%, tests completed '+rd.tests+'.</p></details></div></div></div>';}
-  else{h+='<div class="card" style="margin-top:16px"><b>Exam Readiness Score</b><p class="small" style="margin-top:4px">Attempt some questions to see your readiness — it is calculated from your real coverage and accuracy, never invented.</p></div>';}
-  h+='<div class="card" style="margin-top:16px"><b>Your Progress</b><div class="ring-wrap" style="margin-top:12px"><div class="ring"><svg width="76" height="76"><circle cx="38" cy="38" r="32" stroke="var(--surface2)" stroke-width="8" fill="none"/><circle cx="38" cy="38" r="32" stroke="var(--green)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="'+circ.toFixed(1)+'" stroke-dashoffset="'+(circ-(o.accuracy/100)*circ).toFixed(1)+'"/></svg><span class="pct">'+o.accuracy+'%</span></div><div style="flex:1"><p style="display:flex;justify-content:space-between;font-size:14.5px"><span class="small">Questions attempted</span><b>'+o.attempted+' / 113</b></p><p style="display:flex;justify-content:space-between;font-size:14.5px;margin-top:5px"><span class="small">Correct answers</span><b>'+o.correct+'</b></p><p style="display:flex;justify-content:space-between;font-size:14.5px;margin-top:5px"><span class="small">Accuracy</span><b>'+o.accuracy+'%</b></p></div></div></div>';
-  h+='</div>';
-  return h;
-}
-function weeksHTML(){
-  let rows="";for(let w=1;w<=12;w++){const st=weekStats(w);const pct=st.total?Math.round(st.attempted/st.total*100):0;const col=TILEC[w-1];
-  rows+='<div class="week-row"><div class="top"><span class="wtile" style="background:'+col+'">'+w+'</span><span class="info"><b>Week '+w+'</b><br><span class="cnt">'+esc(WEEK_TITLES[w])+' · '+st.total+' questions'+(MISSING[w]?' · missing Q'+MISSING[w].join(", Q"):"")+'</span></span><span class="frac">'+st.attempted+'/'+st.total+'</span><span class="chev">›</span></div><div class="prog"><i style="width:'+pct+'%;background:'+col+'"></i></div><div class="acts"><button class="btn btn-p btn-sm" data-week="'+w+'">Week Test</button><button class="btn btn-g btn-sm" data-weekpractice="'+w+'">Practice mode</button></div></div>';}
-  return '<div class="wrap"><p class="crumb">Practice › <b>Week-wise Practice</b></p><h2 style="font-size:24px;font-weight:800">Week-wise Practice</h2><p class="small" style="margin-top:4px">Select a week to start practising. <b>Week Test</b> = answer every question, submit once, then review. <b>Practice mode</b> = check each answer as you go.</p><div class="week-list">'+rows+'</div></div>';
-}
-function setupHTML(kind){
-  if(kind==="mock"){
-    let wkOpts='<option value="all">All Weeks (1 – 12)</option>';for(let w=1;w<=12;w++)wkOpts+='<option value="'+w+'">Week '+w+' only ('+weekQs(w).length+' questions)</option>';
-    return '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="practice" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Mock Test</h2><p class="small" style="margin-top:4px">Create a timed test and challenge yourself. A practice mock — it does not reproduce or guarantee the official NPTEL format. Answers are revealed only after you submit, or when time runs out (auto-submit).</p>'
-    +'<div class="card" style="margin-top:16px"><span class="f" style="margin-top:0">Number of Questions</span><div class="seg" id="mCountSeg"><button type="button" data-v="10">10</button><button type="button" data-v="20" class="on">20</button><button type="button" data-v="50">50</button></div>'
-    +'<label class="f" for="mWeekSel">Select Weeks</label><select class="inp" id="mWeekSel">'+wkOpts+'</select>'
-    +'<span class="f">Time Duration</span><div class="seg" id="mDurSeg"><button type="button" data-v="15">15 min</button><button type="button" data-v="30" class="on">30 min</button><button type="button" data-v="60">60 min</button></div>'
-    +'<p class="small" id="mPoolInfo" style="margin-top:12px"></p>'
-    +'<button class="btn btn-p" id="mGo" style="margin-top:14px;width:100%">Start Mock Test</button></div></div></div>';
-  }
-  const wc=[];for(let w=1;w<=12;w++)wc.push('<label class="wc"><input type="checkbox" class="wkchk" value="'+w+'" checked> W'+w+'</label>');
-  return '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="practice" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Custom Practice Generator</h2><p class="small" style="margin-top:4px">Build your own practice set: pick weeks, a question count, and which pool to draw from. Questions and options are shuffled — the accepted-answer mapping always stays correct.</p>'
-  +'<div class="card" style="margin-top:16px"><span class="f" style="margin-top:0">Weeks included</span><div style="display:flex;gap:8px;margin-top:6px"><button class="btn btn-g btn-sm" id="wkAll" type="button">Select all</button><button class="btn btn-g btn-sm" id="wkNone" type="button">Clear</button></div><div class="weekchecks">'+wc.join("")+'</div>'
-  +'<label class="f" for="sCount">Number of questions</label><select class="inp" id="sCount"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>30</option><option>50</option></select>'
-  +'<span class="f">Draw questions from</span><div class="poolchips"><button type="button" class="chip poolchip" data-pool="new">New (unattempted)</button><button type="button" class="chip poolchip" data-pool="incorrect">✗ Incorrect before</button><button type="button" class="chip poolchip" data-pool="bookmarked">Bookmarked</button></div><p class="small" style="margin-top:6px">Tap one or more pools to combine them — or leave all off to use every question in the selected weeks.</p>'
-  +'<p class="small" id="sPoolInfo" style="margin-top:10px"></p>'
-  +'<button class="btn btn-p" id="sGo" style="margin-top:12px;width:100%">Build My Practice</button></div></div></div>';
-}
-function genPoolIds(weeks,pools){
-  let base=BANK.filter(q=>weeks.includes(q.week));
-  if(!pools.length)return base.map(q=>q.id);
-  const set=new Set();
-  base.forEach(q=>{const a=att(q.id);
-    if(pools.includes("new")&&!a)set.add(q.id);
-    if(pools.includes("incorrect")&&a&&a.last==="incorrect")set.add(q.id);
-    if(pools.includes("bookmarked")&&isBookmarked(q.id))set.add(q.id);});
-  return Array.from(set);
-}
-function poolFor(weeks,pool){
-  let ids=BANK.filter(q=>weeks.includes(q.week)).map(q=>q.id);
-  if(pool==="unattempted")ids=ids.filter(id=>!att(id));
-  if(pool==="incorrect")ids=ids.filter(id=>{const a=att(id);return a&&a.last==="incorrect";});
-  if(pool==="bookmarked")ids=ids.filter(id=>isBookmarked(id));
-  return ids;
-}
-function qrPool(){
-  const flags=D.qrFlags||{};
-  const ids=BANK.filter(q=>{const a=att(q.id);return (a&&a.wrong>0)||isBookmarked(q.id);}).map(q=>q.id);
-  const score=id=>{const a=att(id);const w=a?a.wrong:0;let s=w*10;if(flags[id]==="need")s+=1000;if(isBookmarked(id))s+=5;if(flags[id]==="rem")s-=100000;return s;};
-  return ids.sort((x,y)=>score(y)-score(x));
-}
-function noteEditor(id){
-  const n=D.notes[id]||{};
-  return '<details class="sheet"><summary>My revision note (saved on this device)</summary>'
-  +'<label class="f">Key concept</label><input class="inp" data-nc="'+id+'" value="'+esc(n.concept||"")+'" placeholder="e.g. migration vs dispersal">'
-  +'<label class="f">Why the accepted answer is correct</label><textarea class="inp" data-nw="'+id+'" placeholder="In your own words…">'+esc(n.why||"")+'</textarea>'
-  +'<label class="f">Mnemonic / reminder</label><input class="inp" data-nm="'+id+'" value="'+esc(n.mnemonic||"")+'" placeholder="A short memory hook">'
-  +'<div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="btn btn-p btn-sm" data-savenote="'+id+'">Save note</button>'
-  +((n.concept||n.why||n.mnemonic)?'<button class="btn btn-g btn-sm" data-delnote="'+id+'">Delete note</button>':"")
-  +'</div></details>';
-}
-function revisionHTML(){
-  const tabs=[["wrong","Wrong Answers"],["bookmarks","Bookmarks"],["quick","Quick Revision"],["notes","Notes"]];
-  let h='<div class="wrap"><p class="crumb">Practice › <b>Revision</b></p><h2 style="font-size:24px;font-weight:800">Revision</h2>'
-  +'<div class="revtabs" role="tablist">'+tabs.map(t=>'<button data-revtab="'+t[0]+'" class="'+(revTab===t[0]?"on":"")+'">'+t[1]+'</button>').join("")+'</div>';
-  if(revTab==="wrong"){
-    const list=BANK.filter(q=>{const a=att(q.id);return a&&a.wrong>0;}).sort((x,y)=>(att(y.id).wrong-att(x.id).wrong)||(new Date(D.attempts[y.id].lastDate)-new Date(D.attempts[x.id].lastDate)));
-    const weakIds=BANK.filter(q=>{const a=att(q.id);return a&&a.last==="incorrect";}).sort((x,y)=>att(y.id).wrong-att(x.id).wrong).map(q=>q.id);
-    h+='<p class="small" style="margin-top:12px">Questions you answered incorrectly, most-missed first. History is preserved even after you later get a question right.</p>'
-    +(weakIds.length?'<button class="btn btn-p" id="weakBtn" style="width:100%;margin-top:12px">Practise Weak Questions ('+weakIds.length+')</button>':"")
-    +(list.length?'<div class="list">'+list.map(q=>{const a=att(q.id);const m=mastery(q.id);return '<div class="item"><div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><span style="width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0">✗</span><span class="tag b">Week '+q.week+' • Q'+q.number+'</span><span class="tag r">'+a.wrong+' incorrect attempt'+(a.wrong===1?"":"s")+'</span><span class="tag '+(m==="Consistently Correct"?"g":m==="Improving"?"a":"r")+'">'+m+'</span>'+(isBookmarked(q.id)?'<span class="tag a">Bookmarked</span>':"")+'</div><p class="q" style="margin-top:8px">'+esc(q.question)+'</p><p class="small" style="margin-top:6px">Your answer: <b>'+(a.lastPicked?esc(a.lastPicked)+". "+esc(optText(q,a.lastPicked)):"—")+'</b><br>Correct answer: <b>'+esc(q.correct_letter)+'. '+esc(q.correct_text)+'</b> · No explanation in source.<br>Attempts: '+a.total+' · Last attempted: '+fmtDate(a.lastDate)+'</p><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="btn btn-p btn-sm" data-single="'+q.id+'">Retry</button><button class="btn btn-g btn-sm" data-bm2="'+q.id+'">'+(isBookmarked(q.id)?"Remove bookmark":"Bookmark")+'</button></div></div>';}).join("")+'</div>':'<div class="empty"><b>No mistakes yet</b>Answer a question incorrectly and it will appear here automatically, sorted by how often you miss it.</div>');
-  }
-  else if(revTab==="bookmarks"){
-    const ids=D.bookmarks.filter(id=>BYID[id]);
-    h+='<p class="small" style="margin-top:12px">Your saved questions. Incorrect-attempt counts are shown where you have missed a bookmarked question before.</p>'
-    +(ids.length?'<button class="btn btn-p" id="revBmBtn" style="width:100%;margin-top:12px">Revise Bookmarks ('+ids.length+')</button><div class="list">'+ids.map(id=>{const q=BYID[id];const a=att(id);return '<div class="item"><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="tag b">Week '+q.week+' • Q'+q.number+'</span>'+(a&&a.wrong?'<span class="tag r">'+a.wrong+' incorrect attempt'+(a.wrong===1?"":"s")+'</span>':"")+(a?'<span class="tag '+(a.last==="correct"?"g":"r")+'">'+(a.last==="correct"?"✓ Last attempt correct":"✗ Last attempt incorrect")+'</span>':"")+'</div><p class="q" style="margin-top:8px">'+esc(q.question)+'</p><p class="small" style="margin-top:4px">Accepted answer from source: <b>'+esc(q.correct_letter)+'. '+esc(q.correct_text)+'</b> · No explanation in source.</p><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="btn btn-p btn-sm" data-single="'+id+'">Practise</button><button class="btn btn-g btn-sm" data-bm2="'+id+'">Remove bookmark</button></div>'+noteEditor(id)+'</div>';}).join("")+'</div>':'<div class="empty"><b>No bookmarks yet</b>Tap the bookmark icon on any question while practising and it will appear here.</div>');
-  }
-  else if(revTab==="quick"){
-    const pool=qrPool();
-    if(!pool.length){h+='<div class="empty"><b>Nothing to flip through yet</b>Quick Revision is built from your wrong answers and bookmarks. Get a question wrong or bookmark one, and it will show up here as a flashcard.</div>';}
-    else{
-      if(qrIdx>=pool.length)qrIdx=pool.length-1;
-      const q=BYID[pool[qrIdx]];const a=att(q.id);
-      h+='<p class="small" style="margin-top:12px">Flashcards from your wrong + bookmarked questions. “Need Revision” cards resurface first next time; “Remembered” cards move to the back — your attempt history is never deleted.</p>'
-      +'<div class="flash"><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="tag b">Week '+q.week+' • Q'+q.number+'</span>'+(a&&a.wrong?'<span class="tag r">'+a.wrong+' incorrect attempt'+(a.wrong===1?"":"s")+'</span>':"")+(isBookmarked(q.id)?'<span class="tag a">Bookmarked</span>':"")+'<span class="tag">Card '+(qrIdx+1)+' of '+pool.length+'</span></div>'
-      +'<p class="q-text" style="margin-top:12px;font-size:17px">'+esc(q.question)+'</p><div class="opts">'+q.options.map(o=>'<div class="opt" style="cursor:default"><span class="ltr">'+o.letter+'</span><span>'+esc(o.text)+'</span></div>').join("")+'</div>'
-      +(qrShow?'<div class="acc-box"><b>Accepted Answer:</b> '+esc(q.correct_letter)+'. '+esc(q.correct_text)+'<div class="noexp">No explanation in source.</div></div><div style="display:flex;gap:10px;margin-top:14px"><button class="btn btn-p" id="qrRem" style="flex:1;background:var(--green)">✓ Remembered</button><button class="btn btn-g" id="qrNeed" style="flex:1">↻ Need Revision</button></div>'
-        :'<button class="btn btn-p" id="qrShowBtn" style="width:100%;margin-top:16px">Show Answer</button>')
-      +'<div style="display:flex;gap:8px;margin-top:12px"><button class="btn btn-g btn-sm" id="qrPrev" '+(qrIdx===0?"disabled":"")+'>← Previous card</button><button class="btn btn-g btn-sm" id="qrNext" '+(qrIdx>=pool.length-1?"disabled":"")+'>Next card →</button></div></div>';
-    }
-  }
-  else{
-    const notedIds=Object.keys(D.notes).filter(id=>BYID[id]&&(D.notes[id].concept||D.notes[id].why||D.notes[id].mnemonic));
-    h+='<p class="small" style="margin-top:12px">All your personal revision notes in one list. Notes are private to your account on this device.</p>'
-    +(notedIds.length?'<div class="list">'+notedIds.map(id=>{const q=BYID[id];const n=D.notes[id];return '<div class="item"><span class="tag b">Week '+q.week+' • Q'+q.number+'</span><p class="q" style="margin-top:6px">'+esc(q.question)+'</p>'+(n.concept?'<p class="small" style="margin-top:6px"><b>Key concept:</b> '+esc(n.concept)+'</p>':"")+(n.why?'<p class="small" style="margin-top:3px"><b>Why the accepted answer is correct:</b> '+esc(n.why)+'</p>':"")+(n.mnemonic?'<p class="small" style="margin-top:3px"><b>Mnemonic:</b> '+esc(n.mnemonic)+'</p>':"")+'<div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="btn btn-p btn-sm" data-single="'+id+'">Practise</button></div>'+noteEditor(id)+'</div>';}).join("")+'</div>':'<div class="empty"><b>No notes yet</b>While practising, open “My revision note” under any question to save a key concept, your reasoning, or a mnemonic.</div>');
-  }
-  h+='</div>';
-  return h;
-}
-function accountHTML(){
-  const a=curAcct();const o=overall();
-  const initial=(a.name||"S").trim().charAt(0).toUpperCase()||"S";
-  const theme=document.documentElement.dataset.theme==="dark"?"Dark":"Light";
-  const dte=daysToExam();
-  const row=(ic,label,attrs,val)=>'<button class="prof-row" '+attrs+'><span class="ic">'+ic+'</span>'+label+(val?'<span class="val">'+val+'</span>':'<span class="chev">›</span>')+'</button>';
-  const icP='<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>';
-  const icB='<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12v18l-6-4-6-4z" transform="scale(0.92) translate(1,0)"/></svg>';
-  const icW='<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L1 21h22L12 3z"/><path d="M12 10v5"/></svg>';
-  const icN='<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3h14v18H5z"/><path d="M9 8h6M9 12h6"/></svg>';
-  const icS='<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/></svg>';
-  const icT='<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.5 4.5l2 2M17.5 17.5l2 2M19.5 4.5l-2 2M6.5 17.5l-2 2"/></svg>';
-  const icC='<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>';
-  const icO='<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>';
-  return '<div class="wrap"><div class="narrow"><div style="text-align:center"><div class="avatar-big">'+esc(initial)+'</div><h2 style="font-size:22px;font-weight:800;margin-top:12px">'+esc(a.name)+'</h2><p class="small">'+esc(a.email)+'</p></div>'
-  +'<div class="stat-grid" style="grid-template-columns:1fr 1fr"><div class="stat"><div class="n">'+o.attempted+'/113</div><div class="l">Questions attempted</div></div><div class="stat"><div class="n">'+o.accuracy+'%</div><div class="l">Accuracy · '+o.correct+' correct · '+o.wrong+' incorrect</div></div><div class="stat"><div class="n">'+D.bookmarks.length+'</div><div class="l">Bookmarks</div></div><div class="stat"><div class="n">'+D.sessions.length+'</div><div class="l">Sessions completed</div></div></div>'
-  +'<div class="prof-rows">'
-  +row(icP,"My Progress",'data-nav="practice"')
-  +row(icB,"Bookmarks",'data-gorev="bookmarks"')
-  +row(icW,"My Mistakes",'data-gorev="wrong"')
-  +row(icN,"My Notes",'data-gorev="notes"')
-  +row(icS,"Search Questions",'data-nav="search"')
-  +row(icT,"Theme",'id="themeRow"',theme)
-  +row("<svg viewBox=\"0 0 24 24\" width=\"19\" height=\"19\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M3 12h18\"/><path d=\"M12 3c2.7 2.6 4 5.7 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.7-4-9s1.3-6.4 4-9z\"/></svg>","Change Subject",'data-nav="subject"',"Geography & Environment")
-  +row(icC,"Exam Date",'id="examRow"',D.examDate?(dte!==null?(dte>0?dte+" days to go":dte===0?"Today!":"Passed"):""):"Not set")
-  +row("<svg viewBox=\"0 0 24 24\" width=\"19\" height=\"19\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 8h.01M12 11v5\"/></svg>","Source &amp; Limits",'data-nav="about"')
-  +row("<svg viewBox=\"0 0 24 24\" width=\"19\" height=\"19\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M4 8h9M19 8h1M4 16h3M13 16h7\"/><circle cx=\"16\" cy=\"8\" r=\"2\"/><circle cx=\"10\" cy=\"16\" r=\"2\"/></svg>","Admin (local preview)",'data-nav="admin"')
-  +'</div>'
-  +'<div class="card" style="margin-top:16px"><b>Your exam date</b><p class="small" style="margin-top:4px">'+(D.examDate?("Exam date set: <b>"+esc(D.examDate)+"</b>"+(dte!==null?(dte>0?" — "+dte+" day"+(dte===1?"":"s")+" to go.":dte===0?" — it is today. Good luck!":" — this date has passed."):"")):"Optionally set your NPTEL exam date and the app will count down the days and point you at your weakest week.")+'</p><div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><input class="inp" type="date" id="examDate" value="'+esc(D.examDate||"")+'" style="flex:1;min-width:170px"><button class="btn btn-p btn-sm" id="examSave">Save date</button>'+(D.examDate?'<button class="btn btn-g btn-sm" id="examClear">Clear</button>':"")+'</div></div>'
-  +'<div class="item" style="margin-top:16px"><b>Device-local account</b><p class="small" style="margin-top:4px">Your account, bookmarks, notes, mistakes and progress live in this browser on this device only, fully separated per account. Passwords are stored <b>hashed, never plain text</b>. There is no server account and no sync to other devices; clearing this browser\'s data deletes everything.</p></div>'
-  +'<div class="prof-rows" style="margin-top:16px"><button class="prof-row danger" id="logoutBtn"><span class="ic">'+icO+'</span>Logout</button></div>'
-  +'<p class="small" style="margin-top:12px;text-align:center">Logging out keeps everything saved on this device. Another student can create their own account here and will see none of your data.</p></div></div>';
-}
-function doSearch(term,weeksFilter,statusFilter){
-  const t=(term||"").trim().toLowerCase(); if(!t)return BANK.slice();
-  return BANK.filter(q=>{
-    if(weeksFilter&&q.week!==+weeksFilter)return false;
-    const hay=(q.question+" "+q.options.map(o=>o.text).join(" ")+" week "+q.week+" geography environment").toLowerCase();
-    const hit=t.split(/\s+/).every(w=>hay.includes(w));
-    if(!hit)return false;
-    if(statusFilter==="attempted")return !!att(q.id);
-    if(statusFilter==="unattempted")return !att(q.id);
-    if(statusFilter==="correct")return att(q.id)&&att(q.id).last==="correct";
-    if(statusFilter==="incorrect")return att(q.id)&&att(q.id).last==="incorrect";
-    if(statusFilter==="bookmarked")return isBookmarked(q.id);
-    return true;
-  });
-}
-function searchHTML(term,wf,sf){
-  term=term||"";let res=term?doSearch(term,wf,sf):null;
-  if(term&&res){S.searches.push({term:term,results:res.length,at:new Date().toISOString()});if(S.searches.length>100)S.searches=S.searches.slice(-100);save();}
-  let wkOpts='<option value="">All Weeks</option>';for(let w=1;w<=12;w++)wkOpts+='<option value="'+w+'"'+(wf==w?" selected":"")+'>Week '+w+'</option>';
-  const typeOpts=[["","All Types"],["attempted","Attempted"],["unattempted","Not attempted"],["incorrect","Incorrect before"],["bookmarked","Bookmarked"]].map(t=>'<option value="'+t[0]+'"'+(sf===t[0]?" selected":"")+'>'+t[1]+'</option>').join("");
-  const cards=res?res.map(q=>{const a=att(q.id);return '<div class="item"><div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><span class="tag b">Week '+q.week+' • Q'+q.number+'</span>'+(a?'<span class="tag '+(a.last==="correct"?"g":"r")+'">'+(a.last==="correct"?"✓ Attempted — correct":"✗ Attempted — incorrect")+'</span>':'<span class="tag">Not attempted</span>')+'<span style="flex:1"></span><button class="bm-btn" data-bm2="'+q.id+'" aria-label="Toggle bookmark" style="width:36px;height:36px"><svg viewBox="0 0 24 24" width="19" height="19"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z" class="bmp" data-on="'+(isBookmarked(q.id)?1:0)+'"/></svg></button></div><p class="q" style="margin-top:6px">'+esc(q.question)+'</p><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="btn btn-p btn-sm" data-single="'+q.id+'">Practise this question</button></div></div>';}).join(""):"";
-  return '<div class="wrap"><p class="crumb">Practice › <b>Search</b></p><h2 style="font-size:24px;font-weight:800">Search Questions</h2>'
-  +'<form class="searchbox" id="sForm" role="search" style="max-width:640px"><span style="display:flex;align-items:center;padding-left:8px;color:var(--muted)"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/></svg></span><input id="sInput" type="search" value="'+esc(term)+'" placeholder="Search questions… e.g. migration, LiDAR, volcano" aria-label="Search questions">'+(term?'<button type="button" class="clear-btn" id="sClear" aria-label="Clear search">✕</button>':"")+'<button class="btn btn-p btn-sm" type="submit">Search</button></form>'
-  +'<div class="filters"><select id="sWeek" aria-label="Filter by week">'+wkOpts+'</select><select id="sType" aria-label="Filter by type">'+typeOpts+'</select></div>'
-  +(res===null?'<div class="empty" style="max-width:640px"><b>Search all 113 questions</b>Search matches question text and option text, week by week.</div>':res.length?'<p class="small" style="margin-top:14px"><b>'+res.length+' result'+(res.length===1?"":"s")+' found</b> for “'+esc(term)+'”</p><div class="list" style="max-width:640px">'+cards+'</div>':'<div class="empty" style="max-width:640px"><b>0 results found for “'+esc(term)+'”</b>Check the spelling, try fewer words, or browse by week instead. This search was logged locally (Admin preview) so missing content can be spotted.</div>')+'</div>';
-}
-function importantHTML(){
-  const repeat=BANK.filter(q=>{const a=att(q.id);return a&&a.wrong>=2;});
-  const weakWeeks=[];for(let w=1;w<=12;w++){let t=0,c=0;weekQs(w).forEach(q=>{const a=att(q.id);if(a){t+=a.total;c+=a.correct;}});if(t>=3&&c/t<0.6)weakWeeks.push(w);}
-  const weakQs=BANK.filter(q=>weakWeeks.includes(q.week)&&!(att(q.id)&&att(q.id).wrong>=2));
-  const bm=BANK.filter(q=>isBookmarked(q.id));
-  const sec=(title,desc,qs,tag)=>'<section class="sec"><h2>'+title+'</h2><p class="hint">'+desc+'</p>'+(qs.length?'<div class="list">'+qs.map(q=>'<div class="item"><span class="tag b">'+tag+'</span> <span class="tag b">Week '+q.week+' · Q'+q.number+'</span><p class="q" style="margin-top:6px">'+esc(q.question)+'</p><p class="small" style="margin-top:4px">Accepted answer from source: <b>'+esc(q.correct_text)+'</b></p><button class="btn btn-g btn-sm" data-single="'+q.id+'" style="margin-top:8px">Practise</button></div>').join("")+'</div><button class="btn btn-p btn-sm" data-batch="'+qs.map(q=>q.id).join(",")+'" style="margin-top:12px">Practise all '+qs.length+' together</button>':'<div class="empty"><b>Nothing here yet</b>This section fills from your own attempts and bookmarks — it is never pre-filled or faked.</div>')+'</section>';
-  return '<div class="wrap"><p class="crumb">Home › <b>Important Questions</b></p><h2 style="font-size:24px;font-weight:800">Important — for you</h2><p class="small" style="margin-top:4px">Chosen transparently from <b>your</b> data only. “Important” here means worth revising — it is <b>not</b> a claim that any question is guaranteed to appear in the exam.</p>'
-  +sec("Personal weak area — repeatedly incorrect","Questions you have answered wrong 2 or more times.",repeat,"Personal weak-area")
-  +sec("Weak weeks (below 60%)","Weeks where your accuracy is under 60% across 3+ attempts: "+(weakWeeks.length?weakWeeks.map(w=>"Week "+w).join(", "):"none yet")+".",weakQs,"Weak week")
-  +sec("Bookmarked by you","Questions you chose to save.",bm,"Bookmarked")+'</div>';
-}
-function aboutHTML(){
-  let rows="";for(let w=1;w<=12;w++){const n=weekQs(w).length;rows+='<tr><td><b>Week '+w+'</b></td><td>'+esc(WEEK_TITLES[w])+'</td><td>'+n+'</td><td>'+(MISSING[w]?"Q"+MISSING[w].join(", Q"):"—")+'</td></tr>';}
-  return '<div class="wrap"><p class="crumb">Home › <b>Source &amp; Limits</b></p><h2 style="font-size:24px;font-weight:800">Source &amp; Limits — Honesty &amp; QA</h2><div class="list">'
-  +'<div class="item"><b>Source file</b><p class="small" style="margin-top:4px">Geography_Environment_Weeks_1-12_Updated_Accepted_Answers.pdf — the supplied NPTEL assignment export for <b>Geography &amp; Environment</b>. Total: <b>113 questions</b>, each with exactly 4 options (A–D). Spot-checks: Week 1 Q1 → “migration” · Week 5 Q9 → “0-1 degree” · Week 12 Q2 → “1500 m”.</p></div>'
-  +'<div class="item"><b>Answer provenance</b><p class="small" style="margin-top:4px">Every answer shown is the <b>accepted answer from source</b>, recorded in the export as both a marked option and a “Correct Answer:” line. No answer has been generated, replaced or silently corrected.</p></div>'
-  +'<div class="item"><b>How answers were verified</b><p class="small" style="margin-top:4px">Every accepted answer was double-checked: the source records it twice (marked option + “Correct Answer:” line) and <b>all 113 agree</b> — an automated comparison found 0 mismatches. A sample was also cross-checked against independent NPTEL course materials with no conflicts. NPTEL does not publish a public answer key for this course (keys live inside the enrolled course), so the supplied quiz export is the authoritative source. No answer in this app has been “corrected” or regenerated.</p></div>'
-  +'<div class="item"><b>Explanations</b><p class="small" style="margin-top:4px">The source contains <b>no explanations</b> for any of the 113 questions. The app therefore shows “No explanation in source” everywhere rather than inventing one. Your own notes are yours — they are labelled as personal notes, never as verified explanations.</p></div>'
-  +'<div class="item"><b>Persistence &amp; privacy</b><p class="small" style="margin-top:4px">Progress, bookmarks, notes, mistakes, searches and reports are stored in <b>browser local storage on this device only</b>. There is no server, no account and no tracking. Clearing browser data deletes them.</p></div>'
-  +'<div class="item"><b>Mock exam</b><p class="small" style="margin-top:4px">The mock is a <b>practice tool</b> built from assignment questions. It does not reproduce or guarantee the official NPTEL examination format.</p></div>'
-  +'<div class="item"><b>Content rights</b><p class="small" style="margin-top:4px">Question text comes from the supplied NPTEL assignment export and is provided here for <b>personal revision use</b>. Open-source code does not by itself grant rights to redistribute third-party course content.</p></div>'
-  +'<div class="item"><b>Per-week counts &amp; missing question numbers</b><div style="overflow-x:auto"><table><thead><tr><th>Week</th><th>Theme</th><th>In source</th><th>Missing numbers</th></tr></thead><tbody>'+rows+'</tbody></table></div><p class="small" style="margin-top:8px">Total: 113. The missing question numbers (Week 6 Q10; Week 7 Q1 &amp; Q9; Week 9 Q1; Week 10 Q1; Week 11 Q1 &amp; Q5) are absent from the supplied PDF itself — they were never in the export, and they have not been invented here.</p></div>'
-  +'<div class="item"><b>Built by</b><p class="small" style="margin-top:4px">Built by <a href="https://github.com/Thunderdoc" target="_blank" rel="noopener"><b>Thunderdoc</b></a> — for NPTEL students preparing for their exam.</p></div>'
-  +'</div></div>';
-}
-function allIssues(){const out=(S.issues||[]).map(i=>({qid:i.qid,type:i.type||"—",text:i.text||"",at:i.at,by:"(earlier version)"}));Object.values(S.accounts||{}).forEach(a=>{((a.data&&a.data.issues)||[]).forEach(i=>out.push({qid:i.qid,type:i.type||"—",text:i.text||"",at:i.at,by:a.email}));});return out.sort((x,y)=>new Date(y.at)-new Date(x.at));}
-function adminHTML(){
-  const accts=Object.values(S.accounts||{});
-  const agg={};accts.forEach(a=>{Object.entries((a.data&&a.data.attempts)||{}).forEach(([id,x])=>{const t=agg[id]||(agg[id]={total:0,correct:0});t.total+=x.total;t.correct+=x.correct;});});
-  const totSess=accts.reduce((n,a)=>n+((a.data&&a.data.sessions)||[]).length,0);
-  const wkAgg=[];for(let w=1;w<=12;w++){let t=0;weekQs(w).forEach(q=>{if(agg[q.id])t+=agg[q.id].total;});wkAgg.push({w:w,t:t});}wkAgg.sort((a,b)=>b.t-a.t);
-  const topQ=Object.entries(agg).sort((a,b)=>b[1].total-a[1].total).slice(0,5);
-  const issues=allIssues();
-  const searches=S.searches.slice().reverse();
-  const termCounts={};S.searches.forEach(s=>{const k=s.term.toLowerCase();termCounts[k]=(termCounts[k]||0)+1;});
-  const topTerms=Object.entries(termCounts).sort((a,b)=>b[1]-a[1]).slice(0,10);
-  const noRes=S.searches.filter(s=>s.results===0);
-  let rows="";for(let w=1;w<=12;w++)rows+='<tr><td>Week '+w+'</td><td>'+weekQs(w).length+'</td><td>'+(MISSING[w]?"Q"+MISSING[w].join(", Q"):"—")+'</td></tr>';
-  const bankRows=BANK.map(q=>'<tr><td>W'+q.week+' · Q'+q.number+'</td><td>'+esc(q.question.slice(0,90))+(q.question.length>90?"…":"")+'</td><td>'+esc(q.correct_letter)+'. '+esc(q.correct_text)+'</td><td><span class="tag g">Accepted answer from source</span></td></tr>').join("");
-  return '<div class="wrap"><p class="crumb">Account › <b>Admin preview</b></p><h2 style="font-size:24px;font-weight:800">Admin — Local Preview</h2><div class="item" style="border-color:var(--amber);background:var(--amber-bg);margin-top:12px"><b>Local / device admin preview — not server-secured.</b><p class="small" style="margin-top:4px">This page aggregates only this browser\'s local data (all accounts on this device). It is not protected by a server login. No users, DAU or platform-wide stats are fabricated — there is no server collecting them. Reports never change an answer automatically.</p></div>'
-  +'<div class="stat-grid"><div class="stat"><div class="n">'+accts.length+'</div><div class="l">Local accounts (this device)</div></div><div class="stat"><div class="n">113</div><div class="l">Questions in bank</div></div><div class="stat"><div class="n">'+totSess+'</div><div class="l">Sessions completed (all accounts)</div></div><div class="stat"><div class="n">'+issues.length+'</div><div class="l">Reported issues</div></div></div>'
-  +'<section class="sec"><h2>Usage on this device</h2><div class="list"><div class="item"><b>Most-used weeks:</b> '+(wkAgg.filter(x=>x.t>0).length?wkAgg.filter(x=>x.t>0).slice(0,3).map(x=>"Week "+x.w+" ("+x.t+" attempts)").join(" · "):"No attempts yet.")+'</div><div class="item"><b>Most-attempted questions:</b> '+(topQ.length?topQ.map(([id,t])=>{const q=BYID[id];return "W"+q.week+" Q"+q.number+" ("+t.total+" attempts, "+t.correct+" correct)";}).join(" · "):"No attempts yet.")+'</div><div class="item">Missing explanations: <b>113 / 113</b> — the source contains no explanations. Questions with missing options or missing accepted answers: <b>0</b>.</div></div></section>'
-  +'<section class="sec"><h2>Reported issues</h2>'+(issues.length?'<div class="list">'+issues.map(i=>{const q=BYID[i.qid];return '<div class="item"><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="tag a">Week '+(q?q.week:"?")+' · Q'+(q?q.number:"?")+'</span><span class="tag b">'+esc(i.type)+'</span></div><p style="margin-top:6px">'+(i.text?esc(i.text):'<span class="small">(no comment)</span>')+'</p><p class="small">'+fmtDate(i.at)+' · reported by '+esc(i.by||"")+'</p></div>';}).join("")+'</div>':'<div class="empty"><b>No reported issues</b>Reports made via “Report an issue” on a question appear here with their type.</div>')+'</section>'
-  +'<section class="sec"><h2>Per-week bank</h2><div class="item" style="overflow-x:auto"><table><thead><tr><th>Week</th><th>Questions</th><th>Missing numbers</th></tr></thead><tbody>'+rows+'</tbody></table></div></section>'
-  +'<section class="sec"><h2>Search Insights (this device only)</h2><div class="list"><div class="item"><b>Top search terms:</b> '+(topTerms.length?topTerms.map(t=>esc(t[0])+" ×"+t[1]).join(" · "):"No searches yet.")+'</div><div class="item"><b>Searches with no results ('+noRes.length+'):</b> '+(noRes.length?noRes.slice(-10).map(s=>'"'+esc(s.term)+'”').join(" · "):"None.")+'</div><div class="item"><b>Recent searches:</b> '+(searches.length?searches.slice(0,10).map(s=>'"'+esc(s.term)+'" — '+s.results+' results').join(" · "):"None yet.")+'</div></div></section>'
-  +'<section class="sec"><h2>Question bank (113)</h2><p class="hint">Verification status for every question: Accepted answer from source.</p><div class="item" style="overflow-x:auto"><table><thead><tr><th>ID</th><th>Question</th><th>Accepted answer</th><th>Status</th></tr></thead><tbody>'+bankRows+'</tbody></table></div></section></div>';
-}
-// ---------- router ----------
-let curView="home", searchState={term:"",wf:"",sf:""}, mistState={wf:"",rep:false};
-let revTab="wrong", qrIdx=0, qrShow=false;
-function go(view){curView=view;stopTimer();if(SES){SES=null;}pbar.classList.remove("on");render();}
-function bindNav(){
-  document.querySelectorAll("[data-nav]").forEach(b=>b.onclick=()=>{const tn=document.getElementById("topNav");if(tn)tn.classList.remove("open");go(b.dataset.nav);});
-  document.querySelectorAll("[data-goto]").forEach(b=>b.onclick=()=>{const g=b.dataset.goto;
-    if(g==="allq"){startSession({mode:"all",title:"All Questions Practice",qids:BANK.map(q=>q.id),shuffleOpts:false});}
-    else if(g==="revision"){revTab=b.dataset.gotab||"wrong";qrIdx=0;qrShow=false;go("revision");}
-    else go(g);});
-  document.querySelectorAll("[data-gorev]").forEach(b=>b.onclick=()=>{revTab=b.dataset.gorev;qrIdx=0;qrShow=false;go("revision");});
-  document.querySelectorAll("[data-revtab]").forEach(b=>b.onclick=()=>{revTab=b.dataset.revtab;qrIdx=0;qrShow=false;render();});
-  document.querySelectorAll("[data-savenote]").forEach(b=>b.onclick=()=>{const id=b.dataset.savenote;const g=a=>{const e=document.querySelector('[data-'+a+'="'+id+'"]');return e?e.value.trim():"";};const note={concept:g("nc"),why:g("nw"),mnemonic:g("nm")};if(!note.concept&&!note.why&&!note.mnemonic){toast("Write something in the note first");return;}D.notes[id]=note;save();render();toast("Note saved on this device");});
-  document.querySelectorAll("[data-delnote]").forEach(b=>b.onclick=()=>{delete D.notes[b.dataset.delnote];save();render();toast("Note deleted");});
-  document.querySelectorAll("[data-week]").forEach(b=>b.onclick=()=>{const w=+b.dataset.week;startSession({mode:"weektest",title:"Week "+w+" Test",qids:weekQs(w).map(q=>q.id),shuffleOpts:false,submitAll:true});});
-  document.querySelectorAll("[data-weekpractice]").forEach(b=>b.onclick=()=>{const w=+b.dataset.weekpractice;startSession({mode:"week",title:"Week "+w+" practice (check each answer)",qids:weekQs(w).map(q=>q.id),shuffleOpts:false});});
-  document.querySelectorAll("[data-weekun]").forEach(b=>b.onclick=()=>{const w=+b.dataset.weekun;const ids=weekQs(w).filter(q=>!att(q.id)).map(q=>q.id);startSession({mode:"week-unattempted",title:"Week "+w+" — unattempted only",qids:ids,shuffleOpts:false});});
-  document.querySelectorAll("[data-weekwrong]").forEach(b=>b.onclick=()=>{const w=+b.dataset.weekwrong;const ids=weekQs(w).filter(q=>{const a=att(q.id);return a&&a.last==="incorrect";}).map(q=>q.id);startSession({mode:"week-incorrect",title:"Week "+w+" — revise incorrect",qids:ids,shuffleOpts:false});});
-  document.querySelectorAll("[data-single]").forEach(b=>b.onclick=()=>startSession({mode:"single",title:"Single question practice",qids:[b.dataset.single],shuffleOpts:false}));
-  document.querySelectorAll("[data-bm2]").forEach(b=>b.onclick=()=>{toggleBookmark(b.dataset.bm2);render();});
-  document.querySelectorAll("[data-batch]").forEach(b=>b.onclick=()=>startSession({mode:"important",title:"Important questions practice",qids:b.dataset.batch.split(",").filter(Boolean),shuffleOpts:true}));
-  document.querySelectorAll(".bnav button").forEach(b=>b.classList.toggle("on",b.dataset.nav===(curView==="lesson"?"learn":curView)));
-}
-function renderChrome(){
-  const li=isLoggedIn();
-  const tn=document.getElementById("topNav");
-  if(tn)tn.innerHTML=li?'<button data-nav="practice">Home</button><button data-nav="weeks">Practice</button><button data-nav="learn">Learn</button><button data-nav="revision">Revision</button><button data-nav="search">Search</button>':'<button data-nav="about">Source &amp; Limits</button><button data-nav="login">Log In</button><button data-nav="signup">Sign Up</button>';
-  const bn=document.getElementById("bnav");
-  if(bn){bn.style.display=li?"flex":"none";bn.innerHTML='<button data-nav="practice"><span class="ic"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5"/><path d="M5.5 9.2V20h13V9.2"/></svg></span>Home</button><button data-nav="learn"><span class="ic"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span>Learn</button><button data-nav="weeks"><span class="ic"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span>Practice</button><button data-nav="revision"><span class="ic"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></span>Revision</button><button data-nav="search"><span class="ic"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/></svg></span>Search</button>';}
-  const av=document.getElementById("avatarBtn");
-  if(av){av.style.display=li?"flex":"none";av.textContent=li?(curAcct().name||"S").trim().charAt(0).toUpperCase():"";av.onclick=()=>go("account");}
-  const ham=document.getElementById("hamBtn");
-  if(ham)ham.onclick=()=>{if(tn)tn.classList.toggle("open");};
-}
-function render(){
-  pbar.classList.remove("on");
-  const li=isLoggedIn();
-  if(curView==="home"||curView==="dashboard")curView=li?"practice":"welcome";
-  if(curView==="mistakes"||curView==="bookmarks"||curView==="important")curView=li?"revision":"welcome";
-  if(!li&&!["welcome","login","signup","forgot","about","admin"].includes(curView))curView="welcome";
-  if(li&&["welcome","login","signup","forgot"].includes(curView))curView=D.subject?"practice":"subject";
-  if(li&&!D.subject&&!["subject","about","admin","account"].includes(curView))curView="subject";
-  renderChrome();
-  if(curView==="welcome")app.innerHTML=welcomeHTML();
-  else if(curView==="login")app.innerHTML=loginHTML();
-  else if(curView==="signup")app.innerHTML=signupHTML();
-  else if(curView==="forgot")app.innerHTML=forgotHTML();
-  else if(curView==="subject")app.innerHTML=subjectHTML();
-  else if(curView==="learn")app.innerHTML=learnHTML();
-  else if(curView==="lesson")app.innerHTML=lessonHTML();
-  else if(curView==="practice")app.innerHTML=practiceHTML();
-  else if(curView==="weeks")app.innerHTML=weeksHTML();
-  else if(curView==="revision")app.innerHTML=revisionHTML();
-  else if(curView==="search")app.innerHTML=searchHTML(searchState.term,searchState.wf,searchState.sf);
-  else if(curView==="account")app.innerHTML=accountHTML();
-  else if(curView==="about")app.innerHTML=aboutHTML();
-  else if(curView==="admin")app.innerHTML=adminHTML();
-  else if(curView==="setup-random")app.innerHTML=setupHTML("random");
-  else if(curView==="setup-mock")app.innerHTML=setupHTML("mock");
-  bindNav(); wireView(); wireLearn(); window.scrollTo({top:0});
-}
-function wireView(){
-  document.querySelectorAll(".eye").forEach(b=>b.addEventListener("click",()=>{const inp=document.getElementById(b.dataset.eye);if(inp)inp.type=inp.type==="password"?"text":"password";}));
-  const suF=document.getElementById("suForm"); if(suF)suF.addEventListener("submit",async e=>{e.preventDefault();const err=document.getElementById("authErr");const name=document.getElementById("suName").value.trim();const email=document.getElementById("suEmail").value.trim().toLowerCase();const pw=document.getElementById("suPw").value;const pw2=document.getElementById("suPw2").value;
-    if(!name){err.textContent="Please enter your name.";return;}
-    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){err.textContent="Please enter a valid email address.";return;}
-    if(pw.length<6){err.textContent="Password must be at least 6 characters.";return;}
-    if(pw!==pw2){err.textContent="Passwords do not match.";return;}
-    if(S.accounts[email]){err.textContent="An account with this email already exists on this device — try Log In instead.";return;}
-    const salt=newSalt();const hash=await hashPw(pw,salt);const hadLegacy=!!S.legacy;
-    S.accounts[email]={name:name,email:email,salt:salt,hash:hash,createdAt:new Date().toISOString(),data:hadLegacy?Object.assign(blankData(),S.legacy,{subject:"geo-env"}):blankData()};
-    if(hadLegacy)S.legacy=null;
-    S.current=email;setD(S.accounts[email]);save();curView="subject";render();
-    toast(hadLegacy?("Welcome, "+name+" — your earlier progress on this device was attached to this account"):("Welcome, "+name+" — account created on this device"));});
-  const liF=document.getElementById("liForm"); if(liF)liF.addEventListener("submit",async e=>{e.preventDefault();const err=document.getElementById("authErr");const email=document.getElementById("liEmail").value.trim().toLowerCase();const pw=document.getElementById("liPw").value;const a=S.accounts[email];
-    if(!a){err.textContent="No account with that email exists on this device. Sign up first — or check the email spelling.";return;}
-    const hash=await hashPw(pw,a.salt);
-    if(hash!==a.hash){err.textContent="Incorrect password for this device account.";return;}
-    S.current=email;setD(a);if(D.themePref){S.theme=D.themePref;applyTheme();}save();curView=D.subject?"practice":"subject";render();toast("Welcome back, "+a.name);});
-  const fpF=document.getElementById("fpForm"); if(fpF)fpF.addEventListener("submit",async e=>{e.preventDefault();const err=document.getElementById("authErr");const email=document.getElementById("fpEmail").value.trim().toLowerCase();const pw=document.getElementById("fpPw").value;const pw2=document.getElementById("fpPw2").value;const a=S.accounts[email];
-    if(!a){err.textContent="No account with that email exists on this device.";return;}
-    if(pw.length<6){err.textContent="New password must be at least 6 characters.";return;}
-    if(pw!==pw2){err.textContent="Passwords do not match.";return;}
-    a.salt=newSalt();a.hash=await hashPw(pw,a.salt);save();curView="login";render();toast("Password updated on this device — log in with your new password");});
-  const lo=document.getElementById("logoutBtn"); if(lo)lo.addEventListener("click",()=>{S.current=null;D=blankData();save();curView="welcome";render();toast("Logged out — your data stays saved on this device");});
-  const sg=document.getElementById("subjGo"); if(sg)sg.addEventListener("click",()=>{D.subject="geo-env";save();curView="practice";render();toast("Subject selected: Geography & Environment");});
-  const tr=document.getElementById("themeRow"); if(tr)tr.addEventListener("click",()=>{document.getElementById("themeBtn").click();render();});
-  const er=document.getElementById("examRow"); if(er)er.addEventListener("click",()=>{const d=document.getElementById("examDate");if(d){d.scrollIntoView({behavior:"smooth",block:"center"});d.focus();}});
-  const es=document.getElementById("examSave"); if(es)es.addEventListener("click",()=>{const v=document.getElementById("examDate").value;D.examDate=v||null;save();render();toast(v?"Exam date saved — the countdown is on your Practice home":"Exam date cleared");});
-  const ec=document.getElementById("examClear"); if(ec)ec.addEventListener("click",()=>{D.examDate=null;save();render();toast("Exam date cleared");});
-  const pr=document.getElementById("pResume"); if(pr)pr.addEventListener("click",()=>{const s=D.activeSes;if(!s||!s.qids)return;
-    SES={mode:s.mode,title:s.title,qids:s.qids,optOrder:s.optOrder||{},answers:s.answers||{},checked:s.checked||{},recorded:s.recorded||{},marked:s.marked||{},idx:s.idx||0,start:s.start||Date.now(),isMock:!!s.isMock,submitAll:!!s.submitAll,remain:null,durationMin:s.durationMin||null,poolNote:s.poolNote||"",endAt:s.endAt||null};
-    SES.qids.forEach(id=>{if(!SES.optOrder[id])SES.optOrder[id]=BYID[id].options.map(o=>o.letter);});
-    if(SES.isMock&&SES.endAt){SES.remain=Math.max(0,Math.round((SES.endAt-Date.now())/1000));
-      if(SES.remain<=0){renderPractice();toast("Time ran out while you were away — mock submitted");finishSession(true);return;}
-      stopTimer();timerId=setInterval(()=>{SES.remain=Math.max(0,Math.round((SES.endAt-Date.now())/1000));renderMockTop();if(SES.remain<=0){stopTimer();toast("Time's up — mock submitted automatically");finishSession(true);}},1000);}
-    renderPractice();toast("Session resumed — your answers are as you left them");});
-  const pd=document.getElementById("pDiscard"); if(pd)pd.addEventListener("click",()=>confirmDlg("Discard this unfinished session? The answers in it will be lost.",()=>{D.activeSes=null;save();render();toast("Session discarded");}));
-  const pwk=document.getElementById("pWeakRev"); if(pwk)pwk.addEventListener("click",()=>{const weak=weakestWeek();if(!weak){curView="weeks";render();return;}const ids=weekQs(weak.w).filter(q=>{const a=att(q.id);return a&&a.last==="incorrect";}).map(q=>q.id);if(ids.length)startSession({mode:"week-incorrect",title:"Week "+weak.w+" — revise incorrect",qids:ids,shuffleOpts:false});else{curView="weeks";render();}});
-  const wb=document.getElementById("weakBtn"); if(wb)wb.addEventListener("click",()=>{const ids=BANK.filter(q=>{const a=att(q.id);return a&&a.last==="incorrect";}).sort((x,y)=>att(y.id).wrong-att(x.id).wrong).map(q=>q.id);startSession({mode:"weak",title:"Weak Questions Practice",qids:ids,shuffleOpts:false});});
-  const rb=document.getElementById("revBmBtn"); if(rb)rb.addEventListener("click",()=>{const ids=D.bookmarks.filter(id=>BYID[id]);startSession({mode:"bookmarks",title:"Bookmarked Questions Practice",qids:ids,shuffleOpts:false});});
-  const qsb=document.getElementById("qrShowBtn"); if(qsb)qsb.addEventListener("click",()=>{qrShow=true;render();});
-  const qrem=document.getElementById("qrRem"); if(qrem)qrem.addEventListener("click",()=>{const pool=qrPool();const id=pool[qrIdx];if(id){if(!D.qrFlags)D.qrFlags={};D.qrFlags[id]="rem";save();}qrShow=false;qrIdx++;render();});
-  const qneed=document.getElementById("qrNeed"); if(qneed)qneed.addEventListener("click",()=>{const pool=qrPool();const id=pool[qrIdx];if(id){if(!D.qrFlags)D.qrFlags={};D.qrFlags[id]="need";save();}qrShow=false;qrIdx++;render();});
-  const qp=document.getElementById("qrPrev"); if(qp)qp.addEventListener("click",()=>{qrIdx=Math.max(0,qrIdx-1);qrShow=false;render();});
-  const qn=document.getElementById("qrNext"); if(qn)qn.addEventListener("click",()=>{qrIdx++;qrShow=false;render();});
-  const sf=document.getElementById("sForm"); if(sf){let deb=null;const inp=document.getElementById("sInput");sf.addEventListener("submit",e=>e.preventDefault());inp.addEventListener("input",()=>{clearTimeout(deb);deb=setTimeout(()=>{searchState.term=inp.value;searchState.wf=document.getElementById("sWeek").value;searchState.sf=document.getElementById("sType").value;render();const ni=document.getElementById("sInput");if(ni){ni.focus();ni.setSelectionRange(ni.value.length,ni.value.length);}},350);});
-    const sw=document.getElementById("sWeek"); if(sw)sw.addEventListener("change",e=>{searchState.wf=e.target.value;render();});
-    const st=document.getElementById("sType"); if(st)st.addEventListener("change",e=>{searchState.sf=e.target.value;render();});
-    const sc=document.getElementById("sClear"); if(sc)sc.addEventListener("click",()=>{searchState.term="";render();});}
-  const sGo=document.getElementById("sGo"); if(sGo){
-    const upd=()=>{const weeks=[...document.querySelectorAll(".wkchk")].filter(c=>c.checked).map(c=>+c.value);const pools=[...document.querySelectorAll(".poolchip.on")].map(c=>c.dataset.pool);const ids=genPoolIds(weeks,pools);const cnt=+document.getElementById("sCount").value;const info=document.getElementById("sPoolInfo");info.textContent=!weeks.length?"Select at least one week.":!ids.length?"No questions match this selection — widen the weeks or pools.":("Pool: "+ids.length+" question"+(ids.length===1?"":"s")+" available. This session will use "+Math.min(cnt,ids.length)+(cnt>ids.length?" — the pool is smaller than your chosen count, so the whole pool is used and no question repeats.":"."));sGo.disabled=!ids.length;};
-    document.querySelectorAll(".wkchk,#sCount").forEach(el=>el.addEventListener("change",upd));
-    document.querySelectorAll(".poolchip").forEach(c=>c.addEventListener("click",()=>{c.classList.toggle("on");upd();}));
-    document.getElementById("wkAll").onclick=()=>{document.querySelectorAll(".wkchk").forEach(c=>c.checked=true);upd();};
-    document.getElementById("wkNone").onclick=()=>{document.querySelectorAll(".wkchk").forEach(c=>c.checked=false);upd();};
-    upd();
-    sGo.onclick=()=>{const weeks=[...document.querySelectorAll(".wkchk")].filter(c=>c.checked).map(c=>+c.value);const pools=[...document.querySelectorAll(".poolchip.on")].map(c=>c.dataset.pool);const all=genPoolIds(weeks,pools);const cnt=+document.getElementById("sCount").value;const ids=shuffle(all).slice(0,cnt);const note=cnt>all.length?("The pool ("+all.length+") was smaller than the requested count ("+cnt+"), so the whole pool was used — no question repeats."):"";startSession({mode:"custom",title:"Custom Practice",qids:ids,shuffleOpts:true,poolNote:note});};
-  }
-  const mGo=document.getElementById("mGo"); if(mGo){
-    const segVal=id=>{const b=document.querySelector("#"+id+" button.on");return b?+b.dataset.v:0;};
-    const upd=()=>{const wk=document.getElementById("mWeekSel").value;const pool=wk==="all"?BANK.length:weekQs(+wk).length;const cnt=segVal("mCountSeg");const info=document.getElementById("mPoolInfo");info.textContent="Pool: "+pool+" questions available. This mock will use "+Math.min(cnt,pool)+(cnt>pool?" — the pool is smaller than the count, so the whole pool is used and no question repeats.":".");};
-    document.querySelectorAll("#mCountSeg button,#mDurSeg button").forEach(b=>b.addEventListener("click",()=>{b.parentElement.querySelectorAll("button").forEach(x=>x.classList.remove("on"));b.classList.add("on");upd();}));
-    document.getElementById("mWeekSel").addEventListener("change",upd);upd();
-    mGo.onclick=()=>{const wk=document.getElementById("mWeekSel").value;const poolIds=wk==="all"?BANK.map(q=>q.id):weekQs(+wk).map(q=>q.id);const cnt=segVal("mCountSeg");const ids=shuffle(poolIds).slice(0,cnt);const note=cnt>poolIds.length?("The pool ("+poolIds.length+") was smaller than the requested count ("+cnt+"), so the whole pool was used — no question repeats."):"";startSession({mode:"mock",title:"Mock Test",qids:ids,shuffleOpts:true,isMock:true,durationMin:segVal("mDurSeg"),poolNote:note});};
-  }
-}
-document.addEventListener("keydown",e=>{
-  if(!SES)return; const tag=(e.target.tagName||"").toLowerCase(); if(tag==="input"||tag==="textarea"||tag==="select")return;
-  const q=curQ();
-  if(["1","2","3","4"].includes(e.key)&&!SES.checked[q.id]&&!dlg.open){const letter=SES.optOrder[q.id][+e.key-1];if(letter){SES.answers[q.id]=letter;renderPractice();}}
-  else if((e.key==="a"||e.key==="A"||e.key==="b"&&false)){}
-  else if(e.key==="Enter"&&!dlg.open){e.preventDefault();document.getElementById("pbMain").click();}
-  else if(e.key==="ArrowRight"){document.getElementById("pbNext").click();}
-  else if(e.key==="ArrowLeft"){document.getElementById("pbPrev").click();}
-  else if(e.key==="b"||e.key==="B"){toggleBookmark(q.id);renderPractice();}
-  else if(e.key==="m"||e.key==="M"){SES.marked[q.id]=!SES.marked[q.id];renderPractice();}
-});
-dlg.addEventListener("click",e=>{if(e.target===dlg)closeDialog();});
-render();
+      const ICO_STAR_ON =
+        '<svg viewBox="0 0 24 24" width="15" height="15" style="vertical-align:-2px" fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3.4l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.7l-5.2 2.8 1-5.8-4.3-4.1 5.9-.8z"/></svg>';
+      const ICO_STAR_OFF =
+        '<svg viewBox="0 0 24 24" width="15" height="15" style="vertical-align:-2px" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3.4l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.7l-5.2 2.8 1-5.8-4.3-4.1 5.9-.8z"/></svg>';
+      const ICO_FB_OK =
+        '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5l5 5L19.5 7"/></svg>';
+      const ICO_FB_X =
+        '<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+      const TILEC = [
+        "#22C55E",
+        "#F59E0B",
+        "#F43F5E",
+        "#8B5CF6",
+        "#3B82F6",
+        "#F97316",
+        "#7C3AED",
+        "#10B981",
+        "#06B6D4",
+        "#EC4899",
+        "#84CC16",
+        "#6366F1",
+      ];
+      function weakestWeek() {
+        let weak = null;
+        for (let w = 1; w <= 12; w++) {
+          let t = 0,
+            c = 0;
+          weekQs(w).forEach((q) => {
+            const a = att(q.id);
+            if (a) {
+              t += a.total;
+              c += a.correct;
+            }
+          });
+          if (t >= 3) {
+            const acc = c / t;
+            if (!weak || acc < weak.acc) weak = { w: w, acc: acc, t: t };
+          }
+        }
+        return weak;
+      }
+      function readinessInfo() {
+        const o = overall();
+        if (!o.totalAttempts) return null;
+        const cov = (o.attempted / 113) * 100;
+        const tests = D.sessions.filter(
+          (s) => s.mode === "mock" || s.mode === "weektest",
+        ).length;
+        const comp = (Math.min(tests, 5) / 5) * 100;
+        const score = Math.round(0.45 * cov + 0.45 * o.accuracy + 0.1 * comp);
+        const weak = weakestWeek();
+        return { score: score, cov: Math.round(cov), tests: tests, weak: weak };
+      }
+      function daysToExam() {
+        if (!D.examDate) return null;
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const ex = new Date(D.examDate + "T00:00:00");
+        if (isNaN(ex)) return null;
+        return Math.round((ex - today) / 86400000);
+      }
+      function practiceHTML() {
+        const a = curAcct();
+        const o = overall();
+        const first = (a.name || "Student").trim().split(/\s+/)[0] || "Student";
+        const tile = (bg, svg) =>
+          '<span class="tile" style="background:' + bg + '">' + svg + "</span>";
+        const icBook =
+          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>';
+        const icLayers =
+          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2l9 5-9 5-9-5 9-5z"/><path d="M3 12l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg>';
+        const icShuffle =
+          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M16 3h5v5"/><path d="M4 20L21 3"/><path d="M21 16v5h-5"/><path d="M15 15l6 6"/><path d="M4 4l5 5"/></svg>';
+        const icTimer =
+          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9 2h6"/></svg>';
+        const icWarn =
+          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 3L1 21h22L12 3z"/><path d="M12 10v5"/><circle cx="12" cy="18" r="0.5" fill="#fff"/></svg>';
+        const icBm =
+          '<svg viewBox="0 0 24 24" fill="#061426"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>';
+        const card = (go, title, desc, bg, svg, tab) =>
+          '<button class="mode-card" data-goto="' +
+          go +
+          '"' +
+          (tab ? ' data-gotab="' + tab + '"' : "") +
+          " >" +
+          tile(bg, svg) +
+          "<h3>" +
+          title +
+          "</h3><p>" +
+          desc +
+          "</p></button>";
+        const acc = o.accuracy;
+        const circ = 2 * Math.PI * 32;
+        const off = circ - (acc / 100) * circ;
+        let h =
+          '<div class="wrap"><p style="font-size:21px;font-weight:800;margin-top:18px">Hello, ' +
+          esc(first) +
+          '</p><p class="small" style="margin-top:2px;font-size:15px">Let’s practise and improve today!</p><p class="small" style="margin-top:4px">Subject: <b>Geography &amp; Environment</b> · Weeks 1–12 · 113 questions</p>';
+        if (D.activeSes && D.activeSes.qids && D.activeSes.qids.length) {
+          const s = D.activeSes;
+          const an = s.qids.filter((id) => s.answers && s.answers[id]).length;
+          h +=
+            '<div class="card" style="margin-top:16px;border-color:var(--blue)"><b>Continue where you left off</b><p class="small" style="margin-top:4px">' +
+            esc(s.title) +
+            " · Answered " +
+            an +
+            " of " +
+            s.qids.length +
+            " · You stopped at question " +
+            ((s.idx || 0) + 1) +
+            '.</p><div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="btn btn-p btn-sm" id="pResume">Continue</button><button class="btn btn-g btn-sm" id="pDiscard">Discard</button></div></div>';
+        }
+        const ld = D.learn || { done: [], last: null };
+        h +=
+          '<div class="card" style="margin-top:16px"><b>Learn from Zero</b><p class="small" style="margin-top:4px">12 concept lessons — one per week — built from the concepts the questions test. ' +
+          (ld.done.length
+            ? ld.done.length + " of 12 lessons completed."
+            : "Not started yet — begin with Week 1.") +
+          '</p><button class="btn btn-p btn-sm" data-nav="learn" style="margin-top:10px">' +
+          (ld.last ? "Continue Learning" : "Start Learning") +
+          "</button></div>";
+        const dte = daysToExam();
+        if (dte !== null) {
+          const weak = weakestWeek();
+          h +=
+            '<div class="card" style="margin-top:16px"><b>' +
+            (dte > 0
+              ? "Exam in " + dte + " day" + (dte === 1 ? "" : "s")
+              : dte === 0
+                ? "Your exam is today — good luck!"
+                : "Your exam date has passed — set a new one in Account") +
+            "</b>" +
+            (weak
+              ? '<p class="small" style="margin-top:4px">Weakest right now: <b>Week ' +
+                weak.w +
+                "</b> (" +
+                Math.round(weak.acc * 100) +
+                "% across " +
+                weak.t +
+                ' attempts).</p><button class="btn btn-p btn-sm" id="pWeakRev" style="margin-top:10px">View</button>'
+              : "") +
+            "</div>";
+        }
+        h +=
+          '<div class="mode-grid">' +
+          card(
+            "weeks",
+            "Week-wise Practice",
+            "Practise week 1 – 12 questions",
+            "#347FF0",
+            icBook,
+          ) +
+          card(
+            "allq",
+            "All Questions",
+            "Practise complete question bank",
+            "#12B981",
+            icLayers,
+          ) +
+          card(
+            "setup-random",
+            "Random Practice",
+            "Custom set of questions",
+            "#6366F1",
+            icShuffle,
+          ) +
+          card(
+            "setup-mock",
+            "Mock Test",
+            "Timed practice test",
+            "#EF5350",
+            icTimer,
+          ) +
+          card(
+            "revision",
+            "My Mistakes",
+            "Revise incorrect questions",
+            "#F59E0B",
+            icWarn,
+            "wrong",
+          ) +
+          card(
+            "revision",
+            "Bookmarks",
+            "Your saved questions",
+            "#F5C451",
+            icBm,
+            "bookmarks",
+          ) +
+          "</div>";
+        const rd = readinessInfo();
+        if (rd) {
+          h +=
+            '<div class="card" style="margin-top:16px"><div class="ring-wrap"><div class="ring"><svg width="76" height="76"><circle cx="38" cy="38" r="32" stroke="var(--surface2)" stroke-width="8" fill="none"/><circle cx="38" cy="38" r="32" stroke="var(--blue)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="' +
+            circ.toFixed(1) +
+            '" stroke-dashoffset="' +
+            off.toFixed(1) +
+            '"/></svg><span class="pct">' +
+            rd.score +
+            '%</span></div><div style="flex:1"><b>Exam Readiness Score</b><p class="small" style="margin-top:3px">' +
+            (rd.weak
+              ? "Weakest right now: <b>Week " +
+                rd.weak.w +
+                "</b> — revise it next."
+              : "Coverage " +
+                rd.cov +
+                "% of the bank · keep accuracy climbing.") +
+            '</p><p class="small" style="margin-top:3px">Estimate — not a guarantee of exam performance.</p><details style="margin-top:4px"><summary class="small" style="cursor:pointer;font-weight:700">How is this calculated?</summary><p class="small" style="margin-top:4px">Readiness = 45% × coverage (questions attempted ÷ 113) + 45% × your overall accuracy + 10% × tests completed (week tests &amp; mocks, capped at 5). Yours: coverage ' +
+            rd.cov +
+            "%, accuracy " +
+            o.accuracy +
+            "%, tests completed " +
+            rd.tests +
+            ".</p></details></div></div></div>";
+        } else {
+          h +=
+            '<div class="card" style="margin-top:16px"><b>Exam Readiness Score</b><p class="small" style="margin-top:4px">Attempt some questions to see your readiness — it is calculated from your real coverage and accuracy, never invented.</p></div>';
+        }
+        h +=
+          '<div class="card" style="margin-top:16px"><b>Your Progress</b><div class="ring-wrap" style="margin-top:12px"><div class="ring"><svg width="76" height="76"><circle cx="38" cy="38" r="32" stroke="var(--surface2)" stroke-width="8" fill="none"/><circle cx="38" cy="38" r="32" stroke="var(--green)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="' +
+          circ.toFixed(1) +
+          '" stroke-dashoffset="' +
+          (circ - (o.accuracy / 100) * circ).toFixed(1) +
+          '"/></svg><span class="pct">' +
+          o.accuracy +
+          '%</span></div><div style="flex:1"><p style="display:flex;justify-content:space-between;font-size:14.5px"><span class="small">Questions attempted</span><b>' +
+          o.attempted +
+          ' / 113</b></p><p style="display:flex;justify-content:space-between;font-size:14.5px;margin-top:5px"><span class="small">Correct answers</span><b>' +
+          o.correct +
+          '</b></p><p style="display:flex;justify-content:space-between;font-size:14.5px;margin-top:5px"><span class="small">Accuracy</span><b>' +
+          o.accuracy +
+          "%</b></p></div></div></div>";
+        h += "</div>";
+        return h;
+      }
+      function weeksHTML() {
+        let rows = "";
+        for (let w = 1; w <= 12; w++) {
+          const st = weekStats(w);
+          const pct = st.total
+            ? Math.round((st.attempted / st.total) * 100)
+            : 0;
+          const col = TILEC[w - 1];
+          rows +=
+            '<div class="week-row"><div class="top"><span class="wtile" style="background:' +
+            col +
+            '">' +
+            w +
+            '</span><span class="info"><b>Week ' +
+            w +
+            '</b><br><span class="cnt">' +
+            esc(WEEK_TITLES[w]) +
+            " · " +
+            st.total +
+            " questions" +
+            (MISSING[w] ? " · missing Q" + MISSING[w].join(", Q") : "") +
+            '</span></span><span class="frac">' +
+            st.attempted +
+            "/" +
+            st.total +
+            '</span><span class="chev">›</span></div><div class="prog"><i style="width:' +
+            pct +
+            "%;background:" +
+            col +
+            '"></i></div><div class="acts"><button class="btn btn-p btn-sm" data-week="' +
+            w +
+            '">Week Test</button><button class="btn btn-g btn-sm" data-weekpractice="' +
+            w +
+            '">Practice mode</button></div></div>';
+        }
+        return (
+          '<div class="wrap"><p class="crumb">Practice › <b>Week-wise Practice</b></p><h2 style="font-size:24px;font-weight:800">Week-wise Practice</h2><p class="small" style="margin-top:4px">Select a week to start practising. <b>Week Test</b> = answer every question, submit once, then review. <b>Practice mode</b> = check each answer as you go.</p><div class="week-list">' +
+          rows +
+          "</div></div>"
+        );
+      }
+      function setupHTML(kind) {
+        if (kind === "mock") {
+          let wkOpts = '<option value="all">All Weeks (1 – 12)</option>';
+          for (let w = 1; w <= 12; w++)
+            wkOpts +=
+              '<option value="' +
+              w +
+              '">Week ' +
+              w +
+              " only (" +
+              weekQs(w).length +
+              " questions)</option>";
+          return (
+            '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="practice" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Mock Test</h2><p class="small" style="margin-top:4px">Create a timed test and challenge yourself. A practice mock — it does not reproduce or guarantee the official NPTEL format. Answers are revealed only after you submit, or when time runs out (auto-submit).</p>' +
+            '<div class="card" style="margin-top:16px"><span class="f" style="margin-top:0">Number of Questions</span><div class="seg" id="mCountSeg"><button type="button" data-v="10">10</button><button type="button" data-v="20" class="on">20</button><button type="button" data-v="50">50</button></div>' +
+            '<label class="f" for="mWeekSel">Select Weeks</label><select class="inp" id="mWeekSel">' +
+            wkOpts +
+            "</select>" +
+            '<span class="f">Time Duration</span><div class="seg" id="mDurSeg"><button type="button" data-v="15">15 min</button><button type="button" data-v="30" class="on">30 min</button><button type="button" data-v="60">60 min</button></div>' +
+            '<p class="small" id="mPoolInfo" style="margin-top:12px"></p>' +
+            '<button class="btn btn-p" id="mGo" style="margin-top:14px;width:100%">Start Mock Test</button></div></div></div>'
+          );
+        }
+        const wc = [];
+        for (let w = 1; w <= 12; w++)
+          wc.push(
+            '<label class="wc"><input type="checkbox" class="wkchk" value="' +
+              w +
+              '" checked> W' +
+              w +
+              "</label>",
+          );
+        return (
+          '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="practice" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Custom Practice Generator</h2><p class="small" style="margin-top:4px">Build your own practice set: pick weeks, a question count, and which pool to draw from. Questions and options are shuffled — the accepted-answer mapping always stays correct.</p>' +
+          '<div class="card" style="margin-top:16px"><span class="f" style="margin-top:0">Weeks included</span><div style="display:flex;gap:8px;margin-top:6px"><button class="btn btn-g btn-sm" id="wkAll" type="button">Select all</button><button class="btn btn-g btn-sm" id="wkNone" type="button">Clear</button></div><div class="weekchecks">' +
+          wc.join("") +
+          "</div>" +
+          '<label class="f" for="sCount">Number of questions</label><select class="inp" id="sCount"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>30</option><option>50</option></select>' +
+          '<span class="f">Draw questions from</span><div class="poolchips"><button type="button" class="chip poolchip" data-pool="new">New (unattempted)</button><button type="button" class="chip poolchip" data-pool="incorrect">Incorrect before</button><button type="button" class="chip poolchip" data-pool="bookmarked">Bookmarked</button></div><p class="small" style="margin-top:6px">Tap one or more pools to combine them — or leave all off to use every question in the selected weeks.</p>' +
+          '<p class="small" id="sPoolInfo" style="margin-top:10px"></p>' +
+          '<button class="btn btn-p" id="sGo" style="margin-top:12px;width:100%">Build My Practice</button></div></div></div>'
+        );
+      }
+      function genPoolIds(weeks, pools) {
+        let base = BANK.filter((q) => weeks.includes(q.week));
+        if (!pools.length) return base.map((q) => q.id);
+        const set = new Set();
+        base.forEach((q) => {
+          const a = att(q.id);
+          if (pools.includes("new") && !a) set.add(q.id);
+          if (pools.includes("incorrect") && a && a.last === "incorrect")
+            set.add(q.id);
+          if (pools.includes("bookmarked") && isBookmarked(q.id)) set.add(q.id);
+        });
+        return Array.from(set);
+      }
+      function poolFor(weeks, pool) {
+        let ids = BANK.filter((q) => weeks.includes(q.week)).map((q) => q.id);
+        if (pool === "unattempted") ids = ids.filter((id) => !att(id));
+        if (pool === "incorrect")
+          ids = ids.filter((id) => {
+            const a = att(id);
+            return a && a.last === "incorrect";
+          });
+        if (pool === "bookmarked") ids = ids.filter((id) => isBookmarked(id));
+        return ids;
+      }
+      function qrPool() {
+        const flags = D.qrFlags || {};
+        const ids = BANK.filter((q) => {
+          const a = att(q.id);
+          return (a && a.wrong > 0) || isBookmarked(q.id);
+        }).map((q) => q.id);
+        const score = (id) => {
+          const a = att(id);
+          const w = a ? a.wrong : 0;
+          let s = w * 10;
+          if (flags[id] === "need") s += 1000;
+          if (isBookmarked(id)) s += 5;
+          if (flags[id] === "rem") s -= 100000;
+          return s;
+        };
+        return ids.sort((x, y) => score(y) - score(x));
+      }
+      function noteEditor(id) {
+        const n = D.notes[id] || {};
+        return (
+          '<details class="sheet"><summary>My revision note (saved on this device)</summary>' +
+          '<label class="f">Key concept</label><input class="inp" data-nc="' +
+          id +
+          '" value="' +
+          esc(n.concept || "") +
+          '" placeholder="e.g. migration vs dispersal">' +
+          '<label class="f">Why the accepted answer is correct</label><textarea class="inp" data-nw="' +
+          id +
+          '" placeholder="In your own words…">' +
+          esc(n.why || "") +
+          "</textarea>" +
+          '<label class="f">Mnemonic / reminder</label><input class="inp" data-nm="' +
+          id +
+          '" value="' +
+          esc(n.mnemonic || "") +
+          '" placeholder="A short memory hook">' +
+          '<div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="btn btn-p btn-sm" data-savenote="' +
+          id +
+          '">Save note</button>' +
+          (n.concept || n.why || n.mnemonic
+            ? '<button class="btn btn-g btn-sm" data-delnote="' +
+              id +
+              '">Delete note</button>'
+            : "") +
+          "</div></details>"
+        );
+      }
+      function revisionHTML() {
+        const tabs = [
+          ["wrong", "Wrong Answers"],
+          ["bookmarks", "Bookmarks"],
+          ["quick", "Quick Revision"],
+          ["notes", "Notes"],
+        ];
+        let h =
+          '<div class="wrap"><p class="crumb">Practice › <b>Revision</b></p><h2 style="font-size:24px;font-weight:800">Revision</h2>' +
+          '<div class="revtabs" role="tablist">' +
+          tabs
+            .map(
+              (t) =>
+                '<button data-revtab="' +
+                t[0] +
+                '" class="' +
+                (revTab === t[0] ? "on" : "") +
+                '">' +
+                t[1] +
+                "</button>",
+            )
+            .join("") +
+          "</div>";
+        if (revTab === "wrong") {
+          const list = BANK.filter((q) => {
+            const a = att(q.id);
+            return a && a.wrong > 0;
+          }).sort(
+            (x, y) =>
+              att(y.id).wrong - att(x.id).wrong ||
+              new Date(D.attempts[y.id].lastDate) -
+                new Date(D.attempts[x.id].lastDate),
+          );
+          const weakIds = BANK.filter((q) => {
+            const a = att(q.id);
+            return a && a.last === "incorrect";
+          })
+            .sort((x, y) => att(y.id).wrong - att(x.id).wrong)
+            .map((q) => q.id);
+          h +=
+            '<p class="small" style="margin-top:12px">Questions you answered incorrectly, most-missed first. History is preserved even after you later get a question right.</p>' +
+            (weakIds.length
+              ? '<button class="btn btn-p" id="weakBtn" style="width:100%;margin-top:12px">Practise Weak Questions (' +
+                weakIds.length +
+                ")</button>"
+              : "") +
+            (list.length
+              ? '<div class="list">' +
+                list
+                  .map((q) => {
+                    const a = att(q.id);
+                    const m = mastery(q.id);
+                    return (
+                      '<div class="item"><div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><span style="width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span><span class="tag b">Week ' +
+                      q.week +
+                      " • Q" +
+                      q.number +
+                      '</span><span class="tag r">' +
+                      a.wrong +
+                      " incorrect attempt" +
+                      (a.wrong === 1 ? "" : "s") +
+                      '</span><span class="tag ' +
+                      (m === "Consistently Correct"
+                        ? "g"
+                        : m === "Improving"
+                          ? "a"
+                          : "r") +
+                      '">' +
+                      m +
+                      "</span>" +
+                      (isBookmarked(q.id)
+                        ? '<span class="tag a">Bookmarked</span>'
+                        : "") +
+                      '</div><p class="q" style="margin-top:8px">' +
+                      esc(q.question) +
+                      '</p><p class="small" style="margin-top:6px">Your answer: <b>' +
+                      (a.lastPicked
+                        ? esc(a.lastPicked) +
+                          ". " +
+                          esc(optText(q, a.lastPicked))
+                        : "—") +
+                      "</b><br>Correct answer: <b>" +
+                      esc(q.correct_letter) +
+                      ". " +
+                      esc(q.correct_text) +
+                      "</b> · No explanation in source.<br>Attempts: " +
+                      a.total +
+                      " · Last attempted: " +
+                      fmtDate(a.lastDate) +
+                      '</p><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="btn btn-p btn-sm" data-single="' +
+                      q.id +
+                      '">Retry</button><button class="btn btn-g btn-sm" data-bm2="' +
+                      q.id +
+                      '">' +
+                      (isBookmarked(q.id) ? "Remove bookmark" : "Bookmark") +
+                      "</button></div></div>"
+                    );
+                  })
+                  .join("") +
+                "</div>"
+              : '<div class="empty"><b>No mistakes yet</b>Answer a question incorrectly and it will appear here automatically, sorted by how often you miss it.</div>');
+        } else if (revTab === "bookmarks") {
+          const ids = D.bookmarks.filter((id) => BYID[id]);
+          h +=
+            '<p class="small" style="margin-top:12px">Your saved questions. Incorrect-attempt counts are shown where you have missed a bookmarked question before.</p>' +
+            (ids.length
+              ? '<button class="btn btn-p" id="revBmBtn" style="width:100%;margin-top:12px">Revise Bookmarks (' +
+                ids.length +
+                ')</button><div class="list">' +
+                ids
+                  .map((id) => {
+                    const q = BYID[id];
+                    const a = att(id);
+                    return (
+                      '<div class="item"><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="tag b">Week ' +
+                      q.week +
+                      " • Q" +
+                      q.number +
+                      "</span>" +
+                      (a && a.wrong
+                        ? '<span class="tag r">' +
+                          a.wrong +
+                          " incorrect attempt" +
+                          (a.wrong === 1 ? "" : "s") +
+                          "</span>"
+                        : "") +
+                      (a
+                        ? '<span class="tag ' +
+                          (a.last === "correct" ? "g" : "r") +
+                          '">' +
+                          (a.last === "correct"
+                            ? "✓ Last attempt correct"
+                            : "Last attempt incorrect") +
+                          "</span>"
+                        : "") +
+                      '</div><p class="q" style="margin-top:8px">' +
+                      esc(q.question) +
+                      '</p><p class="small" style="margin-top:4px">Accepted answer from source: <b>' +
+                      esc(q.correct_letter) +
+                      ". " +
+                      esc(q.correct_text) +
+                      '</b> · No explanation in source.</p><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="btn btn-p btn-sm" data-single="' +
+                      id +
+                      '">Practise</button><button class="btn btn-g btn-sm" data-bm2="' +
+                      id +
+                      '">Remove bookmark</button></div>' +
+                      noteEditor(id) +
+                      "</div>"
+                    );
+                  })
+                  .join("") +
+                "</div>"
+              : '<div class="empty"><b>No bookmarks yet</b>Tap the bookmark icon on any question while practising and it will appear here.</div>');
+        } else if (revTab === "quick") {
+          const pool = qrPool();
+          if (!pool.length) {
+            h +=
+              '<div class="empty"><b>Nothing to flip through yet</b>Quick Revision is built from your wrong answers and bookmarks. Get a question wrong or bookmark one, and it will show up here as a flashcard.</div>';
+          } else {
+            if (qrIdx >= pool.length) qrIdx = pool.length - 1;
+            const q = BYID[pool[qrIdx]];
+            const a = att(q.id);
+            h +=
+              '<p class="small" style="margin-top:12px">Flashcards from your wrong + bookmarked questions. “Need Revision” cards resurface first next time; “Remembered” cards move to the back — your attempt history is never deleted.</p>' +
+              '<div class="flash"><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="tag b">Week ' +
+              q.week +
+              " • Q" +
+              q.number +
+              "</span>" +
+              (a && a.wrong
+                ? '<span class="tag r">' +
+                  a.wrong +
+                  " incorrect attempt" +
+                  (a.wrong === 1 ? "" : "s") +
+                  "</span>"
+                : "") +
+              (isBookmarked(q.id)
+                ? '<span class="tag a">Bookmarked</span>'
+                : "") +
+              '<span class="tag">Card ' +
+              (qrIdx + 1) +
+              " of " +
+              pool.length +
+              "</span></div>" +
+              '<p class="q-text" style="margin-top:12px;font-size:17px">' +
+              esc(q.question) +
+              '</p><div class="opts">' +
+              q.options
+                .map(
+                  (o) =>
+                    '<div class="opt" style="cursor:default"><span class="ltr">' +
+                    o.letter +
+                    "</span><span>" +
+                    esc(o.text) +
+                    "</span></div>",
+                )
+                .join("") +
+              "</div>" +
+              (qrShow
+                ? '<div class="acc-box"><b>Accepted Answer:</b> ' +
+                  esc(q.correct_letter) +
+                  ". " +
+                  esc(q.correct_text) +
+                  '<div class="noexp">No explanation in source.</div></div><div style="display:flex;gap:10px;margin-top:14px"><button class="btn btn-p" id="qrRem" style="flex:1;background:var(--green)">✓ Remembered</button><button class="btn btn-g" id="qrNeed" style="flex:1">↻ Need Revision</button></div>'
+                : '<button class="btn btn-p" id="qrShowBtn" style="width:100%;margin-top:16px">Show Answer</button>') +
+              '<div style="display:flex;gap:8px;margin-top:12px"><button class="btn btn-g btn-sm" id="qrPrev" ' +
+              (qrIdx === 0 ? "disabled" : "") +
+              '>← Previous card</button><button class="btn btn-g btn-sm" id="qrNext" ' +
+              (qrIdx >= pool.length - 1 ? "disabled" : "") +
+              ">Next card →</button></div></div>";
+          }
+        } else {
+          const notedIds = Object.keys(D.notes).filter(
+            (id) =>
+              BYID[id] &&
+              (D.notes[id].concept || D.notes[id].why || D.notes[id].mnemonic),
+          );
+          h +=
+            '<p class="small" style="margin-top:12px">All your personal revision notes in one list. Notes are private to your account on this device.</p>' +
+            (notedIds.length
+              ? '<div class="list">' +
+                notedIds
+                  .map((id) => {
+                    const q = BYID[id];
+                    const n = D.notes[id];
+                    return (
+                      '<div class="item"><span class="tag b">Week ' +
+                      q.week +
+                      " • Q" +
+                      q.number +
+                      '</span><p class="q" style="margin-top:6px">' +
+                      esc(q.question) +
+                      "</p>" +
+                      (n.concept
+                        ? '<p class="small" style="margin-top:6px"><b>Key concept:</b> ' +
+                          esc(n.concept) +
+                          "</p>"
+                        : "") +
+                      (n.why
+                        ? '<p class="small" style="margin-top:3px"><b>Why the accepted answer is correct:</b> ' +
+                          esc(n.why) +
+                          "</p>"
+                        : "") +
+                      (n.mnemonic
+                        ? '<p class="small" style="margin-top:3px"><b>Mnemonic:</b> ' +
+                          esc(n.mnemonic) +
+                          "</p>"
+                        : "") +
+                      '<div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="btn btn-p btn-sm" data-single="' +
+                      id +
+                      '">Practise</button></div>' +
+                      noteEditor(id) +
+                      "</div>"
+                    );
+                  })
+                  .join("") +
+                "</div>"
+              : '<div class="empty"><b>No notes yet</b>While practising, open “My revision note” under any question to save a key concept, your reasoning, or a mnemonic.</div>');
+        }
+        h += "</div>";
+        return h;
+      }
+      function accountHTML() {
+        const a = curAcct();
+        const o = overall();
+        const initial = (a.name || "S").trim().charAt(0).toUpperCase() || "S";
+        const theme =
+          document.documentElement.dataset.theme === "dark" ? "Dark" : "Light";
+        const dte = daysToExam();
+        const row = (ic, label, attrs, val) =>
+          '<button class="prof-row" ' +
+          attrs +
+          '><span class="ic">' +
+          ic +
+          "</span>" +
+          label +
+          (val
+            ? '<span class="val">' + val + "</span>"
+            : '<span class="chev">›</span>') +
+          "</button>";
+        const icP =
+          '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>';
+        const icB =
+          '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12v18l-6-4-6-4z" transform="scale(0.92) translate(1,0)"/></svg>';
+        const icW =
+          '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L1 21h22L12 3z"/><path d="M12 10v5"/></svg>';
+        const icN =
+          '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3h14v18H5z"/><path d="M9 8h6M9 12h6"/></svg>';
+        const icS =
+          '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/></svg>';
+        const icT =
+          '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.5 4.5l2 2M17.5 17.5l2 2M19.5 4.5l-2 2M6.5 17.5l-2 2"/></svg>';
+        const icC =
+          '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>';
+        const icO =
+          '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>';
+        return (
+          '<div class="wrap"><div class="narrow"><div style="text-align:center"><div class="avatar-big">' +
+          esc(initial) +
+          '</div><h2 style="font-size:22px;font-weight:800;margin-top:12px">' +
+          esc(a.name) +
+          '</h2><p class="small">' +
+          esc(a.email) +
+          "</p></div>" +
+          '<div class="stat-grid" style="grid-template-columns:1fr 1fr"><div class="stat"><div class="n">' +
+          o.attempted +
+          '/113</div><div class="l">Questions attempted</div></div><div class="stat"><div class="n">' +
+          o.accuracy +
+          '%</div><div class="l">Accuracy · ' +
+          o.correct +
+          " correct · " +
+          o.wrong +
+          ' incorrect</div></div><div class="stat"><div class="n">' +
+          D.bookmarks.length +
+          '</div><div class="l">Bookmarks</div></div><div class="stat"><div class="n">' +
+          D.sessions.length +
+          '</div><div class="l">Sessions completed</div></div></div>' +
+          '<div class="prof-rows">' +
+          row(icP, "My Progress", 'data-nav="practice"') +
+          row(icB, "Bookmarks", 'data-gorev="bookmarks"') +
+          row(icW, "My Mistakes", 'data-gorev="wrong"') +
+          row(icN, "My Notes", 'data-gorev="notes"') +
+          row(icS, "Search Questions", 'data-nav="search"') +
+          row(icT, "Theme", 'id="themeRow"', theme) +
+          row(
+            '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.7 2.6 4 5.7 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.7-4-9s1.3-6.4 4-9z"/></svg>',
+            "Change Subject",
+            'data-nav="subject"',
+            "Geography & Environment",
+          ) +
+          row(
+            icC,
+            "Exam Date",
+            'id="examRow"',
+            D.examDate
+              ? dte !== null
+                ? dte > 0
+                  ? dte + " days to go"
+                  : dte === 0
+                    ? "Today!"
+                    : "Passed"
+                : ""
+              : "Not set",
+          ) +
+          row(
+            '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg>',
+            "Source &amp; Limits",
+            'data-nav="about"',
+          ) +
+          row(
+            '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h9M19 8h1M4 16h3M13 16h7"/><circle cx="16" cy="8" r="2"/><circle cx="10" cy="16" r="2"/></svg>',
+            "Admin (local preview)",
+            'data-nav="admin"',
+          ) +
+          "</div>" +
+          '<div class="card" style="margin-top:16px"><b>Your exam date</b><p class="small" style="margin-top:4px">' +
+          (D.examDate
+            ? "Exam date set: <b>" +
+              esc(D.examDate) +
+              "</b>" +
+              (dte !== null
+                ? dte > 0
+                  ? " — " + dte + " day" + (dte === 1 ? "" : "s") + " to go."
+                  : dte === 0
+                    ? " — it is today. Good luck!"
+                    : " — this date has passed."
+                : "")
+            : "Optionally set your NPTEL exam date and the app will count down the days and point you at your weakest week.") +
+          '</p><div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><input class="inp" type="date" id="examDate" value="' +
+          esc(D.examDate || "") +
+          '" style="flex:1;min-width:170px"><button class="btn btn-p btn-sm" id="examSave">Save date</button>' +
+          (D.examDate
+            ? '<button class="btn btn-g btn-sm" id="examClear">Clear</button>'
+            : "") +
+          "</div></div>" +
+          '<div class="item" style="margin-top:16px"><b>Device-local account</b><p class="small" style="margin-top:4px">Your account, bookmarks, notes, mistakes and progress live in this browser on this device only, fully separated per account. Passwords are stored <b>hashed, never plain text</b>. There is no server account and no sync to other devices; clearing this browser\'s data deletes everything.</p></div>' +
+          '<div class="prof-rows" style="margin-top:16px"><button class="prof-row danger" id="logoutBtn"><span class="ic">' +
+          icO +
+          "</span>Logout</button></div>" +
+          '<p class="small" style="margin-top:12px;text-align:center">Logging out keeps everything saved on this device. Another student can create their own account here and will see none of your data.</p></div></div>'
+        );
+      }
+      function doSearch(term, weeksFilter, statusFilter) {
+        const t = (term || "").trim().toLowerCase();
+        if (!t) return BANK.slice();
+        return BANK.filter((q) => {
+          if (weeksFilter && q.week !== +weeksFilter) return false;
+          const hay = (
+            q.question +
+            " " +
+            q.options.map((o) => o.text).join(" ") +
+            " week " +
+            q.week +
+            " geography environment"
+          ).toLowerCase();
+          const hit = t.split(/\s+/).every((w) => hay.includes(w));
+          if (!hit) return false;
+          if (statusFilter === "attempted") return !!att(q.id);
+          if (statusFilter === "unattempted") return !att(q.id);
+          if (statusFilter === "correct")
+            return att(q.id) && att(q.id).last === "correct";
+          if (statusFilter === "incorrect")
+            return att(q.id) && att(q.id).last === "incorrect";
+          if (statusFilter === "bookmarked") return isBookmarked(q.id);
+          return true;
+        });
+      }
+      function searchHTML(term, wf, sf) {
+        term = term || "";
+        let res = term ? doSearch(term, wf, sf) : null;
+        if (term && res) {
+          S.searches.push({
+            term: term,
+            results: res.length,
+            at: new Date().toISOString(),
+          });
+          if (S.searches.length > 100) S.searches = S.searches.slice(-100);
+          save();
+        }
+        let wkOpts = '<option value="">All Weeks</option>';
+        for (let w = 1; w <= 12; w++)
+          wkOpts +=
+            '<option value="' +
+            w +
+            '"' +
+            (wf == w ? " selected" : "") +
+            ">Week " +
+            w +
+            "</option>";
+        const typeOpts = [
+          ["", "All Types"],
+          ["attempted", "Attempted"],
+          ["unattempted", "Not attempted"],
+          ["incorrect", "Incorrect before"],
+          ["bookmarked", "Bookmarked"],
+        ]
+          .map(
+            (t) =>
+              '<option value="' +
+              t[0] +
+              '"' +
+              (sf === t[0] ? " selected" : "") +
+              ">" +
+              t[1] +
+              "</option>",
+          )
+          .join("");
+        const cards = res
+          ? res
+              .map((q) => {
+                const a = att(q.id);
+                return (
+                  '<div class="item"><div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><span class="tag b">Week ' +
+                  q.week +
+                  " • Q" +
+                  q.number +
+                  "</span>" +
+                  (a
+                    ? '<span class="tag ' +
+                      (a.last === "correct" ? "g" : "r") +
+                      '">' +
+                      (a.last === "correct"
+                        ? "✓ Attempted — correct"
+                        : "Attempted — incorrect") +
+                      "</span>"
+                    : '<span class="tag">Not attempted</span>') +
+                  '<span style="flex:1"></span><button class="bm-btn" data-bm2="' +
+                  q.id +
+                  '" aria-label="Toggle bookmark" style="width:36px;height:36px"><svg viewBox="0 0 24 24" width="19" height="19"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z" class="bmp" data-on="' +
+                  (isBookmarked(q.id) ? 1 : 0) +
+                  '"/></svg></button></div><p class="q" style="margin-top:6px">' +
+                  esc(q.question) +
+                  '</p><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="btn btn-p btn-sm" data-single="' +
+                  q.id +
+                  '">Practise this question</button></div></div>'
+                );
+              })
+              .join("")
+          : "";
+        return (
+          '<div class="wrap"><p class="crumb">Practice › <b>Search</b></p><h2 style="font-size:24px;font-weight:800">Search Questions</h2>' +
+          '<form class="searchbox" id="sForm" role="search" style="max-width:640px"><span style="display:flex;align-items:center;padding-left:8px;color:var(--muted)"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/></svg></span><input id="sInput" type="search" value="' +
+          esc(term) +
+          '" placeholder="Search questions… e.g. migration, LiDAR, volcano" aria-label="Search questions">' +
+          (term
+            ? '<button type="button" class="clear-btn" id="sClear" aria-label="Clear search">✕</button>'
+            : "") +
+          '<button class="btn btn-p btn-sm" type="submit">Search</button></form>' +
+          '<div class="filters"><select id="sWeek" aria-label="Filter by week">' +
+          wkOpts +
+          '</select><select id="sType" aria-label="Filter by type">' +
+          typeOpts +
+          "</select></div>" +
+          (res === null
+            ? '<div class="empty" style="max-width:640px"><b>Search all 113 questions</b>Search matches question text and option text, week by week.</div>'
+            : res.length
+              ? '<p class="small" style="margin-top:14px"><b>' +
+                res.length +
+                " result" +
+                (res.length === 1 ? "" : "s") +
+                " found</b> for “" +
+                esc(term) +
+                '”</p><div class="list" style="max-width:640px">' +
+                cards +
+                "</div>"
+              : '<div class="empty" style="max-width:640px"><b>0 results found for “' +
+                esc(term) +
+                "”</b>Check the spelling, try fewer words, or browse by week instead. This search was logged locally (Admin preview) so missing content can be spotted.</div>") +
+          "</div>"
+        );
+      }
+      function importantHTML() {
+        const repeat = BANK.filter((q) => {
+          const a = att(q.id);
+          return a && a.wrong >= 2;
+        });
+        const weakWeeks = [];
+        for (let w = 1; w <= 12; w++) {
+          let t = 0,
+            c = 0;
+          weekQs(w).forEach((q) => {
+            const a = att(q.id);
+            if (a) {
+              t += a.total;
+              c += a.correct;
+            }
+          });
+          if (t >= 3 && c / t < 0.6) weakWeeks.push(w);
+        }
+        const weakQs = BANK.filter(
+          (q) =>
+            weakWeeks.includes(q.week) && !(att(q.id) && att(q.id).wrong >= 2),
+        );
+        const bm = BANK.filter((q) => isBookmarked(q.id));
+        const sec = (title, desc, qs, tag) =>
+          '<section class="sec"><h2>' +
+          title +
+          '</h2><p class="hint">' +
+          desc +
+          "</p>" +
+          (qs.length
+            ? '<div class="list">' +
+              qs
+                .map(
+                  (q) =>
+                    '<div class="item"><span class="tag b">' +
+                    tag +
+                    '</span> <span class="tag b">Week ' +
+                    q.week +
+                    " · Q" +
+                    q.number +
+                    '</span><p class="q" style="margin-top:6px">' +
+                    esc(q.question) +
+                    '</p><p class="small" style="margin-top:4px">Accepted answer from source: <b>' +
+                    esc(q.correct_text) +
+                    '</b></p><button class="btn btn-g btn-sm" data-single="' +
+                    q.id +
+                    '" style="margin-top:8px">Practise</button></div>',
+                )
+                .join("") +
+              '</div><button class="btn btn-p btn-sm" data-batch="' +
+              qs.map((q) => q.id).join(",") +
+              '" style="margin-top:12px">Practise all ' +
+              qs.length +
+              " together</button>"
+            : '<div class="empty"><b>Nothing here yet</b>This section fills from your own attempts and bookmarks — it is never pre-filled or faked.</div>') +
+          "</section>";
+        return (
+          '<div class="wrap"><p class="crumb">Home › <b>Important Questions</b></p><h2 style="font-size:24px;font-weight:800">Important — for you</h2><p class="small" style="margin-top:4px">Chosen transparently from <b>your</b> data only. “Important” here means worth revising — it is <b>not</b> a claim that any question is guaranteed to appear in the exam.</p>' +
+          sec(
+            "Personal weak area — repeatedly incorrect",
+            "Questions you have answered wrong 2 or more times.",
+            repeat,
+            "Personal weak-area",
+          ) +
+          sec(
+            "Weak weeks (below 60%)",
+            "Weeks where your accuracy is under 60% across 3+ attempts: " +
+              (weakWeeks.length
+                ? weakWeeks.map((w) => "Week " + w).join(", ")
+                : "none yet") +
+              ".",
+            weakQs,
+            "Weak week",
+          ) +
+          sec(
+            "Bookmarked by you",
+            "Questions you chose to save.",
+            bm,
+            "Bookmarked",
+          ) +
+          "</div>"
+        );
+      }
+      function aboutHTML() {
+        let rows = "";
+        for (let w = 1; w <= 12; w++) {
+          const n = weekQs(w).length;
+          rows +=
+            "<tr><td><b>Week " +
+            w +
+            "</b></td><td>" +
+            esc(WEEK_TITLES[w]) +
+            "</td><td>" +
+            n +
+            "</td><td>" +
+            (MISSING[w] ? "Q" + MISSING[w].join(", Q") : "—") +
+            "</td></tr>";
+        }
+        return (
+          '<div class="wrap"><p class="crumb">Home › <b>Source &amp; Limits</b></p><h2 style="font-size:24px;font-weight:800">Source &amp; Limits — Honesty &amp; QA</h2><div class="list">' +
+          '<div class="item"><b>Source file</b><p class="small" style="margin-top:4px">Geography_Environment_Weeks_1-12_Updated_Accepted_Answers.pdf — the supplied NPTEL assignment export for <b>Geography &amp; Environment</b>. Total: <b>113 questions</b>, each with exactly 4 options (A–D). Spot-checks: Week 1 Q1 → “migration” · Week 5 Q9 → “0-1 degree” · Week 12 Q2 → “1500 m”.</p></div>' +
+          '<div class="item"><b>Answer provenance</b><p class="small" style="margin-top:4px">Every answer shown is the <b>accepted answer from source</b>, recorded in the export as both a marked option and a “Correct Answer:” line. No answer has been generated, replaced or silently corrected.</p></div>' +
+          '<div class="item"><b>How answers were verified</b><p class="small" style="margin-top:4px">Every accepted answer was double-checked: the source records it twice (marked option + “Correct Answer:” line) and <b>all 113 agree</b> — an automated comparison found 0 mismatches. A sample was also cross-checked against independent NPTEL course materials with no conflicts. NPTEL does not publish a public answer key for this course (keys live inside the enrolled course), so the supplied quiz export is the authoritative source. No answer in this app has been “corrected” or regenerated.</p></div>' +
+          '<div class="item"><b>Explanations</b><p class="small" style="margin-top:4px">The source contains <b>no explanations</b> for any of the 113 questions. The app therefore shows “No explanation in source” everywhere rather than inventing one. Your own notes are yours — they are labelled as personal notes, never as verified explanations.</p></div>' +
+          '<div class="item"><b>Persistence &amp; privacy</b><p class="small" style="margin-top:4px">Progress, bookmarks, notes, mistakes, searches and reports are stored in <b>browser local storage on this device only</b>. There is no server, no account and no tracking. Clearing browser data deletes them.</p></div>' +
+          '<div class="item"><b>Mock exam</b><p class="small" style="margin-top:4px">The mock is a <b>practice tool</b> built from assignment questions. It does not reproduce or guarantee the official NPTEL examination format.</p></div>' +
+          '<div class="item"><b>Content rights</b><p class="small" style="margin-top:4px">Question text comes from the supplied NPTEL assignment export and is provided here for <b>personal revision use</b>. Open-source code does not by itself grant rights to redistribute third-party course content.</p></div>' +
+          '<div class="item"><b>Per-week counts &amp; missing question numbers</b><div style="overflow-x:auto"><table><thead><tr><th>Week</th><th>Theme</th><th>In source</th><th>Missing numbers</th></tr></thead><tbody>' +
+          rows +
+          '</tbody></table></div><p class="small" style="margin-top:8px">Total: 113. The missing question numbers (Week 6 Q10; Week 7 Q1 &amp; Q9; Week 9 Q1; Week 10 Q1; Week 11 Q1 &amp; Q5) are absent from the supplied PDF itself — they were never in the export, and they have not been invented here.</p></div>' +
+          '<div class="item"><b>Project structure &amp; code maintenance</b><p class="small" style="margin-top:4px">The code is kept clean and organised so anyone can review or maintain it. In the <a href="https://github.com/Thunderdoc/nptel-exam-practice-hub" target="_blank" rel="noopener"><b>GitHub repository</b></a> it lives in a proper split layout:</p><p class="small" style="margin-top:6px"><b>index.html</b> — app markup only · <b>assets/css/style.css</b> — the full design system · <b>assets/js/app.js</b> — app logic, organised in labelled sections (question bank, state &amp; accounts, session engine, learn, views, router) · <b>data/questions.json</b> — the 113-question bank, one entry per question so every change is a small, reviewable diff · <b>docs/VERIFICATION.md</b> — the answer-verification report · <b>README.md</b> — setup, structure and deployment notes.</p><p class="small" style="margin-top:6px">The code is consistently formatted, dead code is removed, and data changes are never mixed with design changes. This page runs the single-file build of the same code.</p></div>' +
+          '<div class="item"><b>Built by</b><p class="small" style="margin-top:4px">Built by <a href="https://github.com/Thunderdoc" target="_blank" rel="noopener"><b>Thunderdoc</b></a> — for NPTEL students preparing for their exam.</p></div>' +
+          "</div></div>"
+        );
+      }
+      function allIssues() {
+        const out = (S.issues || []).map((i) => ({
+          qid: i.qid,
+          type: i.type || "—",
+          text: i.text || "",
+          at: i.at,
+          by: "(earlier version)",
+        }));
+        Object.values(S.accounts || {}).forEach((a) => {
+          ((a.data && a.data.issues) || []).forEach((i) =>
+            out.push({
+              qid: i.qid,
+              type: i.type || "—",
+              text: i.text || "",
+              at: i.at,
+              by: a.email,
+            }),
+          );
+        });
+        return out.sort((x, y) => new Date(y.at) - new Date(x.at));
+      }
+      function adminHTML() {
+        const accts = Object.values(S.accounts || {});
+        const agg = {};
+        accts.forEach((a) => {
+          Object.entries((a.data && a.data.attempts) || {}).forEach(
+            ([id, x]) => {
+              const t = agg[id] || (agg[id] = { total: 0, correct: 0 });
+              t.total += x.total;
+              t.correct += x.correct;
+            },
+          );
+        });
+        const totSess = accts.reduce(
+          (n, a) => n + ((a.data && a.data.sessions) || []).length,
+          0,
+        );
+        const wkAgg = [];
+        for (let w = 1; w <= 12; w++) {
+          let t = 0;
+          weekQs(w).forEach((q) => {
+            if (agg[q.id]) t += agg[q.id].total;
+          });
+          wkAgg.push({ w: w, t: t });
+        }
+        wkAgg.sort((a, b) => b.t - a.t);
+        const topQ = Object.entries(agg)
+          .sort((a, b) => b[1].total - a[1].total)
+          .slice(0, 5);
+        const issues = allIssues();
+        const searches = S.searches.slice().reverse();
+        const termCounts = {};
+        S.searches.forEach((s) => {
+          const k = s.term.toLowerCase();
+          termCounts[k] = (termCounts[k] || 0) + 1;
+        });
+        const topTerms = Object.entries(termCounts)
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 10);
+        const noRes = S.searches.filter((s) => s.results === 0);
+        let rows = "";
+        for (let w = 1; w <= 12; w++)
+          rows +=
+            "<tr><td>Week " +
+            w +
+            "</td><td>" +
+            weekQs(w).length +
+            "</td><td>" +
+            (MISSING[w] ? "Q" + MISSING[w].join(", Q") : "—") +
+            "</td></tr>";
+        const bankRows = BANK.map(
+          (q) =>
+            "<tr><td>W" +
+            q.week +
+            " · Q" +
+            q.number +
+            "</td><td>" +
+            esc(q.question.slice(0, 90)) +
+            (q.question.length > 90 ? "…" : "") +
+            "</td><td>" +
+            esc(q.correct_letter) +
+            ". " +
+            esc(q.correct_text) +
+            '</td><td><span class="tag g">Accepted answer from source</span></td></tr>',
+        ).join("");
+        return (
+          '<div class="wrap"><p class="crumb">Account › <b>Admin preview</b></p><h2 style="font-size:24px;font-weight:800">Admin — Local Preview</h2><div class="item" style="border-color:var(--amber);background:var(--amber-bg);margin-top:12px"><b>Local / device admin preview — not server-secured.</b><p class="small" style="margin-top:4px">This page aggregates only this browser\'s local data (all accounts on this device). It is not protected by a server login. No users, DAU or platform-wide stats are fabricated — there is no server collecting them. Reports never change an answer automatically.</p></div>' +
+          '<div class="stat-grid"><div class="stat"><div class="n">' +
+          accts.length +
+          '</div><div class="l">Local accounts (this device)</div></div><div class="stat"><div class="n">113</div><div class="l">Questions in bank</div></div><div class="stat"><div class="n">' +
+          totSess +
+          '</div><div class="l">Sessions completed (all accounts)</div></div><div class="stat"><div class="n">' +
+          issues.length +
+          '</div><div class="l">Reported issues</div></div></div>' +
+          '<section class="sec"><h2>Usage on this device</h2><div class="list"><div class="item"><b>Most-used weeks:</b> ' +
+          (wkAgg.filter((x) => x.t > 0).length
+            ? wkAgg
+                .filter((x) => x.t > 0)
+                .slice(0, 3)
+                .map((x) => "Week " + x.w + " (" + x.t + " attempts)")
+                .join(" · ")
+            : "No attempts yet.") +
+          '</div><div class="item"><b>Most-attempted questions:</b> ' +
+          (topQ.length
+            ? topQ
+                .map(([id, t]) => {
+                  const q = BYID[id];
+                  return (
+                    "W" +
+                    q.week +
+                    " Q" +
+                    q.number +
+                    " (" +
+                    t.total +
+                    " attempts, " +
+                    t.correct +
+                    " correct)"
+                  );
+                })
+                .join(" · ")
+            : "No attempts yet.") +
+          '</div><div class="item">Missing explanations: <b>113 / 113</b> — the source contains no explanations. Questions with missing options or missing accepted answers: <b>0</b>.</div></div></section>' +
+          '<section class="sec"><h2>Reported issues</h2>' +
+          (issues.length
+            ? '<div class="list">' +
+              issues
+                .map((i) => {
+                  const q = BYID[i.qid];
+                  return (
+                    '<div class="item"><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="tag a">Week ' +
+                    (q ? q.week : "?") +
+                    " · Q" +
+                    (q ? q.number : "?") +
+                    '</span><span class="tag b">' +
+                    esc(i.type) +
+                    '</span></div><p style="margin-top:6px">' +
+                    (i.text
+                      ? esc(i.text)
+                      : '<span class="small">(no comment)</span>') +
+                    '</p><p class="small">' +
+                    fmtDate(i.at) +
+                    " · reported by " +
+                    esc(i.by || "") +
+                    "</p></div>"
+                  );
+                })
+                .join("") +
+              "</div>"
+            : '<div class="empty"><b>No reported issues</b>Reports made via “Report an issue” on a question appear here with their type.</div>') +
+          "</section>" +
+          '<section class="sec"><h2>Per-week bank</h2><div class="item" style="overflow-x:auto"><table><thead><tr><th>Week</th><th>Questions</th><th>Missing numbers</th></tr></thead><tbody>' +
+          rows +
+          "</tbody></table></div></section>" +
+          '<section class="sec"><h2>Search Insights (this device only)</h2><div class="list"><div class="item"><b>Top search terms:</b> ' +
+          (topTerms.length
+            ? topTerms.map((t) => esc(t[0]) + " ×" + t[1]).join(" · ")
+            : "No searches yet.") +
+          '</div><div class="item"><b>Searches with no results (' +
+          noRes.length +
+          "):</b> " +
+          (noRes.length
+            ? noRes
+                .slice(-10)
+                .map((s) => '"' + esc(s.term) + "”")
+                .join(" · ")
+            : "None.") +
+          '</div><div class="item"><b>Recent searches:</b> ' +
+          (searches.length
+            ? searches
+                .slice(0, 10)
+                .map((s) => '"' + esc(s.term) + '" — ' + s.results + " results")
+                .join(" · ")
+            : "None yet.") +
+          "</div></div></section>" +
+          '<section class="sec"><h2>Question bank (113)</h2><p class="hint">Verification status for every question: Accepted answer from source.</p><div class="item" style="overflow-x:auto"><table><thead><tr><th>ID</th><th>Question</th><th>Accepted answer</th><th>Status</th></tr></thead><tbody>' +
+          bankRows +
+          "</tbody></table></div></section></div>"
+        );
+      }
+      /* ==================================================================
+         SECTION JS-8 · ROUTER & CHROME — navigation, header, bottom nav.
+         ================================================================== */
+      let curView = "home",
+        searchState = { term: "", wf: "", sf: "" },
+        mistState = { wf: "", rep: false };
+      let revTab = "wrong",
+        qrIdx = 0,
+        qrShow = false;
+      function go(view) {
+        curView = view;
+        stopTimer();
+        if (SES) {
+          SES = null;
+        }
+        pbar.classList.remove("on");
+        render();
+      }
+      function bindNav() {
+        document.querySelectorAll("[data-nav]").forEach(
+          (b) =>
+            (b.onclick = () => {
+              const tn = document.getElementById("topNav");
+              if (tn) tn.classList.remove("open");
+              go(b.dataset.nav);
+            }),
+        );
+        document.querySelectorAll("[data-goto]").forEach(
+          (b) =>
+            (b.onclick = () => {
+              const g = b.dataset.goto;
+              if (g === "allq") {
+                startSession({
+                  mode: "all",
+                  title: "All Questions Practice",
+                  qids: BANK.map((q) => q.id),
+                  shuffleOpts: false,
+                });
+              } else if (g === "revision") {
+                revTab = b.dataset.gotab || "wrong";
+                qrIdx = 0;
+                qrShow = false;
+                go("revision");
+              } else go(g);
+            }),
+        );
+        document.querySelectorAll("[data-gorev]").forEach(
+          (b) =>
+            (b.onclick = () => {
+              revTab = b.dataset.gorev;
+              qrIdx = 0;
+              qrShow = false;
+              go("revision");
+            }),
+        );
+        document.querySelectorAll("[data-revtab]").forEach(
+          (b) =>
+            (b.onclick = () => {
+              revTab = b.dataset.revtab;
+              qrIdx = 0;
+              qrShow = false;
+              render();
+            }),
+        );
+        document.querySelectorAll("[data-savenote]").forEach(
+          (b) =>
+            (b.onclick = () => {
+              const id = b.dataset.savenote;
+              const g = (a) => {
+                const e = document.querySelector(
+                  "[data-" + a + '="' + id + '"]',
+                );
+                return e ? e.value.trim() : "";
+              };
+              const note = {
+                concept: g("nc"),
+                why: g("nw"),
+                mnemonic: g("nm"),
+              };
+              if (!note.concept && !note.why && !note.mnemonic) {
+                toast("Write something in the note first");
+                return;
+              }
+              D.notes[id] = note;
+              save();
+              render();
+              toast("Note saved on this device");
+            }),
+        );
+        document.querySelectorAll("[data-delnote]").forEach(
+          (b) =>
+            (b.onclick = () => {
+              delete D.notes[b.dataset.delnote];
+              save();
+              render();
+              toast("Note deleted");
+            }),
+        );
+        document.querySelectorAll("[data-week]").forEach(
+          (b) =>
+            (b.onclick = () => {
+              const w = +b.dataset.week;
+              startSession({
+                mode: "weektest",
+                title: "Week " + w + " Test",
+                qids: weekQs(w).map((q) => q.id),
+                shuffleOpts: false,
+                submitAll: true,
+              });
+            }),
+        );
+        document.querySelectorAll("[data-weekpractice]").forEach(
+          (b) =>
+            (b.onclick = () => {
+              const w = +b.dataset.weekpractice;
+              startSession({
+                mode: "week",
+                title: "Week " + w + " practice (check each answer)",
+                qids: weekQs(w).map((q) => q.id),
+                shuffleOpts: false,
+              });
+            }),
+        );
+        document.querySelectorAll("[data-weekun]").forEach(
+          (b) =>
+            (b.onclick = () => {
+              const w = +b.dataset.weekun;
+              const ids = weekQs(w)
+                .filter((q) => !att(q.id))
+                .map((q) => q.id);
+              startSession({
+                mode: "week-unattempted",
+                title: "Week " + w + " — unattempted only",
+                qids: ids,
+                shuffleOpts: false,
+              });
+            }),
+        );
+        document.querySelectorAll("[data-weekwrong]").forEach(
+          (b) =>
+            (b.onclick = () => {
+              const w = +b.dataset.weekwrong;
+              const ids = weekQs(w)
+                .filter((q) => {
+                  const a = att(q.id);
+                  return a && a.last === "incorrect";
+                })
+                .map((q) => q.id);
+              startSession({
+                mode: "week-incorrect",
+                title: "Week " + w + " — revise incorrect",
+                qids: ids,
+                shuffleOpts: false,
+              });
+            }),
+        );
+        document.querySelectorAll("[data-single]").forEach(
+          (b) =>
+            (b.onclick = () =>
+              startSession({
+                mode: "single",
+                title: "Single question practice",
+                qids: [b.dataset.single],
+                shuffleOpts: false,
+              })),
+        );
+        document.querySelectorAll("[data-bm2]").forEach(
+          (b) =>
+            (b.onclick = () => {
+              toggleBookmark(b.dataset.bm2);
+              render();
+            }),
+        );
+        document.querySelectorAll("[data-batch]").forEach(
+          (b) =>
+            (b.onclick = () =>
+              startSession({
+                mode: "important",
+                title: "Important questions practice",
+                qids: b.dataset.batch.split(",").filter(Boolean),
+                shuffleOpts: true,
+              })),
+        );
+        document
+          .querySelectorAll(".bnav button")
+          .forEach((b) =>
+            b.classList.toggle(
+              "on",
+              b.dataset.nav === (curView === "lesson" ? "learn" : curView),
+            ),
+          );
+      }
+      function renderChrome() {
+        const li = isLoggedIn();
+        const tn = document.getElementById("topNav");
+        if (tn)
+          tn.innerHTML = li
+            ? '<button data-nav="practice">Home</button><button data-nav="weeks">Practice</button><button data-nav="learn">Learn</button><button data-nav="revision">Revision</button><button data-nav="search">Search</button>'
+            : '<button data-nav="about">Source &amp; Limits</button><button data-nav="login">Log In</button><button data-nav="signup">Sign Up</button>';
+        const bn = document.getElementById("bnav");
+        if (bn) {
+          bn.style.display = li ? "flex" : "none";
+          bn.innerHTML =
+            '<button data-nav="practice"><span class="ic"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5"/><path d="M5.5 9.2V20h13V9.2"/></svg></span>Home</button><button data-nav="learn"><span class="ic"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span>Learn</button><button data-nav="weeks"><span class="ic"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span>Practice</button><button data-nav="revision"><span class="ic"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg></span>Revision</button><button data-nav="search"><span class="ic"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/></svg></span>Search</button>';
+        }
+        const av = document.getElementById("avatarBtn");
+        if (av) {
+          av.style.display = li ? "flex" : "none";
+          av.textContent = li
+            ? (curAcct().name || "S").trim().charAt(0).toUpperCase()
+            : "";
+          av.onclick = () => go("account");
+        }
+        const ham = document.getElementById("hamBtn");
+        if (ham)
+          ham.onclick = () => {
+            if (tn) tn.classList.toggle("open");
+          };
+        const ff = document.getElementById("footFull"),
+          fs = document.getElementById("footSlim"),
+          ft = document.getElementById("appFooter");
+        if (ff && fs && ft) {
+          if (!isLoggedIn()) {
+            ff.style.display = "";
+            fs.style.display = "none";
+            ft.style.display = "";
+          } else if (curView === "practice" || curView === "account") {
+            ff.style.display = "none";
+            fs.style.display = "";
+            ft.style.display = "";
+          } else {
+            ft.style.display = "none";
+          }
+        }
+      }
+      function render() {
+        pbar.classList.remove("on");
+        const li = isLoggedIn();
+        if (curView === "home" || curView === "dashboard")
+          curView = li ? "practice" : "welcome";
+        if (
+          curView === "mistakes" ||
+          curView === "bookmarks" ||
+          curView === "important"
+        )
+          curView = li ? "revision" : "welcome";
+        if (
+          !li &&
+          !["welcome", "login", "signup", "forgot", "about", "admin"].includes(
+            curView,
+          )
+        )
+          curView = "welcome";
+        if (li && ["welcome", "login", "signup", "forgot"].includes(curView))
+          curView = D.subject ? "practice" : "subject";
+        if (
+          li &&
+          !D.subject &&
+          !["subject", "about", "admin", "account"].includes(curView)
+        )
+          curView = "subject";
+        renderChrome();
+        if (curView === "welcome") app.innerHTML = welcomeHTML();
+        else if (curView === "login") app.innerHTML = loginHTML();
+        else if (curView === "signup") app.innerHTML = signupHTML();
+        else if (curView === "forgot") app.innerHTML = forgotHTML();
+        else if (curView === "subject") app.innerHTML = subjectHTML();
+        else if (curView === "learn") app.innerHTML = learnHTML();
+        else if (curView === "lesson") app.innerHTML = lessonHTML();
+        else if (curView === "practice") app.innerHTML = practiceHTML();
+        else if (curView === "weeks") app.innerHTML = weeksHTML();
+        else if (curView === "revision") app.innerHTML = revisionHTML();
+        else if (curView === "search")
+          app.innerHTML = searchHTML(
+            searchState.term,
+            searchState.wf,
+            searchState.sf,
+          );
+        else if (curView === "account") app.innerHTML = accountHTML();
+        else if (curView === "about") app.innerHTML = aboutHTML();
+        else if (curView === "admin") app.innerHTML = adminHTML();
+        else if (curView === "setup-random")
+          app.innerHTML = setupHTML("random");
+        else if (curView === "setup-mock") app.innerHTML = setupHTML("mock");
+        bindNav();
+        wireView();
+        wireLearn();
+        window.scrollTo({ top: 0 });
+      }
+      function wireView() {
+        document.querySelectorAll(".eye").forEach((b) =>
+          b.addEventListener("click", () => {
+            const inp = document.getElementById(b.dataset.eye);
+            if (inp) inp.type = inp.type === "password" ? "text" : "password";
+          }),
+        );
+        const suF = document.getElementById("suForm");
+        if (suF)
+          suF.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const err = document.getElementById("authErr");
+            const name = document.getElementById("suName").value.trim();
+            const email = document
+              .getElementById("suEmail")
+              .value.trim()
+              .toLowerCase();
+            const pw = document.getElementById("suPw").value;
+            const pw2 = document.getElementById("suPw2").value;
+            if (!name) {
+              err.textContent = "Please enter your name.";
+              return;
+            }
+            if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+              err.textContent = "Please enter a valid email address.";
+              return;
+            }
+            if (pw.length < 6) {
+              err.textContent = "Password must be at least 6 characters.";
+              return;
+            }
+            if (pw !== pw2) {
+              err.textContent = "Passwords do not match.";
+              return;
+            }
+            if (S.accounts[email]) {
+              err.textContent =
+                "An account with this email already exists on this device — try Log In instead.";
+              return;
+            }
+            const salt = newSalt();
+            const hash = await hashPw(pw, salt);
+            const hadLegacy = !!S.legacy;
+            S.accounts[email] = {
+              name: name,
+              email: email,
+              salt: salt,
+              hash: hash,
+              createdAt: new Date().toISOString(),
+              data: hadLegacy
+                ? Object.assign(blankData(), S.legacy, { subject: "geo-env" })
+                : blankData(),
+            };
+            if (hadLegacy) S.legacy = null;
+            S.current = email;
+            setD(S.accounts[email]);
+            save();
+            curView = "subject";
+            render();
+            toast(
+              hadLegacy
+                ? "Welcome, " +
+                    name +
+                    " — your earlier progress on this device was attached to this account"
+                : "Welcome, " + name + " — account created on this device",
+            );
+          });
+        const liF = document.getElementById("liForm");
+        if (liF)
+          liF.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const err = document.getElementById("authErr");
+            const email = document
+              .getElementById("liEmail")
+              .value.trim()
+              .toLowerCase();
+            const pw = document.getElementById("liPw").value;
+            const a = S.accounts[email];
+            if (!a) {
+              err.textContent =
+                "No account with that email exists on this device. Sign up first — or check the email spelling.";
+              return;
+            }
+            const hash = await hashPw(pw, a.salt);
+            if (hash !== a.hash) {
+              err.textContent = "Incorrect password for this device account.";
+              return;
+            }
+            S.current = email;
+            setD(a);
+            if (D.themePref) {
+              S.theme = D.themePref;
+              applyTheme();
+            }
+            save();
+            curView = D.subject ? "practice" : "subject";
+            render();
+            toast("Welcome back, " + a.name);
+          });
+        const fpF = document.getElementById("fpForm");
+        if (fpF)
+          fpF.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const err = document.getElementById("authErr");
+            const email = document
+              .getElementById("fpEmail")
+              .value.trim()
+              .toLowerCase();
+            const pw = document.getElementById("fpPw").value;
+            const pw2 = document.getElementById("fpPw2").value;
+            const a = S.accounts[email];
+            if (!a) {
+              err.textContent =
+                "No account with that email exists on this device.";
+              return;
+            }
+            if (pw.length < 6) {
+              err.textContent = "New password must be at least 6 characters.";
+              return;
+            }
+            if (pw !== pw2) {
+              err.textContent = "Passwords do not match.";
+              return;
+            }
+            a.salt = newSalt();
+            a.hash = await hashPw(pw, a.salt);
+            save();
+            curView = "login";
+            render();
+            toast(
+              "Password updated on this device — log in with your new password",
+            );
+          });
+        const lo = document.getElementById("logoutBtn");
+        if (lo)
+          lo.addEventListener("click", () => {
+            S.current = null;
+            D = blankData();
+            save();
+            curView = "welcome";
+            render();
+            toast("Logged out — your data stays saved on this device");
+          });
+        const sg = document.getElementById("subjGo");
+        if (sg)
+          sg.addEventListener("click", () => {
+            D.subject = "geo-env";
+            save();
+            curView = "practice";
+            render();
+            toast("Subject selected: Geography & Environment");
+          });
+        const tr = document.getElementById("themeRow");
+        if (tr)
+          tr.addEventListener("click", () => {
+            document.getElementById("themeBtn").click();
+            render();
+          });
+        const er = document.getElementById("examRow");
+        if (er)
+          er.addEventListener("click", () => {
+            const d = document.getElementById("examDate");
+            if (d) {
+              d.scrollIntoView({ behavior: "smooth", block: "center" });
+              d.focus();
+            }
+          });
+        const es = document.getElementById("examSave");
+        if (es)
+          es.addEventListener("click", () => {
+            const v = document.getElementById("examDate").value;
+            D.examDate = v || null;
+            save();
+            render();
+            toast(
+              v
+                ? "Exam date saved — the countdown is on your Practice home"
+                : "Exam date cleared",
+            );
+          });
+        const ec = document.getElementById("examClear");
+        if (ec)
+          ec.addEventListener("click", () => {
+            D.examDate = null;
+            save();
+            render();
+            toast("Exam date cleared");
+          });
+        const pr = document.getElementById("pResume");
+        if (pr)
+          pr.addEventListener("click", () => {
+            const s = D.activeSes;
+            if (!s || !s.qids) return;
+            SES = {
+              mode: s.mode,
+              title: s.title,
+              qids: s.qids,
+              optOrder: s.optOrder || {},
+              answers: s.answers || {},
+              checked: s.checked || {},
+              recorded: s.recorded || {},
+              marked: s.marked || {},
+              idx: s.idx || 0,
+              start: s.start || Date.now(),
+              isMock: !!s.isMock,
+              submitAll: !!s.submitAll,
+              remain: null,
+              durationMin: s.durationMin || null,
+              poolNote: s.poolNote || "",
+              endAt: s.endAt || null,
+            };
+            SES.qids.forEach((id) => {
+              if (!SES.optOrder[id])
+                SES.optOrder[id] = BYID[id].options.map((o) => o.letter);
+            });
+            if (SES.isMock && SES.endAt) {
+              SES.remain = Math.max(
+                0,
+                Math.round((SES.endAt - Date.now()) / 1000),
+              );
+              if (SES.remain <= 0) {
+                renderPractice();
+                toast("Time ran out while you were away — mock submitted");
+                finishSession(true);
+                return;
+              }
+              stopTimer();
+              timerId = setInterval(() => {
+                SES.remain = Math.max(
+                  0,
+                  Math.round((SES.endAt - Date.now()) / 1000),
+                );
+                renderMockTop();
+                if (SES.remain <= 0) {
+                  stopTimer();
+                  toast("Time's up — mock submitted automatically");
+                  finishSession(true);
+                }
+              }, 1000);
+            }
+            renderPractice();
+            toast("Session resumed — your answers are as you left them");
+          });
+        const pd = document.getElementById("pDiscard");
+        if (pd)
+          pd.addEventListener("click", () =>
+            confirmDlg(
+              "Discard this unfinished session? The answers in it will be lost.",
+              () => {
+                D.activeSes = null;
+                save();
+                render();
+                toast("Session discarded");
+              },
+            ),
+          );
+        const pwk = document.getElementById("pWeakRev");
+        if (pwk)
+          pwk.addEventListener("click", () => {
+            const weak = weakestWeek();
+            if (!weak) {
+              curView = "weeks";
+              render();
+              return;
+            }
+            const ids = weekQs(weak.w)
+              .filter((q) => {
+                const a = att(q.id);
+                return a && a.last === "incorrect";
+              })
+              .map((q) => q.id);
+            if (ids.length)
+              startSession({
+                mode: "week-incorrect",
+                title: "Week " + weak.w + " — revise incorrect",
+                qids: ids,
+                shuffleOpts: false,
+              });
+            else {
+              curView = "weeks";
+              render();
+            }
+          });
+        const wb = document.getElementById("weakBtn");
+        if (wb)
+          wb.addEventListener("click", () => {
+            const ids = BANK.filter((q) => {
+              const a = att(q.id);
+              return a && a.last === "incorrect";
+            })
+              .sort((x, y) => att(y.id).wrong - att(x.id).wrong)
+              .map((q) => q.id);
+            startSession({
+              mode: "weak",
+              title: "Weak Questions Practice",
+              qids: ids,
+              shuffleOpts: false,
+            });
+          });
+        const rb = document.getElementById("revBmBtn");
+        if (rb)
+          rb.addEventListener("click", () => {
+            const ids = D.bookmarks.filter((id) => BYID[id]);
+            startSession({
+              mode: "bookmarks",
+              title: "Bookmarked Questions Practice",
+              qids: ids,
+              shuffleOpts: false,
+            });
+          });
+        const qsb = document.getElementById("qrShowBtn");
+        if (qsb)
+          qsb.addEventListener("click", () => {
+            qrShow = true;
+            render();
+          });
+        const qrem = document.getElementById("qrRem");
+        if (qrem)
+          qrem.addEventListener("click", () => {
+            const pool = qrPool();
+            const id = pool[qrIdx];
+            if (id) {
+              if (!D.qrFlags) D.qrFlags = {};
+              D.qrFlags[id] = "rem";
+              save();
+            }
+            qrShow = false;
+            qrIdx++;
+            render();
+          });
+        const qneed = document.getElementById("qrNeed");
+        if (qneed)
+          qneed.addEventListener("click", () => {
+            const pool = qrPool();
+            const id = pool[qrIdx];
+            if (id) {
+              if (!D.qrFlags) D.qrFlags = {};
+              D.qrFlags[id] = "need";
+              save();
+            }
+            qrShow = false;
+            qrIdx++;
+            render();
+          });
+        const qp = document.getElementById("qrPrev");
+        if (qp)
+          qp.addEventListener("click", () => {
+            qrIdx = Math.max(0, qrIdx - 1);
+            qrShow = false;
+            render();
+          });
+        const qn = document.getElementById("qrNext");
+        if (qn)
+          qn.addEventListener("click", () => {
+            qrIdx++;
+            qrShow = false;
+            render();
+          });
+        const sf = document.getElementById("sForm");
+        if (sf) {
+          let deb = null;
+          const inp = document.getElementById("sInput");
+          sf.addEventListener("submit", (e) => e.preventDefault());
+          inp.addEventListener("input", () => {
+            clearTimeout(deb);
+            deb = setTimeout(() => {
+              searchState.term = inp.value;
+              searchState.wf = document.getElementById("sWeek").value;
+              searchState.sf = document.getElementById("sType").value;
+              render();
+              const ni = document.getElementById("sInput");
+              if (ni) {
+                ni.focus();
+                ni.setSelectionRange(ni.value.length, ni.value.length);
+              }
+            }, 350);
+          });
+          const sw = document.getElementById("sWeek");
+          if (sw)
+            sw.addEventListener("change", (e) => {
+              searchState.wf = e.target.value;
+              render();
+            });
+          const st = document.getElementById("sType");
+          if (st)
+            st.addEventListener("change", (e) => {
+              searchState.sf = e.target.value;
+              render();
+            });
+          const sc = document.getElementById("sClear");
+          if (sc)
+            sc.addEventListener("click", () => {
+              searchState.term = "";
+              render();
+            });
+        }
+        const sGo = document.getElementById("sGo");
+        if (sGo) {
+          const upd = () => {
+            const weeks = [...document.querySelectorAll(".wkchk")]
+              .filter((c) => c.checked)
+              .map((c) => +c.value);
+            const pools = [...document.querySelectorAll(".poolchip.on")].map(
+              (c) => c.dataset.pool,
+            );
+            const ids = genPoolIds(weeks, pools);
+            const cnt = +document.getElementById("sCount").value;
+            const info = document.getElementById("sPoolInfo");
+            info.textContent = !weeks.length
+              ? "Select at least one week."
+              : !ids.length
+                ? "No questions match this selection — widen the weeks or pools."
+                : "Pool: " +
+                  ids.length +
+                  " question" +
+                  (ids.length === 1 ? "" : "s") +
+                  " available. This session will use " +
+                  Math.min(cnt, ids.length) +
+                  (cnt > ids.length
+                    ? " — the pool is smaller than your chosen count, so the whole pool is used and no question repeats."
+                    : ".");
+            sGo.disabled = !ids.length;
+          };
+          document
+            .querySelectorAll(".wkchk,#sCount")
+            .forEach((el) => el.addEventListener("change", upd));
+          document.querySelectorAll(".poolchip").forEach((c) =>
+            c.addEventListener("click", () => {
+              c.classList.toggle("on");
+              upd();
+            }),
+          );
+          document.getElementById("wkAll").onclick = () => {
+            document
+              .querySelectorAll(".wkchk")
+              .forEach((c) => (c.checked = true));
+            upd();
+          };
+          document.getElementById("wkNone").onclick = () => {
+            document
+              .querySelectorAll(".wkchk")
+              .forEach((c) => (c.checked = false));
+            upd();
+          };
+          upd();
+          sGo.onclick = () => {
+            const weeks = [...document.querySelectorAll(".wkchk")]
+              .filter((c) => c.checked)
+              .map((c) => +c.value);
+            const pools = [...document.querySelectorAll(".poolchip.on")].map(
+              (c) => c.dataset.pool,
+            );
+            const all = genPoolIds(weeks, pools);
+            const cnt = +document.getElementById("sCount").value;
+            const ids = shuffle(all).slice(0, cnt);
+            const note =
+              cnt > all.length
+                ? "The pool (" +
+                  all.length +
+                  ") was smaller than the requested count (" +
+                  cnt +
+                  "), so the whole pool was used — no question repeats."
+                : "";
+            startSession({
+              mode: "custom",
+              title: "Custom Practice",
+              qids: ids,
+              shuffleOpts: true,
+              poolNote: note,
+            });
+          };
+        }
+        const mGo = document.getElementById("mGo");
+        if (mGo) {
+          const segVal = (id) => {
+            const b = document.querySelector("#" + id + " button.on");
+            return b ? +b.dataset.v : 0;
+          };
+          const upd = () => {
+            const wk = document.getElementById("mWeekSel").value;
+            const pool = wk === "all" ? BANK.length : weekQs(+wk).length;
+            const cnt = segVal("mCountSeg");
+            const info = document.getElementById("mPoolInfo");
+            info.textContent =
+              "Pool: " +
+              pool +
+              " questions available. This mock will use " +
+              Math.min(cnt, pool) +
+              (cnt > pool
+                ? " — the pool is smaller than the count, so the whole pool is used and no question repeats."
+                : ".");
+          };
+          document
+            .querySelectorAll("#mCountSeg button,#mDurSeg button")
+            .forEach((b) =>
+              b.addEventListener("click", () => {
+                b.parentElement
+                  .querySelectorAll("button")
+                  .forEach((x) => x.classList.remove("on"));
+                b.classList.add("on");
+                upd();
+              }),
+            );
+          document.getElementById("mWeekSel").addEventListener("change", upd);
+          upd();
+          mGo.onclick = () => {
+            const wk = document.getElementById("mWeekSel").value;
+            const poolIds =
+              wk === "all"
+                ? BANK.map((q) => q.id)
+                : weekQs(+wk).map((q) => q.id);
+            const cnt = segVal("mCountSeg");
+            const ids = shuffle(poolIds).slice(0, cnt);
+            const note =
+              cnt > poolIds.length
+                ? "The pool (" +
+                  poolIds.length +
+                  ") was smaller than the requested count (" +
+                  cnt +
+                  "), so the whole pool was used — no question repeats."
+                : "";
+            startSession({
+              mode: "mock",
+              title: "Mock Test",
+              qids: ids,
+              shuffleOpts: true,
+              isMock: true,
+              durationMin: segVal("mDurSeg"),
+              poolNote: note,
+            });
+          };
+        }
+      }
+      document.addEventListener("keydown", (e) => {
+        if (!SES) return;
+        const tag = (e.target.tagName || "").toLowerCase();
+        if (tag === "input" || tag === "textarea" || tag === "select") return;
+        const q = curQ();
+        if (
+          ["1", "2", "3", "4"].includes(e.key) &&
+          !SES.checked[q.id] &&
+          !dlg.open
+        ) {
+          const letter = SES.optOrder[q.id][+e.key - 1];
+          if (letter) {
+            SES.answers[q.id] = letter;
+            renderPractice();
+          }
+        } else if (e.key === "a" || e.key === "A" || (e.key === "b" && false)) {
+        } else if (e.key === "Enter" && !dlg.open) {
+          e.preventDefault();
+          document.getElementById("pbMain").click();
+        } else if (e.key === "ArrowRight") {
+          document.getElementById("pbNext").click();
+        } else if (e.key === "ArrowLeft") {
+          document.getElementById("pbPrev").click();
+        } else if (e.key === "b" || e.key === "B") {
+          toggleBookmark(q.id);
+          renderPractice();
+        } else if (e.key === "m" || e.key === "M") {
+          SES.marked[q.id] = !SES.marked[q.id];
+          renderPractice();
+        }
+      });
+      dlg.addEventListener("click", (e) => {
+        if (e.target === dlg) closeDialog();
+      });
+      render();

@@ -1,45 +1,159 @@
 <!doctype html>
+<!--
+  ============================================================================
+  NPTEL Exam Practice Hub — Geography & Environment (Weeks 1–12)
+  ============================================================================
+  Built by Thunderdoc · https://github.com/Thunderdoc
+  Live app:  https://nptel-exam-practice-hub.vercel.app
+  Code:      https://github.com/Thunderdoc/nptel-exam-practice-hub
+
+  WHAT THIS FILE IS
+    The complete app in one self-contained page: markup, styles and logic.
+    In the GitHub repository the same code is maintained in a split layout
+    (index.html + assets/css/style.css + assets/js/app.js +
+    data/questions.json) — this file is the single-file build of it.
+
+  HOW THE CODE IS ORGANISED (search for "SECTION" to jump around)
+    CSS  1. Design tokens (light + dark)   2. Base & layout
+         3. Header / hero / auth / search  4. Cards, practice & session UI
+         5. Revision, stats, navigation    6. Polish pass
+    JS   1. Question bank (113 verified questions, one entry per question)
+         2. Week titles & source gaps      3. State, storage & accounts
+         4. Theme & helpers                5. Practice / mock session engine
+         6. Learn lessons                  7. Views (one function per screen)
+         8. Router & chrome
+
+  MAINTENANCE RULES
+    - One question per entry in the bank, so every change is a small,
+      reviewable diff — never edit answers without the source export.
+    - Every accepted answer matches the supplied source twice (marked
+      option + "Correct Answer:" line); 113/113 verified, 0 mismatches.
+      See docs/VERIFICATION.md in the repository.
+    - The source has NO explanations — never invent one in code or UI.
+    - Accounts & progress live in browser local storage on the device
+      only. There is no server in this version; do not claim otherwise.
+    - Keep formatting consistent (Prettier, 2-space indent) when editing.
+  ============================================================================
+-->
 <html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-<meta name="color-scheme" content="light dark"/>
-<link rel="icon" href="data:,"/>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
-<title>NPTEL Exam Practice Hub — Geography &amp; Environment</title>
-<!-- styles moved to assets/css/style.css -->
-    <link rel="stylesheet" href="assets/css/style.css">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    />
+    <title>NPTEL Exam Practice Hub — Geography &amp; Environment</title>
+    <!-- styles moved to assets/css/style.css -->
+      <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
-<header class="top"><div class="top-in">
-<a class="brand" href="#" data-nav="home"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" fill="#347FF0" opacity=".72"/><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z" fill="#347FF0"/></svg>NPTEL <span>Practice Hub</span></a>
-<nav aria-label="Main" id="topNav">
-<button data-nav="about">Source &amp; Limits</button><button data-nav="login">Log In</button><button data-nav="signup">Sign Up</button>
-</nav>
-<div class="sp"></div>
-<button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode">Dark</button>
-<button class="avatar-btn" id="avatarBtn" aria-label="Account" style="display:none"></button>
-<button class="ham-btn" id="hamBtn" aria-label="Menu">☰</button>
-</div></header>
-<main id="app"></main>
-<div class="p-bar" id="pbar">
-<button class="btn btn-g" id="pbPrev">← Prev</button>
-<button class="btn btn-p" id="pbMain">Check Answer</button>
-<button class="btn btn-g" id="pbNext">Next →</button>
-</div>
-<nav class="bnav" id="bnav" aria-label="Mobile" style="display:none"></nav>
-<footer><div class="wrap">
-<p style="font-weight:800">NPTEL Exam Practice Hub</p>
-<p class="muted" style="margin-top:6px">Geography &amp; Environment · Weeks 1–12 · 113 questions from the supplied assignment export. Accepted answers are shown exactly as recorded in the source — no explanations were included in the source.</p>
-<p class="muted" style="margin-top:8px">Your progress, bookmarks and notes are saved only in this browser, on this device. Nothing is sent to a server.</p>
-<p class="muted" style="margin-top:10px">Built by <a href="https://github.com/Thunderdoc" target="_blank" rel="noopener" style="font-weight:700">Thunderdoc</a> — for NPTEL students preparing for their exam. For personal revision use.</p>
-<p class="muted" style="margin-top:10px"><a href="#" data-nav="about">Source &amp; Limits</a> · <a href="#" data-nav="admin">Admin (local preview)</a></p>
-</div></footer>
-<div class="toast" id="toast" role="status"></div>
-<dialog id="dlg"><div id="dlgBody"></div></dialog>
-<!-- script moved to assets/js/app.js -->
-    <script src="assets/js/app.js" defer></script>
+  <body>
+    <header class="top">
+      <div class="top-in">
+        <a class="brand" href="#" data-nav="home"
+          ><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+            <path
+              d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"
+              fill="#347FF0"
+              opacity=".72"
+            />
+            <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z" fill="#347FF0" /></svg
+          >NPTEL <span>Practice Hub</span></a
+        >
+        <nav aria-label="Main" id="topNav">
+          <button data-nav="about">Source &amp; Limits</button
+          ><button data-nav="login">Log In</button
+          ><button data-nav="signup">Sign Up</button>
+        </nav>
+        <div class="sp"></div>
+        <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode">
+          Dark
+        </button>
+        <button
+          class="avatar-btn"
+          id="avatarBtn"
+          aria-label="Account"
+          style="display: none"
+        ></button>
+        <button class="ham-btn" id="hamBtn" aria-label="Menu">
+          <svg
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.2"
+            stroke-linecap="round"
+          >
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+      </div>
+    </header>
+    <main id="app"></main>
+    <div class="p-bar" id="pbar">
+      <button class="btn btn-g" id="pbPrev">← Prev</button>
+      <button class="btn btn-p" id="pbMain">Check Answer</button>
+      <button class="btn btn-g" id="pbNext">Next →</button>
+    </div>
+    <nav class="bnav" id="bnav" aria-label="Mobile" style="display: none"></nav>
+    <footer id="appFooter">
+      <div class="wrap">
+        <div id="footFull">
+          <p style="font-weight: 800">NPTEL Exam Practice Hub</p>
+          <p class="muted" style="margin-top: 6px">
+            Geography &amp; Environment · Weeks 1–12 · 113 questions from the
+            supplied assignment export. Accepted answers are shown exactly as
+            recorded in the source — no explanations were included in the
+            source.
+          </p>
+          <p class="muted" style="margin-top: 8px">
+            Your progress, bookmarks and notes are saved only in this browser,
+            on this device. Nothing is sent to a server.
+          </p>
+          <p class="muted" style="margin-top: 10px">
+            Built by
+            <a
+              href="https://github.com/Thunderdoc"
+              target="_blank"
+              rel="noopener"
+              style="font-weight: 700"
+              >Thunderdoc</a
+            >
+            — for NPTEL students preparing for their exam. For personal revision
+            use.
+          </p>
+          <p class="muted" style="margin-top: 10px">
+            <a href="#" data-nav="about">Source &amp; Limits</a> ·
+            <a href="#" data-nav="admin">Admin (local preview)</a>
+          </p>
+        </div>
+        <p
+          class="muted"
+          id="footSlim"
+          style="display: none; text-align: center"
+        >
+          Built by
+          <a
+            href="https://github.com/Thunderdoc"
+            target="_blank"
+            rel="noopener"
+            style="font-weight: 700"
+            >Thunderdoc</a
+          >
+        </p>
+      </div>
+    </footer>
+    <div class="toast" id="toast" role="status"></div>
+    <dialog id="dlg"><div id="dlgBody"></div></dialog>
+    <!-- script moved to assets/js/app.js -->
+      <script src="assets/js/app.js" defer></script>
 </body>
 </html>
