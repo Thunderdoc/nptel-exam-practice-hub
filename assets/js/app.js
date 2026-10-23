@@ -1851,8 +1851,8 @@
         document.documentElement.dataset.theme = t;
         document.getElementById("themeBtn").innerHTML =
           t === "dark"
-            ? '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg> Light'
-            : '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg> Dark';
+            ? '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><span class="theme-lbl">Light</span>'
+            : '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><span class="theme-lbl">Dark</span>';
       }
       document.getElementById("themeBtn").addEventListener("click", () => {
         const cur = document.documentElement.dataset.theme;
@@ -3720,12 +3720,82 @@
         ]
           .map((f) => '<li><span class="ck">✓</span>' + f + "</li>")
           .join("");
+        const cic = (p) =>
+          '<span class="cic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+          p +
+          "</svg></span>";
+        const caps = [
+          [
+            '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>',
+            "Week-wise Practice",
+            "Practise one week at a time and check each answer",
+          ],
+          [
+            '<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 12.5l2 2 4-4.5"/>',
+            "Submit-All Week Test",
+            "Answer the whole week, submit once, then review",
+          ],
+          [
+            '<path d="M12 2l9 5-9 5-9-5 9-5z"/><path d="M3 12l9 5 9-5"/><path d="M3 17l9 5 9-5"/>',
+            "All Questions",
+            "Work through the complete 113-question bank",
+          ],
+          [
+            '<path d="M4 7h9M19 7h1M4 17h3M13 17h7"/><circle cx="16" cy="7" r="2.2"/><circle cx="10" cy="17" r="2.2"/>',
+            "Custom Practice Generator",
+            "Build your own test from any weeks",
+          ],
+          [
+            '<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9 2h6"/>',
+            "Timed Mock Test",
+            "Practise against the clock, like the real exam",
+          ],
+          [
+            '<path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/>',
+            "Learn from Zero",
+            "12 short lessons — one per week, from the basics",
+          ],
+          [
+            '<path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/>',
+            "Revision",
+            "Wrong answers, bookmarks, flashcards and notes",
+          ],
+          [
+            '<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/>',
+            "Search",
+            "Find any question by keyword",
+          ],
+          [
+            '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+            "Exam Countdown",
+            "Set your exam date and watch the days left",
+          ],
+          [
+            '<path d="M4.5 19a9 9 0 1 1 15 0"/><path d="M12 14l3.8-5.7"/><circle cx="12" cy="14" r="1.1" fill="currentColor"/>',
+            "Exam Readiness Score",
+            "See how ready you are, from your real practice",
+          ],
+        ]
+          .map(
+            (c) =>
+              '<div class="cap">' +
+              cic(c[0]) +
+              "<div><b>" +
+              c[1] +
+              "</b><span>" +
+              c[2] +
+              "</span></div></div>",
+          )
+          .join("");
         return (
           '<div class="wrap"><div class="narrow"><section class="hero"><h1>NPTEL<br>Exam Practice</h1><p class="sub" style="font-size:19px;color:var(--ink);font-weight:600">Practice Today. Score Higher Tomorrow.</p>' +
           BOOKSVG +
           '<ul class="feat">' +
           feats +
           "</ul>" +
+          '<h2 style="font-size:19px;font-weight:800;margin-top:26px">What you can do here</h2><p class="small" style="margin-top:3px">Everything this app offers — free, on your phone.</p><div class="caps">' +
+          caps +
+          "</div>" +
           '<div style="display:flex;flex-direction:column;gap:10px;margin-top:22px"><button class="btn btn-p" data-nav="signup">Get Started</button></div>' +
           '<p style="text-align:center;margin-top:16px;font-size:15px">Already have an account? <a href="#" data-nav="login" style="font-weight:700">Log In</a></p>' +
           '<p class="small" style="margin-top:16px">Geography &amp; Environment · Weeks 1–12 · 113 questions · Accepted answers verified from the supplied source export. An account is required to start practising.</p>' +
@@ -3906,9 +3976,13 @@
           '<div class="card" style="margin-top:16px"><b>Learn from Zero</b><p class="small" style="margin-top:4px">12 concept lessons — one per week — built from the concepts the questions test. ' +
           (ld.done.length
             ? ld.done.length + " of 12 lessons completed."
-            : "Not started yet — begin with Week 1.") +
+            : ld.last
+              ? "Week " +
+                ld.last +
+                " in progress — pick up where you left off."
+              : "Not started yet — begin with Week 1.") +
           '</p><button class="btn btn-p btn-sm" data-nav="learn" style="margin-top:10px">' +
-          (ld.last ? "Continue Learning" : "Start Learning") +
+          (ld.done.length || ld.last ? "Continue Learning" : "Start Learning") +
           "</button></div>";
         const dte = daysToExam();
         if (dte !== null) {
@@ -3982,7 +4056,7 @@
         const rd = readinessInfo();
         if (rd) {
           h +=
-            '<div class="card" style="margin-top:16px"><div class="ring-wrap"><div class="ring"><svg width="76" height="76"><circle cx="38" cy="38" r="32" stroke="var(--surface2)" stroke-width="8" fill="none"/><circle cx="38" cy="38" r="32" stroke="var(--blue)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="' +
+            '<div class="card" id="rdCard" style="margin-top:16px"><div class="ring-wrap"><div class="ring"><svg width="76" height="76"><circle cx="38" cy="38" r="32" stroke="var(--surface2)" stroke-width="8" fill="none"/><circle cx="38" cy="38" r="32" stroke="var(--blue)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="' +
             circ.toFixed(1) +
             '" stroke-dashoffset="' +
             off.toFixed(1) +
@@ -3996,7 +4070,7 @@
               : "Coverage " +
                 rd.cov +
                 "% of the bank · keep accuracy climbing.") +
-            '</p><p class="small" style="margin-top:3px">Estimate — not a guarantee of exam performance.</p><details style="margin-top:4px"><summary class="small" style="cursor:pointer;font-weight:700">How is this calculated?</summary><p class="small" style="margin-top:4px">Readiness = 45% × coverage (questions attempted ÷ 113) + 45% × your overall accuracy + 10% × tests completed (week tests &amp; mocks, capped at 5). Yours: coverage ' +
+            '</p><p class="small" style="margin-top:3px">Estimate — not a guarantee of exam performance.</p><details class="calc" style="margin-top:4px"><summary class="small" style="cursor:pointer;font-weight:700">How is this calculated?</summary><p class="small" style="margin-top:4px">Readiness = 45% × coverage (questions attempted ÷ 113) + 45% × your overall accuracy + 10% × tests completed (week tests &amp; mocks, capped at 5). Yours: coverage ' +
             rd.cov +
             "%, accuracy " +
             o.accuracy +
@@ -4005,7 +4079,7 @@
             ".</p></details></div></div></div>";
         } else {
           h +=
-            '<div class="card" style="margin-top:16px"><b>Exam Readiness Score</b><p class="small" style="margin-top:4px">Attempt some questions to see your readiness — it is calculated from your real coverage and accuracy, never invented.</p></div>';
+            '<div class="card" id="rdCard" style="margin-top:16px"><b>Exam Readiness Score</b><p class="small" style="margin-top:4px">Attempt some questions to see your readiness — it is calculated from your real coverage and accuracy, never invented.</p></div>';
         }
         h +=
           '<div class="card" style="margin-top:16px"><b>Your Progress</b><div class="ring-wrap" style="margin-top:12px"><div class="ring"><svg width="76" height="76"><circle cx="38" cy="38" r="32" stroke="var(--surface2)" stroke-width="8" fill="none"/><circle cx="38" cy="38" r="32" stroke="var(--green)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="' +
@@ -4021,6 +4095,101 @@
           '</b></p><p style="display:flex;justify-content:space-between;font-size:14.5px;margin-top:5px"><span class="small">Accuracy</span><b>' +
           o.accuracy +
           "%</b></p></div></div></div>";
+        const icClip =
+          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 12.5l2 2 4-4.5"/></svg>';
+        const icLearnW =
+          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></svg>';
+        const icSearchW =
+          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/></svg>';
+        const icCalW =
+          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>';
+        const icGaugeW =
+          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4.5 19a9 9 0 1 1 15 0"/><path d="M12 14l3.8-5.7"/></svg>';
+        const xrow = (attrs, bg, svg, title, desc) =>
+          '<button class="xrow" ' +
+          attrs +
+          '><span class="tile tile-sm" style="background:' +
+          bg +
+          '">' +
+          svg +
+          '</span><span class="xt"><b>' +
+          title +
+          "</b><span>" +
+          desc +
+          '</span></span><span class="xchev"></span></button>';
+        h +=
+          '<div style="margin-top:24px"><h3 style="font-size:17px;font-weight:800">Explore the app</h3><p class="small" style="margin-top:2px">Everything you can do here — tap any row to open it.</p><div class="xlist">' +
+          xrow(
+            'data-goto="weeks"',
+            "#347FF0",
+            icBook,
+            "Week-wise Practice",
+            "Practise one week at a time",
+          ) +
+          xrow(
+            'data-goto="weeks"',
+            "#8B5CF6",
+            icClip,
+            "Submit-All Week Test",
+            "Answer the whole week, submit once, then review",
+          ) +
+          xrow(
+            'data-goto="allq"',
+            "#12B981",
+            icLayers,
+            "All Questions",
+            "Work through the complete question bank",
+          ) +
+          xrow(
+            'data-goto="setup-random"',
+            "#6366F1",
+            icShuffle,
+            "Custom Practice Generator",
+            "Build your own test from any weeks",
+          ) +
+          xrow(
+            'data-goto="setup-mock"',
+            "#EF5350",
+            icTimer,
+            "Timed Mock Test",
+            "Practise against the clock",
+          ) +
+          xrow(
+            'data-nav="learn"',
+            "#06B6D4",
+            icLearnW,
+            "Learn from Zero",
+            "12 short lessons — one per week, from the basics",
+          ) +
+          xrow(
+            'data-goto="revision" data-gotab="wrong"',
+            "#F5C451",
+            icBm,
+            "Revision",
+            "Wrong answers · Bookmarks · Flashcards · Notes",
+          ) +
+          xrow(
+            'data-nav="search"',
+            "#F97316",
+            icSearchW,
+            "Search",
+            "Find any question by keyword",
+          ) +
+          xrow(
+            'data-nav="account"',
+            "#EC4899",
+            icCalW,
+            "Exam Countdown",
+            "Set your exam date and see the days left",
+          ) +
+          xrow(
+            'data-scroll="rdCard"',
+            "#22C55E",
+            icGaugeW,
+            "Exam Readiness Score",
+            "Your score from real coverage and accuracy — above",
+          ) +
+          "</div></div>";
         h += "</div>";
         return h;
       }
@@ -5028,6 +5197,14 @@
                 qrShow = false;
                 go("revision");
               } else go(g);
+            }),
+        );
+        document.querySelectorAll("[data-scroll]").forEach(
+          (b) =>
+            (b.onclick = () => {
+              const el = document.getElementById(b.dataset.scroll);
+              if (el)
+                el.scrollIntoView({ behavior: "smooth", block: "start" });
             }),
         );
         document.querySelectorAll("[data-gorev]").forEach(
