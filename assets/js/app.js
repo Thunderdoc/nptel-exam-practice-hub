@@ -2990,7 +2990,7 @@
                     esc(x.q.correct_letter) +
                     ". " +
                     esc(x.q.correct_text) +
-                    '</b> · No explanation in source.</p><div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-g btn-sm" data-single="' +
+                    '</b></p><div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-g btn-sm" data-single="' +
                     x.id +
                     '">Practise this question</button><button class="btn btn-g btn-sm" data-bm2="' +
                     x.id +
@@ -3091,7 +3091,7 @@
       let CURSTUDY = 0;
       function learnHTML() {
         let h =
-          '<div class="wrap"><p class="crumb">Home › <b>Learn</b></p><h2 style="font-size:24px;font-weight:800">Learn</h2><div class="week-list" style="margin-top:14px">';
+          '<div class="wrap"><p class="crumb"><button type="button" class="crumb-link" data-nav="practice">Home</button> › <b>Learn</b></p><h2 style="font-size:24px;font-weight:800">Learn</h2><div class="week-list" style="margin-top:14px">';
         for (let w = 0; w <= 12; w++) {
           h +=
             '<div class="week-row" data-learnweek="' +
@@ -3622,7 +3622,7 @@
             '">Week Test</button></div></div>';
         }
         return (
-          '<div class="wrap"><p class="crumb">Practice › <b>Week Test</b></p><h2 style="font-size:24px;font-weight:800">Week Test</h2><div class="week-list" style="margin-top:14px">' +
+          '<div class="wrap"><p class="crumb"><button type="button" class="crumb-link" data-nav="weeks">Practice</button> › <b>Week Test</b></p><h2 style="font-size:24px;font-weight:800">Week Test</h2><div class="week-list" style="margin-top:14px">' +
           rows +
           "</div></div>"
         );
@@ -3749,7 +3749,7 @@
           ["notes", "Notes"],
         ];
         let h =
-          '<div class="wrap"><p class="crumb">Practice › <b>Revision</b></p><h2 style="font-size:24px;font-weight:800">Revision</h2>' +
+          '<div class="wrap"><p class="crumb" style="margin-top:10px"><button type="button" class="crumb-link" data-nav="weeks">Practice</button> › <b>Revision</b></p><h2 style="font-size:24px;font-weight:800">Revision</h2>' +
           '<div class="revtabs" role="tablist">' +
           tabs
             .map(
@@ -3793,7 +3793,7 @@
                     const a = att(q.id);
                     const m = mastery(q.id);
                     return (
-                      '<div class="item"><div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><span style="width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span><span class="tag b">Week ' +
+                      '<div class="item"><div class="rev-head"><span style="width:26px;height:26px;flex-shrink:0;border-radius:50%;background:var(--red);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span><span class="tag b">Week ' +
                       q.week +
                       " • Q" +
                       q.number +
@@ -3810,26 +3810,23 @@
                       '">' +
                       m +
                       "</span>" +
-                      (isBookmarked(q.id)
-                        ? '<span class="tag a">Bookmarked</span>'
-                        : "") +
                       '</div><p class="q" style="margin-top:8px">' +
                       esc(q.question) +
-                      '</p><p class="small" style="margin-top:6px">Your answer: <b>' +
+                      '</p><div class="ans-block"><p><span class="ans-x">✗</span> Your answer: <b>' +
                       (a.lastPicked
                         ? esc(a.lastPicked) +
                           ". " +
                           esc(optText(q, a.lastPicked))
-                        : "—") +
-                      "</b><br>Correct answer: <b>" +
+                        : "Not answered") +
+                      '</b></p><p><span class="ans-c">✓</span> Correct answer: <b>' +
                       esc(q.correct_letter) +
                       ". " +
                       esc(q.correct_text) +
-                      "</b> · No explanation in source.<br>Attempts: " +
+                      '</b></p></div><p class="rev-meta">Attempts: ' +
                       a.total +
                       " · Last attempted: " +
                       fmtDate(a.lastDate) +
-                      '</p><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="btn btn-p btn-sm" data-single="' +
+                      '</p><div class="rev-acts"><button class="btn btn-p btn-sm" data-single="' +
                       q.id +
                       '">Retry</button><button class="btn btn-g btn-sm" data-bm2="' +
                       q.id +
@@ -3853,7 +3850,7 @@
                     const q = BYID[id];
                     const a = att(id);
                     return (
-                      '<div class="item"><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="tag b">Week ' +
+                      '<div class="item"><div class="rev-head"><span class="tag b">Week ' +
                       q.week +
                       " • Q" +
                       q.number +
@@ -3876,11 +3873,25 @@
                         : "") +
                       '</div><p class="q" style="margin-top:8px">' +
                       esc(q.question) +
-                      '</p><p class="small" style="margin-top:4px">Accepted answer from source: <b>' +
+                      '</p><div class="ans-block">' +
+                      (a && a.lastPicked
+                        ? '<p><span class="' +
+                          (a.lastPicked === q.correct_letter
+                            ? "ans-c"
+                            : "ans-x") +
+                          '">' +
+                          (a.lastPicked === q.correct_letter ? "✓" : "✗") +
+                          "</span> Your answer: <b>" +
+                          esc(a.lastPicked) +
+                          ". " +
+                          esc(optText(q, a.lastPicked)) +
+                          "</b></p>"
+                        : "") +
+                      '<p><span class="ans-c">✓</span> Correct answer: <b>' +
                       esc(q.correct_letter) +
                       ". " +
                       esc(q.correct_text) +
-                      '</b> · No explanation in source.</p><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="btn btn-p btn-sm" data-single="' +
+                      '</b></p></div><div class="rev-acts"><button class="btn btn-p btn-sm" data-single="' +
                       id +
                       '">Practise</button><button class="btn btn-g btn-sm" data-bm2="' +
                       id +
@@ -3894,7 +3905,17 @@
               : '<div class="empty"><b>No bookmarks yet</b>Bookmark a question while practising and it will appear here.</div>');
         } else if (revTab === "quick") {
           const pool = qrPool();
-          if (!pool.length) {
+          const qrFlags = D.qrFlags || {};
+          const allRem =
+            pool.length > 0 && pool.every((id) => qrFlags[id] === "rem");
+          if (allRem) {
+            h +=
+              '<div class="flash" style="text-align:center"><span style="width:52px;height:52px;border-radius:50%;background:var(--green-bg);color:var(--green);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:24px">✓</span><p style="font-weight:800;font-size:18px;margin-top:12px">Deck complete!</p><p class="small" style="margin-top:6px">You remembered all ' +
+              pool.length +
+              " card" +
+              (pool.length === 1 ? "" : "s") +
+              ' in this deck.</p><button class="btn btn-p" id="qrAgain" style="width:100%;margin-top:16px">Flip through again</button></div>';
+          } else if (!pool.length) {
             h +=
               '<div class="empty"><b>Nothing to flip through yet</b>Wrong answers and bookmarks show up here as flashcards.</div>';
           } else {
@@ -4162,7 +4183,7 @@
           val +
           "</span></span></div>";
         return (
-          '<div class="wrap"><div class="narrow"><p class="crumb">Home › <b>Source &amp; Limits</b></p><h2 style="font-size:24px;font-weight:800">Source &amp; Limits</h2><div class="fact-list">' +
+          '<div class="wrap"><div class="narrow"><p class="crumb"><button type="button" class="crumb-link" data-nav="practice">Home</button> › <b>Source &amp; Limits</b></p><h2 style="font-size:24px;font-weight:800">Source &amp; Limits</h2><div class="fact-list">' +
           row(
             "#2878F9",
             icList,
@@ -4317,7 +4338,7 @@
             "</span></td></tr>",
         ).join("");
         return (
-          '<div class="wrap"><p class="crumb">Account › <b>Admin panel</b></p><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><h2 style="font-size:24px;font-weight:800;flex:1">Admin Panel</h2><button class="btn btn-g btn-sm" id="admOut">Sign out of Admin</button></div><div class="item" style="border-color:var(--amber);background:var(--amber-bg);margin-top:12px"><b>Other students\' data needs a backend.</b></div>' +
+          '<div class="wrap"><p class="crumb"><button type="button" class="crumb-link" data-nav="account">Account</button> › <b>Admin panel</b></p><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><h2 style="font-size:24px;font-weight:800;flex:1">Admin Panel</h2><button class="btn btn-g btn-sm" id="admOut">Sign out of Admin</button></div><div class="item" style="border-color:var(--amber);background:var(--amber-bg);margin-top:12px"><b>Other students\' data needs a backend.</b></div>' +
           '<section class="sec"><h2>Real site traffic</h2><div class="item"><b>Whole-site visitor stats live in Vercel Analytics</b><br><a class="btn btn-p btn-sm" href="https://vercel.com/thunderdoc/nptel-exam-practice-hub/analytics" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex">View live visitor stats ↗</a></div></section>' +
           '<h2 style="font-size:19px;font-weight:800;margin-top:22px">This device</h2>' +
           '<div class="stat-grid"><div class="stat"><div class="n">' +
@@ -4423,15 +4444,19 @@
         pbar.classList.remove("on");
         render();
       }
+      /* Delegated nav: one document-level handler for every [data-nav]
+         control (brand, breadcrumb parents, menus, back buttons) so
+         navigation works regardless of re-renders; preventDefault kills
+         the dead "#" default on anchor-styled controls. */
+      document.addEventListener("click", (e) => {
+        const t = e.target.closest ? e.target.closest("[data-nav]") : null;
+        if (!t) return;
+        e.preventDefault();
+        const tn = document.getElementById("topNav");
+        if (tn) tn.classList.remove("open");
+        go(t.dataset.nav);
+      });
       function bindNav() {
-        document.querySelectorAll("[data-nav]").forEach(
-          (b) =>
-            (b.onclick = () => {
-              const tn = document.getElementById("topNav");
-              if (tn) tn.classList.remove("open");
-              go(b.dataset.nav);
-            }),
-        );
         document.querySelectorAll("[data-gograph]").forEach(
           (b) =>
             (b.onclick = () => {
@@ -5120,6 +5145,20 @@
             }
             qrShow = false;
             qrIdx++;
+            render();
+          });
+        const qag = document.getElementById("qrAgain");
+        if (qag)
+          qag.addEventListener("click", () => {
+            const pool = qrPool();
+            if (D.qrFlags) {
+              pool.forEach((id) => {
+                if (D.qrFlags[id] === "rem") delete D.qrFlags[id];
+              });
+              save();
+            }
+            qrIdx = 0;
+            qrShow = false;
             render();
           });
         const qp = document.getElementById("qrPrev");

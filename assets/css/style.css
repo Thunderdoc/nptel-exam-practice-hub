@@ -2861,3 +2861,88 @@
         margin-left: auto;
         margin-right: 3px;
       }
+      /* nav + revision fix bundle (last rules win) */
+      .crumb-link {
+        background: none;
+        border: 0;
+        padding: 0;
+        font: inherit;
+        color: var(--muted);
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .crumb-link:hover {
+        color: var(--blue);
+        text-decoration: underline;
+      }
+      .revtabs {
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        padding: 0;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .revtabs button {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--ink);
+        box-shadow: var(--shadow);
+      }
+      .revtabs button.on {
+        background: var(--blue);
+        border-color: var(--blue);
+        color: #fff;
+        box-shadow: 0 4px 10px rgba(40, 120, 249, 0.25);
+      }
+      .rev-head {
+        display: flex;
+        gap: 6px;
+        flex-wrap: nowrap;
+        align-items: center;
+        min-width: 0;
+      }
+      .rev-head .tag {
+        font-size: 11px;
+        padding: 3px 6px;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .rev-head .tag:last-child {
+        flex-shrink: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .ans-block {
+        margin-top: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+      .ans-block p {
+        font-size: 14px;
+        color: var(--ink);
+      }
+      .ans-x {
+        color: var(--red);
+        font-weight: 800;
+        margin-right: 2px;
+      }
+      .ans-c {
+        color: var(--green);
+        font-weight: 800;
+        margin-right: 2px;
+      }
+      .rev-meta {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 6px;
+      }
+      .rev-acts {
+        display: flex;
+        gap: 8px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+      }
