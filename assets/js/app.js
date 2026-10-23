@@ -2022,7 +2022,7 @@
       /* ==================================================================
          SECTION JS-3 · STATE, STORAGE & ACCOUNTS
          Everything persists in local storage on this device only,
-         separated per account. Passwords are stored hashed, never plain.
+         separated per account. Passwords are kept as salted hashes.
          ================================================================== */
       function blankData() {
         return {
@@ -3447,6 +3447,15 @@
           desc +
           '</p></span><span class="chev" aria-hidden="true"></span></button>';
         const acc = o.accuracy;
+        const wkSet = [...new Set(BANK.map((q) => q.week))].sort(
+          (a, b) => a - b,
+        );
+        const wkRange = wkSet[0] + "–" + wkSet[wkSet.length - 1];
+        const compPct = BANK.length
+          ? Math.round((o.attempted / BANK.length) * 100)
+          : 0;
+        const icBars =
+          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M5 20v-6M12 20V5M19 20v-9"/></svg>';
         const circ = 2 * Math.PI * 32;
         const off = circ - (acc / 100) * circ;
         const heroArt =
@@ -3454,9 +3463,26 @@
         let h =
           '<div class="wrap"><div class="home-hero"><div class="hh-txt"><p style="font-size:24px;font-weight:800;line-height:1.2">Hello, ' +
           esc(first) +
-          ' 👋</p><p class="small" style="margin-top:4px;font-size:15px">Let’s practise and improve today!</p><p class="small" style="margin-top:10px;line-height:1.45">Subject: <b style="color:var(--head)">Geography &amp; Environment</b><br>Weeks 0–12 · 130 questions</p></div><div class="hh-art" aria-hidden="true">' +
+          ' 👋</p><p class="small" style="margin-top:4px;font-size:15px">Let’s practise and improve today!</p><p class="small" style="margin-top:10px;line-height:1.45">Subject: <b style="color:var(--head)">Geography &amp; Environment</b><br>Weeks ' +
+          wkRange +
+          " · " +
+          BANK.length +
+          ' questions</p></div><div class="hh-art" aria-hidden="true">' +
           heroArt +
-          "</div></div>";
+          "</div></div>" +
+          '<div class="sum-chips"><div class="sum-chip"><span class="sc-top"><span class="tile tile-sm" style="background:#2878F9">' +
+          icBook +
+          '</span><b>' +
+          wkSet.length +
+          '</b></span><span class="sc-lbl">Weeks</span></div><div class="sum-chip"><span class="sc-top"><span class="tile tile-sm" style="background:#12A879">' +
+          icLayers +
+          '</span><b>' +
+          BANK.length +
+          '</b></span><span class="sc-lbl">Questions</span></div><div class="sum-chip"><span class="sc-top"><span class="tile tile-sm" style="background:#7457F6">' +
+          icBars +
+          '</span><b>' +
+          compPct +
+          '%</b></span><span class="sc-lbl">Completed</span></div></div>';
         if (D.activeSes && D.activeSes.qids && D.activeSes.qids.length) {
           const s = D.activeSes;
           const an = s.qids.filter((id) => s.answers && s.answers[id]).length;
@@ -3478,28 +3504,26 @@
         }
         let cd = "";
         const dte = daysToExam();
+        const calSvg =
+          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>';
         if (dte !== null) {
-          const weak = weakestWeek();
-          cd +=
-            '<div class="card" style="margin-top:16px"><b>' +
+          cd =
+            '<div class="card" style="margin-top:16px"><div style="display:flex;gap:12px;align-items:center"><span class="tile" style="background:#EF4655">' +
+            calSvg +
+            '</span><div style="flex:1;min-width:0"><b>Exam · ' +
+            esc(fmtDate(D.examDate + "T00:00:00")) +
+            '</b><p class="small" style="margin-top:2px">' +
             (dte > 0
-              ? "Exam in " + dte + " day" + (dte === 1 ? "" : "s")
+              ? dte + " day" + (dte === 1 ? "" : "s") + " left"
               : dte === 0
-                ? "Your exam is today — good luck!"
-                : "Your exam date has passed — set a new one in Account") +
-            "</b>" +
-            (weak
-              ? weak.acc >= 1
-                ? '<p class="small" style="margin-top:4px">Every attempted week is at <b>100%</b> — excellent work, keep it up.</p>'
-                : '<p class="small" style="margin-top:4px">Weakest right now: <b>Week ' +
-                  weak.w +
-                  "</b> (" +
-                  Math.round(weak.acc * 100) +
-                  "% across " +
-                  weak.t +
-                  ' attempts).</p><button class="btn btn-p btn-sm" id="pWeakRev" style="margin-top:10px">View</button>'
-              : "") +
-            "</div>";
+                ? "Today — good luck!"
+                : "Date passed") +
+            "</p></div></div></div>";
+        } else {
+          cd =
+            '<button class="exam-slim" data-nav="account"><span class="tile tile-sm" style="background:#EF4655">' +
+            calSvg +
+            '</span>Set your exam date<span class="chev" aria-hidden="true"></span></button>';
         }
         h +=
           '<div class="mode-grid">' +
@@ -3514,21 +3538,21 @@
             "allq",
             "All Questions",
             "Practise complete question bank",
-            "#10A878",
+            "#12A879",
             icLayers,
           ) +
           card(
             "setup-random",
             "Random Practice",
             "Custom set of questions",
-            "#7357F6",
+            "#7457F6",
             icShuffle,
           ) +
           card(
             "setup-mock",
             "Mock Test",
             "Timed practice test",
-            "#F04452",
+            "#EF4655",
             icTimer,
           ) +
           "</div>";
@@ -3554,7 +3578,11 @@
             "</p></div></div></div>";
         } else {
           h +=
-            '<div class="card" id="rdCard" style="margin-top:16px"><b>Exam Readiness Score</b><p class="small" style="margin-top:4px">Attempt some questions to see your readiness.</p></div>';
+            '<div class="card" id="rdCard" style="margin-top:16px"><div class="ring-wrap"><div class="ring"><svg width="76" height="76"><circle cx="38" cy="38" r="32" stroke="var(--surface2)" stroke-width="8" fill="none"/><circle cx="38" cy="38" r="32" stroke="var(--blue)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="' +
+            circ.toFixed(1) +
+            '" stroke-dashoffset="' +
+            circ.toFixed(1) +
+            '"/></svg><span class="pct">0%</span></div><div style="flex:1;min-width:0"><b>Exam Readiness Score</b><p class="small" style="margin-top:3px">Attempt some questions to see your readiness.</p></div></div></div>';
         }
         h += cd;
         h += "</div>";
@@ -4104,6 +4132,76 @@
           "</span>Logout</button></div></div></div>"
         );
       }
+      function aboutHTML() {
+        const wkSet = [...new Set(BANK.map((q) => q.week))].sort(
+          (a, b) => a - b,
+        );
+        const w112 = BANK.filter((q) => q.week >= 1 && q.week <= 12).length;
+        const icList =
+          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6h.01M4 12h.01M4 18h.01" stroke-width="3"/></svg>';
+        const icShield =
+          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3.4 8.2-7 10-3.6-1.8-7-5-7-10V6z"/><path d="M9 12l2.2 2.2L15.5 10"/></svg>';
+        const icBookSm =
+          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>';
+        const icInfo =
+          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.5h.01" stroke-width="2.4"/></svg>';
+        const icLockSm =
+          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>';
+        const icFile =
+          '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>';
+        const row = (bg, svg, label, val, file) =>
+          '<div class="fact-row"><span class="tile tile-sm" style="background:' +
+          bg +
+          '">' +
+          svg +
+          '</span><span class="fact-txt"><b>' +
+          label +
+          "</b><span" +
+          (file ? ' class="fact-file"' : "") +
+          ">" +
+          val +
+          "</span></span></div>";
+        return (
+          '<div class="wrap"><div class="narrow"><p class="crumb">Home › <b>Source &amp; Limits</b></p><h2 style="font-size:24px;font-weight:800">Source &amp; Limits</h2><div class="fact-list">' +
+          row(
+            "#2878F9",
+            icList,
+            "Questions",
+            BANK.length +
+              " · Weeks " +
+              wkSet[0] +
+              "–" +
+              wkSet[wkSet.length - 1],
+          ) +
+          row(
+            "#12A879",
+            icShield,
+            "Weeks " + wkSet[1] + "–" + wkSet[wkSet.length - 1],
+            "Portal-verified · " + w112 + "/" + w112 + " match",
+          ) +
+          row(
+            "#7457F6",
+            icBookSm,
+            "Week " + wkSet[0],
+            "Answers from public course material",
+          ) +
+          row(
+            "#F59E0B",
+            icInfo,
+            "Explanations",
+            "Not in the source · none invented",
+          ) +
+          row("#12A879", icLockSm, "Your data", "Stays on this device") +
+          row(
+            "#8A99AE",
+            icFile,
+            "Source file",
+            "Geography_Environment_Weeks_1-12_Updated_Accepted_Answers.pdf",
+            true,
+          ) +
+          "</div></div></div>"
+        );
+      }
       function allIssues() {
         const out = (S.issues || []).map((i) => ({
           qid: i.qid,
@@ -4262,7 +4360,7 @@
           BANK.length +
           " / " +
           BANK.length +
-          '</b> — the source contains no explanations. Questions with missing options or missing accepted answers: <b>0</b>.</div></div></section>' +
+          '</b> (none in source) · Missing options or accepted answers: <b>0</b></div></div></section>' +
           '<section class="sec"><h2>Feedback (this device)</h2><div class="stat-grid" style="grid-template-columns:repeat(3,minmax(0,1fr))"><div class="stat"><div class="n">' +
           fbUp +
           '</div><div class="l">Helpful</div></div><div class="stat"><div class="n">' +

@@ -7,7 +7,7 @@
 ### Practice Today. Score Higher Tomorrow.
 
 **A free, mobile-first practice app for NPTEL students — 130 verified assignment questions for
-*Geography & Environment*, with submit-all week tests, timed mocks, concept lessons and smart revision.**
+*Geography & Environment*, with submit-all week tests, timed mocks, green-answer study questions and smart revision.**
 
 [![🚀 Live Demo](https://img.shields.io/badge/🚀_OPEN_THE_LIVE_APP-nptel--exam--practice--hub.vercel.app-2878F9?style=for-the-badge)](https://nptel-exam-practice-hub.vercel.app)
 
@@ -35,7 +35,8 @@ attempt everything first, submit once, then analyse.
 
 - 📱 **Mobile-first** — designed for a phone screen first, comfortable on desktop too
 - 🌗 **Light & dark themes**, remembered per account
-- 🔒 **Private by design** — accounts and progress live only on your own device (see *Honesty* below)
+- 🔒 **Private by design** — accounts and progress live only on your own device
+- 🧭 **Simple navigation** — four tabs only: Home · Learn · Practice · Revision
 - ⚡ **Instant** — a dependency-free static site; no loading spinners, no server round-trips
 
 ---
@@ -50,31 +51,33 @@ No per-question peeking: in every practice mode you attempt **all** questions fi
 - **All Questions** — the full 130-question bank in one session
 - **Random Practice** — a shuffled set from the whole bank
 - **Custom Practice Generator** — pick weeks × number of questions × pool (New / Incorrect / Bookmarked)
-- **Bookmarked & Wrong Answers practice** — focused sessions built from your own bookmarks and mistakes
+
+Every session uses the same clean layout: a slim progress header, the question palette tucked
+into a bottom sheet, and exactly **one Submit** in the bottom bar.
 
 ### ⏱️ Timed Mock
-Exam-style timed sessions with a question palette (answered / marked-for-review / current),
-navigation that never reveals answers mid-attempt, a submit confirmation, and a complete
-post-submit analysis.
+Exam-style timed sessions with the palette in a bottom sheet (answered / marked-for-review /
+current), navigation that never reveals answers mid-attempt, a submit confirmation, and a
+complete post-submit analysis.
 
-### 📖 Learn — not just practice
-- **Learn from Zero** — 12 short lessons covering the concepts the questions test, each with a
-  mini-quiz built from real bank questions (labelled honestly: *not official NPTEL content*)
+### 📖 Learn — study the questions, answers shown
 - **Study Questions** — pick any week (0–12) and simply *read* that week's questions with all
-  four options and the **correct answer highlighted in green**. The fastest way to revise the night before.
+  four options and the **correct answer highlighted in green** — nothing to tap, nothing to
+  submit. Bookmark any question straight into Revision, and walk week to week with the
+  Previous / Next week buttons. The fastest way to revise the night before.
 
 ### 🔁 Revision
 - **Wrong Answers** — every question you've missed, sorted by how often you've missed it, with one-tap weak-week practice
-- **Bookmarks** — save any question and revise them together
+- **Bookmarks** — save any question (including from Learn's study cards) and revise or practise them together
 - **Quick Revision flashcards** — flip, self-mark *Remembered* / *Need Revision*
 - **Notes** — your own notes on questions, kept per account
 
 ### 📊 Know where you stand
-- **Exam Readiness Score** — coverage + accuracy + tests completed, with the formula shown in the
-  app and labelled an *estimate, not a guarantee*
+- **Exam Readiness Score** — an honest estimate from coverage + accuracy + tests completed,
+  labelled an *estimate, not a guarantee*
 - **Performance graph** — week-wise accuracy bars from your own attempts, weakest week marked
+  (on the Practice screen and in Account → My Progress)
 - **Exam Countdown** — set your exam date; the app counts down and shortcuts you to your weakest week
-- **Search** — full-text search across all 130 questions and options, filterable by week
 
 ### 🛠️ Accounts, reports & admin
 - **Device-local accounts** — sign up / log in in the browser; passwords are hashed, each
