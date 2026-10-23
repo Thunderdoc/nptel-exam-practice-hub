@@ -1736,7 +1736,7 @@
         border-top: 1px solid var(--line);
         background: var(--surface);
         margin-top: 48px;
-        padding: 28px 0 calc(var(--bottom-h) + 20px);
+        padding: 22px 0 calc(var(--bottom-h) + 20px);
       }
       @media (min-width: 900px) {
         footer {
@@ -1746,6 +1746,41 @@
       footer .muted {
         color: var(--muted);
         font-size: 13.5px;
+      }
+      .foot-brand {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        font-size: 15px;
+        color: var(--ink);
+      }
+      .foot-credit {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 13.5px;
+      }
+      .foot-credit a {
+        font-weight: 700;
+      }
+      .foot-links {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 14px;
+        font-size: 13.5px;
+      }
+      .foot-links a {
+        color: var(--muted);
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .foot-links a:hover {
+        color: var(--blue);
+      }
+      .foot-sep {
+        color: var(--muted);
+        opacity: 0.6;
       }
       .toast {
         position: fixed;

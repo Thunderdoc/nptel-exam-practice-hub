@@ -111,37 +111,59 @@
     <footer id="appFooter">
       <div class="wrap">
         <div id="footFull">
-          <p style="font-weight: 800">NPTEL Exam Practice Hub</p>
-          <p class="muted" style="margin-top: 10px">
+          <div class="foot-brand">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+              <path
+                d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"
+                fill="#2878F9"
+                opacity=".72"
+              />
+              <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z" fill="#2878F9" />
+            </svg>
+            <span>NPTEL Exam Practice Hub</span>
+          </div>
+          <p class="foot-credit">
             Built by
             <a
               href="https://github.com/Thunderdoc"
               target="_blank"
               rel="noopener"
-              style="font-weight: 700"
               >Thunderdoc</a
             >
-            — for NPTEL students preparing for their exam. For personal revision
-            use.
           </p>
-          <p class="muted" style="margin-top: 10px">
+          <nav class="foot-links" aria-label="Footer">
+            <a href="#" data-nav="about">Source &amp; Limits</a>
+            <span class="foot-sep" aria-hidden="true">·</span>
             <a href="#" data-nav="admin">Admin</a>
-          </p>
+          </nav>
         </div>
-        <p
-          class="muted"
-          id="footSlim"
-          style="display: none; text-align: center"
-        >
-          Built by
-          <a
-            href="https://github.com/Thunderdoc"
-            target="_blank"
-            rel="noopener"
-            style="font-weight: 700"
-            >Thunderdoc</a
-          >
-        </p>
+        <div id="footSlim" style="display: none">
+          <div class="foot-brand">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+              <path
+                d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"
+                fill="#2878F9"
+                opacity=".72"
+              />
+              <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z" fill="#2878F9" />
+            </svg>
+            <span>NPTEL Exam Practice Hub</span>
+          </div>
+          <p class="foot-credit">
+            Built by
+            <a
+              href="https://github.com/Thunderdoc"
+              target="_blank"
+              rel="noopener"
+              >Thunderdoc</a
+            >
+          </p>
+          <nav class="foot-links" aria-label="Footer">
+            <a href="#" data-nav="about">Source &amp; Limits</a>
+            <span class="foot-sep" aria-hidden="true">·</span>
+            <a href="#" data-nav="admin">Admin</a>
+          </nav>
+        </div>
       </div>
     </footer>
     <div class="toast" id="toast" role="status"></div>

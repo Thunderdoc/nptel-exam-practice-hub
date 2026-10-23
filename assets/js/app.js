@@ -4453,6 +4453,29 @@
         if (tn) tn.classList.remove("open");
         go(t.dataset.nav);
       });
+      /* Menu outside-close: while the header menu is open, the first tap
+         anywhere outside it — page, bottom nav, any other control — closes
+         it and is consumed, so the control underneath does not also fire.
+         The hamburger keeps its own toggle; Esc closes the menu too.
+         Capture phase so consumption runs before any other click handler. */
+      document.addEventListener(
+        "click",
+        (e) => {
+          const tn = document.getElementById("topNav");
+          if (!tn || !tn.classList.contains("open")) return;
+          if (e.target.closest && e.target.closest("#topNav, #hamBtn"))
+            return;
+          tn.classList.remove("open");
+          e.preventDefault();
+          e.stopPropagation();
+        },
+        true,
+      );
+      document.addEventListener("keydown", (e) => {
+        if (e.key !== "Escape") return;
+        const tn = document.getElementById("topNav");
+        if (tn) tn.classList.remove("open");
+      });
       function bindNav() {
         document.querySelectorAll("[data-gograph]").forEach(
           (b) =>
