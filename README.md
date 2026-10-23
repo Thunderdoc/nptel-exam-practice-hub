@@ -1,62 +1,136 @@
-# NPTEL Exam Practice Hub
+<div align="center">
 
-A simple, mobile-first practice app for NPTEL **Geography & Environment** (Weeks 1–12), built for students revising assignments before the exam.
+# 📚 NPTEL Exam Practice Hub
+
+### Geography & Environment · Weeks 1–12
+
+**Practice Today. Score Higher Tomorrow.**
+
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-nptel--exam--practice--hub.vercel.app-2878F9?style=for-the-badge)](https://nptel-exam-practice-hub.vercel.app)
+[![License: MIT](https://img.shields.io/badge/License-MIT-12A66A?style=for-the-badge)](LICENSE)
+[![Questions](https://img.shields.io/badge/Questions-113_verified-F5C451?style=for-the-badge)](data/questions.json)
+[![Stack](https://img.shields.io/badge/Stack-Vanilla_HTML·CSS·JS-101C4A?style=for-the-badge)](docs/ARCHITECTURE.md)
+
+*A free, mobile-first practice app for NPTEL students — week-wise practice, submit-all tests,
+timed mocks, concept lessons and smart revision, all in the browser. No build step, no sign-up server.*
 
 **Built by [Thunderdoc](https://github.com/Thunderdoc)**
 
-## Project structure
+</div>
+
+---
+
+## 🚀 Try it live
+
+**👉 [nptel-exam-practice-hub.vercel.app](https://nptel-exam-practice-hub.vercel.app)**
+
+Open the link on your phone, create your account (it stays on your device), pick
+**Geography & Environment**, and start practising. That's it.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Thunderdoc/nptel-exam-practice-hub)
+
+---
+
+## ✨ Features
+
+| | |
+| --- | --- |
+| 🔐 **Accounts** | Sign up / log in on your device — passwords hashed, your data stays yours and is separated per account |
+| 🎯 **Subject selection** | One honest subject: **Geography & Environment** (Weeks 1–12, 113 questions) |
+| 📝 **Week-wise Practice** | Practise any week and check each answer as you go |
+| ✅ **Week Test** | The real exam feel — answer everything, submit once, then see your score and full review |
+| 🎲 **Custom Generator** | Pick weeks × question count × pool (New / Incorrect / Bookmarked) and build your own set |
+| ⏱️ **Timed Mock Test** | Question palette, mark-for-review, submit confirmation, trophy results |
+| 🌱 **Learn from Zero** | 12 concept lessons built from what the questions actually test — each with a mini-quiz of real questions |
+| 🔁 **Revision** | Wrong Answers (most-missed first), Bookmarks, Quick-Revision flashcards, personal Notes |
+| 🔍 **Search** | Find any question in the bank instantly |
+| 📅 **Exam Countdown + Readiness** | Days-left on your home screen and an honest readiness estimate (formula shown, labelled an estimate) |
+| 🌗 **Light & Dark themes** | Light by default, dark navy one tap away — designed for **mobile and tablet only** |
+
+---
+
+## 🗂️ Project structure
 
 ```
-.
-├── index.html            # App markup (screens, templates)
+nptel-exam-practice-hub/
+├── index.html              # App markup (screens & templates)
 ├── assets/
-│   ├── css/style.css     # Full design system (light + dark themes)
-│   └── js/app.js         # App logic: accounts, practice engine, mock, learn, revision
+│   ├── css/style.css       # Design system — light + dark themes
+│   └── js/app.js           # App logic — accounts, practice, mock, learn, revision
 ├── data/
-│   └── questions.json    # The verified 113-question bank (same data the app runs on)
+│   └── questions.json      # The verified 113-question bank
 ├── docs/
-│   └── VERIFICATION.md   # How every accepted answer was double-verified
-└── vercel.json           # Static deploy config
+│   ├── ARCHITECTURE.md     # How the code is organised, section by section
+│   └── VERIFICATION.md     # How every accepted answer was double-verified
+├── CHANGELOG.md
+├── LICENSE
+└── vercel.json             # Static deploy config
 ```
 
-No build step and no dependencies — plain HTML, CSS and JavaScript.
+No dependencies, no bundler, no build step — plain HTML, CSS and JavaScript.
+How the code is organised internally: **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)**.
 
-## What it does
+---
 
-- Sign up / log in (device-local accounts), then a one-time subject selection: **Geography & Environment**
-- **Week-wise Practice** (check each answer) and **Week Test** (answer all, submit once, then results)
-- **All Questions**, **Random / Custom Practice Generator** (weeks × count × new/incorrect/bookmarked)
-- **Timed Mock Test** with question palette, auto-submit and trophy results
-- **Revision**: Wrong Answers (most-missed first), Bookmarks, Quick Revision flashcards, Notes
-- **Learn From Zero**: 12 lessons built from the concepts the real questions test, each with a mini-quiz of real questions
-- Search, Exam Countdown, Exam Readiness Score (labelled estimate), Report-a-Wrong-Answer
-- Light theme by default, dark theme one tap away — designed for **mobile and tablet only**
+## ▶️ Run it locally
 
-## Question bank
+```bash
+git clone https://github.com/Thunderdoc/nptel-exam-practice-hub.git
+cd nptel-exam-practice-hub
+npx serve .
+```
 
-`data/questions.json` contains all **113 questions** extracted from the supplied NPTEL assignment export, each with 4 options and the source's accepted answer.
+Then open the printed URL. (Opening `index.html` directly also works in most browsers.)
 
-Per-week counts: W1–W5 = 10 each, W6 = 9, W7 = 8, W8 = 10, W9 = 9, W10 = 9, W11 = 8, W12 = 10.
-Some question numbers are absent from the supplied source itself (W6 Q10; W7 Q1, Q9; W9 Q1; W10 Q1; W11 Q1, Q5) — they are shown honestly as gaps, never invented.
+---
 
-## Answer accuracy
+## 📖 Question bank & answer accuracy
 
-Every accepted answer is recorded **twice** in the source (a ✓ mark and a "Correct Answer:" line). An automated comparison of all 113 found **0 mismatches**, and a sample was cross-checked against independent NPTEL course materials with 0 conflicts. NPTEL publishes no public answer key for this course (keys live inside the enrolled portal), so the supplied quiz export is the authoritative source. See [docs/VERIFICATION.md](docs/VERIFICATION.md).
+`data/questions.json` holds all **113 questions** extracted from the supplied NPTEL
+assignment export — 4 options each, one accepted answer each.
 
-The source contains **no explanations**, so the app never invents one. Lesson notes in Learn are the app's own supplementary study material and are labelled as such — they are not official NPTEL content.
+**Per-week counts:** W1–W5 = 10 · W6 = 9 · W7 = 8 · W8 = 10 · W9 = 9 · W10 = 9 · W11 = 8 · W12 = 10
 
-## Run it
+Some question numbers are missing from the supplied source itself
+(W6 Q10 · W7 Q1, Q9 · W9 Q1 · W10 Q1 · W11 Q1, Q5) — they are shown honestly as gaps, **never invented**.
 
-Serve the folder with any static server (for example `npx serve .`) or deploy it to any static host, then open it in a browser. Opening `index.html` directly from disk also works in most browsers.
+**How the answers were verified**
 
-### Deploy on Vercel
+- Every accepted answer is recorded **twice** in the source (a ✓ mark and a `Correct Answer:` line) —
+  an automated comparison of all 113 found **0 mismatches**
+- A sample was cross-checked against independent NPTEL course materials — **0 conflicts**
+- NPTEL publishes no public answer key for this course, so the supplied export is authoritative —
+  no answer is ever "corrected" from a third-party site
 
-Import this repository in Vercel (framework preset: **Other**). No build command, no environment variables.
+Full report: **[docs/VERIFICATION.md](docs/VERIFICATION.md)**
 
-## Data and privacy
+The source contains **no explanations**, so the app never invents one. The Learn lessons are the
+app's own supplementary study notes and are labelled as such — not official NPTEL content.
 
-Accounts, progress, bookmarks, notes and attempts are stored in the student's own browser on their device (per-account, separated). There is no server backend in this version, and the app states that honestly in its Source & Limits page.
+---
 
-## Content note
+## 🔒 Data & privacy
 
-Question text comes from a supplied NPTEL assignment export and is included for students' personal exam revision. Review content rights before redistributing beyond that purpose.
+Accounts, progress, bookmarks, notes and attempts live in the student's own browser on their
+own device (per-account, separated). There is **no server backend** in this version — and the
+app says so plainly on its *Source & Limits* page.
+
+## 🤝 Contributing
+
+Found a wrong answer or a bug? Open an issue with the week + question number — or use the
+**Report an issue** button inside the app and tell the maintainer what it showed.
+Answer changes are only accepted against the supplied source export (see VERIFICATION.md).
+
+## 📄 License
+
+[MIT](LICENSE) for the application code. The question content in `data/questions.json` comes
+from a supplied NPTEL assignment export, included for students' personal exam revision —
+please review content rights before redistributing it beyond that purpose.
+
+---
+
+<div align="center">
+
+**Built by [Thunderdoc](https://github.com/Thunderdoc)** · For NPTEL students preparing for their exam · *Practice Today. Score Higher Tomorrow.*
+
+</div>
