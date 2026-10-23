@@ -2919,11 +2919,11 @@
         return h;
       }
       const CAPSVG =
-        '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" fill="#347FF0" opacity=".72"/><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z" fill="#347FF0"/></svg>';
+        '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" fill="#2878F9" opacity=".72"/><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z" fill="#2878F9"/></svg>';
       const BOOKSVG =
-        '<svg class="illus" viewBox="0 0 340 200" role="img" aria-label="Study books beside a laptop with a play button"><ellipse cx="172" cy="100" rx="160" ry="90" fill="#E1EDFF"/><ellipse cx="172" cy="182" rx="138" ry="10" fill="#101C4A" opacity=".07"/><g><rect x="36" y="142" width="120" height="23" rx="7" fill="#12A66A"/><rect x="49" y="150" width="72" height="6" rx="3" fill="#CFF5E2"/><rect x="29" y="117" width="126" height="25" rx="7" fill="#F5C451"/><rect x="43" y="126" width="56" height="6" rx="3" fill="#FFFFFF" opacity=".65"/><rect x="37" y="92" width="118" height="25" rx="7" fill="#2878F9"/><rect x="51" y="100" width="70" height="6" rx="3" fill="#BFD9FF"/><rect x="51" y="109" width="44" height="5" rx="2.5" fill="#8FB9F5"/></g><g><rect x="170" y="62" width="134" height="94" rx="10" fill="#FFFFFF" stroke="#2878F9" stroke-width="3"/><circle cx="237" cy="105" r="23" fill="#2878F9"/><path d="M230 94l19 11-19 11z" fill="#fff"/><rect x="158" y="158" width="158" height="9" rx="4.5" fill="#C9DBF7"/></g><path d="M52 30v18M43 39h18" stroke="#FFB51B" stroke-width="3.5" stroke-linecap="round"/><path d="M298 172v12M292 178h12" stroke="#12A66A" stroke-width="3" stroke-linecap="round"/><circle cx="312" cy="38" r="3.5" fill="#12A66A"/><circle cx="146" cy="26" r="2.6" fill="#2878F9"/><circle cx="24" cy="70" r="2.6" fill="#FFB51B"/></svg>';
+        '<svg class="illus" viewBox="0 0 340 200" role="img" aria-label="Study books beside a laptop with a play button"><ellipse cx="172" cy="100" rx="160" ry="90" fill="#E1EDFF"/><ellipse cx="172" cy="182" rx="138" ry="10" fill="#101C4A" opacity=".07"/><g><rect x="36" y="142" width="120" height="23" rx="7" fill="#12A66A"/><rect x="49" y="150" width="72" height="6" rx="3" fill="#CFF5E2"/><rect x="29" y="117" width="126" height="25" rx="7" fill="#F6C94A"/><rect x="43" y="126" width="56" height="6" rx="3" fill="#FFFFFF" opacity=".65"/><rect x="37" y="92" width="118" height="25" rx="7" fill="#2878F9"/><rect x="51" y="100" width="70" height="6" rx="3" fill="#BFD9FF"/><rect x="51" y="109" width="44" height="5" rx="2.5" fill="#8FB9F5"/></g><g><rect x="170" y="62" width="134" height="94" rx="10" fill="#FFFFFF" stroke="#2878F9" stroke-width="3"/><circle cx="237" cy="105" r="23" fill="#2878F9"/><path d="M230 94l19 11-19 11z" fill="#fff"/><rect x="158" y="158" width="158" height="9" rx="4.5" fill="#C9DBF7"/></g><path d="M52 30v18M43 39h18" stroke="#FFB51B" stroke-width="3.5" stroke-linecap="round"/><path d="M298 172v12M292 178h12" stroke="#12A66A" stroke-width="3" stroke-linecap="round"/><circle cx="312" cy="38" r="3.5" fill="#12A66A"/><circle cx="146" cy="26" r="2.6" fill="#2878F9"/><circle cx="24" cy="70" r="2.6" fill="#FFB51B"/></svg>';
       const TROPHYSVG =
-        '<svg viewBox="0 0 120 100" width="104" height="86" role="img" aria-label="Trophy"><circle cx="14" cy="16" r="3" fill="#F5C451"/><circle cx="106" cy="12" r="3" fill="#3988FF"/><circle cx="98" cy="30" r="2.2" fill="#12B981"/><circle cx="22" cy="34" r="2.2" fill="#EF5350"/><path d="M38 12h44v10H38z" fill="#F5C451"/><path d="M42 22h36v22a18 18 0 0 1-36 0V22z" fill="#F5C451"/><path d="M42 26c-10 0-14-4-14-12V12h14M78 26c10 0 14-4 14-12V12H78" stroke="#F5C451" stroke-width="5" fill="none"/><rect x="55" y="58" width="10" height="10" fill="#E0A92E"/><rect x="44" y="68" width="32" height="7" rx="2" fill="#F5C451"/><rect x="38" y="75" width="44" height="7" rx="2" fill="#C78F1B"/></svg>';
+        '<svg viewBox="0 0 120 100" width="104" height="86" role="img" aria-label="Trophy"><circle cx="14" cy="16" r="3" fill="#F6C94A"/><circle cx="106" cy="12" r="3" fill="#3988FF"/><circle cx="98" cy="30" r="2.2" fill="#10A878"/><circle cx="22" cy="34" r="2.2" fill="#F04452"/><path d="M38 12h44v10H38z" fill="#F6C94A"/><path d="M42 22h36v22a18 18 0 0 1-36 0V22z" fill="#F6C94A"/><path d="M42 26c-10 0-14-4-14-12V12h14M78 26c10 0 14-4 14-12V12H78" stroke="#F6C94A" stroke-width="5" fill="none"/><rect x="55" y="58" width="10" height="10" fill="#E0A92E"/><rect x="44" y="68" width="32" height="7" rx="2" fill="#F6C94A"/><rect x="38" y="75" width="44" height="7" rx="2" fill="#C78F1B"/></svg>';
       function icoPerson() {
         return '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>';
       }
@@ -3387,17 +3387,17 @@
           '<div class="mode-grid learn-modes">' +
           '<button class="mode-card" data-startzero="1"><span class="tile" style="background:#12B981">' +
           icoBookW +
-          "</span><h3>Learn from Zero</h3><p>Start at " +
+          "</span><span class=\"mtxt\"><h3>Learn from Zero</h3><p>Start at " +
           (firstOpen
             ? "Week " + firstOpen + " · " + esc(WEEK_TITLES[firstOpen])
             : "Week 1") +
-          " and build up lesson by lesson</p></button>" +
+          " and build up lesson by lesson</p></span></button>" +
           '<button class="mode-card" data-scrollist="1"><span class="tile" style="background:#F59E0B">' +
           icoLayersW +
-          "</span><h3>Week-wise Learning</h3><p>All 12 theme lessons, one for each week — pick any week below</p></button>" +
+          "</span><span class=\"mtxt\"><h3>Week-wise Learning</h3><p>All 12 theme lessons, one for each week — pick any week below</p></span></button>" +
           '<button class="mode-card" data-gorev="quick"><span class="tile" style="background:#8B5CF6">' +
           icoCardW +
-          "</span><h3>Quick Revision</h3><p>Flashcards from your wrong + bookmarked questions</p></button>" +
+          "</span><span class=\"mtxt\"><h3>Quick Revision</h3><p>Flashcards from your wrong + bookmarked questions</p></span></button>" +
           "</div>";
         h +=
           '<h3 style="font-size:18px;font-weight:800;margin-top:22px" id="lessonList">All 12 theme lessons</h3><div class="week-list">';
@@ -3945,35 +3945,44 @@
           (tab ? ' data-gotab="' + tab + '"' : "") +
           " >" +
           tile(bg, svg) +
-          "<h3>" +
+          '<span class="mtxt"><h3>' +
           title +
           "</h3><p>" +
           desc +
-          "</p></button>";
+          '</p></span><span class="chev" aria-hidden="true"></span></button>';
         const acc = o.accuracy;
         const circ = 2 * Math.PI * 32;
         const off = circ - (acc / 100) * circ;
+        const heroArt =
+          '<svg viewBox="0 0 160 118" role="img" aria-label="Globe, books and mountains illustration"><ellipse cx="84" cy="60" rx="74" ry="52" fill="#dceaff"/><path d="M96 44 L118 16 L140 44 Z" fill="#a9c8f5"/><path d="M118 44 L134 24 L152 44 Z" fill="#8ab2ee"/><circle cx="26" cy="20" r="7" fill="#fff"/><circle cx="142" cy="14" r="5" fill="#fff"/><circle cx="102" cy="66" r="31" fill="#2f7de1"/><path d="M84 48c6-5 15-3 17 2 1 4-3 5-6 7-4 2-9 1-11-2-2-3-2-5 0-7zM112 74c5 1 9 5 8 9-1 5-7 7-12 5-4-2-5-7-3-10 2-3 4-4 7-4zM90 82c3 4 2 9-2 11-4 1-8-2-8-6 0-4 6-8 10-5z" fill="#34b37a"/><path d="M102 35v62M76 55c17 7 39 7 56 0M78 80c16-7 36-7 50 0" stroke="#1f66c2" stroke-width="2" fill="none" opacity=".55"/><path d="M94 100h18l3 6H91z" fill="#1f66c2"/><rect x="14" y="92" width="46" height="9" rx="2.5" fill="#2878f9"/><rect x="18" y="83" width="42" height="9" rx="2.5" fill="#f04452"/><rect x="22" y="74" width="38" height="9" rx="2.5" fill="#10a878"/><path d="M52 74c-1-8 3-14 10-16 1 8-3 14-10 16zM60 92c0-7 4-12 10-13 0 7-4 12-10 13z" fill="#34b37a"/><path d="M128 96l4-10 4 10zM138 98l3-8 3 8z" fill="#2e9e63"/></svg>';
         let h =
-          '<div class="wrap"><p style="font-size:21px;font-weight:800;margin-top:18px">Hello, ' +
+          '<div class="wrap"><div class="home-hero"><div class="hh-txt"><p style="font-size:24px;font-weight:800;line-height:1.2">Hello, ' +
           esc(first) +
-          '</p><p class="small" style="margin-top:2px;font-size:15px">Let’s practise and improve today!</p><p class="small" style="margin-top:4px">Subject: <b>Geography &amp; Environment</b> · Weeks 1–12 · 113 questions</p>';
+          ' 👋</p><p class="small" style="margin-top:4px;font-size:15px">Let’s practise and improve today!</p><p class="small" style="margin-top:10px;line-height:1.45">Subject: <b style="color:var(--head)">Geography &amp; Environment</b><br>Weeks 1–12 · 113 questions</p></div><div class="hh-art" aria-hidden="true">' +
+          heroArt +
+          "</div></div>";
         if (D.activeSes && D.activeSes.qids && D.activeSes.qids.length) {
           const s = D.activeSes;
           const an = s.qids.filter((id) => s.answers && s.answers[id]).length;
+          const pct = Math.round((an / s.qids.length) * 100);
           h +=
-            '<div class="card" style="margin-top:16px;border-color:var(--blue)"><b>Continue where you left off</b><p class="small" style="margin-top:4px">' +
+            '<div class="card" style="margin-top:16px"><div style="display:flex;gap:12px;align-items:flex-start"><span class="tile" style="background:var(--blue-soft)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6"/></svg></span><div style="flex:1;min-width:0"><b>Continue where you left off</b><p class="small" style="margin-top:3px"><b style="color:var(--head)">' +
             esc(s.title) +
-            " · Answered " +
+            "</b><br>Answered " +
             an +
             " of " +
             s.qids.length +
             " · You stopped at question " +
             ((s.idx || 0) + 1) +
-            '.</p><div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="btn btn-p btn-sm" id="pResume">Continue</button><button class="btn btn-g btn-sm" id="pDiscard">Discard</button></div></div>';
+            '</p></div></div><div style="display:flex;align-items:center;gap:10px;margin-top:12px"><div class="cont-track"><i style="width:' +
+            pct +
+            '%"></i></div><b style="font-size:13.5px">' +
+            pct +
+            '%</b></div><div style="display:flex;gap:10px;margin-top:14px"><button class="btn btn-p" id="pResume" style="flex:1">Continue</button><button class="btn btn-g" id="pDiscard" style="flex:1">Discard</button></div></div>';
         }
         const ld = D.learn || { done: [], last: null };
         h +=
-          '<div class="card" style="margin-top:16px"><b>Learn from Zero</b><p class="small" style="margin-top:4px">12 concept lessons — one per week — built from the concepts the questions test. ' +
+          '<div class="card learn-card" style="margin-top:16px"><div style="display:flex;gap:12px;align-items:flex-start"><span class="tile" style="background:#10a878"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></svg></span><div style="flex:1;min-width:0"><b>Learn from Zero</b><p class="small" style="margin-top:3px">12 concept lessons — one per week — built from the concepts the questions test. ' +
           (ld.done.length
             ? ld.done.length + " of 12 lessons completed."
             : ld.last
@@ -3981,7 +3990,7 @@
                 ld.last +
                 " in progress — pick up where you left off."
               : "Not started yet — begin with Week 1.") +
-          '</p><button class="btn btn-p btn-sm" data-nav="learn" style="margin-top:10px">' +
+          '</p></div><span class="chev" aria-hidden="true" style="flex-shrink:0;align-self:center;width:8px;height:8px;border-right:2.5px solid var(--muted);border-top:2.5px solid var(--muted);transform:rotate(45deg);opacity:.65"></span></div><button class="btn btn-green" data-nav="learn" style="margin-top:12px;min-width:200px">' +
           (ld.done.length || ld.last ? "Continue Learning" : "Start Learning") +
           "</button></div>";
         const dte = daysToExam();
@@ -4012,28 +4021,28 @@
             "weeks",
             "Week-wise Practice",
             "Practise week 1 – 12 questions",
-            "#347FF0",
+            "#2878F9",
             icBook,
           ) +
           card(
             "allq",
             "All Questions",
             "Practise complete question bank",
-            "#12B981",
+            "#10A878",
             icLayers,
           ) +
           card(
             "setup-random",
             "Random Practice",
             "Custom set of questions",
-            "#6366F1",
+            "#7357F6",
             icShuffle,
           ) +
           card(
             "setup-mock",
             "Mock Test",
             "Timed practice test",
-            "#EF5350",
+            "#F04452",
             icTimer,
           ) +
           card(
@@ -4048,7 +4057,7 @@
             "revision",
             "Bookmarks",
             "Your saved questions",
-            "#F5C451",
+            "#F6C94A",
             icBm,
             "bookmarks",
           ) +
@@ -4059,10 +4068,10 @@
             '<div class="card" id="rdCard" style="margin-top:16px"><div class="ring-wrap"><div class="ring"><svg width="76" height="76"><circle cx="38" cy="38" r="32" stroke="var(--surface2)" stroke-width="8" fill="none"/><circle cx="38" cy="38" r="32" stroke="var(--blue)" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="' +
             circ.toFixed(1) +
             '" stroke-dashoffset="' +
-            off.toFixed(1) +
+            (circ - (rd.score / 100) * circ).toFixed(1) +
             '"/></svg><span class="pct">' +
             rd.score +
-            '%</span></div><div style="flex:1"><b>Exam Readiness Score</b><p class="small" style="margin-top:3px">' +
+            '%</span></div><div style="flex:1;min-width:0"><b>Exam Readiness Score</b><p class="small" style="margin-top:3px">' +
             (rd.weak
               ? "Weakest right now: <b>Week " +
                 rd.weak.w +
@@ -4070,7 +4079,7 @@
               : "Coverage " +
                 rd.cov +
                 "% of the bank · keep accuracy climbing.") +
-            '</p><p class="small" style="margin-top:3px">Estimate — not a guarantee of exam performance.</p><details class="calc" style="margin-top:4px"><summary class="small" style="cursor:pointer;font-weight:700">How is this calculated?</summary><p class="small" style="margin-top:4px">Readiness = 45% × coverage (questions attempted ÷ 113) + 45% × your overall accuracy + 10% × tests completed (week tests &amp; mocks, capped at 5). Yours: coverage ' +
+            '</p><p class="small" style="margin-top:3px">Estimate — not a guarantee of exam performance.</p><details class="calc"><summary class="small" style="cursor:pointer;font-weight:700"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--blue)" stroke-width="2" style="flex-shrink:0"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><circle cx="12" cy="8" r="0.6" fill="var(--blue)"/></svg>How is this calculated?</summary><p class="small" style="margin-top:4px">Readiness = 45% × coverage (questions attempted ÷ 113) + 45% × your overall accuracy + 10% × tests completed (week tests &amp; mocks, capped at 5). Yours: coverage ' +
             rd.cov +
             "%, accuracy " +
             o.accuracy +

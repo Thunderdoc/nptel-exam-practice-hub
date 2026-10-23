@@ -3,13 +3,13 @@
          Light theme is the default; [data-theme="dark"] overrides tokens.
          ================================================================== */
       :root {
-        --bg: #f5f8fd;
+        --bg: #f3f7fe;
         --surface: #ffffff;
-        --surface2: #edf4ff;
+        --surface2: #eaf2ff;
         --ink: #24385f;
-        --head: #101c4a;
+        --head: #14264a;
         --muted: #6b7c9d;
-        --line: #dce6f5;
+        --line: #dde7f5;
         --navy: #0b2b5b;
         --navy2: #2878f9;
         --blue: #2878f9;
@@ -559,17 +559,105 @@
         background: var(--surface);
         border: 1px solid var(--line);
         border-radius: var(--r);
-        padding: 16px;
+        padding: 14px;
         box-shadow: var(--shadow);
         color: var(--ink);
+        display: flex;
+        align-items: flex-start;
+        gap: 11px;
+        height: 100%;
+      }
+      .mode-card .mtxt {
+        flex: 1;
+        min-width: 0;
       }
       .mode-card h3 {
         font-size: 15.5px;
-        margin: 10px 0 3px;
+        margin: 1px 0 3px;
+        line-height: 1.25;
       }
       .mode-card p {
         color: var(--muted);
-        font-size: 13.5px;
+        font-size: 13px;
+        line-height: 1.35;
+      }
+      .mode-card .chev {
+        flex-shrink: 0;
+        align-self: center;
+        width: 8px;
+        height: 8px;
+        border-right: 2.5px solid var(--muted);
+        border-top: 2.5px solid var(--muted);
+        transform: rotate(45deg);
+        opacity: 0.65;
+      }
+      /* home hero row: greeting text + compact illustration */
+      .home-hero {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        margin-top: 18px;
+      }
+      .home-hero .hh-txt {
+        flex: 1;
+        min-width: 0;
+      }
+      .home-hero .hh-art {
+        flex-shrink: 0;
+        width: 128px;
+        max-width: 34vw;
+      }
+      .home-hero .hh-art svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      @media (max-width: 380px) {
+        .home-hero .hh-art {
+          width: 104px;
+        }
+      }
+      /* continue card progress track */
+      .cont-track {
+        height: 8px;
+        background: var(--surface2);
+        border-radius: 99px;
+        overflow: hidden;
+        flex: 1;
+      }
+      .cont-track i {
+        display: block;
+        height: 100%;
+        background: var(--blue);
+        border-radius: 99px;
+      }
+      /* learn-from-zero card: pale green, matches reference */
+      .learn-card {
+        background: #e9f9f0;
+        border-color: #bfe9d4;
+      }
+      [data-theme="dark"] .learn-card {
+        background: rgba(18, 185, 129, 0.1);
+        border-color: #1f5c46;
+      }
+      .btn-green {
+        background: var(--green);
+        color: #fff;
+      }
+      .btn-green:hover {
+        filter: brightness(1.06);
+      }
+      /* readiness "how is this calculated" pill */
+      details.calc {
+        margin-top: 10px;
+      }
+      details.calc summary {
+        background: var(--blue-soft);
+        border-radius: 10px;
+        padding: 9px 12px;
+      }
+      details.calc summary::before {
+        display: none;
       }
       .tile {
         width: 44px;
@@ -2128,17 +2216,7 @@
         display: none;
       }
       details.calc summary::before {
-        content: "";
-        flex-shrink: 0;
-        width: 8px;
-        height: 8px;
-        border-right: 2.5px solid var(--muted);
-        border-bottom: 2.5px solid var(--muted);
-        transform: rotate(-45deg);
-        transition: transform 0.18s;
-      }
-      details.calc[open] summary::before {
-        transform: rotate(45deg);
+        display: none;
       }
       /* options after checking: only your answer + accepted get colour */
       .opt:not(:disabled):hover {
