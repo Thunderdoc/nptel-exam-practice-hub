@@ -2037,6 +2037,7 @@
           feedback: null,
           issues: [],
           activeSes: null,
+          lastView: null,
         };
       }
       function blankState() {
@@ -2362,10 +2363,13 @@
             }
           }, 1000);
         }
+        D.lastView = { v: "session" };
+        save();
         renderPractice();
       }
       function saveActiveSes() {
         if (!SES || !isLoggedIn()) return;
+        D.lastView = { v: "session" };
         D.activeSes = {
           mode: SES.mode,
           title: SES.title,
@@ -2775,6 +2779,7 @@
           at: new Date().toISOString(),
         };
         D.activeSes = null;
+        D.lastView = { v: "practice" };
         D.sessions.push(res);
         if (D.sessions.length > 50) D.sessions = D.sessions.slice(-50);
         save();
@@ -4443,6 +4448,39 @@
         pbar.classList.remove("on");
         render();
       }
+      /* View restore: remember the signed-in user's current screen
+         (per account, in D.lastView) so a page refresh returns to the
+         same view instead of Home. Transient screens (auth pages, the
+         results/review screens reached without render()) are never
+         stored; "admin" and "session" are stored as markers and routed
+         safely at boot (see the restore block at the end of this file).
+         Logout clears the marker (see both logout handlers). */
+      const RESTORE_VIEWS = [
+        "practice",
+        "learn",
+        "learnweek",
+        "weeks",
+        "revision",
+        "account",
+        "about",
+        "subject",
+        "setup-random",
+        "setup-mock",
+      ];
+      function persistView() {
+        if (!isLoggedIn()) return;
+        if (curView === "admin") {
+          D.lastView = { v: "admin" };
+          save();
+          return;
+        }
+        if (!RESTORE_VIEWS.includes(curView)) return;
+        const lv = { v: curView };
+        if (curView === "learnweek") lv.w = CURSTUDY;
+        if (curView === "revision") lv.t = revTab;
+        D.lastView = lv;
+        save();
+      }
       /* Delegated nav: one document-level handler for every [data-nav]
          control (brand, breadcrumb parents, menus, back buttons) so
          navigation works regardless of re-renders; preventDefault kills
@@ -4702,6 +4740,8 @@
             if (ml)
               ml.onclick = () => {
                 tn.classList.remove("open");
+                const aOut = curAcct();
+                if (aOut) aOut.data.lastView = null;
                 S.current = null;
                 D = blankData();
                 save();
@@ -4798,6 +4838,7 @@
         wireView();
         wireLearn();
         window.scrollTo({ top: 0 });
+        persistView();
       }
       function wireView() {
         const admF = document.getElementById("admForm");
@@ -4958,6 +4999,8 @@
         const lo = document.getElementById("logoutBtn");
         if (lo)
           lo.addEventListener("click", () => {
+            const aOut2 = curAcct();
+            if (aOut2) aOut2.data.lastView = null;
             S.current = null;
             D = blankData();
             save();
@@ -5398,4 +5441,27 @@
       dlg.addEventListener("click", (e) => {
         if (e.target === dlg) closeDialog();
       });
+      /* Boot restore: a signed-in user returns to the view they left
+         (D.lastView, written by persistView). Logged out → Welcome, as
+         before. "admin" is never restored into (re-entry goes through
+         the gate from Home); "session" routes to Home, whose Continue
+         card resumes the in-progress session via D.activeSes. */
+      if (isLoggedIn() && D.lastView && D.lastView.v) {
+        const lv = D.lastView;
+        if (lv.v === "learnweek") {
+          const w = +lv.w;
+          if (w >= 0 && w <= 12) {
+            CURSTUDY = w;
+            curView = "learnweek";
+          }
+        } else if (lv.v === "revision") {
+          if (["wrong", "bookmarks", "quick", "notes"].includes(lv.t))
+            revTab = lv.t;
+          curView = "revision";
+        } else if (lv.v === "session" || lv.v === "admin") {
+          curView = "practice";
+        } else if (RESTORE_VIEWS.includes(lv.v)) {
+          curView = lv.v;
+        }
+      }
       render();
