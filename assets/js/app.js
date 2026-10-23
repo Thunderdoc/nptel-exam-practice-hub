@@ -4653,7 +4653,7 @@
               esc(a2 ? a2.email : "") +
               '</span></span><button data-gograph="1">My Progress</button><button data-nav="account">' +
               examLbl +
-              '</button><button class="menu-theme" type="button">Theme</button><button data-nav="about">Source &amp; Limits</button><button data-nav="admin">Admin</button><button class="menu-logout" type="button">Logout</button></span>';
+              '</button><button class="menu-theme" type="button">Theme</button><button data-nav="about">Source &amp; Limits</button><button class="menu-logout" type="button">Logout</button></span>';
             const mt = tn.querySelector(".menu-theme");
             if (mt)
               mt.onclick = () => {
