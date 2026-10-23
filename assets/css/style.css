@@ -2946,3 +2946,45 @@
         margin-top: 10px;
         flex-wrap: wrap;
       }
+      /* ===== FINAL FIX BUNDLE: session scroll clearance + revision header fit ===== */
+      html {
+        scroll-padding-top: calc(var(--header-h) + 96px);
+      }
+      body:has(.p-bar.on) main {
+        padding-bottom: calc(
+          var(--bottom-h) + 88px + env(safe-area-inset-bottom, 0px)
+        );
+      }
+      .ses-head {
+        border-bottom: 1px solid var(--line);
+      }
+      .q-tools {
+        max-width: 100%;
+      }
+      .q-tools .tool-btn {
+        min-width: 0;
+      }
+      .rev-head {
+        gap: 4px;
+      }
+      .rev-head > span[style] {
+        width: 22px !important;
+        height: 22px !important;
+      }
+      .rev-head .tag {
+        font-size: 10.5px;
+        padding: 2px 5px;
+        letter-spacing: -0.01em;
+        flex-shrink: 0;
+      }
+      .rev-head .tag:last-child {
+        flex-shrink: 0;
+        min-width: 0;
+        overflow: visible;
+        text-overflow: clip;
+      }
+      @media (max-width: 345px) {
+        .rev-head {
+          flex-wrap: wrap;
+        }
+      }

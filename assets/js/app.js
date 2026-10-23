@@ -3799,8 +3799,7 @@
                       q.number +
                       '</span><span class="tag r">' +
                       a.wrong +
-                      " incorrect attempt" +
-                      (a.wrong === 1 ? "" : "s") +
+                      " incorrect" +
                       '</span><span class="tag ' +
                       (m === "Consistently Correct"
                         ? "g"
@@ -3858,8 +3857,7 @@
                       (a && a.wrong
                         ? '<span class="tag r">' +
                           a.wrong +
-                          " incorrect attempt" +
-                          (a.wrong === 1 ? "" : "s") +
+                          " incorrect" +
                           "</span>"
                         : "") +
                       (a
@@ -3931,8 +3929,7 @@
               (a && a.wrong
                 ? '<span class="tag r">' +
                   a.wrong +
-                  " incorrect attempt" +
-                  (a.wrong === 1 ? "" : "s") +
+                  " incorrect" +
                   "</span>"
                 : "") +
               (isBookmarked(q.id)
@@ -5119,6 +5116,21 @@
             qrShow = true;
             render();
           });
+        const qrAdvance = (curId, before) => {
+          const flags = D.qrFlags || {};
+          const after = qrPool();
+          let nextId = null;
+          const pos = before.indexOf(curId);
+          for (let i = pos + 1; i < before.length && !nextId; i++)
+            if (before[i] !== curId && flags[before[i]] !== "rem")
+              nextId = before[i];
+          for (let i = 0; i < pos && !nextId; i++)
+            if (before[i] !== curId && flags[before[i]] !== "rem")
+              nextId = before[i];
+          qrIdx = nextId
+            ? after.indexOf(nextId)
+            : Math.max(0, after.length - 1);
+        };
         const qrem = document.getElementById("qrRem");
         if (qrem)
           qrem.addEventListener("click", () => {
@@ -5130,7 +5142,7 @@
               save();
             }
             qrShow = false;
-            qrIdx++;
+            if (id) qrAdvance(id, pool);
             render();
           });
         const qneed = document.getElementById("qrNeed");
@@ -5144,7 +5156,7 @@
               save();
             }
             qrShow = false;
-            qrIdx++;
+            if (id) qrAdvance(id, pool);
             render();
           });
         const qag = document.getElementById("qrAgain");
