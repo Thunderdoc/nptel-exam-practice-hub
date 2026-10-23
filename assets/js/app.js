@@ -2635,7 +2635,11 @@
         });
         document.getElementById("tBook").addEventListener("click", () => {
           toggleBookmark(q.id);
+          /* renderPractice scrolls to the top for question navigation;
+             a bookmark toggle must keep the reading position instead. */
+          const y = window.scrollY;
           renderPractice();
+          window.scrollTo({ top: y, behavior: "instant" });
         });
         document
           .getElementById("tReport")
@@ -3023,7 +3027,10 @@
         box.querySelectorAll("[data-bm2]").forEach((b) =>
           b.addEventListener("click", () => {
             toggleBookmark(b.dataset.bm2);
+            /* Keep the scroll position across the review re-render. */
+            const y = window.scrollY;
             renderReview(r);
+            window.scrollTo({ top: y, behavior: "instant" });
           }),
         );
         box
@@ -4448,11 +4455,13 @@
         if (tn) tn.classList.remove("open");
         go(t.dataset.nav);
       });
-      /* Menu outside-close: while the header menu is open, the first tap
-         anywhere outside it — page, bottom nav, any other control — closes
-         it and is consumed, so the control underneath does not also fire.
-         The hamburger keeps its own toggle; Esc closes the menu too.
-         Capture phase so consumption runs before any other click handler. */
+      /* Menu outside-close: while the header menu is open, a tap anywhere
+         outside it — page, bottom nav, any other control — closes it AND
+         still activates the tapped control in the same tap (owner order:
+         one tap does both; the tap is deliberately NOT consumed — no
+         preventDefault/stopPropagation here). The hamburger keeps its own
+         toggle; Esc closes the menu too. Capture phase so the menu is
+         already closed when the tapped control's own handler runs. */
       document.addEventListener(
         "click",
         (e) => {
@@ -4461,8 +4470,6 @@
           if (e.target.closest && e.target.closest("#topNav, #hamBtn"))
             return;
           tn.classList.remove("open");
-          e.preventDefault();
-          e.stopPropagation();
         },
         true,
       );
@@ -4620,7 +4627,20 @@
           (b) =>
             (b.onclick = () => {
               toggleBookmark(b.dataset.bm2);
+              /* Learn study cards carry their state in the icon itself
+                 (.bmp[data-on]): flip it in place — no re-render, so the
+                 list and the scroll position never move. */
+              const p = b.querySelector("path.bmp");
+              if (p) {
+                p.dataset.on = isBookmarked(b.dataset.bm2) ? "1" : "0";
+                return;
+              }
+              /* Revision lists must re-render (button labels flip and a
+                 removed bookmark leaves the Bookmarks list) — keep the
+                 scroll position across the rebuild so the page is static. */
+              const y = window.scrollY;
               render();
+              window.scrollTo({ top: y, behavior: "instant" });
             }),
         );
         document.querySelectorAll("[data-batch]").forEach(
@@ -5367,7 +5387,9 @@
           document.getElementById("pbPrev").click();
         } else if (e.key === "b" || e.key === "B") {
           toggleBookmark(q.id);
+          const y = window.scrollY;
           renderPractice();
+          window.scrollTo({ top: y, behavior: "instant" });
         } else if (e.key === "m" || e.key === "M") {
           SES.marked[q.id] = !SES.marked[q.id];
           renderPractice();
