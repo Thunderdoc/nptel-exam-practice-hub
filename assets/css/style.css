@@ -3122,3 +3122,109 @@
         font-size: 13px;
         color: var(--muted);
       }
+
+      /* ==================================================================
+         WELCOME REDESIGN — lower section only (owner order 2026-10-24).
+         Scoped with :has(main .hero): .hero exists ONLY on the welcome
+         view, so no other screen's layout, footer or nav is touched.
+         Headline, Google button and Email button are NOT restyled here.
+         ================================================================== */
+      /* Page becomes a flex column so the footer pins to the viewport
+         bottom instead of floating below a dead gap; main grows. */
+      body:has(main .hero) {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        min-height: 100dvh;
+      }
+      body:has(main .hero) main {
+        flex: 1 0 auto;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 0; /* welcome has no bottom nav: kill the 94px clearance */
+      }
+      body:has(main .hero) main .wrap,
+      body:has(main .hero) main .narrow {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      /* Hero distributes its own height: even rhythm, no single void. */
+      body:has(main .hero) .hero {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 12px 0 8px;
+      }
+      /* Note: same words, calmer colour, centred, capped width. */
+      .wel-note {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14.5px;
+        line-height: 1.5;
+        color: var(--muted);
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      /* Meta: subject chip + stats strip, both nowrap — never splits. */
+      .wel-meta {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-top: 22px;
+      }
+      .wel-subj {
+        display: inline-flex;
+        align-items: center;
+        padding: 7px 16px;
+        border-radius: 999px;
+        background: rgba(40, 120, 249, 0.1);
+        color: #14264a;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        white-space: nowrap;
+      }
+      .wel-stats {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13.5px;
+        font-weight: 600;
+        color: var(--muted);
+      }
+      .wel-stats span {
+        white-space: nowrap;
+      }
+      .wel-stats i {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--blue);
+        flex-shrink: 0;
+      }
+      /* Footer on welcome: hugs the content, no fake bottom-nav
+         clearance, centred composition, hairline divider kept. */
+      body:has(main .hero) footer {
+        margin-top: 0;
+        padding: 20px 0 calc(22px + env(safe-area-inset-bottom, 0px));
+      }
+      body:has(main .hero) footer .foot-brand {
+        justify-content: center;
+      }
+      body:has(main .hero) footer .foot-credit {
+        text-align: center;
+        margin-top: 6px;
+      }
+      body:has(main .hero) footer .foot-links {
+        justify-content: center;
+        margin-top: 12px;
+        gap: 14px;
+      }
+      [data-theme="dark"] .wel-subj {
+        background: rgba(74, 144, 255, 0.22);
+        color: #eaf1ff;
+      }

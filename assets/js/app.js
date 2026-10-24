@@ -3801,10 +3801,11 @@
           '<div style="display:flex;flex-direction:column;gap:10px;margin-top:22px">' +
           googleBtnHTML("Continue with Google") +
           '<button class="btn btn-p" data-nav="login">Continue with Email</button></div>' +
-          '<p style="text-align:center;margin-top:16px;font-size:15px">One account, every device — your progress saves and syncs automatically.</p>' +
-          '<p class="small" style="text-align:center;margin-top:18px">Geography &amp; Environment · Weeks 0–12 · ' +
+          '<p class="wel-note">One account, every device — your progress saves and syncs automatically.</p>' +
+          '<div class="wel-meta"><span class="wel-subj">Geography &amp; Environment</span>' +
+          '<div class="wel-stats"><span>Weeks 0–12</span><i aria-hidden="true"></i><span>' +
           BANK.length +
-          " questions</p>" +
+          " questions</span></div></div>" +
           "</section></div></div>"
         );
       }

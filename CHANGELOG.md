@@ -45,6 +45,14 @@ All notable changes to the NPTEL Exam Practice Hub.
   menu entry + gate bypass; the password gate remains as fallback.
 - Added `firestore.rules`, `firebase.json`, `docs/BACKEND.md` and
   `assets/js/firebase-config.js` (project `nptel-exam-practice-hub`).
+- Welcome screen lower section redesigned (owner order 2026-10-24):
+  the subject meta line is now a subject chip + a stats strip
+  (Weeks 0–12 · 130 questions, both nowrap — no awkward word-wrap
+  splits), and the footer is a composed, centred block pinned to the
+  viewport bottom; the dead gap between the note and the footer is
+  gone (was ~154px of padding/margin clearance for a bottom nav the
+  welcome screen does not show). Headline and both sign-in buttons
+  untouched; note wording, credit and links unchanged.
 
 ## 2026-10-23 — Proper project structure + UI redesign
 
