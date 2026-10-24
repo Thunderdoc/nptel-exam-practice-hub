@@ -483,6 +483,27 @@
       .auth-card .field:first-of-type {
         margin-top: 6px;
       }
+      .rem-row {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin-top: 14px;
+        min-height: 24px;
+        font-size: 14.5px;
+        color: var(--ink);
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      .rem-row input {
+        width: 18px;
+        height: 18px;
+        flex: none;
+        margin: 0;
+        padding: 0;
+        accent-color: var(--blue);
+        cursor: pointer;
+      }
       /* search */
       .searchbox {
         display: flex;

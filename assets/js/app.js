@@ -2019,6 +2019,15 @@
       };
       const MISSING = {};
       const LSKEY = "nptel-hub-v1";
+      const SESKEY = "nptel-hub-session";
+      const ADMKEY = "nptel-hub-admin";
+      /* Remember me: the account store always stays in localStorage, but
+         the live SESSION marker moves with the checkbox — remembered:
+         S.current persists in the store; unticked: S.current is kept out
+         of the persisted store and the marker lives in sessionStorage
+         (SESKEY), so it dies with the browser session. Same split for the
+         admin gate marker (ADMKEY). Account data is never touched. */
+      let sessionOnly = false;
       /* ==================================================================
          SECTION JS-3 · STATE, STORAGE & ACCOUNTS
          Everything persists in local storage on this device only,
@@ -2073,12 +2082,75 @@
         return blankState();
       }
       let S = load();
+      /* Boot session resolution: a persisted S.current is a remembered
+         session (and supersedes any session marker); otherwise fall back
+         to the sessionStorage marker from a session-only sign-in. */
+      try {
+        if (S.current) {
+          sessionStorage.removeItem(SESKEY);
+        } else {
+          const sm = sessionStorage.getItem(SESKEY);
+          if (sm && S.accounts[sm]) {
+            S.current = sm;
+            sessionOnly = true;
+          } else if (sm) {
+            sessionStorage.removeItem(SESKEY);
+          }
+        }
+      } catch (e) {}
       let D = blankData();
       if (S.current && S.accounts[S.current]) setD(S.accounts[S.current]);
       if (D.themePref) S.theme = D.themePref;
       function save() {
         try {
-          localStorage.setItem(LSKEY, JSON.stringify(S));
+          const out = sessionOnly
+            ? Object.assign({}, S, { current: null })
+            : S;
+          localStorage.setItem(LSKEY, JSON.stringify(out));
+        } catch (e) {}
+      }
+      function applyRemember(email, remember) {
+        try {
+          if (remember) {
+            sessionOnly = false;
+            sessionStorage.removeItem(SESKEY);
+          } else {
+            sessionOnly = true;
+            sessionStorage.setItem(SESKEY, email);
+          }
+        } catch (e) {}
+      }
+      function clearUserSession() {
+        sessionOnly = false;
+        try {
+          sessionStorage.removeItem(SESKEY);
+        } catch (e) {}
+      }
+      function adminSessionOn() {
+        try {
+          return (
+            localStorage.getItem(ADMKEY) === "1" ||
+            sessionStorage.getItem(ADMKEY) === "1"
+          );
+        } catch (e) {
+          return false;
+        }
+      }
+      function setAdminSession(remember) {
+        try {
+          if (remember) {
+            localStorage.setItem(ADMKEY, "1");
+            sessionStorage.removeItem(ADMKEY);
+          } else {
+            sessionStorage.setItem(ADMKEY, "1");
+            localStorage.removeItem(ADMKEY);
+          }
+        } catch (e) {}
+      }
+      function clearAdminSession() {
+        try {
+          localStorage.removeItem(ADMKEY);
+          sessionStorage.removeItem(ADMKEY);
         } catch (e) {}
       }
       function curAcct() {
@@ -3271,6 +3343,7 @@
           '<div class="field"><span class="fic">' +
           icoLock() +
           '</span><input id="liPw" type="password" autocomplete="current-password" required placeholder="Password"><button type="button" class="eye" data-eye="liPw" aria-label="Show or hide password"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button></div>' +
+          '<label class="rem-row"><input type="checkbox" id="liRem" checked><span>Remember me</span></label>' +
           '<p class="small" id="authErr" style="color:var(--red);font-weight:600;margin-top:10px"></p>' +
           '<button class="btn btn-p" type="submit" style="width:100%;margin-top:14px">Log In</button>' +
           '<p class="small" style="margin-top:14px;text-align:center"><a href="#" data-nav="forgot">Forgot password?</a> · New here? <a href="#" data-nav="signup">Sign up</a></p></form></div></div>'
@@ -4252,7 +4325,7 @@
       const ADMIN_SALT = "nptel-admin-2026";
       const ADMIN_HASH =
         "36f86475239d11595ec2b5ff5ab177f9830f2bf7202dd8dc381ba6b00c747213";
-      let ADMIN_ON = false;
+      let ADMIN_ON = adminSessionOn();
       function adminLoginHTML() {
         return (
           '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="welcome" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Admin Sign In</h2>' +
@@ -4262,6 +4335,7 @@
           '<div class="field"><span class="fic">' +
           icoLock() +
           '</span><input id="admPw" type="password" autocomplete="current-password" required placeholder="Password"></div>' +
+          '<label class="rem-row"><input type="checkbox" id="admRem" checked><span>Remember me</span></label>' +
           '<p class="small" id="admErr" style="color:var(--red);font-weight:600;margin-top:10px"></p>' +
           '<button class="btn btn-p" type="submit" style="width:100%;margin-top:14px">Sign in to Admin</button></form></div></div>'
         );
@@ -4743,6 +4817,7 @@
                 const aOut = curAcct();
                 if (aOut) aOut.data.lastView = null;
                 S.current = null;
+                clearUserSession();
                 D = blankData();
                 save();
                 curView = "welcome";
@@ -4850,6 +4925,8 @@
             const pw = document.getElementById("admPw").value;
             const h = await hashPw(pw, ADMIN_SALT);
             if (u === ADMIN_USER && h === ADMIN_HASH) {
+              const admRem = document.getElementById("admRem");
+              setAdminSession(!admRem || admRem.checked);
               ADMIN_ON = true;
               render();
               toast("Welcome back, Admin");
@@ -4862,6 +4939,7 @@
         if (admO)
           admO.addEventListener("click", () => {
             ADMIN_ON = false;
+            clearAdminSession();
             render();
           });
         document.querySelectorAll(".eye").forEach((b) =>
@@ -4952,6 +5030,8 @@
               return;
             }
             S.current = email;
+            const liRem = document.getElementById("liRem");
+            applyRemember(email, !liRem || liRem.checked);
             setD(a);
             if (D.themePref) {
               S.theme = D.themePref;
@@ -5002,6 +5082,7 @@
             const aOut2 = curAcct();
             if (aOut2) aOut2.data.lastView = null;
             S.current = null;
+            clearUserSession();
             D = blankData();
             save();
             curView = "welcome";
