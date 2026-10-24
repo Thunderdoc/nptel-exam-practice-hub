@@ -3241,11 +3241,11 @@
               (ok ? " correct" : "") +
               '"><span class="ltr">' +
               o.letter +
-              '</span><span class="stxt">' +
+              '</span><span class="stmain"><span class="stxt">' +
               esc(o.text) +
               "</span>" +
               (ok ? '<span class="ok-tag">✓ Correct Answer</span>' : "") +
-              "</div>"
+              "</span></div>"
             );
           })
           .join("");

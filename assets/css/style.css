@@ -973,9 +973,17 @@
         font-weight: 800;
         font-size: 14px;
       }
-      .study-opt .stxt {
+      .study-opt .stmain {
         flex: 1;
         min-width: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 7px;
+      }
+      .study-opt .stxt {
+        min-width: 0;
+        overflow-wrap: anywhere;
       }
       .study-opt.correct {
         border-color: var(--green);
@@ -987,7 +995,6 @@
         color: #fff;
       }
       .ok-tag {
-        margin-left: auto;
         flex-shrink: 0;
         background: var(--green);
         color: #fff;
@@ -997,6 +1004,19 @@
         padding: 4px 10px;
         border-radius: 999px;
         white-space: nowrap;
+      }
+      /* Option text must never be clipped or overflow its box on any
+         surface (session + flashcard rows, results review, revision
+         answer blocks, accepted-answer box): allow words to break
+         rather than run under a marker or off the card. */
+      .opt > span:not(.ltr) {
+        min-width: 0;
+        overflow-wrap: anywhere;
+      }
+      .review-opt,
+      .ans-block p,
+      .acc-box {
+        overflow-wrap: anywhere;
       }
       .wkchips {
         display: flex;
