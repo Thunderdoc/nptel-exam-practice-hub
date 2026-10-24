@@ -3064,3 +3064,61 @@
           flex-wrap: wrap;
         }
       }
+      /* ===== Phase 2 auth redesign (Google button, divider, heads) ===== */
+      .gbtn {
+        background: #fff;
+        color: #1f1f1f;
+        border: 1.5px solid var(--line);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        font-weight: 600;
+      }
+      .gbtn:hover {
+        background: #f8fafd;
+      }
+      .gbtn:active {
+        transform: scale(0.99);
+      }
+      [data-theme="dark"] .gbtn {
+        background: #12263f;
+        color: #f5f7fc;
+        border-color: #2a4a73;
+      }
+      [data-theme="dark"] .gbtn:hover {
+        background: #17304f;
+      }
+      .auth-or {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 16px 0 2px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .auth-or::before,
+      .auth-or::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--line);
+      }
+      .auth-head {
+        margin-top: 6px;
+      }
+      .auth-head h2 {
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--navy);
+      }
+      .auth-head .small {
+        margin-top: 5px;
+      }
+      .auth-note {
+        text-align: center;
+        margin-top: 14px;
+        font-size: 13px;
+        color: var(--muted);
+      }
