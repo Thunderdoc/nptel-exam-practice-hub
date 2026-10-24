@@ -2,6 +2,37 @@
 
 All notable changes to the NPTEL Exam Practice Hub.
 
+## 2026-10-24 — README rewrite, docs consistency, repo hygiene
+
+- README completely rewritten against the shipped Firebase build: cloud-synced
+  accounts (Google + email/password), the four-tab navigation, the five
+  practice modes, Learn study questions, Revision, Readiness, the global
+  admin panel + students list — replacing the pre-Firebase copy that still
+  described device-local accounts and a "planned, not shipped" Phase 2.
+- Real screenshots added under `docs/images/` (welcome, Home, Week Test
+  session, results, Learn, Revision, Account, admin overview, admin
+  students list), rendered from the shipped build's exact bytes at 390px.
+  Inner screens use a demo account, so their progress numbers are
+  illustrative; the questions, answers and layouts are the real shipped UI.
+  No student personal data appears in any shot.
+- Docs consistency pass: `docs/ARCHITECTURE.md` rewritten for the Firebase
+  build (auth, storage, navigation, Learn, admin); `docs/BACKEND.md`
+  corrected (phone Google flow is redirect, Remember-me drives Auth
+  persistence); `docs/VERIFICATION.md` notes the original-export gaps
+  section is superseded by the portal recovery. `LICENSE` verified: full
+  MIT text, Copyright (c) 2026 Thunderdoc, no placeholders — unchanged.
+  `.gitignore` verified sane for a static site — unchanged. No git tags
+  or releases exist for this repo yet (see the version note below).
+- Correction: the Phase-2 entry below previously claimed `firestore.rules`
+  and `firebase.json` were added to the repo — they were not committed.
+  The Firestore rules were published in the Firebase console; the full
+  rules summary lives in `docs/BACKEND.md`. No app code, questions,
+  Firebase config or rules changed in this commit.
+- Version note: this repo versions by dated changelog entries (no semver
+  headings, no in-app version string, no tags/releases). A `v2.0.0` tag
+  for the Firebase switch is recommended but deliberately NOT created
+  here — tags/releases need the owner's go-ahead.
+
 ## 2026-10-24 — Cache-busting for app assets
 
 - `index.html` now references the app assets with a version token
@@ -41,8 +72,11 @@ All notable changes to the NPTEL Exam Practice Hub.
   under the published rules. The "(this device)" labels and the
   "needs a backend" banner are gone. Owner's Google account gets a
   menu entry + gate bypass; the password gate remains as fallback.
-- Added `firestore.rules`, `firebase.json`, `docs/BACKEND.md` and
-  `assets/js/firebase-config.js` (project `nptel-exam-practice-hub`).
+- Added `docs/BACKEND.md` and `assets/js/firebase-config.js`
+  (project `nptel-exam-practice-hub`). The Firestore rules were published
+  in the Firebase console (full summary in `docs/BACKEND.md`); the
+  `firestore.rules` file and `firebase.json` are not committed in this repo
+  (corrected 2026-10-24 — see the hygiene entry above).
 - Welcome screen lower section redesigned (owner order 2026-10-24):
   the subject meta line is now a subject chip + a stats strip
   (Weeks 0–12 · 130 questions, both nowrap — no awkward word-wrap

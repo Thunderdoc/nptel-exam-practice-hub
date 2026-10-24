@@ -8,21 +8,26 @@ the client (no server of our own, no build step). The question bank
 - Sign-in code: `assets/js/app.js` → `SECTION JS-3b · CLOUD`
 - Project config: `assets/js/firebase-config.js` (values are project
   identifiers, not secrets — access control is the security rules)
-- Security rules: `firestore.rules` (repo root)
+- Security rules: published in the Firebase console (the rules file itself
+  is not committed in this repo; the full summary is under "Security rules" below)
 
 ## Accounts
 
 Two sign-in providers, both Firebase Authentication:
 
-1. **Google** — prominent "Continue with Google" button (popup flow).
-   Name and email come from the Google account.
+1. **Google** — prominent "Continue with Google" button: popup flow on
+   desktop, full-page redirect on phones (≤640px, where popups are
+   fragile). Name and email come from the Google account.
 2. **Email/password** — the original forms, unchanged visually, mapped
    onto Firebase (`createUserWithEmailAndPassword` /
    `signInWithEmailAndPassword` / `sendPasswordResetEmail`).
 
-The session persists on the device (`browserLocalPersistence`): a student
-who signs in once stays signed in across reloads and browser restarts
-until they explicitly log out. The app itself stores **no passwords**.
+Session persistence follows the **Remember me** checkbox, set before every
+sign-in: ticked = `browserLocalPersistence` (stays signed in across
+browser restarts), unticked = `browserSessionPersistence` (ends with the
+browser session). Auth buttons show real states while this happens
+("Connecting…" while the SDK loads, "Signing in…" while a sign-in is in
+flight). The app itself stores **no passwords**.
 
 The in-app **Admin gate** (username `admin` + the pre-existing salted
 SHA-256 password check) is unchanged and still guards the panel reached
@@ -85,7 +90,7 @@ signed-in reporter; the admin panel lists the latest 50.
 
 ## Security rules
 
-`firestore.rules`, in summary:
+The published rules, in summary:
 
 - `users/{uid}` — read/write **only** by that uid, PLUS the owner-read exception (owner order 2026-10-24): the owner's verified Google identity (`ankitraj2163@gmail.com`, `email_verified == true`) may READ every user doc, so the admin panel's students list works. Writes stay owner-only.
 - `stats/*` — read/write by any signed-in user (needed for the
@@ -133,8 +138,9 @@ wiped:
    `nptel-exam-practice-hub.vercel.app`** are listed — Google sign-in
    fails with `auth/unauthorized-domain` on any domain missing here.
 4. **Build → Firestore Database → Create database** (production mode).
-   Paste `firestore.rules` into the Rules tab and Publish (or
-   `firebase deploy --only firestore:rules`).
+   Paste the rules summarised under "Security rules" below into the Rules
+   tab and Publish (or `firebase deploy --only firestore:rules` if the
+   rules are kept in a local file — this repo does not commit one).
 5. **Project settings → General → Your apps → Web (`</>`)**: register
    the app, copy the `firebaseConfig` object into
    `assets/js/firebase-config.js` as `window.FB_CONFIG`.

@@ -1,7 +1,9 @@
 # Architecture — NPTEL Exam Practice Hub
 
 A dependency-free static web app: plain HTML, CSS and JavaScript. No build
-step, no framework, no server. Everything runs in the student's browser.
+step, no framework, no server of our own. The site is static on Vercel;
+accounts and sync run on Firebase, driven entirely from the client (see
+`docs/BACKEND.md`). The question bank stays a static file.
 
 ## Layout
 
@@ -10,42 +12,51 @@ step, no framework, no server. Everything runs in the student's browser.
 | `index.html` | Markup only: the screens (views) and templates the JS fills in. |
 | `assets/css/style.css` | The whole design system. Sectioned by area (tokens/themes, base, header, welcome/auth, cards, practice, mock, revision, learn, results, admin). Light theme is the default; dark theme is the same tokens under `[data-theme="dark"]`. |
 | `assets/js/app.js` | All application logic, organised in labelled sections (see below). |
+| `assets/js/firebase-config.js` | Firebase project identifiers (public, not secrets — access control is the Firestore rules). |
 | `data/questions.json` | The verified question bank the app embeds: 130 questions (Weeks 0–12), 4 options each, one accepted answer per question. |
+| `docs/BACKEND.md` | Firebase schema, security rules, migration and honest limits. |
 | `docs/VERIFICATION.md` | How the accepted answers were double-verified against the source. |
+| `docs/images/` | Screenshots used in the README, rendered from the shipped build. |
 
 ## How app.js is organised
 
 `app.js` is written as a sequence of clearly delimited sections, in load order:
 
-1. **Question data** — the embedded bank (`QUESTIONS`), identical to
+1. **Question data** — the embedded bank (`BANK`), identical to
    `data/questions.json`.
-2. **Storage layer** — all persistence goes through one small API over
-   `localStorage`: accounts (passwords stored hashed, never plain text),
-   per-account progress (attempts, bookmarks, notes, mistakes, learn
-   progress, exam date, theme). One account's data is never visible to
-   another.
+2. **Storage layer** — Firebase Authentication for accounts (the app stores
+   no passwords) and one Cloud Firestore document per student
+   (`users/{uid}`) for progress (attempts, bookmarks, notes, sessions,
+   learn progress, exam date, theme). Browser `localStorage` holds an
+   offline cache/mirror of the same record; in-progress sessions never
+   leave the device. One student's document is never visible to another
+   (Firestore rules; see `docs/BACKEND.md`).
 3. **State + routing** — a single `state` object and a view switcher; the
-   bottom navigation renders Home / Learn / Practice / Revision / Search.
-4. **Auth + subject selection** — sign up, log in, forgot-password (device
-   local), then the mandatory subject selection (one subject:
-   Geography & Environment). All practice data is keyed per subject so more
-   subjects can be added later without a rewrite.
-5. **Practice engine** — week practice (check-as-you-go), the submit-all
-   Week Test (no reveals until submit, unanswered-count confirmation),
-   All Questions, Random, and the Custom Practice Generator
-   (weeks × count × New/Incorrect/Bookmarked pools).
+   bottom navigation renders Home / Learn / Practice / Revision.
+4. **Auth + subject selection** — Firebase sign-in (Google, popup on
+   desktop and redirect on phones; email/password; forgot-password via
+   Firebase), Remember-me driving Auth persistence, then the mandatory
+   subject selection (one subject: Geography & Environment). All practice
+   data is keyed per subject so more subjects can be added later without
+   a rewrite.
+5. **Practice engine** — submit-all Week Test (no reveals until submit,
+   unanswered-count confirmation), All Questions, Random, and the Custom
+   Practice Generator (weeks × count × New/Incorrect/Bookmarked pools).
 6. **Mock test** — timed sessions with a question palette
    (answered / marked-for-review / current), submit confirmation and
-   auto-submit at expiry.
+   auto-submit at expiry (implemented in code; expiry auto-submit has not
+   been live-observed).
 7. **Revision** — Wrong Answers (sorted by miss count), Bookmarks,
    Quick Revision flashcards, Notes.
-8. **Learn From Zero** — 12 lessons derived only from concepts the real
-   questions test, each with a mini-quiz of real bank questions; lesson
-   mistakes feed the same mistake store as practice.
-9. **Search, Readiness, Reports, Admin preview** — full-text search over
-   the bank; the Exam Readiness Score (coverage + accuracy + tests, formula
-   shown in-app, labelled an estimate); per-question issue reports stored
-   locally and surfaced in the admin preview with real aggregates.
+8. **Learn** — week list → study questions: every question of the week
+   with all four options and the correct answer highlighted in green,
+   bookmarkable into Revision, with Previous / Next week navigation.
+9. **Readiness, Reports, Admin** — the Exam Readiness Score (coverage +
+   accuracy + tests, formula shown in-app, labelled an estimate);
+   per-question issue reports written to Firestore and surfaced in the
+   global admin panel; the admin panel itself (global aggregates +
+   students list, the latter readable only by the owner's verified Google
+   identity).
 
 ## Data honesty rules (do not regress these)
 
@@ -58,15 +69,18 @@ step, no framework, no server. Everything runs in the student's browser.
   portal-verified). Week 0's answers come from public course material (the
   portal shows no accepted answers for Week 0) and are labelled as such in
   the app — they are the only non-portal-verified answers in the bank.
-- Learn lessons are the app's own supplementary notes and are labelled
-  "not official NPTEL content".
-- Accounts are device-local by design (no backend in this version) and the
-  app states that plainly on its Source & Limits page.
+- Accounts are Firebase accounts; per-student data is locked by Firestore
+  rules to its owner (plus the owner's verified read for the admin students
+  list). Global rollup counters are trust-based client writes — the honest
+  limits are in `docs/BACKEND.md`, not hidden.
+- The Source & Limits page states the bank's verification status plainly
+  (portal-verified weeks, Week 0 from public course material, no
+  explanations in the source).
 
 ## Extending the bank: future sessions & new subjects
 
 The bank is **fully data-driven**: week lists, counts, practice pools, mock
-setup, search filters and statistics are all derived from the bank data at
+setup and statistics are all derived from the bank data at
 runtime (`BANK` in `app.js`, mirrored by `data/questions.json`). Nothing about
 the current 130 questions is hardcoded, so extending the app is a data change,
 not a code change.

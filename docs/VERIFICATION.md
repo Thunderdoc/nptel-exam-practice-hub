@@ -31,7 +31,9 @@ Raw PDF text inspected at each week boundary: Week 6 ends at Q9; Week 7 starts a
 Q2 (no Q1, no Q9); Week 9 starts at Q2; Week 10 starts at Q2; Week 11 starts at Q2
 (no Q1, no Q5). These questions are absent from the supplied PDF itself.
 They are NOT invented in the app; the UI states the real count per week.
-If the owner supplies the missing pages/exports, they can be added exactly.
+(Update 2026-10-23, below: all 7 gaps were recovered from the owner's NPTEL
+portal, so this section describes the original export only — the current bank
+has no gaps.)
 
 ## Conclusion (original 113-question bank)
 113 questions, all answers double-verified inside the source, sample cross-checked

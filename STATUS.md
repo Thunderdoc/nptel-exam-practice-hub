@@ -96,3 +96,37 @@ The Phase-2 admin panel must be the FULL dashboard: stats/global aggregates PLUS
 - Pre-push checks: main head still c3a89be2; phase2-work app files byte-identical to preview head 53c989d6 (app.js 437f121d, css 3ba3f7a0, index 6c5753c0, tokens ?v=20261024d); CHANGELOG Phase-2 entry flipped IN PREVIEW → SHIPPED in the switch commit.
 - Cleanliness (REST, read-back verified): stats/global = users 1 (the owner's own real account — honest, not zeroed), sessions 0, attemptsTotal 0, correctTotal 0, perWeek {}, perQuestion {}, feedback 0/0, issues 0. Throwaway reset account deleted. One probe issue doc remains in issues (rules forbid API delete — owner's optional console delete).
 - Switch commit pushes to main: index.html, assets/js/app.js, assets/css/style.css, assets/js/firebase-config.js, CHANGELOG.md, docs/BACKEND.md, STATUS.md. data/questions.json + vercel.json byte-identical to production, not re-pushed.
+
+
+## README + GITHUB HYGIENE PHASE (2026-10-24, after the switch)
+
+- README rewritten against the shipped Firebase build (cloud accounts, 4 tabs,
+  5 practice modes, Learn study questions, Revision, Readiness, global admin +
+  students list). 9 screenshots added under `docs/images/`, rendered from the
+  shipped build's exact main bytes at 390px (local mirror + stubbed Firebase
+  SDK, since the sandbox cannot reach Google): welcome (clean, no meta),
+  Home, Week Test session (real W1 Q1), results (demo attempt 4/10), Learn
+  W1 (real study cards), Revision bookmarks, Account, admin overview,
+  admin students list. Inner screens use a demo account — their numbers are
+  illustrative, captioned as such; no real student personal data in any shot.
+  No live account was created, so live stats were never touched and no
+  cleanup was needed (live stats remain users=1 owner, rest 0, plus the one
+  pre-existing probe issue doc).
+- Docs consistency: ARCHITECTURE rewritten for Firebase (auth, storage, nav,
+  Learn, admin); BACKEND corrected (phone Google = redirect, Remember-me =
+  Auth persistence, rules published in console, not committed);
+  VERIFICATION notes the gaps section is superseded by portal recovery;
+  CHANGELOG corrects the old claim that firestore.rules/firebase.json were
+  committed (they were not) and adds this phase's entry.
+- Hygiene audit: LICENSE verified full MIT, Copyright (c) 2026 Thunderdoc,
+  no placeholders, plus the question-content redistribution note — unchanged.
+  .gitignore sane for a static site — unchanged. No git tags or releases
+  exist (ls-remote proof); no semver headings or in-app version string.
+  Recommendation (NOT done — needs owner go-ahead): tag v2.0.0 for the
+  Firebase switch. Historical CHANGELOG entries mentioning lessons/Search/
+  device-local accounts are dated history of v2 and were deliberately left
+  untouched.
+- Secret-scanning alert (Firebase web apiKey in firebase-config.js): the
+  GitHub connector exposes no alert-dismissal tool, so dismissal was NOT
+  done here — exact URL + steps handed to the parent for a browser task.
+  The key is a public project identifier by Firebase's design, not a secret.
