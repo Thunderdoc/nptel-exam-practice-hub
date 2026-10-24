@@ -16,6 +16,35 @@ All notable changes to the NPTEL Exam Practice Hub.
   `assets/css/style.css` MUST bump the `?v=` token in `index.html` in the
   same commit (e.g. `?v=20261024a` → next date/letter). A push that changes
   the assets without bumping the token will not reach users' phones.
+## 2026-10-24 — Phase 2: Firebase backend (real accounts + sync) — IN PREVIEW, NOT YET ON MAIN
+
+> Status (corrected): this build is live only on the `preview/phase2-switch`
+> branch (Vercel preview deployment). The switch to `main` is pending the
+> final live proofs (in-browser session sync on the preview URL and the
+> owner's Google sign-in students-list check). Do not describe Phase 2 as
+> shipped until that switch push lands.
+
+- Real server accounts via Firebase Authentication: **Google sign-in**
+  and **email/password** (auth screens redesigned around the same
+  forms). Remember me now drives Firebase session persistence (ticked:
+  stays signed in across browser restarts; unticked: this browser
+  session only). The app stores no passwords.
+- Student data (attempts, bookmarks, notes, sessions, quick-revision
+  flags, feedback, exam date) now lives in Cloud Firestore
+  (`users/{uid}`) and syncs across devices; local storage is a cache.
+- One-time migration: progress created under the old device-local
+  accounts is uploaded/merged into the new Firebase account on first
+  sign-in. Old device-local accounts are retired (see docs/BACKEND.md).
+- Admin panel rebuilt around **global** data: registered users,
+  sessions, per-week and per-question usage, global feedback, all
+  reported issues, and a **students list** with per-student progress
+  (name/email, sessions, answers + accuracy, weakest weeks, last
+  activity) — readable only by the owner's verified Google identity
+  under the published rules. The "(this device)" labels and the
+  "needs a backend" banner are gone. Owner's Google account gets a
+  menu entry + gate bypass; the password gate remains as fallback.
+- Added `firestore.rules`, `firebase.json`, `docs/BACKEND.md` and
+  `assets/js/firebase-config.js` (project `nptel-exam-practice-hub`).
 
 ## 2026-10-23 — Proper project structure + UI redesign
 
