@@ -2030,8 +2030,11 @@
       let sessionOnly = false;
       /* ==================================================================
          SECTION JS-3 · STATE, STORAGE & ACCOUNTS
-         Everything persists in local storage on this device only,
-         separated per account. Passwords are kept as salted hashes.
+         Working state lives in memory + a local-storage cache on this
+         device; the source of truth is the signed-in user's Firestore
+         document (SECTION JS-3b · CLOUD). Accounts are Firebase Auth
+         accounts (Google or email/password) — the app itself never
+         stores passwords.
          ================================================================== */
       function blankData() {
         return {
@@ -2152,15 +2155,551 @@
           localStorage.removeItem(ADMKEY);
           sessionStorage.removeItem(ADMKEY);
         } catch (e) {}
+        cloudPush();
       }
       function curAcct() {
-        return S.current && S.accounts[S.current]
-          ? S.accounts[S.current]
-          : null;
+        const a = S.current && S.accounts[S.current];
+        // Only Firebase-backed mirror accounts count as signed in. A
+        // pre-backend local account stays parked (data intact) until its
+        // owner signs in with Firebase and it is migrated (JS-3b).
+        return a && a.uid ? a : null;
       }
       function isLoggedIn() {
         return !!curAcct();
       }
+      /* ==================================================================
+         SECTION JS-3b · CLOUD — Firebase Auth + Firestore sync.
+         - Sign-in: Google or email/password (Firebase Authentication);
+           the session persists on the device (browserLocalPersistence),
+           so a signed-in student stays signed in until explicit logout.
+         - Source of truth per student: Firestore doc users/{uid}. The
+           local S.accounts entry is a device cache / offline mirror.
+         - Global rollup: stats/global + issues collection, maintained by
+           client writes (see docs/BACKEND.md for schema, security rules
+           and the honest limits of a client-side rollup).
+         ================================================================== */
+      const OWNER_EMAIL = "ankitraj2163@gmail.com";
+      const FB_SDK_VER = "10.12.2";
+      let FB = null; // {app, auth, db, authM, fsM} once the SDK is loaded
+      let FBUSER = null; // {uid, name, email} of the Firebase session
+      let CLOUD = "off"; // off | loading | ready | error
+      let AUTH_BUSY = false; // true while a sign-in attempt is in flight
+      let PENDING_NAME = ""; // display name typed on the email sign-up form
+      let PENDING_POOL = null; // pre-backend local data awaiting migration
+      function fbConfigured() {
+        const c = window.FB_CONFIG;
+        return !!(
+          c &&
+          c.apiKey &&
+          c.projectId &&
+          String(c.apiKey).indexOf("REPLACE") !== 0
+        );
+      }
+      function persistSlice(d) {
+        // What is written to users/{uid}.data: the full study record
+        // minus the in-progress session (device-bound) and, for stored
+        // session history, the option order (review layout is local).
+        const c = JSON.parse(JSON.stringify(d || blankData()));
+        delete c.activeSes;
+        if (Array.isArray(c.sessions)) {
+          c.sessions = c.sessions.slice(-30).map((s) => {
+            const x = Object.assign({}, s);
+            delete x.optOrder;
+            return x;
+          });
+        }
+        return c;
+      }
+      function hasContent(d) {
+        return !!(
+          d &&
+          (Object.keys(d.attempts || {}).length ||
+            (d.bookmarks || []).length ||
+            Object.keys(d.notes || {}).length ||
+            (d.sessions || []).length)
+        );
+      }
+      function mergeData(server, local) {
+        // server wins; local only fills gaps. Per-question attempts keep
+        // whichever record has more total attempts; bookmarks/notes/
+        // qrFlags union; sessions concat + de-duped by timestamp+title.
+        const out = Object.assign(blankData(), server || {});
+        if (!local) return out;
+        const la = local.attempts || {};
+        Object.keys(la).forEach((id) => {
+          const s = out.attempts[id],
+            l = la[id];
+          if (!s || (l && (l.total || 0) > (s.total || 0)))
+            out.attempts[id] = l;
+        });
+        (local.bookmarks || []).forEach((id) => {
+          if (!out.bookmarks.includes(id)) out.bookmarks.push(id);
+        });
+        Object.keys(local.notes || {}).forEach((id) => {
+          if (!out.notes[id]) out.notes[id] = local.notes[id];
+        });
+        const seen = {};
+        out.sessions = (out.sessions || [])
+          .concat(local.sessions || [])
+          .filter((s) => {
+            const k = (s.at || "") + "|" + (s.title || "");
+            if (seen[k]) return false;
+            seen[k] = 1;
+            return true;
+          })
+          .slice(-50);
+        Object.keys(local.qrFlags || {}).forEach((id) => {
+          if (!out.qrFlags[id]) out.qrFlags[id] = local.qrFlags[id];
+        });
+        if (!out.subject && local.subject) out.subject = local.subject;
+        if (!out.examDate && local.examDate) out.examDate = local.examDate;
+        if (!out.feedback && local.feedback) out.feedback = local.feedback;
+        if (local.learn) {
+          const done = (out.learn && out.learn.done) || [];
+          (local.learn.done || []).forEach((x) => {
+            if (!done.includes(x)) done.push(x);
+          });
+          out.learn = {
+            done: done,
+            last: (out.learn && out.learn.last) || local.learn.last || null,
+          };
+        }
+        return out;
+      }
+      async function fbInit() {
+        if (!fbConfigured()) {
+          CLOUD = "off";
+          return;
+        }
+        CLOUD = "loading";
+        try {
+          const base =
+            "https://www.gstatic.com/firebasejs/" + FB_SDK_VER + "/";
+          const mods = await Promise.all([
+            import(base + "firebase-app.js"),
+            import(base + "firebase-auth.js"),
+            import(base + "firebase-firestore.js"),
+          ]);
+          const appM = mods[0],
+            authM = mods[1],
+            fsM = mods[2];
+          const app = appM.initializeApp(window.FB_CONFIG);
+          const auth = authM.getAuth(app);
+          try {
+            await authM.setPersistence(auth, authM.browserLocalPersistence);
+          } catch (e) {}
+          let db;
+          try {
+            db = fsM.initializeFirestore(app, {
+              localCache: fsM.persistentLocalCache({
+                tabManager: fsM.persistentMultipleTabManager(),
+              }),
+            });
+          } catch (e) {
+            db = fsM.getFirestore(app);
+          }
+          FB = { app: app, auth: auth, db: db, authM: authM, fsM: fsM };
+          if (window.FB_EMULATOR) {
+            try {
+              authM.connectAuthEmulator(auth, "http://127.0.0.1:9099", {
+                disableWarnings: true,
+              });
+              fsM.connectFirestoreEmulator(db, "127.0.0.1", 8080);
+            } catch (e) {}
+          }
+          CLOUD = "ready";
+          authM.onAuthStateChanged(auth, (u) => {
+            onFbUser(
+              u
+                ? {
+                    uid: u.uid,
+                    name: u.displayName || "",
+                    email: (u.email || "").toLowerCase(),
+                  }
+                : null,
+            );
+          });
+          // Redirect sign-in (phones) lands back here: the session is
+          // restored by onAuthStateChanged above, but a failed redirect
+          // would otherwise be silent — surface it once, never silently.
+          try {
+            await authM.getRedirectResult(auth);
+          } catch (e) {
+            toast(fbErrText(e));
+          }
+          refreshAuthButtons();
+        } catch (e) {
+          CLOUD = "error";
+          refreshAuthButtons();
+        }
+      }
+      function onFbUser(u) {
+        if (!u) {
+          const was = !!FBUSER;
+          FBUSER = null;
+          if (was) {
+            ADMIN_ON = false;
+            clearAdminSession();
+            S.current = null;
+            clearUserSession();
+            D = blankData();
+            save();
+            curView = "welcome";
+            render();
+          }
+          return;
+        }
+        FBUSER = u;
+        const email = u.email;
+        const existing = S.accounts[email];
+        if (S.cloudMigratedFor !== u.uid) {
+          // Capture any pre-backend data belonging to this identity:
+          // the parked local account with the same email + guest data.
+          let pool = null;
+          if (existing && !existing.uid && existing.data)
+            pool = mergeData(pool, existing.data);
+          if (S.legacy) pool = mergeData(pool, S.legacy);
+          if (pool && hasContent(pool)) PENDING_POOL = pool;
+        }
+        let a = existing;
+        if (!a || !a.uid) {
+          a = {
+            name: u.name || PENDING_NAME || "Student",
+            email: email,
+            uid: u.uid,
+            cloud: true,
+            createdAt: new Date().toISOString(),
+            data: blankData(),
+          };
+          S.accounts[email] = a;
+        }
+        if (u.name) a.name = u.name;
+        else if (PENDING_NAME) a.name = PENDING_NAME;
+        S.current = email;
+        setD(a);
+        save();
+        if (["welcome", "login", "signup", "forgot"].includes(curView))
+          curView = D.subject ? "practice" : "subject";
+        render();
+        cloudLoadUser(u, a);
+      }
+      let cloudBusy = false;
+      async function cloudLoadUser(u, a) {
+        if (cloudBusy || !FB) return;
+        cloudBusy = true;
+        try {
+          const fsM = FB.fsM;
+          const ref = fsM.doc(FB.db, "users", u.uid);
+          const snap = await fsM.getDoc(ref);
+          const pool = S.cloudMigratedFor === u.uid ? null : PENDING_POOL;
+          if (!snap.exists()) {
+            let data = blankData();
+            if (pool) data = mergeData(data, pool);
+            if (hasContent(D))
+              data = mergeData(data, JSON.parse(JSON.stringify(D)));
+            await fsM.setDoc(ref, {
+              name: a.name,
+              email: u.email,
+              createdAt: fsM.serverTimestamp(),
+              updatedAt: fsM.serverTimestamp(),
+              migratedFromLocal: !!pool,
+              data: persistSlice(data),
+            });
+            statsBootstrap();
+            statsBump({ users: 1 });
+            if (pool) finishMigration(u);
+            a.data = Object.assign(blankData(), data);
+            D = a.data;
+          } else {
+            let data = Object.assign(
+              blankData(),
+              (snap.data() || {}).data || {},
+            );
+            if (pool) {
+              data = mergeData(data, pool);
+              await fsM.setDoc(
+                ref,
+                { data: persistSlice(data), updatedAt: fsM.serverTimestamp() },
+                { merge: true },
+              );
+              finishMigration(u);
+            }
+            a.data = data;
+            D = a.data;
+          }
+          if (a.data.themePref) {
+            S.theme = a.data.themePref;
+            applyTheme();
+          }
+          save();
+          if (curView === "admin" && ADMIN_ON) loadAdminCloud();
+          render();
+        } catch (e) {
+          /* offline or rules — the local cache keeps the app usable */
+        }
+        cloudBusy = false;
+      }
+      function finishMigration(u) {
+        S.cloudMigratedFor = u.uid;
+        PENDING_POOL = null;
+        if (S.legacy) S.legacy = null;
+        save();
+      }
+      let syncT = null;
+      function cloudPush() {
+        if (!FB || !FBUSER || CLOUD !== "ready") return;
+        if (syncT) clearTimeout(syncT);
+        syncT = setTimeout(async () => {
+          try {
+            const a = curAcct();
+            await FB.fsM.setDoc(
+              FB.fsM.doc(FB.db, "users", FBUSER.uid),
+              {
+                name: a ? a.name : FBUSER.name || "Student",
+                email: FBUSER.email,
+                updatedAt: FB.fsM.serverTimestamp(),
+                data: persistSlice(D),
+              },
+              { merge: true },
+            );
+          } catch (e) {}
+        }, 900);
+      }
+      function statsRef() {
+        return FB.fsM.doc(FB.db, "stats", "global");
+      }
+      async function statsBootstrap() {
+        if (!FB) return;
+        try {
+          const s = await FB.fsM.getDoc(statsRef());
+          if (!s.exists())
+            await FB.fsM.setDoc(statsRef(), {
+              users: 0,
+              sessions: 0,
+              attemptsTotal: 0,
+              correctTotal: 0,
+              perWeek: {},
+              perQuestion: {},
+              feedback: { up: 0, down: 0 },
+              issues: 0,
+            });
+        } catch (e) {}
+      }
+      function statsBump(flat) {
+        if (!FB || !FBUSER) return;
+        const inc = FB.fsM.increment;
+        const upd = {};
+        Object.keys(flat).forEach((k) => {
+          upd[k] = inc(flat[k]);
+        });
+        FB.fsM.updateDoc(statsRef(), upd).catch(() => {
+          statsBootstrap().then(() =>
+            FB.fsM.updateDoc(statsRef(), upd).catch(() => {}),
+          );
+        });
+      }
+      function aggSession(res) {
+        if (!FB || !FBUSER) return;
+        const flat = { sessions: 1 };
+        let att = 0,
+          cor = 0;
+        Object.keys(res.answers || {}).forEach((id) => {
+          const q = BYID[id];
+          if (!q) return;
+          const ok = res.answers[id] === q.correct_letter;
+          att++;
+          if (ok) cor++;
+          flat["perQuestion." + id + ".a"] =
+            (flat["perQuestion." + id + ".a"] || 0) + 1;
+          if (ok)
+            flat["perQuestion." + id + ".c"] =
+              (flat["perQuestion." + id + ".c"] || 0) + 1;
+          flat["perWeek." + q.week + ".a"] =
+            (flat["perWeek." + q.week + ".a"] || 0) + 1;
+          if (ok)
+            flat["perWeek." + q.week + ".c"] =
+              (flat["perWeek." + q.week + ".c"] || 0) + 1;
+        });
+        flat.attemptsTotal = att;
+        flat.correctTotal = cor;
+        statsBump(flat);
+      }
+      function aggFeedback(oldV, newV) {
+        if (!FB || !FBUSER || oldV === newV) return;
+        const flat = {};
+        if (oldV === "up") flat["feedback.up"] = -1;
+        if (oldV === "down") flat["feedback.down"] = -1;
+        if (newV === "up") flat["feedback.up"] = 1;
+        if (newV === "down") flat["feedback.down"] = 1;
+        if (Object.keys(flat).length) statsBump(flat);
+      }
+      async function cloudReportIssue(it) {
+        if (!FB || !FBUSER) return;
+        try {
+          const q = BYID[it.qid] || {};
+          await FB.fsM.addDoc(FB.fsM.collection(FB.db, "issues"), {
+            uid: FBUSER.uid,
+            email: FBUSER.email,
+            qid: it.qid,
+            week: q.week != null ? q.week : null,
+            number: q.number != null ? q.number : null,
+            type: it.type,
+            text: it.text || "",
+            at: FB.fsM.serverTimestamp(),
+          });
+          statsBump({ issues: 1 });
+        } catch (e) {}
+      }
+      function authUnavailable() {
+        if (CLOUD === "ready") return false;
+        toast(
+          CLOUD === "loading"
+            ? "Connecting… try again in a moment"
+            : "Sign-in is unavailable right now — check your connection and reload",
+        );
+        return true;
+      }
+      function fbErrText(e) {
+        const c = (e && e.code) || "";
+        if (c.includes("popup-closed")) return "Sign-in window closed — try again";
+        if (
+          c.includes("invalid-credential") ||
+          c.includes("wrong-password") ||
+          c.includes("user-not-found")
+        )
+          return "Incorrect email or password";
+        if (c.includes("email-already-in-use"))
+          return "That email already has an account — try Log In";
+        if (c.includes("weak-password"))
+          return "Password must be at least 6 characters";
+        if (c.includes("invalid-email"))
+          return "Please enter a valid email address";
+        if (c.includes("network"))
+          return "Network problem — check your connection";
+        if (c.includes("unauthorized-domain"))
+          return "This domain is not authorized for sign-in yet";
+        if (c.includes("redirect"))
+          return "Google sign-in was interrupted — try again";
+        if (c.includes("account-exists-with-different-credential"))
+          return "That email is already used with a different sign-in method";
+        return "Something went wrong — please try again";
+      }
+      // Remember me -> Firebase Auth persistence. Ticked (or no
+      // checkbox on screen, e.g. the welcome Google button) = the
+      // session survives browser restarts (LOCAL); unticked = it ends
+      // with the browser session (SESSION). Applies to the NEXT
+      // sign-in, so it runs before every sign-in call.
+      async function applyFbPersistence(remember) {
+        if (!FB) return;
+        try {
+          await FB.authM.setPersistence(
+            FB.auth,
+            remember
+              ? FB.authM.browserLocalPersistence
+              : FB.authM.browserSessionPersistence,
+          );
+        } catch (e) {}
+      }
+      function rememberChoice(id) {
+        const el = id && document.getElementById(id);
+        return !el || el.checked;
+      }
+      /* Auth button states, updated IN PLACE (never via render(), so a
+         typed email/password is never wiped): while the SDK is still
+         loading the buttons are disabled showing "Connecting…"; while
+         a sign-in is in flight they are disabled showing "Signing
+         in…"; otherwise they show their data-lbl label, enabled.
+         Render-time HTML derives the same states, so a fresh render
+         during loading/busy stays consistent. */
+      function refreshAuthButtons() {
+        document.querySelectorAll(".auth-btn").forEach((b) => {
+          const sp = b.querySelector("span");
+          const orig = b.dataset.lbl || (sp ? sp.textContent : b.textContent);
+          let lbl = null;
+          if (CLOUD === "loading") lbl = "Connecting…";
+          else if (AUTH_BUSY) lbl = "Signing in…";
+          if (lbl) {
+            if (sp) sp.textContent = lbl;
+            else b.textContent = lbl;
+            b.disabled = true;
+          } else {
+            if (sp) sp.textContent = orig;
+            else b.textContent = orig;
+            b.disabled = false;
+          }
+        });
+      }
+      async function googleSignIn(remId) {
+        if (authUnavailable()) return;
+        if (AUTH_BUSY) return;
+        AUTH_BUSY = true;
+        refreshAuthButtons();
+        try {
+          await applyFbPersistence(rememberChoice(remId));
+          const p = new FB.authM.GoogleAuthProvider();
+          // Phones: the popup round-trip is fragile (opener evicted or
+          // stalled → user lands back on welcome with no state), so
+          // use a full-page redirect; the session restores through the
+          // existing onAuthStateChanged listener, and getRedirectResult
+          // at boot surfaces any redirect error. Desktop keeps popup.
+          if (
+            window.matchMedia &&
+            window.matchMedia("(max-width: 640px)").matches
+          ) {
+            await FB.authM.signInWithRedirect(FB.auth, p);
+          } else {
+            await FB.authM.signInWithPopup(FB.auth, p);
+          }
+        } catch (e) {
+          toast(fbErrText(e));
+        } finally {
+          AUTH_BUSY = false;
+          refreshAuthButtons();
+        }
+      }
+      async function doLogout() {
+        // Clear the refresh-restore marker first: a signed-out boot must
+        // land on Welcome, never back inside the previous view.
+        const aOut = curAcct();
+        if (aOut) aOut.data.lastView = null;
+        try {
+          if (FB && FBUSER) await FB.authM.signOut(FB.auth);
+        } catch (e) {}
+        FBUSER = null;
+        ADMIN_ON = false;
+        clearAdminSession();
+        S.current = null;
+        clearUserSession();
+        D = blankData();
+        save();
+        curView = "welcome";
+        render();
+        toast("Logged out — your progress is saved to your account");
+      }
+      function isOwner() {
+        return !!(FBUSER && FBUSER.email === OWNER_EMAIL);
+      }
+      function googleBtnHTML(label) {
+        // Same states as refreshAuthButtons(), derived at render time
+        // so a fresh render during loading/busy stays consistent.
+        // data-lbl holds the true label for in-place restore.
+        const st =
+          CLOUD === "loading"
+            ? { lbl: "Connecting…", dis: true }
+            : AUTH_BUSY
+              ? { lbl: "Signing in…", dis: true }
+              : { lbl: label, dis: false };
+        return (
+          '<button type="button" class="btn gbtn auth-btn" data-lbl="' +
+          esc(label) +
+          '"' +
+          (st.dis ? " disabled" : "") +
+          '><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.9-.1-1.5-.3-2.2H12v4.3h6.5c-.1 1.1-.8 2.7-2.4 3.8l3.7 2.9c2.3-2.1 3.7-5.2 3.7-8.8z"/><path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-2.9l-3.7-2.9c-1 .7-2.4 1.2-4.2 1.2-3.2 0-5.9-2.2-6.8-5.1L1.3 17.2C3.3 21.2 7.3 24 12 24z"/><path fill="#FBBC05" d="M5.2 14.3c-.2-.7-.4-1.5-.4-2.3s.1-1.6.4-2.3L1.3 6.8C.5 8.4 0 10.1 0 12s.5 3.6 1.3 5.2l3.9-2.9z"/><path fill="#EA4335" d="M12 4.7c1.8 0 3 .8 3.7 1.4l3.3-3.2C17.9 1.1 15.2 0 12 0 7.3 0 3.3 2.8 1.3 6.8l3.9 2.9c.9-2.9 3.6-5 6.8-5z"/></svg><span>' +
+          esc(st.lbl) +
+          "</span></button>"
+        );
+      }
+
       function setD(a) {
         a.data = Object.assign(blankData(), a.data || {});
         D = a.data;
@@ -2256,7 +2795,7 @@
           toast("Bookmark removed");
         } else {
           D.bookmarks.push(id);
-          toast("Bookmarked — saved on this device");
+          toast("Bookmarked — saved to your account");
         }
         save();
       }
@@ -2784,7 +3323,7 @@
             q.week +
             " · Q" +
             q.number +
-            '. Saved to your account on this device and shown in the Admin preview. A report never changes an answer automatically.</p><label class="f" for="repType">What is the problem?</label><select class="inp" id="repType"><option>Accepted answer looks wrong</option><option>Missing or wrong option</option><option>Question unclear</option><option>Formatting problem</option></select><label class="f" for="repTxt">Comment (optional)</label><textarea class="inp" id="repTxt" placeholder="Add a short note if it helps…"></textarea><div style="display:flex;gap:8px;margin-top:14px"><button class="btn btn-g" style="flex:1" id="repCancel">Cancel</button><button class="btn btn-p" style="flex:1" id="repSave">Save report</button></div>',
+            '. Saved to your account and shown to the admin. A report never changes an answer automatically.</p><label class="f" for="repType">What is the problem?</label><select class="inp" id="repType"><option>Accepted answer looks wrong</option><option>Missing or wrong option</option><option>Question unclear</option><option>Formatting problem</option></select><label class="f" for="repTxt">Comment (optional)</label><textarea class="inp" id="repTxt" placeholder="Add a short note if it helps…"></textarea><div style="display:flex;gap:8px;margin-top:14px"><button class="btn btn-g" style="flex:1" id="repCancel">Cancel</button><button class="btn btn-p" style="flex:1" id="repSave">Save report</button></div>',
         );
         document.getElementById("repCancel").onclick = closeDialog;
         document.getElementById("repSave").onclick = () => {
@@ -2798,6 +3337,7 @@
             at: new Date().toISOString(),
           });
           save();
+          cloudReportIssue({ qid: qid, type: ty, text: t });
           closeDialog();
           toast("Report saved — thank you");
         };
@@ -2855,6 +3395,7 @@
         D.sessions.push(res);
         if (D.sessions.length > 50) D.sessions = D.sessions.slice(-50);
         save();
+        aggSession(res);
         LASTRES = res;
         SES = null;
         pbar.classList.remove("on");
@@ -3323,21 +3864,36 @@
         );
       }
       function welcomeHTML() {
+        // Owner order 2026-10-24: NO subject/week/question meta on the
+        // login page — the wel-meta block (subject chip + stats strip)
+        // was removed entirely; only headline, auth buttons, the note
+        // (exact words) and the footer/credit block remain.
+        const em =
+          CLOUD === "loading"
+            ? { lbl: "Connecting…", dis: true }
+            : AUTH_BUSY
+              ? { lbl: "Signing in…", dis: true }
+              : { lbl: "Continue with Email", dis: false };
         return (
           '<div class="wrap"><div class="narrow"><section class="hero"><h1>NPTEL<br>Exam Practice</h1><p class="sub" style="font-size:19px;color:var(--ink);font-weight:600">Practice Today. Score Higher Tomorrow.</p>' +
           BOOKSVG +
-          '<div style="display:flex;flex-direction:column;gap:10px;margin-top:22px"><button class="btn btn-p" data-nav="signup">Get Started</button></div>' +
-          '<p style="text-align:center;margin-top:16px;font-size:15px">Already have an account? <a href="#" data-nav="login" style="font-weight:700">Log In</a></p>' +
-          '<p class="small" style="text-align:center;margin-top:18px">Geography &amp; Environment · Weeks 0–12 · ' +
-          BANK.length +
-          " questions</p>" +
+          '<div style="display:flex;flex-direction:column;gap:10px;margin-top:22px">' +
+          googleBtnHTML("Continue with Google") +
+          '<button class="btn btn-p auth-btn" data-lbl="Continue with Email" data-nav="login"' +
+          (em.dis ? " disabled" : "") +
+          ">" +
+          em.lbl +
+          "</button></div>" +
+          '<p class="wel-note">One account, every device — your progress saves and syncs automatically.</p>' +
           "</section></div></div>"
         );
       }
       function loginHTML() {
         return (
-          '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="welcome" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Welcome Back</h2>' +
-          '<form class="auth-card" id="liForm" style="max-width:none"><div class="field"><span class="fic">' +
+          '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="welcome" aria-label="Back">←</button><div class="auth-head"><h2>Welcome Back</h2><p class="small">Sign in to pick up right where you left off — on any device.</p></div>' +
+          '<form class="auth-card" id="liForm" style="max-width:none">' +
+          googleBtnHTML("Continue with Google") +
+          '<div class="auth-or"><span>or with email</span></div><div class="field"><span class="fic">' +
           icoMail() +
           '</span><input id="liEmail" type="email" autocomplete="email" required placeholder="Email"></div>' +
           '<div class="field"><span class="fic">' +
@@ -3345,14 +3901,24 @@
           '</span><input id="liPw" type="password" autocomplete="current-password" required placeholder="Password"><button type="button" class="eye" data-eye="liPw" aria-label="Show or hide password"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button></div>' +
           '<label class="rem-row"><input type="checkbox" id="liRem" checked><span>Remember me</span></label>' +
           '<p class="small" id="authErr" style="color:var(--red);font-weight:600;margin-top:10px"></p>' +
-          '<button class="btn btn-p" type="submit" style="width:100%;margin-top:14px">Log In</button>' +
-          '<p class="small" style="margin-top:14px;text-align:center"><a href="#" data-nav="forgot">Forgot password?</a> · New here? <a href="#" data-nav="signup">Sign up</a></p></form></div></div>'
+          '<button class="btn btn-p auth-btn" data-lbl="Log In" type="submit" style="width:100%;margin-top:14px"' +
+          (CLOUD === "loading" || AUTH_BUSY ? " disabled" : "") +
+          ">" +
+          (CLOUD === "loading"
+            ? "Connecting…"
+            : AUTH_BUSY
+              ? "Signing in…"
+              : "Log In") +
+          "</button>" +
+          '<p class="small" style="margin-top:14px;text-align:center"><a href="#" data-nav="forgot">Forgot password?</a> · New here? <a href="#" data-nav="signup">Sign up</a></p></form><p class="auth-note">Secured by Firebase — your progress syncs to your account.</p></div></div>'
         );
       }
       function signupHTML() {
         return (
-          '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="welcome" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Create Your Account</h2>' +
-          '<form class="auth-card" id="suForm" style="max-width:none"><div class="field"><span class="fic">' +
+          '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="welcome" aria-label="Back">←</button><div class="auth-head"><h2>Create Your Account</h2><p class="small">One account for every device — progress, bookmarks and notes included.</p></div>' +
+          '<form class="auth-card" id="suForm" style="max-width:none">' +
+          googleBtnHTML("Sign up with Google") +
+          '<div class="auth-or"><span>or with email</span></div><div class="field"><span class="fic">' +
           icoPerson() +
           '</span><input id="suName" type="text" autocomplete="name" required placeholder="Full Name"></div>' +
           '<div class="field"><span class="fic">' +
@@ -3364,25 +3930,28 @@
           '<div class="field"><span class="fic">' +
           icoLock() +
           '</span><input id="suPw2" type="password" autocomplete="new-password" required placeholder="Confirm Password"><button type="button" class="eye" data-eye="suPw2" aria-label="Show or hide password"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button></div>' +
+          '<label class="rem-row"><input type="checkbox" id="suRem" checked><span>Remember me</span></label>' +
           '<p class="small" id="authErr" style="color:var(--red);font-weight:600;margin-top:10px"></p>' +
-          '<button class="btn btn-p" type="submit" style="width:100%;margin-top:14px">Sign Up</button>' +
-          '<p class="small" style="margin-top:14px;text-align:center">Already have an account? <a href="#" data-nav="login">Log in</a></p></form></div></div>'
+          '<button class="btn btn-p auth-btn" data-lbl="Sign Up" type="submit" style="width:100%;margin-top:14px"' +
+          (CLOUD === "loading" || AUTH_BUSY ? " disabled" : "") +
+          ">" +
+          (CLOUD === "loading"
+            ? "Connecting…"
+            : AUTH_BUSY
+              ? "Signing in…"
+              : "Sign Up") +
+          "</button>" +
+          '<p class="small" style="margin-top:14px;text-align:center">Already have an account? <a href="#" data-nav="login">Log in</a></p></form><p class="auth-note">Secured by Firebase — your progress syncs to your account.</p></div></div>'
         );
       }
       function forgotHTML() {
         return (
-          '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="login" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Reset Your Password</h2><p class="small" style="margin-top:4px">Set a new password for the account on this device.</p>' +
+          '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="login" aria-label="Back">←</button><div class="auth-head"><h2>Reset Your Password</h2><p class="small">Enter your account email and we will send you a secure reset link.</p></div>' +
           '<form class="auth-card" id="fpForm" style="max-width:none"><div class="field"><span class="fic">' +
           icoMail() +
           '</span><input id="fpEmail" type="email" autocomplete="email" required placeholder="Account email"></div>' +
-          '<div class="field"><span class="fic">' +
-          icoLock() +
-          '</span><input id="fpPw" type="password" autocomplete="new-password" required placeholder="New password (min 6 characters)"><button type="button" class="eye" data-eye="fpPw" aria-label="Show or hide password"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button></div>' +
-          '<div class="field"><span class="fic">' +
-          icoLock() +
-          '</span><input id="fpPw2" type="password" autocomplete="new-password" required placeholder="Confirm new password"><button type="button" class="eye" data-eye="fpPw2" aria-label="Show or hide password"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button></div>' +
           '<p class="small" id="authErr" style="color:var(--red);font-weight:600;margin-top:10px"></p>' +
-          '<button class="btn btn-p" type="submit" style="width:100%;margin-top:14px">Set New Password</button>' +
+          '<button class="btn btn-p" type="submit" style="width:100%;margin-top:14px">Send Reset Link</button>' +
           '<p class="small" style="margin-top:14px;text-align:center">Remembered it? <a href="#" data-nav="login">Back to Log In</a></p></form></div></div>'
         );
       }
@@ -4224,7 +4793,7 @@
             ? '<button class="btn btn-g btn-sm" id="examClear">Clear</button>'
             : "") +
           "</div></div>" +
-          '<div class="item" style="margin-top:16px">Your data stays on this device.</div>' +
+          '<div class="item" style="margin-top:16px">Your data is saved to your account and syncs across your devices.</div>' +
           '<div class="prof-rows" style="margin-top:16px"><button class="prof-row danger" id="logoutBtn"><span class="ic">' +
           icO +
           "</span>Logout</button></div></div></div>"
@@ -4289,7 +4858,7 @@
             "Explanations",
             "Not in the source · none invented",
           ) +
-          row("#12A879", icLockSm, "Your data", "Stays on this device") +
+          row("#12A879", icLockSm, "Your data", "Synced to your account") +
           row(
             "#8A99AE",
             icFile,
@@ -4328,7 +4897,7 @@
       let ADMIN_ON = adminSessionOn();
       function adminLoginHTML() {
         return (
-          '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="welcome" aria-label="Back">←</button><h2 style="font-size:26px;font-weight:800">Admin Sign In</h2>' +
+          '<div class="wrap"><div class="narrow"><button class="back-btn" data-nav="welcome" aria-label="Back">←</button><div class="auth-head"><h2>Admin Sign In</h2><p class="small">Owner access — global stats, issues and the students list.</p></div>' +
           '<form class="auth-card" id="admForm" style="max-width:none"><div class="field"><span class="fic">' +
           icoPerson() +
           '</span><input id="admUser" type="text" autocomplete="username" required placeholder="Username"></div>' +
@@ -4340,167 +4909,310 @@
           '<button class="btn btn-p" type="submit" style="width:100%;margin-top:14px">Sign in to Admin</button></form></div></div>'
         );
       }
-      function adminHTML() {
-        const accts = Object.values(S.accounts || {});
-        const agg = {};
-        accts.forEach((a) => {
-          Object.entries((a.data && a.data.attempts) || {}).forEach(
-            ([id, x]) => {
-              const t = agg[id] || (agg[id] = { total: 0, correct: 0 });
-              t.total += x.total;
-              t.correct += x.correct;
-            },
-          );
-        });
-        const totSess = accts.reduce(
-          (n, a) => n + ((a.data && a.data.sessions) || []).length,
-          0,
-        );
-        const wkAgg = [];
-        for (let w = 0; w <= 12; w++) {
-          let t = 0;
-          weekQs(w).forEach((q) => {
-            if (agg[q.id]) t += agg[q.id].total;
-          });
-          wkAgg.push({ w: w, t: t });
+      let ADMIN_DATA = null,
+        ADMIN_LOADING = false;
+      async function loadAdminCloud() {
+        if (!FB || CLOUD !== "ready" || ADMIN_LOADING) return;
+        if (ADMIN_DATA && Date.now() - ADMIN_DATA.at < 30000) return;
+        ADMIN_LOADING = true;
+        try {
+          const fsM = FB.fsM;
+          const results = await Promise.all([
+            fsM.getDoc(fsM.doc(FB.db, "stats", "global")),
+            fsM.getDocs(
+              fsM.query(
+                fsM.collection(FB.db, "issues"),
+                fsM.orderBy("at", "desc"),
+                fsM.limit(50),
+              ),
+            ),
+          ]);
+          const issues = [];
+          results[1].forEach((d) => issues.push(d.data()));
+          // Students list: the published rules let ONLY the owner's
+          // verified Google identity read users/* — a gate-only session
+          // (no Firebase sign-in) gets a denial here, which we surface
+          // as studentsDenied instead of failing the whole panel.
+          let students = null,
+            studentsDenied = false;
+          try {
+            const us = await fsM.getDocs(fsM.collection(FB.db, "users"));
+            students = [];
+            us.forEach((d) => students.push(d.data()));
+          } catch (e) {
+            studentsDenied = true;
+          }
+          ADMIN_DATA = {
+            stats: results[0].exists() ? results[0].data() : {},
+            issues: issues,
+            students: students,
+            studentsDenied: studentsDenied,
+            at: Date.now(),
+          };
+        } catch (e) {
+          ADMIN_DATA = {
+            error: true,
+            stats: {},
+            issues: [],
+            students: null,
+            studentsDenied: false,
+            at: Date.now(),
+          };
         }
-        wkAgg.sort((a, b) => b.t - a.t);
-        const topQ = Object.entries(agg)
-          .sort((a, b) => b[1].total - a[1].total)
+        ADMIN_LOADING = false;
+        if (curView === "admin" && ADMIN_ON) render();
+      }
+      function adminHTML() {
+        const A = ADMIN_DATA;
+        const st = (A && A.stats) || {};
+        const perWeek = st.perWeek || {};
+        const perQ = st.perQuestion || {};
+        const fb = st.feedback || {};
+        const fbUp = fb.up || 0,
+          fbDown = fb.down || 0;
+        const issues = (A && A.issues) || [];
+        const students = A && A.students;
+        const studentRows = (students || [])
+          .map((s) => {
+            const d = s.data || {};
+            let att = 0,
+              cor = 0;
+            const wk = {};
+            Object.keys(d.attempts || {}).forEach((id) => {
+              const t = d.attempts[id] || {};
+              const q = BYID[id];
+              att += t.total || 0;
+              cor += t.correct || 0;
+              if (q) {
+                const w = (wk[q.week] = wk[q.week] || { a: 0, c: 0 });
+                w.a += t.total || 0;
+                w.c += t.correct || 0;
+              }
+            });
+            const weak = Object.keys(wk)
+              .map((w) => ({ w: +w, a: wk[w].a, c: wk[w].c }))
+              .filter((x) => x.a >= 3)
+              .sort(
+                (x, y) => x.c / x.a - y.c / y.a || y.a - x.a,
+              )
+              .slice(0, 3);
+            let last = null;
+            (d.sessions || []).forEach((x) => {
+              if (x.at && (!last || x.at > last)) last = x.at;
+            });
+            Object.keys(d.attempts || {}).forEach((id) => {
+              const la = (d.attempts[id] || {}).lastDate;
+              if (la && (!last || la > last)) last = la;
+            });
+            const upd =
+              s.updatedAt && s.updatedAt.toDate
+                ? s.updatedAt.toDate().toISOString()
+                : null;
+            if (!last || (upd && upd > last)) last = upd;
+            return {
+              name: s.name || "Student",
+              email: s.email || "",
+              sess: (d.sessions || []).length,
+              att: att,
+              cor: cor,
+              weak: weak,
+              last: last,
+            };
+          })
+          .sort((x, y) =>
+            (y.last || "") < (x.last || "")
+              ? -1
+              : (y.last || "") > (x.last || "")
+                ? 1
+                : 0,
+          );
+        const wkRows = [];
+        for (let w = 0; w <= 12; w++) {
+          const v = perWeek[w] || perWeek[String(w)] || {};
+          wkRows.push({
+            w: w,
+            a: v.a || 0,
+            c: v.c || 0,
+            bank: weekQs(w).length,
+          });
+        }
+        const topW = wkRows
+          .filter((x) => x.a > 0)
+          .sort((x, y) => y.a - x.a)
+          .slice(0, 3);
+        const topQ = Object.entries(perQ)
+          .map(([id, v]) => ({ id: id, a: v.a || 0, c: v.c || 0 }))
+          .sort((x, y) => y.a - x.a)
           .slice(0, 5);
-        const issues = allIssues();
-        let fbUp = 0,
-          fbDown = 0;
-        accts.forEach((a) => {
-          const f = a.data && a.data.feedback;
-          if (f === "up") fbUp++;
-          else if (f === "down") fbDown++;
-        });
-        const searches = S.searches.slice().reverse();
-        const termCounts = {};
-        S.searches.forEach((s) => {
-          const k = s.term.toLowerCase();
-          termCounts[k] = (termCounts[k] || 0) + 1;
-        });
-        const topTerms = Object.entries(termCounts)
-          .sort((a, b) => b[1] - a[1])
-          .slice(0, 10);
-        const noRes = S.searches.filter((s) => s.results === 0);
-        let rows = "";
-        for (let w = 0; w <= 12; w++)
-          rows +=
-            "<tr><td>Week " +
-            w +
-            "</td><td>" +
-            weekQs(w).length +
-            "</td><td>" +
-            (MISSING[w] ? "Q" + MISSING[w].join(", Q") : "—") +
-            "</td></tr>";
+        const loadNote = !fbConfigured()
+          ? '<div class="item" style="margin-top:12px"><b>Backend not connected yet.</b> <span class="small">Live numbers appear here once the Firebase backend is switched on (see docs/BACKEND.md).</span></div>'
+          : !A
+            ? '<div class="item" style="margin-top:12px"><b>Loading live data…</b></div>'
+            : A.error
+              ? '<div class="item" style="margin-top:12px"><b>Could not load live data</b> <span class="small">— check the connection and reopen this panel.</span></div>'
+              : "";
+        const usageRows = wkRows
+          .map(
+            (x) =>
+              "<tr><td>Week " +
+              x.w +
+              "</td><td>" +
+              x.bank +
+              "</td><td>" +
+              x.a +
+              "</td><td>" +
+              x.c +
+              "</td><td>" +
+              (x.a ? Math.round((x.c / x.a) * 100) + "%" : "—") +
+              "</td></tr>",
+          )
+          .join("");
         const bankRows = BANK.map(
           (q) =>
-            "<tr><td>W" +
+            '<tr><td style="word-break:break-word">W' +
             q.week +
             " · Q" +
             q.number +
-            "</td><td>" +
+            '</td><td style="word-break:break-word">' +
             esc(q.question.slice(0, 90)) +
             (q.question.length > 90 ? "…" : "") +
-            "</td><td>" +
+            '</td><td style="word-break:break-word">' +
             esc(q.correct_letter) +
             ". " +
             esc(q.correct_text) +
             '</td><td><span class="tag g">' +
-            (q.week === 0
-              ? "Public course material"
-              : "Accepted answer from source") +
+            (q.week === 0 ? "Course material" : "Verified") +
             "</span></td></tr>",
         ).join("");
         return (
-          '<div class="wrap"><p class="crumb"><button type="button" class="crumb-link" data-nav="account">Account</button> › <b>Admin panel</b></p><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><h2 style="font-size:24px;font-weight:800;flex:1">Admin Panel</h2><button class="btn btn-g btn-sm" id="admOut">Sign out of Admin</button></div><div class="item" style="border-color:var(--amber);background:var(--amber-bg);margin-top:12px"><b>Other students\' data needs a backend.</b></div>' +
+          '<div class="wrap"><p class="crumb"><button type="button" class="crumb-link" data-nav="account">Account</button> › <b>Admin panel</b></p><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><h2 style="font-size:24px;font-weight:800;flex:1">Admin Panel</h2><button class="btn btn-g btn-sm" id="admOut">Sign out of Admin</button></div>' +
+          loadNote +
           '<section class="sec"><h2>Real site traffic</h2><div class="item"><b>Whole-site visitor stats live in Vercel Analytics</b><br><a class="btn btn-p btn-sm" href="https://vercel.com/thunderdoc/nptel-exam-practice-hub/analytics" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex">View live visitor stats ↗</a></div></section>' +
-          '<h2 style="font-size:19px;font-weight:800;margin-top:22px">This device</h2>' +
+          '<h2 style="font-size:19px;font-weight:800;margin-top:22px">All students</h2>' +
           '<div class="stat-grid"><div class="stat"><div class="n">' +
-          accts.length +
-          '</div><div class="l">Local accounts (this device)</div></div><div class="stat"><div class="n">' +
+          (st.users || 0) +
+          '</div><div class="l">Registered users</div></div><div class="stat"><div class="n">' +
           BANK.length +
           '</div><div class="l">Questions in bank</div></div><div class="stat"><div class="n">' +
-          totSess +
-          '</div><div class="l">Sessions completed (all accounts, this device)</div></div><div class="stat"><div class="n">' +
-          issues.length +
-          '</div><div class="l">Reported issues</div></div></div>' +
-          '<section class="sec"><h2>Usage on this device</h2><div class="list"><div class="item"><b>Most-used weeks:</b> ' +
-          (wkAgg.filter((x) => x.t > 0).length
-            ? wkAgg
-                .filter((x) => x.t > 0)
-                .slice(0, 3)
-                .map((x) => "Week " + x.w + " (" + x.t + " attempts)")
+          (st.sessions || 0) +
+          '</div><div class="l">Sessions completed</div></div><div class="stat"><div class="n">' +
+          (st.attemptsTotal || 0) +
+          '</div><div class="l">Total answers submitted</div></div></div>' +
+          '<section class="sec"><h2>Usage</h2><div class="list"><div class="item"><b>Most-used weeks:</b> ' +
+          (topW.length
+            ? topW
+                .map((x) => "Week " + x.w + " (" + x.a + " attempts)")
                 .join(" · ")
             : "No attempts yet.") +
-          '</div><div class="item"><b>Most-attempted questions:</b> ' +
+          '</div><div class="item"><b>Most-attempted questions:</b>' +
           (topQ.length
             ? topQ
-                .map(([id, t]) => {
-                  const q = BYID[id];
+                .map((t) => {
+                  const q = BYID[t.id];
+                  if (!q) return "";
                   return (
-                    "W" +
+                    '<div style="display:flex;justify-content:space-between;gap:8px;margin-top:6px"><span>W' +
                     q.week +
-                    " Q" +
+                    " · Q" +
                     q.number +
-                    " (" +
-                    t.total +
-                    " attempts, " +
-                    t.correct +
-                    " correct)"
+                    '</span><span class="small">' +
+                    t.a +
+                    " attempts · " +
+                    t.c +
+                    " correct</span></div>"
                   );
                 })
-                .join(" · ")
-            : "No attempts yet.") +
-          '</div><div class="item">Missing explanations: <b>' +
-          BANK.length +
-          " / " +
-          BANK.length +
-          '</b> (none in source) · Missing options or accepted answers: <b>0</b></div></div></section>' +
-          '<section class="sec"><h2>Feedback (this device)</h2><div class="stat-grid" style="grid-template-columns:repeat(3,minmax(0,1fr))"><div class="stat"><div class="n">' +
+                .join("")
+            : ' <span class="small">No attempts yet.</span>') +
+          "</div></div></section>" +
+          '<section class="sec"><h2>Feedback</h2><div class="stat-grid" style="grid-template-columns:repeat(3,minmax(0,1fr))"><div class="stat"><div class="n">' +
           fbUp +
           '</div><div class="l">Helpful</div></div><div class="stat"><div class="n">' +
           fbDown +
           '</div><div class="l">Not helpful</div></div><div class="stat"><div class="n">' +
           (fbUp + fbDown) +
-          '</div><div class="l">Responses (this device)</div></div></div></section>' +
-          '<section class="sec"><h2>Reported issues (this device)</h2>' +
+          '</div><div class="l">Responses</div></div></div></section>' +
+          '<section class="sec"><h2>Students</h2>' +
+          (A && A.studentsDenied
+            ? '<div class="item"><b>Students list is locked to the owner account.</b> <span class="small">Sign in with the owner Google account to see every student here — the database rules release this list to that verified identity only.</span></div>'
+            : !students
+              ? '<div class="item"><span class="small">Loading students…</span></div>'
+              : studentRows.length
+                ? '<div class="list">' +
+                  studentRows
+                    .map(
+                      (s) =>
+                        '<div class="item"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><b>' +
+                        esc(s.name) +
+                        '</b><span class="small">' +
+                        (s.last ? fmtDate(s.last) : "No activity yet") +
+                        '</span></div><p class="small">' +
+                        esc(s.email) +
+                        '</p><p class="small" style="margin-top:4px">' +
+                        s.sess +
+                        " sessions · " +
+                        s.att +
+                        " answers · " +
+                        (s.att
+                          ? Math.round((s.cor / s.att) * 100) + "% correct"
+                          : "no answers yet") +
+                        (s.weak.length
+                          ? " · Weakest: " +
+                            s.weak
+                              .map(
+                                (w) =>
+                                  "W" +
+                                  w.w +
+                                  " (" +
+                                  Math.round((w.c / w.a) * 100) +
+                                  "%)",
+                              )
+                              .join(", ")
+                          : "") +
+                        "</p></div>",
+                    )
+                    .join("") +
+                  "</div>"
+                : '<div class="empty"><b>No students yet</b>Registered students appear here.</div>') +
+          "</section>" +
+          '<section class="sec"><h2>Reported issues</h2>' +
           (issues.length
             ? '<div class="list">' +
               issues
                 .map((i) => {
                   const q = BYID[i.qid];
+                  const when =
+                    i.at && i.at.toDate
+                      ? i.at.toDate().toISOString()
+                      : i.at || null;
                   return (
                     '<div class="item"><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="tag a">Week ' +
-                    (q ? q.week : "?") +
+                    (i.week != null ? i.week : q ? q.week : "?") +
                     " · Q" +
-                    (q ? q.number : "?") +
+                    (i.number != null ? i.number : q ? q.number : "?") +
                     '</span><span class="tag b">' +
-                    esc(i.type) +
+                    esc(i.type || "—") +
                     '</span></div><p style="margin-top:6px">' +
                     (i.text
                       ? esc(i.text)
                       : '<span class="small">(no comment)</span>') +
                     '</p><p class="small">' +
-                    fmtDate(i.at) +
+                    fmtDate(when) +
                     " · reported by " +
-                    esc(i.by || "") +
+                    esc(i.email || "") +
                     "</p></div>"
                   );
                 })
                 .join("") +
               "</div>"
-            : '<div class="empty"><b>No reported issues</b>Reports made via “Report an issue” on a question appear here with their type.</div>') +
+            : '<div class="empty"><b>No reported issues</b>Reports made via “Report an issue” on a question appear here.</div>') +
           "</section>" +
-          '<section class="sec"><h2>Per-week bank</h2><div class="item" style="overflow-x:auto"><table><thead><tr><th>Week</th><th>Questions</th><th>Missing numbers</th></tr></thead><tbody>' +
-          rows +
+          '<section class="sec"><h2>Per-week usage</h2><div class="item" style="overflow-x:auto"><table style="width:100%;table-layout:fixed"><thead><tr><th>Week</th><th>In bank</th><th>Attempts</th><th>Correct</th><th>Accuracy</th></tr></thead><tbody>' +
+          usageRows +
           "</tbody></table></div></section>" +
           '<section class="sec"><h2>Question bank (' +
           BANK.length +
-          ')</h2><div class="item" style="overflow-x:auto"><table><thead><tr><th>ID</th><th>Question</th><th>Accepted answer</th><th>Status</th></tr></thead><tbody>' +
+          ')</h2><div class="item" style="overflow-x:auto"><table style="width:100%;table-layout:fixed"><colgroup><col style="width:15%"><col style="width:43%"><col style="width:24%"><col style="width:18%"></colgroup><thead><tr><th>ID</th><th>Question</th><th>Accepted answer</th><th>Status</th></tr></thead><tbody>' +
           bankRows +
           "</tbody></table></div></section></div>"
         );
@@ -4667,7 +5379,7 @@
               D.notes[id] = note;
               save();
               render();
-              toast("Note saved on this device");
+              toast("Note saved to your account");
             }),
         );
         document.querySelectorAll("[data-delnote]").forEach(
@@ -4803,7 +5515,11 @@
               esc(a2 ? a2.email : "") +
               '</span></span><button data-gograph="1">My Progress</button><button data-nav="account">' +
               examLbl +
-              '</button><button class="menu-theme" type="button">Theme</button><button data-nav="about">Source &amp; Limits</button><button class="menu-logout" type="button">Logout</button></span>';
+              '</button><button class="menu-theme" type="button">Theme</button><button data-nav="about">Source &amp; Limits</button>' +
+              (isOwner()
+                ? '<button data-nav="admin">Admin</button>'
+                : "") +
+              '<button class="menu-logout" type="button">Logout</button></span>';
             const mt = tn.querySelector(".menu-theme");
             if (mt)
               mt.onclick = () => {
@@ -4814,15 +5530,7 @@
             if (ml)
               ml.onclick = () => {
                 tn.classList.remove("open");
-                const aOut = curAcct();
-                if (aOut) aOut.data.lastView = null;
-                S.current = null;
-                clearUserSession();
-                D = blankData();
-                save();
-                curView = "welcome";
-                render();
-                toast("Logged out — your data stays saved on this device");
+                doLogout();
               };
           } else {
             tn.innerHTML =
@@ -4904,8 +5612,11 @@
         else if (curView === "revision") app.innerHTML = revisionHTML();
         else if (curView === "account") app.innerHTML = accountHTML();
         else if (curView === "about") app.innerHTML = aboutHTML();
-        else if (curView === "admin")
+        else if (curView === "admin") {
+          if (isOwner()) ADMIN_ON = true;
           app.innerHTML = ADMIN_ON ? adminHTML() : adminLoginHTML();
+          if (ADMIN_ON) loadAdminCloud();
+        }
         else if (curView === "setup-random")
           app.innerHTML = setupHTML("random");
         else if (curView === "setup-mock") app.innerHTML = setupHTML("mock");
@@ -4914,6 +5625,9 @@
         wireLearn();
         window.scrollTo({ top: 0 });
         persistView();
+        // Fresh DOM from render(): re-apply loading/busy button states
+        // in place (no second render, so typed fields survive).
+        refreshAuthButtons();
       }
       function wireView() {
         const admF = document.getElementById("admForm");
@@ -4942,6 +5656,14 @@
             clearAdminSession();
             render();
           });
+        document.querySelectorAll(".gbtn").forEach((b) =>
+          b.addEventListener("click", () => {
+            const f = b.closest("form");
+            googleSignIn(
+              f ? (f.id === "suForm" ? "suRem" : "liRem") : null,
+            );
+          }),
+        );
         document.querySelectorAll(".eye").forEach((b) =>
           b.addEventListener("click", () => {
             const inp = document.getElementById(b.dataset.eye);
@@ -4952,7 +5674,14 @@
         if (suF)
           suF.addEventListener("submit", async (e) => {
             e.preventDefault();
+            if (AUTH_BUSY) return;
             const err = document.getElementById("authErr");
+            err.textContent = "";
+            if (authUnavailable()) {
+              err.textContent =
+                "Sign-up is unavailable right now — check your connection and reload the page.";
+              return;
+            }
             const name = document.getElementById("suName").value.trim();
             const email = document
               .getElementById("suEmail")
@@ -4976,119 +5705,93 @@
               err.textContent = "Passwords do not match.";
               return;
             }
-            if (S.accounts[email]) {
-              err.textContent =
-                "An account with this email already exists on this device — try Log In instead.";
-              return;
+            AUTH_BUSY = true;
+            refreshAuthButtons();
+            try {
+              await applyFbPersistence(rememberChoice("suRem"));
+              PENDING_NAME = name;
+              const cred = await FB.authM.createUserWithEmailAndPassword(
+                FB.auth,
+                email,
+                pw,
+              );
+              try {
+                await FB.authM.updateProfile(cred.user, {
+                  displayName: name,
+                });
+              } catch (e2) {}
+              toast("Welcome, " + name + " — account created");
+            } catch (e2) {
+              err.textContent = fbErrText(e2);
+            } finally {
+              AUTH_BUSY = false;
+              refreshAuthButtons();
             }
-            const salt = newSalt();
-            const hash = await hashPw(pw, salt);
-            const hadLegacy = !!S.legacy;
-            S.accounts[email] = {
-              name: name,
-              email: email,
-              salt: salt,
-              hash: hash,
-              createdAt: new Date().toISOString(),
-              data: hadLegacy
-                ? Object.assign(blankData(), S.legacy, { subject: "geo-env" })
-                : blankData(),
-            };
-            if (hadLegacy) S.legacy = null;
-            S.current = email;
-            setD(S.accounts[email]);
-            save();
-            curView = "subject";
-            render();
-            toast(
-              hadLegacy
-                ? "Welcome, " +
-                    name +
-                    " — your earlier progress on this device was attached to this account"
-                : "Welcome, " + name + " — account created on this device",
-            );
           });
         const liF = document.getElementById("liForm");
         if (liF)
           liF.addEventListener("submit", async (e) => {
             e.preventDefault();
+            if (AUTH_BUSY) return;
             const err = document.getElementById("authErr");
+            err.textContent = "";
+            if (authUnavailable()) {
+              err.textContent =
+                "Log in is unavailable right now — check your connection and reload the page.";
+              return;
+            }
             const email = document
               .getElementById("liEmail")
               .value.trim()
               .toLowerCase();
             const pw = document.getElementById("liPw").value;
-            const a = S.accounts[email];
-            if (!a) {
-              err.textContent =
-                "No account with that email exists on this device. Sign up first — or check the email spelling.";
-              return;
+            AUTH_BUSY = true;
+            refreshAuthButtons();
+            try {
+              await applyFbPersistence(rememberChoice("liRem"));
+              await FB.authM.signInWithEmailAndPassword(FB.auth, email, pw);
+              toast("Welcome back");
+            } catch (e2) {
+              err.textContent = fbErrText(e2);
+            } finally {
+              AUTH_BUSY = false;
+              refreshAuthButtons();
             }
-            const hash = await hashPw(pw, a.salt);
-            if (hash !== a.hash) {
-              err.textContent = "Incorrect password for this device account.";
-              return;
-            }
-            S.current = email;
-            const liRem = document.getElementById("liRem");
-            applyRemember(email, !liRem || liRem.checked);
-            setD(a);
-            if (D.themePref) {
-              S.theme = D.themePref;
-              applyTheme();
-            }
-            save();
-            curView = D.subject ? "practice" : "subject";
-            render();
-            toast("Welcome back, " + a.name);
           });
         const fpF = document.getElementById("fpForm");
         if (fpF)
           fpF.addEventListener("submit", async (e) => {
             e.preventDefault();
             const err = document.getElementById("authErr");
+            err.textContent = "";
+            if (authUnavailable()) {
+              err.textContent =
+                "Unavailable right now — check your connection and reload the page.";
+              return;
+            }
             const email = document
               .getElementById("fpEmail")
               .value.trim()
               .toLowerCase();
-            const pw = document.getElementById("fpPw").value;
-            const pw2 = document.getElementById("fpPw2").value;
-            const a = S.accounts[email];
-            if (!a) {
+            if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+              err.textContent = "Please enter a valid email address.";
+              return;
+            }
+            try {
+              await FB.authM.sendPasswordResetEmail(FB.auth, email);
+              err.style.color = "var(--green)";
               err.textContent =
-                "No account with that email exists on this device.";
-              return;
+                "Reset link sent — check your inbox and follow it to set a new password.";
+            } catch (e2) {
+              err.textContent = ((e2 && e2.code) || "").includes(
+                "user-not-found",
+              )
+                ? "If that email has an account, a reset link is on its way."
+                : fbErrText(e2);
             }
-            if (pw.length < 6) {
-              err.textContent = "New password must be at least 6 characters.";
-              return;
-            }
-            if (pw !== pw2) {
-              err.textContent = "Passwords do not match.";
-              return;
-            }
-            a.salt = newSalt();
-            a.hash = await hashPw(pw, a.salt);
-            save();
-            curView = "login";
-            render();
-            toast(
-              "Password updated on this device — log in with your new password",
-            );
           });
         const lo = document.getElementById("logoutBtn");
-        if (lo)
-          lo.addEventListener("click", () => {
-            const aOut2 = curAcct();
-            if (aOut2) aOut2.data.lastView = null;
-            S.current = null;
-            clearUserSession();
-            D = blankData();
-            save();
-            curView = "welcome";
-            render();
-            toast("Logged out — your data stays saved on this device");
-          });
+        if (lo) lo.addEventListener("click", () => doLogout());
         const sg = document.getElementById("subjGo");
         if (sg)
           sg.addEventListener("click", () => {
@@ -5137,7 +5840,9 @@
         const fbU = document.getElementById("fbUp");
         if (fbU)
           fbU.addEventListener("click", () => {
+            const oldFb = D.feedback;
             D.feedback = "up";
+            aggFeedback(oldFb, "up");
             save();
             render();
             toast("Thanks for the feedback!");
@@ -5145,7 +5850,9 @@
         const fbD = document.getElementById("fbDown");
         if (fbD)
           fbD.addEventListener("click", () => {
+            const oldFb = D.feedback;
             D.feedback = "down";
+            aggFeedback(oldFb, "down");
             save();
             render();
             toast("Thanks — feedback noted, we'll keep improving");
@@ -5545,4 +6252,5 @@
           curView = lv.v;
         }
       }
+      fbInit();
       render();
