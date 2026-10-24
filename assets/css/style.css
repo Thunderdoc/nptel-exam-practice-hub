@@ -3168,44 +3168,11 @@
         margin-left: auto;
         margin-right: auto;
       }
-      /* Meta: subject chip + stats strip, both nowrap — never splits. */
-      .wel-meta {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        margin-top: 22px;
-      }
-      .wel-subj {
-        display: inline-flex;
-        align-items: center;
-        padding: 7px 16px;
-        border-radius: 999px;
-        background: rgba(40, 120, 249, 0.1);
-        color: #14264a;
-        font-size: 14px;
-        font-weight: 700;
-        letter-spacing: -0.01em;
-        white-space: nowrap;
-      }
-      .wel-stats {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 13.5px;
-        font-weight: 600;
-        color: var(--muted);
-      }
-      .wel-stats span {
-        white-space: nowrap;
-      }
-      .wel-stats i {
-        width: 4px;
-        height: 4px;
-        border-radius: 50%;
-        background: var(--blue);
-        flex-shrink: 0;
-      }
+      /* Owner order 2026-10-24: the meta block (subject chip + stats
+         strip) was REMOVED from the welcome view — no subject name, no
+         week range, no question count on the login page. The .hero uses
+         space-evenly distribution, so the removed block leaves no void;
+         the footer block below is unchanged. */
       /* Footer on welcome: hugs the content, no fake bottom-nav
          clearance, centred composition, hairline divider kept. */
       body:has(main .hero) footer {
@@ -3224,7 +3191,4 @@
         margin-top: 12px;
         gap: 14px;
       }
-      [data-theme="dark"] .wel-subj {
-        background: rgba(74, 144, 255, 0.22);
-        color: #eaf1ff;
-      }
+      /* (dark .wel-subj rule removed with the meta block above.) */

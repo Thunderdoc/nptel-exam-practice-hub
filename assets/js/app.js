@@ -2183,6 +2183,7 @@
       let FB = null; // {app, auth, db, authM, fsM} once the SDK is loaded
       let FBUSER = null; // {uid, name, email} of the Firebase session
       let CLOUD = "off"; // off | loading | ready | error
+      let AUTH_BUSY = false; // true while a sign-in attempt is in flight
       let PENDING_NAME = ""; // display name typed on the email sign-up form
       let PENDING_POOL = null; // pre-backend local data awaiting migration
       function fbConfigured() {
@@ -2318,8 +2319,18 @@
                 : null,
             );
           });
+          // Redirect sign-in (phones) lands back here: the session is
+          // restored by onAuthStateChanged above, but a failed redirect
+          // would otherwise be silent — surface it once, never silently.
+          try {
+            await authM.getRedirectResult(auth);
+          } catch (e) {
+            toast(fbErrText(e));
+          }
+          refreshAuthButtons();
         } catch (e) {
           CLOUD = "error";
+          refreshAuthButtons();
         }
       }
       function onFbUser(u) {
@@ -2567,6 +2578,8 @@
           return "Network problem — check your connection";
         if (c.includes("unauthorized-domain"))
           return "This domain is not authorized for sign-in yet";
+        if (c.includes("redirect"))
+          return "Google sign-in was interrupted — try again";
         if (c.includes("account-exists-with-different-credential"))
           return "That email is already used with a different sign-in method";
         return "Something went wrong — please try again";
@@ -2591,14 +2604,57 @@
         const el = id && document.getElementById(id);
         return !el || el.checked;
       }
+      /* Auth button states, updated IN PLACE (never via render(), so a
+         typed email/password is never wiped): while the SDK is still
+         loading the buttons are disabled showing "Connecting…"; while
+         a sign-in is in flight they are disabled showing "Signing
+         in…"; otherwise they show their data-lbl label, enabled.
+         Render-time HTML derives the same states, so a fresh render
+         during loading/busy stays consistent. */
+      function refreshAuthButtons() {
+        document.querySelectorAll(".auth-btn").forEach((b) => {
+          const sp = b.querySelector("span");
+          const orig = b.dataset.lbl || (sp ? sp.textContent : b.textContent);
+          let lbl = null;
+          if (CLOUD === "loading") lbl = "Connecting…";
+          else if (AUTH_BUSY) lbl = "Signing in…";
+          if (lbl) {
+            if (sp) sp.textContent = lbl;
+            else b.textContent = lbl;
+            b.disabled = true;
+          } else {
+            if (sp) sp.textContent = orig;
+            else b.textContent = orig;
+            b.disabled = false;
+          }
+        });
+      }
       async function googleSignIn(remId) {
         if (authUnavailable()) return;
+        if (AUTH_BUSY) return;
+        AUTH_BUSY = true;
+        refreshAuthButtons();
         try {
           await applyFbPersistence(rememberChoice(remId));
           const p = new FB.authM.GoogleAuthProvider();
-          await FB.authM.signInWithPopup(FB.auth, p);
+          // Phones: the popup round-trip is fragile (opener evicted or
+          // stalled → user lands back on welcome with no state), so
+          // use a full-page redirect; the session restores through the
+          // existing onAuthStateChanged listener, and getRedirectResult
+          // at boot surfaces any redirect error. Desktop keeps popup.
+          if (
+            window.matchMedia &&
+            window.matchMedia("(max-width: 640px)").matches
+          ) {
+            await FB.authM.signInWithRedirect(FB.auth, p);
+          } else {
+            await FB.authM.signInWithPopup(FB.auth, p);
+          }
         } catch (e) {
           toast(fbErrText(e));
+        } finally {
+          AUTH_BUSY = false;
+          refreshAuthButtons();
         }
       }
       async function doLogout() {
@@ -2624,9 +2680,22 @@
         return !!(FBUSER && FBUSER.email === OWNER_EMAIL);
       }
       function googleBtnHTML(label) {
+        // Same states as refreshAuthButtons(), derived at render time
+        // so a fresh render during loading/busy stays consistent.
+        // data-lbl holds the true label for in-place restore.
+        const st =
+          CLOUD === "loading"
+            ? { lbl: "Connecting…", dis: true }
+            : AUTH_BUSY
+              ? { lbl: "Signing in…", dis: true }
+              : { lbl: label, dis: false };
         return (
-          '<button type="button" class="btn gbtn"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.9-.1-1.5-.3-2.2H12v4.3h6.5c-.1 1.1-.8 2.7-2.4 3.8l3.7 2.9c2.3-2.1 3.7-5.2 3.7-8.8z"/><path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-2.9l-3.7-2.9c-1 .7-2.4 1.2-4.2 1.2-3.2 0-5.9-2.2-6.8-5.1L1.3 17.2C3.3 21.2 7.3 24 12 24z"/><path fill="#FBBC05" d="M5.2 14.3c-.2-.7-.4-1.5-.4-2.3s.1-1.6.4-2.3L1.3 6.8C.5 8.4 0 10.1 0 12s.5 3.6 1.3 5.2l3.9-2.9z"/><path fill="#EA4335" d="M12 4.7c1.8 0 3 .8 3.7 1.4l3.3-3.2C17.9 1.1 15.2 0 12 0 7.3 0 3.3 2.8 1.3 6.8l3.9 2.9c.9-2.9 3.6-5 6.8-5z"/></svg><span>' +
+          '<button type="button" class="btn gbtn auth-btn" data-lbl="' +
           esc(label) +
+          '"' +
+          (st.dis ? " disabled" : "") +
+          '><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.9-.1-1.5-.3-2.2H12v4.3h6.5c-.1 1.1-.8 2.7-2.4 3.8l3.7 2.9c2.3-2.1 3.7-5.2 3.7-8.8z"/><path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-2.9l-3.7-2.9c-1 .7-2.4 1.2-4.2 1.2-3.2 0-5.9-2.2-6.8-5.1L1.3 17.2C3.3 21.2 7.3 24 12 24z"/><path fill="#FBBC05" d="M5.2 14.3c-.2-.7-.4-1.5-.4-2.3s.1-1.6.4-2.3L1.3 6.8C.5 8.4 0 10.1 0 12s.5 3.6 1.3 5.2l3.9-2.9z"/><path fill="#EA4335" d="M12 4.7c1.8 0 3 .8 3.7 1.4l3.3-3.2C17.9 1.1 15.2 0 12 0 7.3 0 3.3 2.8 1.3 6.8l3.9 2.9c.9-2.9 3.6-5 6.8-5z"/></svg><span>' +
+          esc(st.lbl) +
           "</span></button>"
         );
       }
@@ -3795,17 +3864,27 @@
         );
       }
       function welcomeHTML() {
+        // Owner order 2026-10-24: NO subject/week/question meta on the
+        // login page — the wel-meta block (subject chip + stats strip)
+        // was removed entirely; only headline, auth buttons, the note
+        // (exact words) and the footer/credit block remain.
+        const em =
+          CLOUD === "loading"
+            ? { lbl: "Connecting…", dis: true }
+            : AUTH_BUSY
+              ? { lbl: "Signing in…", dis: true }
+              : { lbl: "Continue with Email", dis: false };
         return (
           '<div class="wrap"><div class="narrow"><section class="hero"><h1>NPTEL<br>Exam Practice</h1><p class="sub" style="font-size:19px;color:var(--ink);font-weight:600">Practice Today. Score Higher Tomorrow.</p>' +
           BOOKSVG +
           '<div style="display:flex;flex-direction:column;gap:10px;margin-top:22px">' +
           googleBtnHTML("Continue with Google") +
-          '<button class="btn btn-p" data-nav="login">Continue with Email</button></div>' +
+          '<button class="btn btn-p auth-btn" data-lbl="Continue with Email" data-nav="login"' +
+          (em.dis ? " disabled" : "") +
+          ">" +
+          em.lbl +
+          "</button></div>" +
           '<p class="wel-note">One account, every device — your progress saves and syncs automatically.</p>' +
-          '<div class="wel-meta"><span class="wel-subj">Geography &amp; Environment</span>' +
-          '<div class="wel-stats"><span>Weeks 0–12</span><i aria-hidden="true"></i><span>' +
-          BANK.length +
-          " questions</span></div></div>" +
           "</section></div></div>"
         );
       }
@@ -3822,7 +3901,15 @@
           '</span><input id="liPw" type="password" autocomplete="current-password" required placeholder="Password"><button type="button" class="eye" data-eye="liPw" aria-label="Show or hide password"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button></div>' +
           '<label class="rem-row"><input type="checkbox" id="liRem" checked><span>Remember me</span></label>' +
           '<p class="small" id="authErr" style="color:var(--red);font-weight:600;margin-top:10px"></p>' +
-          '<button class="btn btn-p" type="submit" style="width:100%;margin-top:14px">Log In</button>' +
+          '<button class="btn btn-p auth-btn" data-lbl="Log In" type="submit" style="width:100%;margin-top:14px"' +
+          (CLOUD === "loading" || AUTH_BUSY ? " disabled" : "") +
+          ">" +
+          (CLOUD === "loading"
+            ? "Connecting…"
+            : AUTH_BUSY
+              ? "Signing in…"
+              : "Log In") +
+          "</button>" +
           '<p class="small" style="margin-top:14px;text-align:center"><a href="#" data-nav="forgot">Forgot password?</a> · New here? <a href="#" data-nav="signup">Sign up</a></p></form><p class="auth-note">Secured by Firebase — your progress syncs to your account.</p></div></div>'
         );
       }
@@ -3845,7 +3932,15 @@
           '</span><input id="suPw2" type="password" autocomplete="new-password" required placeholder="Confirm Password"><button type="button" class="eye" data-eye="suPw2" aria-label="Show or hide password"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></button></div>' +
           '<label class="rem-row"><input type="checkbox" id="suRem" checked><span>Remember me</span></label>' +
           '<p class="small" id="authErr" style="color:var(--red);font-weight:600;margin-top:10px"></p>' +
-          '<button class="btn btn-p" type="submit" style="width:100%;margin-top:14px">Sign Up</button>' +
+          '<button class="btn btn-p auth-btn" data-lbl="Sign Up" type="submit" style="width:100%;margin-top:14px"' +
+          (CLOUD === "loading" || AUTH_BUSY ? " disabled" : "") +
+          ">" +
+          (CLOUD === "loading"
+            ? "Connecting…"
+            : AUTH_BUSY
+              ? "Signing in…"
+              : "Sign Up") +
+          "</button>" +
           '<p class="small" style="margin-top:14px;text-align:center">Already have an account? <a href="#" data-nav="login">Log in</a></p></form><p class="auth-note">Secured by Firebase — your progress syncs to your account.</p></div></div>'
         );
       }
@@ -5530,6 +5625,9 @@
         wireLearn();
         window.scrollTo({ top: 0 });
         persistView();
+        // Fresh DOM from render(): re-apply loading/busy button states
+        // in place (no second render, so typed fields survive).
+        refreshAuthButtons();
       }
       function wireView() {
         const admF = document.getElementById("admForm");
@@ -5576,6 +5674,7 @@
         if (suF)
           suF.addEventListener("submit", async (e) => {
             e.preventDefault();
+            if (AUTH_BUSY) return;
             const err = document.getElementById("authErr");
             err.textContent = "";
             if (authUnavailable()) {
@@ -5606,6 +5705,8 @@
               err.textContent = "Passwords do not match.";
               return;
             }
+            AUTH_BUSY = true;
+            refreshAuthButtons();
             try {
               await applyFbPersistence(rememberChoice("suRem"));
               PENDING_NAME = name;
@@ -5622,12 +5723,16 @@
               toast("Welcome, " + name + " — account created");
             } catch (e2) {
               err.textContent = fbErrText(e2);
+            } finally {
+              AUTH_BUSY = false;
+              refreshAuthButtons();
             }
           });
         const liF = document.getElementById("liForm");
         if (liF)
           liF.addEventListener("submit", async (e) => {
             e.preventDefault();
+            if (AUTH_BUSY) return;
             const err = document.getElementById("authErr");
             err.textContent = "";
             if (authUnavailable()) {
@@ -5640,12 +5745,17 @@
               .value.trim()
               .toLowerCase();
             const pw = document.getElementById("liPw").value;
+            AUTH_BUSY = true;
+            refreshAuthButtons();
             try {
               await applyFbPersistence(rememberChoice("liRem"));
               await FB.authM.signInWithEmailAndPassword(FB.auth, email, pw);
               toast("Welcome back");
             } catch (e2) {
               err.textContent = fbErrText(e2);
+            } finally {
+              AUTH_BUSY = false;
+              refreshAuthButtons();
             }
           });
         const fpF = document.getElementById("fpForm");

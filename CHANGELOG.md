@@ -53,6 +53,29 @@ All notable changes to the NPTEL Exam Practice Hub.
   gone (was ~154px of padding/margin clearance for a bottom nav the
   welcome screen does not show). Headline and both sign-in buttons
   untouched; note wording, credit and links unchanged.
+- Google sign-in fixed for phones (owner report 2026-10-24: tapping
+  "Continue with Google" and confirming on Google's side landed back
+  on the same welcome screen, and the Firebase process felt slow).
+  Root cause was the tap/round-trip layer, not the session layer:
+  while the SDK was still loading, the tap did nothing except a
+  "Connecting…" toast, and the popup round-trip is fragile on phones.
+  Now: while the SDK loads, the Google + Email buttons render
+  DISABLED showing "Connecting…"; while any sign-in is in flight the
+  tapped button is disabled showing "Signing in…" (no double-tap
+  breakage); on phones (≤640px) Google uses a full-page redirect
+  instead of a popup (desktop keeps popup); a failed redirect
+  surfaces its error as a toast at boot instead of failing silently.
+  Persistence mapping (ticked = stays signed in, unticked = session
+  only), owner-email logic, migration and questions are unchanged.
+- Welcome meta block REMOVED (owner order 2026-10-24, supersedes the
+  chip/strip redesign above): the login page now shows NO subject
+  name, NO week range and NO question count — the subject chip and
+  the stats strip (and their CSS) are gone entirely. Kept exactly:
+  headline, Google button, Email button, the "One account, every
+  device…" note word-for-word, and the redesigned footer/credit
+  block (brand, "Built by Thunderdoc", Source & Limits · Admin).
+  The flex-column layout absorbs the removal cleanly (footer still
+  pinned to the viewport bottom, no new void).
 
 ## 2026-10-23 — Proper project structure + UI redesign
 
